@@ -192,8 +192,8 @@
 			isa = PBXGroup;
 			children = (
 				DE2654AA1D101D440083F742 /* FindMusicViewController.swift */,
-				DE2654E21D1028C60083F742 /* ContentVC */,
 				DE2654C01D10249D0083F742 /* SoundHoundViewController.swift */,
+				DE2654E21D1028C60083F742 /* ContentVC */,
 			);
 			name = FindMusic;
 			sourceTree = "<group>";
