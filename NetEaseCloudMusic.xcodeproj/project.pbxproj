@@ -8,13 +8,41 @@
 
 /* Begin PBXBuildFile section */
 		DE2654791D101A860083F742 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654781D101A860083F742 /* AppDelegate.swift */; };
-		DE26547B1D101A860083F742 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE26547A1D101A860083F742 /* FirstViewController.swift */; };
-		DE26547D1D101A860083F742 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE26547C1D101A860083F742 /* SecondViewController.swift */; };
 		DE2654801D101A860083F742 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE26547E1D101A860083F742 /* Main.storyboard */; };
 		DE2654821D101A860083F742 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE2654811D101A860083F742 /* Assets.xcassets */; };
 		DE2654851D101A860083F742 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE2654831D101A860083F742 /* LaunchScreen.storyboard */; };
 		DE2654901D101A860083F742 /* NetEaseCloudMusicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE26548F1D101A860083F742 /* NetEaseCloudMusicTests.swift */; };
 		DE26549B1D101A860083F742 /* NetEaseCloudMusicUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE26549A1D101A860083F742 /* NetEaseCloudMusicUITests.swift */; };
+		DE2654AB1D101D440083F742 /* FindMusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654AA1D101D440083F742 /* FindMusicViewController.swift */; };
+		DE2654AE1D101D7A0083F742 /* MyMusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654AD1D101D7A0083F742 /* MyMusicViewController.swift */; };
+		DE2654B11D101DA90083F742 /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654B01D101DA90083F742 /* FriendViewController.swift */; };
+		DE2654B41D101DD30083F742 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654B31D101DD30083F742 /* AccountViewController.swift */; };
+		DE2654B91D1022F10083F742 /* RecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654B81D1022F10083F742 /* RecommendViewController.swift */; };
+		DE2654BB1D10232C0083F742 /* SongSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654BA1D10232C0083F742 /* SongSheetViewController.swift */; };
+		DE2654BD1D10236F0083F742 /* RadioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654BC1D10236F0083F742 /* RadioViewController.swift */; };
+		DE2654BF1D1023990083F742 /* RankListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654BE1D1023990083F742 /* RankListViewController.swift */; };
+		DE2654C11D10249D0083F742 /* SoundHoundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654C01D10249D0083F742 /* SoundHoundViewController.swift */; };
+		DE2654C31D1024F90083F742 /* PlaySongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654C21D1024F90083F742 /* PlaySongViewController.swift */; };
+		DE2654C51D1025460083F742 /* AddSongSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654C41D1025460083F742 /* AddSongSheetViewController.swift */; };
+		DE2654C71D1025730083F742 /* MyMusicCloudBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654C61D1025730083F742 /* MyMusicCloudBoxViewController.swift */; };
+		DE2654C91D1025C70083F742 /* AddFocusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654C81D1025C70083F742 /* AddFocusViewController.swift */; };
+		DE2654CB1D1025E60083F742 /* FocusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654CA1D1025E60083F742 /* FocusViewController.swift */; };
+		DE2654CD1D1025F90083F742 /* NearByViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654CC1D1025F90083F742 /* NearByViewController.swift */; };
+		DE2654CF1D1026710083F742 /* MyMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654CE1D1026710083F742 /* MyMessageViewController.swift */; };
+		DE2654D11D1026B50083F742 /* PaidMusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654D01D1026B50083F742 /* PaidMusicViewController.swift */; };
+		DE2654D31D1026DA0083F742 /* PointMallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654D21D1026DA0083F742 /* PointMallViewController.swift */; };
+		DE2654D51D10271A0083F742 /* OnlineFreePlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654D41D10271A0083F742 /* OnlineFreePlayViewController.swift */; };
+		DE2654D71D1027540083F742 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654D61D1027540083F742 /* SettingViewController.swift */; };
+		DE2654D91D1027780083F742 /* ThemeSkinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654D81D1027780083F742 /* ThemeSkinViewController.swift */; };
+		DE2654DB1D1027CA0083F742 /* CountDownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654DA1D1027CA0083F742 /* CountDownViewController.swift */; };
+		DE2654DD1D1027E40083F742 /* MusicAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654DC1D1027E40083F742 /* MusicAlarmViewController.swift */; };
+		DE2654DF1D1027FF0083F742 /* DrivingModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654DE1D1027FF0083F742 /* DrivingModeViewController.swift */; };
+		DE2654E11D1028160083F742 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654E01D1028160083F742 /* AboutViewController.swift */; };
+		DE2654E51D1029590083F742 /* DownLoadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654E41D1029590083F742 /* DownLoadViewController.swift */; };
+		DE2654E81D10299F0083F742 /* RecentPlayedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654E71D10299F0083F742 /* RecentPlayedViewController.swift */; };
+		DE2654EB1D1029DE0083F742 /* MySingerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654EA1D1029DE0083F742 /* MySingerViewController.swift */; };
+		DE2654ED1D102A070083F742 /* MyMVViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654EC1D102A070083F742 /* MyMVViewController.swift */; };
+		DE2654F21D102A9D0083F742 /* MyRadioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654F11D102A9D0083F742 /* MyRadioViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,8 +65,6 @@
 /* Begin PBXFileReference section */
 		DE2654751D101A860083F742 /* NetEaseCloudMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetEaseCloudMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE2654781D101A860083F742 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DE26547A1D101A860083F742 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		DE26547C1D101A860083F742 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		DE26547F1D101A860083F742 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DE2654811D101A860083F742 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DE2654841D101A860083F742 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +75,36 @@
 		DE2654961D101A860083F742 /* NetEaseCloudMusicUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetEaseCloudMusicUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE26549A1D101A860083F742 /* NetEaseCloudMusicUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetEaseCloudMusicUITests.swift; sourceTree = "<group>"; };
 		DE26549C1D101A860083F742 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DE2654AA1D101D440083F742 /* FindMusicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FindMusicViewController.swift; path = FindMusic/FindMusicViewController.swift; sourceTree = "<group>"; };
+		DE2654AD1D101D7A0083F742 /* MyMusicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyMusicViewController.swift; path = MyMusic/MyMusicViewController.swift; sourceTree = "<group>"; };
+		DE2654B01D101DA90083F742 /* FriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendViewController.swift; path = Friend/FriendViewController.swift; sourceTree = "<group>"; };
+		DE2654B31D101DD30083F742 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountViewController.swift; path = Account/AccountViewController.swift; sourceTree = "<group>"; };
+		DE2654B81D1022F10083F742 /* RecommendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecommendViewController.swift; path = FindMusic/RecommendViewController.swift; sourceTree = "<group>"; };
+		DE2654BA1D10232C0083F742 /* SongSheetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SongSheetViewController.swift; path = FindMusic/SongSheetViewController.swift; sourceTree = "<group>"; };
+		DE2654BC1D10236F0083F742 /* RadioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RadioViewController.swift; path = FindMusic/RadioViewController.swift; sourceTree = "<group>"; };
+		DE2654BE1D1023990083F742 /* RankListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RankListViewController.swift; path = FindMusic/RankListViewController.swift; sourceTree = "<group>"; };
+		DE2654C01D10249D0083F742 /* SoundHoundViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SoundHoundViewController.swift; path = FindMusic/SoundHoundViewController.swift; sourceTree = "<group>"; };
+		DE2654C21D1024F90083F742 /* PlaySongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaySongViewController.swift; path = MyMusic/PlaySongViewController.swift; sourceTree = "<group>"; };
+		DE2654C41D1025460083F742 /* AddSongSheetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddSongSheetViewController.swift; path = MyMusic/AddSongSheetViewController.swift; sourceTree = "<group>"; };
+		DE2654C61D1025730083F742 /* MyMusicCloudBoxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyMusicCloudBoxViewController.swift; path = MyMusic/MyMusicCloudBoxViewController.swift; sourceTree = "<group>"; };
+		DE2654C81D1025C70083F742 /* AddFocusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddFocusViewController.swift; path = Friend/AddFocusViewController.swift; sourceTree = "<group>"; };
+		DE2654CA1D1025E60083F742 /* FocusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FocusViewController.swift; path = Friend/FocusViewController.swift; sourceTree = "<group>"; };
+		DE2654CC1D1025F90083F742 /* NearByViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NearByViewController.swift; path = Friend/NearByViewController.swift; sourceTree = "<group>"; };
+		DE2654CE1D1026710083F742 /* MyMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyMessageViewController.swift; path = Account/MyMessageViewController.swift; sourceTree = "<group>"; };
+		DE2654D01D1026B50083F742 /* PaidMusicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaidMusicViewController.swift; path = Account/PaidMusicViewController.swift; sourceTree = "<group>"; };
+		DE2654D21D1026DA0083F742 /* PointMallViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PointMallViewController.swift; path = Account/PointMallViewController.swift; sourceTree = "<group>"; };
+		DE2654D41D10271A0083F742 /* OnlineFreePlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnlineFreePlayViewController.swift; path = Account/OnlineFreePlayViewController.swift; sourceTree = "<group>"; };
+		DE2654D61D1027540083F742 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingViewController.swift; path = Account/SettingViewController.swift; sourceTree = "<group>"; };
+		DE2654D81D1027780083F742 /* ThemeSkinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThemeSkinViewController.swift; path = Account/ThemeSkinViewController.swift; sourceTree = "<group>"; };
+		DE2654DA1D1027CA0083F742 /* CountDownViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CountDownViewController.swift; path = Account/CountDownViewController.swift; sourceTree = "<group>"; };
+		DE2654DC1D1027E40083F742 /* MusicAlarmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MusicAlarmViewController.swift; path = Account/MusicAlarmViewController.swift; sourceTree = "<group>"; };
+		DE2654DE1D1027FF0083F742 /* DrivingModeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DrivingModeViewController.swift; path = Account/DrivingModeViewController.swift; sourceTree = "<group>"; };
+		DE2654E01D1028160083F742 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutViewController.swift; path = Account/AboutViewController.swift; sourceTree = "<group>"; };
+		DE2654E41D1029590083F742 /* DownLoadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DownLoadViewController.swift; path = MyMusic/DownLoad/DownLoadViewController.swift; sourceTree = "<group>"; };
+		DE2654E71D10299F0083F742 /* RecentPlayedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecentPlayedViewController.swift; path = MyMusic/RecentPlayed/RecentPlayedViewController.swift; sourceTree = "<group>"; };
+		DE2654EA1D1029DE0083F742 /* MySingerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MySingerViewController.swift; path = MyMusic/MySingerViewController.swift; sourceTree = "<group>"; };
+		DE2654EC1D102A070083F742 /* MyMVViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyMVViewController.swift; path = MyMusic/MyMV/MyMVViewController.swift; sourceTree = "<group>"; };
+		DE2654F11D102A9D0083F742 /* MyRadioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyRadioViewController.swift; path = MyMusic/MyRadio/MyRadioViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,13 +155,15 @@
 		DE2654771D101A860083F742 /* NetEaseCloudMusic */ = {
 			isa = PBXGroup;
 			children = (
-				DE2654781D101A860083F742 /* AppDelegate.swift */,
-				DE26547A1D101A860083F742 /* FirstViewController.swift */,
-				DE26547C1D101A860083F742 /* SecondViewController.swift */,
-				DE26547E1D101A860083F742 /* Main.storyboard */,
+				DE2654861D101A860083F742 /* Info.plist */,
 				DE2654811D101A860083F742 /* Assets.xcassets */,
 				DE2654831D101A860083F742 /* LaunchScreen.storyboard */,
-				DE2654861D101A860083F742 /* Info.plist */,
+				DE26547E1D101A860083F742 /* Main.storyboard */,
+				DE2654781D101A860083F742 /* AppDelegate.swift */,
+				DE2654AC1D101D4B0083F742 /* FindMusic */,
+				DE2654AF1D101D7F0083F742 /* MyMusic */,
+				DE2654B21D101DAD0083F742 /* Friend */,
+				DE2654B51D101DD60083F742 /* Account */,
 			);
 			path = NetEaseCloudMusic;
 			sourceTree = "<group>";
@@ -126,6 +184,120 @@
 				DE26549C1D101A860083F742 /* Info.plist */,
 			);
 			path = NetEaseCloudMusicUITests;
+			sourceTree = "<group>";
+		};
+		DE2654AC1D101D4B0083F742 /* FindMusic */ = {
+			isa = PBXGroup;
+			children = (
+				DE2654AA1D101D440083F742 /* FindMusicViewController.swift */,
+				DE2654E21D1028C60083F742 /* ContentVC */,
+				DE2654C01D10249D0083F742 /* SoundHoundViewController.swift */,
+			);
+			name = FindMusic;
+			sourceTree = "<group>";
+		};
+		DE2654AF1D101D7F0083F742 /* MyMusic */ = {
+			isa = PBXGroup;
+			children = (
+				DE2654AD1D101D7A0083F742 /* MyMusicViewController.swift */,
+				DE2654C21D1024F90083F742 /* PlaySongViewController.swift */,
+				DE2654E31D1028FE0083F742 /* More */,
+				DE2654E61D10295D0083F742 /* DownLoad */,
+				DE2654E91D1029A20083F742 /* RecentPlayed */,
+				DE2654EA1D1029DE0083F742 /* MySingerViewController.swift */,
+				DE2654EE1D102A0C0083F742 /* MyMV */,
+				DE2654F31D102AA10083F742 /* MyRadio */,
+			);
+			name = MyMusic;
+			sourceTree = "<group>";
+		};
+		DE2654B21D101DAD0083F742 /* Friend */ = {
+			isa = PBXGroup;
+			children = (
+				DE2654B01D101DA90083F742 /* FriendViewController.swift */,
+				DE2654C81D1025C70083F742 /* AddFocusViewController.swift */,
+				DE2654CA1D1025E60083F742 /* FocusViewController.swift */,
+				DE2654CC1D1025F90083F742 /* NearByViewController.swift */,
+			);
+			name = Friend;
+			sourceTree = "<group>";
+		};
+		DE2654B51D101DD60083F742 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				DE2654B31D101DD30083F742 /* AccountViewController.swift */,
+				DE2654F41D10301D0083F742 /* ContentVC */,
+			);
+			name = Account;
+			sourceTree = "<group>";
+		};
+		DE2654E21D1028C60083F742 /* ContentVC */ = {
+			isa = PBXGroup;
+			children = (
+				DE2654B81D1022F10083F742 /* RecommendViewController.swift */,
+				DE2654BA1D10232C0083F742 /* SongSheetViewController.swift */,
+				DE2654BC1D10236F0083F742 /* RadioViewController.swift */,
+				DE2654BE1D1023990083F742 /* RankListViewController.swift */,
+			);
+			name = ContentVC;
+			sourceTree = "<group>";
+		};
+		DE2654E31D1028FE0083F742 /* More */ = {
+			isa = PBXGroup;
+			children = (
+				DE2654C41D1025460083F742 /* AddSongSheetViewController.swift */,
+				DE2654C61D1025730083F742 /* MyMusicCloudBoxViewController.swift */,
+			);
+			name = More;
+			sourceTree = "<group>";
+		};
+		DE2654E61D10295D0083F742 /* DownLoad */ = {
+			isa = PBXGroup;
+			children = (
+				DE2654E41D1029590083F742 /* DownLoadViewController.swift */,
+			);
+			name = DownLoad;
+			sourceTree = "<group>";
+		};
+		DE2654E91D1029A20083F742 /* RecentPlayed */ = {
+			isa = PBXGroup;
+			children = (
+				DE2654E71D10299F0083F742 /* RecentPlayedViewController.swift */,
+			);
+			name = RecentPlayed;
+			sourceTree = "<group>";
+		};
+		DE2654EE1D102A0C0083F742 /* MyMV */ = {
+			isa = PBXGroup;
+			children = (
+				DE2654EC1D102A070083F742 /* MyMVViewController.swift */,
+			);
+			name = MyMV;
+			sourceTree = "<group>";
+		};
+		DE2654F31D102AA10083F742 /* MyRadio */ = {
+			isa = PBXGroup;
+			children = (
+				DE2654F11D102A9D0083F742 /* MyRadioViewController.swift */,
+			);
+			name = MyRadio;
+			sourceTree = "<group>";
+		};
+		DE2654F41D10301D0083F742 /* ContentVC */ = {
+			isa = PBXGroup;
+			children = (
+				DE2654CE1D1026710083F742 /* MyMessageViewController.swift */,
+				DE2654D01D1026B50083F742 /* PaidMusicViewController.swift */,
+				DE2654D21D1026DA0083F742 /* PointMallViewController.swift */,
+				DE2654D41D10271A0083F742 /* OnlineFreePlayViewController.swift */,
+				DE2654D61D1027540083F742 /* SettingViewController.swift */,
+				DE2654D81D1027780083F742 /* ThemeSkinViewController.swift */,
+				DE2654DA1D1027CA0083F742 /* CountDownViewController.swift */,
+				DE2654DC1D1027E40083F742 /* MusicAlarmViewController.swift */,
+				DE2654DE1D1027FF0083F742 /* DrivingModeViewController.swift */,
+				DE2654E01D1028160083F742 /* AboutViewController.swift */,
+			);
+			name = ContentVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,9 +431,37 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DE26547D1D101A860083F742 /* SecondViewController.swift in Sources */,
+				DE2654B11D101DA90083F742 /* FriendViewController.swift in Sources */,
+				DE2654CB1D1025E60083F742 /* FocusViewController.swift in Sources */,
+				DE2654DB1D1027CA0083F742 /* CountDownViewController.swift in Sources */,
+				DE2654ED1D102A070083F742 /* MyMVViewController.swift in Sources */,
+				DE2654F21D102A9D0083F742 /* MyRadioViewController.swift in Sources */,
+				DE2654D11D1026B50083F742 /* PaidMusicViewController.swift in Sources */,
+				DE2654C11D10249D0083F742 /* SoundHoundViewController.swift in Sources */,
+				DE2654DF1D1027FF0083F742 /* DrivingModeViewController.swift in Sources */,
+				DE2654B41D101DD30083F742 /* AccountViewController.swift in Sources */,
+				DE2654D71D1027540083F742 /* SettingViewController.swift in Sources */,
+				DE2654BF1D1023990083F742 /* RankListViewController.swift in Sources */,
+				DE2654EB1D1029DE0083F742 /* MySingerViewController.swift in Sources */,
+				DE2654CD1D1025F90083F742 /* NearByViewController.swift in Sources */,
+				DE2654CF1D1026710083F742 /* MyMessageViewController.swift in Sources */,
+				DE2654BD1D10236F0083F742 /* RadioViewController.swift in Sources */,
+				DE2654BB1D10232C0083F742 /* SongSheetViewController.swift in Sources */,
+				DE2654C71D1025730083F742 /* MyMusicCloudBoxViewController.swift in Sources */,
+				DE2654C91D1025C70083F742 /* AddFocusViewController.swift in Sources */,
+				DE2654D91D1027780083F742 /* ThemeSkinViewController.swift in Sources */,
+				DE2654C51D1025460083F742 /* AddSongSheetViewController.swift in Sources */,
+				DE2654D51D10271A0083F742 /* OnlineFreePlayViewController.swift in Sources */,
+				DE2654E51D1029590083F742 /* DownLoadViewController.swift in Sources */,
 				DE2654791D101A860083F742 /* AppDelegate.swift in Sources */,
-				DE26547B1D101A860083F742 /* FirstViewController.swift in Sources */,
+				DE2654AE1D101D7A0083F742 /* MyMusicViewController.swift in Sources */,
+				DE2654C31D1024F90083F742 /* PlaySongViewController.swift in Sources */,
+				DE2654AB1D101D440083F742 /* FindMusicViewController.swift in Sources */,
+				DE2654B91D1022F10083F742 /* RecommendViewController.swift in Sources */,
+				DE2654E81D10299F0083F742 /* RecentPlayedViewController.swift in Sources */,
+				DE2654DD1D1027E40083F742 /* MusicAlarmViewController.swift in Sources */,
+				DE2654E11D1028160083F742 /* AboutViewController.swift in Sources */,
+				DE2654D31D1026DA0083F742 /* PointMallViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
