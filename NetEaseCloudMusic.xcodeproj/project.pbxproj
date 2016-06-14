@@ -43,6 +43,7 @@
 		DE2654EB1D1029DE0083F742 /* MySingerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654EA1D1029DE0083F742 /* MySingerViewController.swift */; };
 		DE2654ED1D102A070083F742 /* MyMVViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654EC1D102A070083F742 /* MyMVViewController.swift */; };
 		DE2654F21D102A9D0083F742 /* MyRadioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654F11D102A9D0083F742 /* MyRadioViewController.swift */; };
+		DE2654F81D103A8D0083F742 /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654F71D103A8D0083F742 /* AccountTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +106,7 @@
 		DE2654EA1D1029DE0083F742 /* MySingerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MySingerViewController.swift; path = MyMusic/MySingerViewController.swift; sourceTree = "<group>"; };
 		DE2654EC1D102A070083F742 /* MyMVViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyMVViewController.swift; path = MyMusic/MyMV/MyMVViewController.swift; sourceTree = "<group>"; };
 		DE2654F11D102A9D0083F742 /* MyRadioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyRadioViewController.swift; path = MyMusic/MyRadio/MyRadioViewController.swift; sourceTree = "<group>"; };
+		DE2654F71D103A8D0083F742 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountTableViewCell.swift; path = Account/AccountTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				DE2654B31D101DD30083F742 /* AccountViewController.swift */,
+				DE2654F71D103A8D0083F742 /* AccountTableViewCell.swift */,
 				DE2654F41D10301D0083F742 /* ContentVC */,
 			);
 			name = Account;
@@ -436,6 +439,7 @@
 				DE2654DB1D1027CA0083F742 /* CountDownViewController.swift in Sources */,
 				DE2654ED1D102A070083F742 /* MyMVViewController.swift in Sources */,
 				DE2654F21D102A9D0083F742 /* MyRadioViewController.swift in Sources */,
+				DE2654F81D103A8D0083F742 /* AccountTableViewCell.swift in Sources */,
 				DE2654D11D1026B50083F742 /* PaidMusicViewController.swift in Sources */,
 				DE2654C11D10249D0083F742 /* SoundHoundViewController.swift in Sources */,
 				DE2654DF1D1027FF0083F742 /* DrivingModeViewController.swift in Sources */,

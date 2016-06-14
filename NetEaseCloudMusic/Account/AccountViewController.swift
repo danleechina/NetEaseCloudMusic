@@ -10,6 +10,13 @@ import UIKit
 
 class AccountViewController: UIViewController {
 
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.delegate = self
+        tableView.dataSource = self
+        return tableView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,6 +32,10 @@ class AccountViewController: UIViewController {
     }
     */
 
+}
+
+extension AccountViewController:UITableViewDelegate, UITableViewDataSource {
+    
 }
 
 
