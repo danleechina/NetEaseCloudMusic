@@ -605,6 +605,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = NetEaseCloudMusic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.danlee.NetEaseCloudMusic;
@@ -616,6 +617,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = NetEaseCloudMusic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.danlee.NetEaseCloudMusic;
@@ -688,6 +690,7 @@
 				DE2654A11D101A860083F742 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DE2654A21D101A860083F742 /* Build configuration list for PBXNativeTarget "NetEaseCloudMusicTests" */ = {
 			isa = XCConfigurationList;
@@ -696,6 +699,7 @@
 				DE2654A41D101A860083F742 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DE2654A51D101A860083F742 /* Build configuration list for PBXNativeTarget "NetEaseCloudMusicUITests" */ = {
 			isa = XCConfigurationList;
@@ -704,6 +708,7 @@
 				DE2654A71D101A860083F742 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
