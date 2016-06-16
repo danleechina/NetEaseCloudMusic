@@ -1,720 +1,1998 @@
-// !$*UTF8*$!
-{
-	archiveVersion = 1;
-	classes = {
-	};
-	objectVersion = 46;
-	objects = {
-
-/* Begin PBXBuildFile section */
-		DE2654791D101A860083F742 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654781D101A860083F742 /* AppDelegate.swift */; };
-		DE2654801D101A860083F742 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE26547E1D101A860083F742 /* Main.storyboard */; };
-		DE2654821D101A860083F742 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE2654811D101A860083F742 /* Assets.xcassets */; };
-		DE2654851D101A860083F742 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE2654831D101A860083F742 /* LaunchScreen.storyboard */; };
-		DE2654901D101A860083F742 /* NetEaseCloudMusicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE26548F1D101A860083F742 /* NetEaseCloudMusicTests.swift */; };
-		DE26549B1D101A860083F742 /* NetEaseCloudMusicUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE26549A1D101A860083F742 /* NetEaseCloudMusicUITests.swift */; };
-		DE2654AB1D101D440083F742 /* FindMusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654AA1D101D440083F742 /* FindMusicViewController.swift */; };
-		DE2654AE1D101D7A0083F742 /* MyMusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654AD1D101D7A0083F742 /* MyMusicViewController.swift */; };
-		DE2654B11D101DA90083F742 /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654B01D101DA90083F742 /* FriendViewController.swift */; };
-		DE2654B41D101DD30083F742 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654B31D101DD30083F742 /* AccountViewController.swift */; };
-		DE2654B91D1022F10083F742 /* RecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654B81D1022F10083F742 /* RecommendViewController.swift */; };
-		DE2654BB1D10232C0083F742 /* SongSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654BA1D10232C0083F742 /* SongSheetViewController.swift */; };
-		DE2654BD1D10236F0083F742 /* RadioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654BC1D10236F0083F742 /* RadioViewController.swift */; };
-		DE2654BF1D1023990083F742 /* RankListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654BE1D1023990083F742 /* RankListViewController.swift */; };
-		DE2654C11D10249D0083F742 /* SoundHoundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654C01D10249D0083F742 /* SoundHoundViewController.swift */; };
-		DE2654C31D1024F90083F742 /* PlaySongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654C21D1024F90083F742 /* PlaySongViewController.swift */; };
-		DE2654C51D1025460083F742 /* AddSongSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654C41D1025460083F742 /* AddSongSheetViewController.swift */; };
-		DE2654C71D1025730083F742 /* MyMusicCloudBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654C61D1025730083F742 /* MyMusicCloudBoxViewController.swift */; };
-		DE2654C91D1025C70083F742 /* AddFocusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654C81D1025C70083F742 /* AddFocusViewController.swift */; };
-		DE2654CB1D1025E60083F742 /* FocusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654CA1D1025E60083F742 /* FocusViewController.swift */; };
-		DE2654CD1D1025F90083F742 /* NearByViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654CC1D1025F90083F742 /* NearByViewController.swift */; };
-		DE2654CF1D1026710083F742 /* MyMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654CE1D1026710083F742 /* MyMessageViewController.swift */; };
-		DE2654D11D1026B50083F742 /* PaidMusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654D01D1026B50083F742 /* PaidMusicViewController.swift */; };
-		DE2654D31D1026DA0083F742 /* PointMallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654D21D1026DA0083F742 /* PointMallViewController.swift */; };
-		DE2654D51D10271A0083F742 /* OnlineFreePlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654D41D10271A0083F742 /* OnlineFreePlayViewController.swift */; };
-		DE2654D71D1027540083F742 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654D61D1027540083F742 /* SettingViewController.swift */; };
-		DE2654D91D1027780083F742 /* ThemeSkinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654D81D1027780083F742 /* ThemeSkinViewController.swift */; };
-		DE2654DB1D1027CA0083F742 /* CountDownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654DA1D1027CA0083F742 /* CountDownViewController.swift */; };
-		DE2654DD1D1027E40083F742 /* MusicAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654DC1D1027E40083F742 /* MusicAlarmViewController.swift */; };
-		DE2654DF1D1027FF0083F742 /* DrivingModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654DE1D1027FF0083F742 /* DrivingModeViewController.swift */; };
-		DE2654E11D1028160083F742 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654E01D1028160083F742 /* AboutViewController.swift */; };
-		DE2654E51D1029590083F742 /* DownLoadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654E41D1029590083F742 /* DownLoadViewController.swift */; };
-		DE2654E81D10299F0083F742 /* RecentPlayedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654E71D10299F0083F742 /* RecentPlayedViewController.swift */; };
-		DE2654EB1D1029DE0083F742 /* MySingerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654EA1D1029DE0083F742 /* MySingerViewController.swift */; };
-		DE2654ED1D102A070083F742 /* MyMVViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654EC1D102A070083F742 /* MyMVViewController.swift */; };
-		DE2654F21D102A9D0083F742 /* MyRadioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654F11D102A9D0083F742 /* MyRadioViewController.swift */; };
-		DE2654F81D103A8D0083F742 /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654F71D103A8D0083F742 /* AccountTableViewCell.swift */; };
-/* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		DE26548C1D101A860083F742 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DE26546D1D101A860083F742 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DE2654741D101A860083F742;
-			remoteInfo = NetEaseCloudMusic;
-		};
-		DE2654971D101A860083F742 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DE26546D1D101A860083F742 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DE2654741D101A860083F742;
-			remoteInfo = NetEaseCloudMusic;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXFileReference section */
-		DE2654751D101A860083F742 /* NetEaseCloudMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetEaseCloudMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		DE2654781D101A860083F742 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DE26547F1D101A860083F742 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		DE2654811D101A860083F742 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		DE2654841D101A860083F742 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		DE2654861D101A860083F742 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DE26548B1D101A860083F742 /* NetEaseCloudMusicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetEaseCloudMusicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		DE26548F1D101A860083F742 /* NetEaseCloudMusicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetEaseCloudMusicTests.swift; sourceTree = "<group>"; };
-		DE2654911D101A860083F742 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DE2654961D101A860083F742 /* NetEaseCloudMusicUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetEaseCloudMusicUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		DE26549A1D101A860083F742 /* NetEaseCloudMusicUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetEaseCloudMusicUITests.swift; sourceTree = "<group>"; };
-		DE26549C1D101A860083F742 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DE2654AA1D101D440083F742 /* FindMusicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FindMusicViewController.swift; path = FindMusic/FindMusicViewController.swift; sourceTree = "<group>"; };
-		DE2654AD1D101D7A0083F742 /* MyMusicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyMusicViewController.swift; path = MyMusic/MyMusicViewController.swift; sourceTree = "<group>"; };
-		DE2654B01D101DA90083F742 /* FriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendViewController.swift; path = Friend/FriendViewController.swift; sourceTree = "<group>"; };
-		DE2654B31D101DD30083F742 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountViewController.swift; path = Account/AccountViewController.swift; sourceTree = "<group>"; };
-		DE2654B81D1022F10083F742 /* RecommendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecommendViewController.swift; path = FindMusic/RecommendViewController.swift; sourceTree = "<group>"; };
-		DE2654BA1D10232C0083F742 /* SongSheetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SongSheetViewController.swift; path = FindMusic/SongSheetViewController.swift; sourceTree = "<group>"; };
-		DE2654BC1D10236F0083F742 /* RadioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RadioViewController.swift; path = FindMusic/RadioViewController.swift; sourceTree = "<group>"; };
-		DE2654BE1D1023990083F742 /* RankListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RankListViewController.swift; path = FindMusic/RankListViewController.swift; sourceTree = "<group>"; };
-		DE2654C01D10249D0083F742 /* SoundHoundViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SoundHoundViewController.swift; path = FindMusic/SoundHoundViewController.swift; sourceTree = "<group>"; };
-		DE2654C21D1024F90083F742 /* PlaySongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaySongViewController.swift; path = MyMusic/PlaySongViewController.swift; sourceTree = "<group>"; };
-		DE2654C41D1025460083F742 /* AddSongSheetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddSongSheetViewController.swift; path = MyMusic/AddSongSheetViewController.swift; sourceTree = "<group>"; };
-		DE2654C61D1025730083F742 /* MyMusicCloudBoxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyMusicCloudBoxViewController.swift; path = MyMusic/MyMusicCloudBoxViewController.swift; sourceTree = "<group>"; };
-		DE2654C81D1025C70083F742 /* AddFocusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddFocusViewController.swift; path = Friend/AddFocusViewController.swift; sourceTree = "<group>"; };
-		DE2654CA1D1025E60083F742 /* FocusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FocusViewController.swift; path = Friend/FocusViewController.swift; sourceTree = "<group>"; };
-		DE2654CC1D1025F90083F742 /* NearByViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NearByViewController.swift; path = Friend/NearByViewController.swift; sourceTree = "<group>"; };
-		DE2654CE1D1026710083F742 /* MyMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyMessageViewController.swift; path = Account/MyMessageViewController.swift; sourceTree = "<group>"; };
-		DE2654D01D1026B50083F742 /* PaidMusicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaidMusicViewController.swift; path = Account/PaidMusicViewController.swift; sourceTree = "<group>"; };
-		DE2654D21D1026DA0083F742 /* PointMallViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PointMallViewController.swift; path = Account/PointMallViewController.swift; sourceTree = "<group>"; };
-		DE2654D41D10271A0083F742 /* OnlineFreePlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnlineFreePlayViewController.swift; path = Account/OnlineFreePlayViewController.swift; sourceTree = "<group>"; };
-		DE2654D61D1027540083F742 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingViewController.swift; path = Account/SettingViewController.swift; sourceTree = "<group>"; };
-		DE2654D81D1027780083F742 /* ThemeSkinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThemeSkinViewController.swift; path = Account/ThemeSkinViewController.swift; sourceTree = "<group>"; };
-		DE2654DA1D1027CA0083F742 /* CountDownViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CountDownViewController.swift; path = Account/CountDownViewController.swift; sourceTree = "<group>"; };
-		DE2654DC1D1027E40083F742 /* MusicAlarmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MusicAlarmViewController.swift; path = Account/MusicAlarmViewController.swift; sourceTree = "<group>"; };
-		DE2654DE1D1027FF0083F742 /* DrivingModeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DrivingModeViewController.swift; path = Account/DrivingModeViewController.swift; sourceTree = "<group>"; };
-		DE2654E01D1028160083F742 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutViewController.swift; path = Account/AboutViewController.swift; sourceTree = "<group>"; };
-		DE2654E41D1029590083F742 /* DownLoadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DownLoadViewController.swift; path = MyMusic/DownLoad/DownLoadViewController.swift; sourceTree = "<group>"; };
-		DE2654E71D10299F0083F742 /* RecentPlayedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecentPlayedViewController.swift; path = MyMusic/RecentPlayed/RecentPlayedViewController.swift; sourceTree = "<group>"; };
-		DE2654EA1D1029DE0083F742 /* MySingerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MySingerViewController.swift; path = MyMusic/MySingerViewController.swift; sourceTree = "<group>"; };
-		DE2654EC1D102A070083F742 /* MyMVViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyMVViewController.swift; path = MyMusic/MyMV/MyMVViewController.swift; sourceTree = "<group>"; };
-		DE2654F11D102A9D0083F742 /* MyRadioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyRadioViewController.swift; path = MyMusic/MyRadio/MyRadioViewController.swift; sourceTree = "<group>"; };
-		DE2654F71D103A8D0083F742 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountTableViewCell.swift; path = Account/AccountTableViewCell.swift; sourceTree = "<group>"; };
-/* End PBXFileReference section */
-
-/* Begin PBXFrameworksBuildPhase section */
-		DE2654721D101A860083F742 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DE2654881D101A860083F742 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DE2654931D101A860083F742 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
-
-/* Begin PBXGroup section */
-		DE26546C1D101A860083F742 = {
-			isa = PBXGroup;
-			children = (
-				DE2654771D101A860083F742 /* NetEaseCloudMusic */,
-				DE26548E1D101A860083F742 /* NetEaseCloudMusicTests */,
-				DE2654991D101A860083F742 /* NetEaseCloudMusicUITests */,
-				DE2654761D101A860083F742 /* Products */,
-			);
-			sourceTree = "<group>";
-		};
-		DE2654761D101A860083F742 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				DE2654751D101A860083F742 /* NetEaseCloudMusic.app */,
-				DE26548B1D101A860083F742 /* NetEaseCloudMusicTests.xctest */,
-				DE2654961D101A860083F742 /* NetEaseCloudMusicUITests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		DE2654771D101A860083F742 /* NetEaseCloudMusic */ = {
-			isa = PBXGroup;
-			children = (
-				DE2654861D101A860083F742 /* Info.plist */,
-				DE2654811D101A860083F742 /* Assets.xcassets */,
-				DE2654831D101A860083F742 /* LaunchScreen.storyboard */,
-				DE26547E1D101A860083F742 /* Main.storyboard */,
-				DE2654781D101A860083F742 /* AppDelegate.swift */,
-				DE2654AC1D101D4B0083F742 /* FindMusic */,
-				DE2654AF1D101D7F0083F742 /* MyMusic */,
-				DE2654B21D101DAD0083F742 /* Friend */,
-				DE2654B51D101DD60083F742 /* Account */,
-			);
-			path = NetEaseCloudMusic;
-			sourceTree = "<group>";
-		};
-		DE26548E1D101A860083F742 /* NetEaseCloudMusicTests */ = {
-			isa = PBXGroup;
-			children = (
-				DE26548F1D101A860083F742 /* NetEaseCloudMusicTests.swift */,
-				DE2654911D101A860083F742 /* Info.plist */,
-			);
-			path = NetEaseCloudMusicTests;
-			sourceTree = "<group>";
-		};
-		DE2654991D101A860083F742 /* NetEaseCloudMusicUITests */ = {
-			isa = PBXGroup;
-			children = (
-				DE26549A1D101A860083F742 /* NetEaseCloudMusicUITests.swift */,
-				DE26549C1D101A860083F742 /* Info.plist */,
-			);
-			path = NetEaseCloudMusicUITests;
-			sourceTree = "<group>";
-		};
-		DE2654AC1D101D4B0083F742 /* FindMusic */ = {
-			isa = PBXGroup;
-			children = (
-				DE2654AA1D101D440083F742 /* FindMusicViewController.swift */,
-				DE2654C01D10249D0083F742 /* SoundHoundViewController.swift */,
-				DE2654E21D1028C60083F742 /* ContentVC */,
-			);
-			name = FindMusic;
-			sourceTree = "<group>";
-		};
-		DE2654AF1D101D7F0083F742 /* MyMusic */ = {
-			isa = PBXGroup;
-			children = (
-				DE2654AD1D101D7A0083F742 /* MyMusicViewController.swift */,
-				DE2654C21D1024F90083F742 /* PlaySongViewController.swift */,
-				DE2654E31D1028FE0083F742 /* More */,
-				DE2654E61D10295D0083F742 /* DownLoad */,
-				DE2654E91D1029A20083F742 /* RecentPlayed */,
-				DE2654EA1D1029DE0083F742 /* MySingerViewController.swift */,
-				DE2654EE1D102A0C0083F742 /* MyMV */,
-				DE2654F31D102AA10083F742 /* MyRadio */,
-			);
-			name = MyMusic;
-			sourceTree = "<group>";
-		};
-		DE2654B21D101DAD0083F742 /* Friend */ = {
-			isa = PBXGroup;
-			children = (
-				DE2654B01D101DA90083F742 /* FriendViewController.swift */,
-				DE2654C81D1025C70083F742 /* AddFocusViewController.swift */,
-				DE2654CA1D1025E60083F742 /* FocusViewController.swift */,
-				DE2654CC1D1025F90083F742 /* NearByViewController.swift */,
-			);
-			name = Friend;
-			sourceTree = "<group>";
-		};
-		DE2654B51D101DD60083F742 /* Account */ = {
-			isa = PBXGroup;
-			children = (
-				DE2654B31D101DD30083F742 /* AccountViewController.swift */,
-				DE2654F71D103A8D0083F742 /* AccountTableViewCell.swift */,
-				DE2654F41D10301D0083F742 /* ContentVC */,
-			);
-			name = Account;
-			sourceTree = "<group>";
-		};
-		DE2654E21D1028C60083F742 /* ContentVC */ = {
-			isa = PBXGroup;
-			children = (
-				DE2654B81D1022F10083F742 /* RecommendViewController.swift */,
-				DE2654BA1D10232C0083F742 /* SongSheetViewController.swift */,
-				DE2654BC1D10236F0083F742 /* RadioViewController.swift */,
-				DE2654BE1D1023990083F742 /* RankListViewController.swift */,
-			);
-			name = ContentVC;
-			sourceTree = "<group>";
-		};
-		DE2654E31D1028FE0083F742 /* More */ = {
-			isa = PBXGroup;
-			children = (
-				DE2654C41D1025460083F742 /* AddSongSheetViewController.swift */,
-				DE2654C61D1025730083F742 /* MyMusicCloudBoxViewController.swift */,
-			);
-			name = More;
-			sourceTree = "<group>";
-		};
-		DE2654E61D10295D0083F742 /* DownLoad */ = {
-			isa = PBXGroup;
-			children = (
-				DE2654E41D1029590083F742 /* DownLoadViewController.swift */,
-			);
-			name = DownLoad;
-			sourceTree = "<group>";
-		};
-		DE2654E91D1029A20083F742 /* RecentPlayed */ = {
-			isa = PBXGroup;
-			children = (
-				DE2654E71D10299F0083F742 /* RecentPlayedViewController.swift */,
-			);
-			name = RecentPlayed;
-			sourceTree = "<group>";
-		};
-		DE2654EE1D102A0C0083F742 /* MyMV */ = {
-			isa = PBXGroup;
-			children = (
-				DE2654EC1D102A070083F742 /* MyMVViewController.swift */,
-			);
-			name = MyMV;
-			sourceTree = "<group>";
-		};
-		DE2654F31D102AA10083F742 /* MyRadio */ = {
-			isa = PBXGroup;
-			children = (
-				DE2654F11D102A9D0083F742 /* MyRadioViewController.swift */,
-			);
-			name = MyRadio;
-			sourceTree = "<group>";
-		};
-		DE2654F41D10301D0083F742 /* ContentVC */ = {
-			isa = PBXGroup;
-			children = (
-				DE2654CE1D1026710083F742 /* MyMessageViewController.swift */,
-				DE2654D01D1026B50083F742 /* PaidMusicViewController.swift */,
-				DE2654D21D1026DA0083F742 /* PointMallViewController.swift */,
-				DE2654D41D10271A0083F742 /* OnlineFreePlayViewController.swift */,
-				DE2654D61D1027540083F742 /* SettingViewController.swift */,
-				DE2654D81D1027780083F742 /* ThemeSkinViewController.swift */,
-				DE2654DA1D1027CA0083F742 /* CountDownViewController.swift */,
-				DE2654DC1D1027E40083F742 /* MusicAlarmViewController.swift */,
-				DE2654DE1D1027FF0083F742 /* DrivingModeViewController.swift */,
-				DE2654E01D1028160083F742 /* AboutViewController.swift */,
-			);
-			name = ContentVC;
-			sourceTree = "<group>";
-		};
-/* End PBXGroup section */
-
-/* Begin PBXNativeTarget section */
-		DE2654741D101A860083F742 /* NetEaseCloudMusic */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = DE26549F1D101A860083F742 /* Build configuration list for PBXNativeTarget "NetEaseCloudMusic" */;
-			buildPhases = (
-				DE2654711D101A860083F742 /* Sources */,
-				DE2654721D101A860083F742 /* Frameworks */,
-				DE2654731D101A860083F742 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = NetEaseCloudMusic;
-			productName = NetEaseCloudMusic;
-			productReference = DE2654751D101A860083F742 /* NetEaseCloudMusic.app */;
-			productType = "com.apple.product-type.application";
-		};
-		DE26548A1D101A860083F742 /* NetEaseCloudMusicTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = DE2654A21D101A860083F742 /* Build configuration list for PBXNativeTarget "NetEaseCloudMusicTests" */;
-			buildPhases = (
-				DE2654871D101A860083F742 /* Sources */,
-				DE2654881D101A860083F742 /* Frameworks */,
-				DE2654891D101A860083F742 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				DE26548D1D101A860083F742 /* PBXTargetDependency */,
-			);
-			name = NetEaseCloudMusicTests;
-			productName = NetEaseCloudMusicTests;
-			productReference = DE26548B1D101A860083F742 /* NetEaseCloudMusicTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		DE2654951D101A860083F742 /* NetEaseCloudMusicUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = DE2654A51D101A860083F742 /* Build configuration list for PBXNativeTarget "NetEaseCloudMusicUITests" */;
-			buildPhases = (
-				DE2654921D101A860083F742 /* Sources */,
-				DE2654931D101A860083F742 /* Frameworks */,
-				DE2654941D101A860083F742 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				DE2654981D101A860083F742 /* PBXTargetDependency */,
-			);
-			name = NetEaseCloudMusicUITests;
-			productName = NetEaseCloudMusicUITests;
-			productReference = DE2654961D101A860083F742 /* NetEaseCloudMusicUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
-/* End PBXNativeTarget section */
-
-/* Begin PBXProject section */
-		DE26546D1D101A860083F742 /* Project object */ = {
-			isa = PBXProject;
-			attributes = {
-				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
-				ORGANIZATIONNAME = Ampire_Dan;
-				TargetAttributes = {
-					DE2654741D101A860083F742 = {
-						CreatedOnToolsVersion = 7.3.1;
-					};
-					DE26548A1D101A860083F742 = {
-						CreatedOnToolsVersion = 7.3.1;
-						TestTargetID = DE2654741D101A860083F742;
-					};
-					DE2654951D101A860083F742 = {
-						CreatedOnToolsVersion = 7.3.1;
-						TestTargetID = DE2654741D101A860083F742;
-					};
-				};
-			};
-			buildConfigurationList = DE2654701D101A860083F742 /* Build configuration list for PBXProject "NetEaseCloudMusic" */;
-			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
-			hasScannedForEncodings = 0;
-			knownRegions = (
-				en,
-				Base,
-			);
-			mainGroup = DE26546C1D101A860083F742;
-			productRefGroup = DE2654761D101A860083F742 /* Products */;
-			projectDirPath = "";
-			projectRoot = "";
-			targets = (
-				DE2654741D101A860083F742 /* NetEaseCloudMusic */,
-				DE26548A1D101A860083F742 /* NetEaseCloudMusicTests */,
-				DE2654951D101A860083F742 /* NetEaseCloudMusicUITests */,
-			);
-		};
-/* End PBXProject section */
-
-/* Begin PBXResourcesBuildPhase section */
-		DE2654731D101A860083F742 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DE2654851D101A860083F742 /* LaunchScreen.storyboard in Resources */,
-				DE2654821D101A860083F742 /* Assets.xcassets in Resources */,
-				DE2654801D101A860083F742 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DE2654891D101A860083F742 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DE2654941D101A860083F742 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
-/* Begin PBXSourcesBuildPhase section */
-		DE2654711D101A860083F742 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DE2654B11D101DA90083F742 /* FriendViewController.swift in Sources */,
-				DE2654CB1D1025E60083F742 /* FocusViewController.swift in Sources */,
-				DE2654DB1D1027CA0083F742 /* CountDownViewController.swift in Sources */,
-				DE2654ED1D102A070083F742 /* MyMVViewController.swift in Sources */,
-				DE2654F21D102A9D0083F742 /* MyRadioViewController.swift in Sources */,
-				DE2654F81D103A8D0083F742 /* AccountTableViewCell.swift in Sources */,
-				DE2654D11D1026B50083F742 /* PaidMusicViewController.swift in Sources */,
-				DE2654C11D10249D0083F742 /* SoundHoundViewController.swift in Sources */,
-				DE2654DF1D1027FF0083F742 /* DrivingModeViewController.swift in Sources */,
-				DE2654B41D101DD30083F742 /* AccountViewController.swift in Sources */,
-				DE2654D71D1027540083F742 /* SettingViewController.swift in Sources */,
-				DE2654BF1D1023990083F742 /* RankListViewController.swift in Sources */,
-				DE2654EB1D1029DE0083F742 /* MySingerViewController.swift in Sources */,
-				DE2654CD1D1025F90083F742 /* NearByViewController.swift in Sources */,
-				DE2654CF1D1026710083F742 /* MyMessageViewController.swift in Sources */,
-				DE2654BD1D10236F0083F742 /* RadioViewController.swift in Sources */,
-				DE2654BB1D10232C0083F742 /* SongSheetViewController.swift in Sources */,
-				DE2654C71D1025730083F742 /* MyMusicCloudBoxViewController.swift in Sources */,
-				DE2654C91D1025C70083F742 /* AddFocusViewController.swift in Sources */,
-				DE2654D91D1027780083F742 /* ThemeSkinViewController.swift in Sources */,
-				DE2654C51D1025460083F742 /* AddSongSheetViewController.swift in Sources */,
-				DE2654D51D10271A0083F742 /* OnlineFreePlayViewController.swift in Sources */,
-				DE2654E51D1029590083F742 /* DownLoadViewController.swift in Sources */,
-				DE2654791D101A860083F742 /* AppDelegate.swift in Sources */,
-				DE2654AE1D101D7A0083F742 /* MyMusicViewController.swift in Sources */,
-				DE2654C31D1024F90083F742 /* PlaySongViewController.swift in Sources */,
-				DE2654AB1D101D440083F742 /* FindMusicViewController.swift in Sources */,
-				DE2654B91D1022F10083F742 /* RecommendViewController.swift in Sources */,
-				DE2654E81D10299F0083F742 /* RecentPlayedViewController.swift in Sources */,
-				DE2654DD1D1027E40083F742 /* MusicAlarmViewController.swift in Sources */,
-				DE2654E11D1028160083F742 /* AboutViewController.swift in Sources */,
-				DE2654D31D1026DA0083F742 /* PointMallViewController.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DE2654871D101A860083F742 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DE2654901D101A860083F742 /* NetEaseCloudMusicTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DE2654921D101A860083F742 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DE26549B1D101A860083F742 /* NetEaseCloudMusicUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		DE26548D1D101A860083F742 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = DE2654741D101A860083F742 /* NetEaseCloudMusic */;
-			targetProxy = DE26548C1D101A860083F742 /* PBXContainerItemProxy */;
-		};
-		DE2654981D101A860083F742 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = DE2654741D101A860083F742 /* NetEaseCloudMusic */;
-			targetProxy = DE2654971D101A860083F742 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		DE26547E1D101A860083F742 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DE26547F1D101A860083F742 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		DE2654831D101A860083F742 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DE2654841D101A860083F742 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
-/* Begin XCBuildConfiguration section */
-		DE26549D1D101A860083F742 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		DE26549E1D101A860083F742 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		DE2654A01D101A860083F742 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				INFOPLIST_FILE = NetEaseCloudMusic/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.danlee.NetEaseCloudMusic;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		DE2654A11D101A860083F742 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				INFOPLIST_FILE = NetEaseCloudMusic/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.danlee.NetEaseCloudMusic;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		DE2654A31D101A860083F742 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = NetEaseCloudMusicTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.danlee.NetEaseCloudMusicTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NetEaseCloudMusic.app/NetEaseCloudMusic";
-			};
-			name = Debug;
-		};
-		DE2654A41D101A860083F742 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = NetEaseCloudMusicTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.danlee.NetEaseCloudMusicTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NetEaseCloudMusic.app/NetEaseCloudMusic";
-			};
-			name = Release;
-		};
-		DE2654A61D101A860083F742 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = NetEaseCloudMusicUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.danlee.NetEaseCloudMusicUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = NetEaseCloudMusic;
-			};
-			name = Debug;
-		};
-		DE2654A71D101A860083F742 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = NetEaseCloudMusicUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.danlee.NetEaseCloudMusicUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = NetEaseCloudMusic;
-			};
-			name = Release;
-		};
-/* End XCBuildConfiguration section */
-
-/* Begin XCConfigurationList section */
-		DE2654701D101A860083F742 /* Build configuration list for PBXProject "NetEaseCloudMusic" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				DE26549D1D101A860083F742 /* Debug */,
-				DE26549E1D101A860083F742 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		DE26549F1D101A860083F742 /* Build configuration list for PBXNativeTarget "NetEaseCloudMusic" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				DE2654A01D101A860083F742 /* Debug */,
-				DE2654A11D101A860083F742 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		DE2654A21D101A860083F742 /* Build configuration list for PBXNativeTarget "NetEaseCloudMusicTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				DE2654A31D101A860083F742 /* Debug */,
-				DE2654A41D101A860083F742 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		DE2654A51D101A860083F742 /* Build configuration list for PBXNativeTarget "NetEaseCloudMusicUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				DE2654A61D101A860083F742 /* Debug */,
-				DE2654A71D101A860083F742 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-/* End XCConfigurationList section */
-	};
-	rootObject = DE26546D1D101A860083F742 /* Project object */;
-}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>archiveVersion</key>
+	<string>1</string>
+	<key>classes</key>
+	<dict/>
+	<key>objectVersion</key>
+	<string>46</string>
+	<key>objects</key>
+	<dict>
+		<key>21AC9F49F70667ECF863948E</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>Copy Pods Resources</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh"
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>2BF63923C7212F1DBCF7D30B</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>C681789F70D8D427BB9A1604</string>
+				<string>C2FE4E75AA0B108BB1B196B5</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Pods</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>39616E5D14E70B703CD8A92A</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>Check Pods Manifest.lock</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>diff "${PODS_ROOT}/../Podfile.lock" "${PODS_ROOT}/Manifest.lock" &gt; /dev/null
+if [[ $? != 0 ]] ; then
+    cat &lt;&lt; EOM
+error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
+EOM
+    exit 1
+fi
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>7723313C856F8013CCCDB762</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>Embed Pods Frameworks</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh"
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>C2FE4E75AA0B108BB1B196B5</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods.release.xcconfig</string>
+			<key>path</key>
+			<string>Pods/Target Support Files/Pods/Pods.release.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>C681789F70D8D427BB9A1604</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods.debug.xcconfig</string>
+			<key>path</key>
+			<string>Pods/Target Support Files/Pods/Pods.debug.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D42FA2A00EA9169F711A1E81</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.framework</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>Pods.framework</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>DE26546C1D101A860083F742</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>DE2654771D101A860083F742</string>
+				<string>DE26548E1D101A860083F742</string>
+				<string>DE2654991D101A860083F742</string>
+				<string>DE2654761D101A860083F742</string>
+				<string>2BF63923C7212F1DBCF7D30B</string>
+				<string>DFA7455DED046E4D37EE8D4B</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE26546D1D101A860083F742</key>
+		<dict>
+			<key>attributes</key>
+			<dict>
+				<key>LastSwiftUpdateCheck</key>
+				<string>0730</string>
+				<key>LastUpgradeCheck</key>
+				<string>0730</string>
+				<key>ORGANIZATIONNAME</key>
+				<string>Ampire_Dan</string>
+				<key>TargetAttributes</key>
+				<dict>
+					<key>DE2654741D101A860083F742</key>
+					<dict>
+						<key>CreatedOnToolsVersion</key>
+						<string>7.3.1</string>
+					</dict>
+					<key>DE26548A1D101A860083F742</key>
+					<dict>
+						<key>CreatedOnToolsVersion</key>
+						<string>7.3.1</string>
+						<key>TestTargetID</key>
+						<string>DE2654741D101A860083F742</string>
+					</dict>
+					<key>DE2654951D101A860083F742</key>
+					<dict>
+						<key>CreatedOnToolsVersion</key>
+						<string>7.3.1</string>
+						<key>TestTargetID</key>
+						<string>DE2654741D101A860083F742</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>buildConfigurationList</key>
+			<string>DE2654701D101A860083F742</string>
+			<key>compatibilityVersion</key>
+			<string>Xcode 3.2</string>
+			<key>developmentRegion</key>
+			<string>English</string>
+			<key>hasScannedForEncodings</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXProject</string>
+			<key>knownRegions</key>
+			<array>
+				<string>en</string>
+				<string>Base</string>
+			</array>
+			<key>mainGroup</key>
+			<string>DE26546C1D101A860083F742</string>
+			<key>productRefGroup</key>
+			<string>DE2654761D101A860083F742</string>
+			<key>projectDirPath</key>
+			<string></string>
+			<key>projectReferences</key>
+			<array/>
+			<key>projectRoot</key>
+			<string></string>
+			<key>targets</key>
+			<array>
+				<string>DE2654741D101A860083F742</string>
+				<string>DE26548A1D101A860083F742</string>
+				<string>DE2654951D101A860083F742</string>
+			</array>
+		</dict>
+		<key>DE2654701D101A860083F742</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>DE26549D1D101A860083F742</string>
+				<string>DE26549E1D101A860083F742</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>DE2654711D101A860083F742</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>DE2654B11D101DA90083F742</string>
+				<string>DE2654CB1D1025E60083F742</string>
+				<string>DE2654DB1D1027CA0083F742</string>
+				<string>DE2654ED1D102A070083F742</string>
+				<string>DE2654F21D102A9D0083F742</string>
+				<string>DE2654F81D103A8D0083F742</string>
+				<string>DE2654D11D1026B50083F742</string>
+				<string>DE2654C11D10249D0083F742</string>
+				<string>DE2654DF1D1027FF0083F742</string>
+				<string>DE2654B41D101DD30083F742</string>
+				<string>DE2654D71D1027540083F742</string>
+				<string>DE2654BF1D1023990083F742</string>
+				<string>DE2654EB1D1029DE0083F742</string>
+				<string>DE2654CD1D1025F90083F742</string>
+				<string>DE2654CF1D1026710083F742</string>
+				<string>DE2654BD1D10236F0083F742</string>
+				<string>DE2654BB1D10232C0083F742</string>
+				<string>DE2654C71D1025730083F742</string>
+				<string>DE2654C91D1025C70083F742</string>
+				<string>DE2654D91D1027780083F742</string>
+				<string>DE2654C51D1025460083F742</string>
+				<string>DE2654D51D10271A0083F742</string>
+				<string>DE2654E51D1029590083F742</string>
+				<string>DE2654791D101A860083F742</string>
+				<string>DE2654AE1D101D7A0083F742</string>
+				<string>DE2654C31D1024F90083F742</string>
+				<string>DE2654AB1D101D440083F742</string>
+				<string>DE2654B91D1022F10083F742</string>
+				<string>DE2654E81D10299F0083F742</string>
+				<string>DE2654DD1D1027E40083F742</string>
+				<string>DE2654E11D1028160083F742</string>
+				<string>DE2654D31D1026DA0083F742</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>DE2654721D101A860083F742</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>EB11B0F7C0EE28112D75A367</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>DE2654731D101A860083F742</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>DE2654851D101A860083F742</string>
+				<string>DE2654821D101A860083F742</string>
+				<string>DE2654801D101A860083F742</string>
+			</array>
+			<key>isa</key>
+			<string>PBXResourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>DE2654741D101A860083F742</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>DE26549F1D101A860083F742</string>
+			<key>buildPhases</key>
+			<array>
+				<string>39616E5D14E70B703CD8A92A</string>
+				<string>DE2654711D101A860083F742</string>
+				<string>DE2654721D101A860083F742</string>
+				<string>DE2654731D101A860083F742</string>
+				<string>7723313C856F8013CCCDB762</string>
+				<string>21AC9F49F70667ECF863948E</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>NetEaseCloudMusic</string>
+			<key>productName</key>
+			<string>NetEaseCloudMusic</string>
+			<key>productReference</key>
+			<string>DE2654751D101A860083F742</string>
+			<key>productType</key>
+			<string>com.apple.product-type.application</string>
+		</dict>
+		<key>DE2654751D101A860083F742</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.application</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>NetEaseCloudMusic.app</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>DE2654761D101A860083F742</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>DE2654751D101A860083F742</string>
+				<string>DE26548B1D101A860083F742</string>
+				<string>DE2654961D101A860083F742</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Products</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE2654771D101A860083F742</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>DE2654861D101A860083F742</string>
+				<string>DE2654811D101A860083F742</string>
+				<string>DE2654831D101A860083F742</string>
+				<string>DE26547E1D101A860083F742</string>
+				<string>DE2654781D101A860083F742</string>
+				<string>DE2654AC1D101D4B0083F742</string>
+				<string>DE2654AF1D101D7F0083F742</string>
+				<string>DE2654B21D101DAD0083F742</string>
+				<string>DE2654B51D101DD60083F742</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>NetEaseCloudMusic</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE2654781D101A860083F742</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>AppDelegate.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE2654791D101A860083F742</key>
+		<dict>
+			<key>fileRef</key>
+			<string>DE2654781D101A860083F742</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>DE26547E1D101A860083F742</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>DE26547F1D101A860083F742</string>
+			</array>
+			<key>isa</key>
+			<string>PBXVariantGroup</string>
+			<key>name</key>
+			<string>Main.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE26547F1D101A860083F742</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.storyboard</string>
+			<key>name</key>
+			<string>Base</string>
+			<key>path</key>
+			<string>Base.lproj/Main.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE2654801D101A860083F742</key>
+		<dict>
+			<key>fileRef</key>
+			<string>DE26547E1D101A860083F742</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>DE2654811D101A860083F742</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>folder.assetcatalog</string>
+			<key>path</key>
+			<string>Assets.xcassets</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE2654821D101A860083F742</key>
+		<dict>
+			<key>fileRef</key>
+			<string>DE2654811D101A860083F742</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>DE2654831D101A860083F742</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>DE2654841D101A860083F742</string>
+			</array>
+			<key>isa</key>
+			<string>PBXVariantGroup</string>
+			<key>name</key>
+			<string>LaunchScreen.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE2654841D101A860083F742</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.storyboard</string>
+			<key>name</key>
+			<string>Base</string>
+			<key>path</key>
+			<string>Base.lproj/LaunchScreen.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE2654851D101A860083F742</key>
+		<dict>
+			<key>fileRef</key>
+			<string>DE2654831D101A860083F742</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>DE2654861D101A860083F742</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE2654871D101A860083F742</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>DE2654901D101A860083F742</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>DE2654881D101A860083F742</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>DE2654891D101A860083F742</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXResourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>DE26548A1D101A860083F742</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>DE2654A21D101A860083F742</string>
+			<key>buildPhases</key>
+			<array>
+				<string>DE2654871D101A860083F742</string>
+				<string>DE2654881D101A860083F742</string>
+				<string>DE2654891D101A860083F742</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array>
+				<string>DE26548D1D101A860083F742</string>
+			</array>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>NetEaseCloudMusicTests</string>
+			<key>productName</key>
+			<string>NetEaseCloudMusicTests</string>
+			<key>productReference</key>
+			<string>DE26548B1D101A860083F742</string>
+			<key>productType</key>
+			<string>com.apple.product-type.bundle.unit-test</string>
+		</dict>
+		<key>DE26548B1D101A860083F742</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.cfbundle</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>NetEaseCloudMusicTests.xctest</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>DE26548C1D101A860083F742</key>
+		<dict>
+			<key>containerPortal</key>
+			<string>DE26546D1D101A860083F742</string>
+			<key>isa</key>
+			<string>PBXContainerItemProxy</string>
+			<key>proxyType</key>
+			<string>1</string>
+			<key>remoteGlobalIDString</key>
+			<string>DE2654741D101A860083F742</string>
+			<key>remoteInfo</key>
+			<string>NetEaseCloudMusic</string>
+		</dict>
+		<key>DE26548D1D101A860083F742</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXTargetDependency</string>
+			<key>target</key>
+			<string>DE2654741D101A860083F742</string>
+			<key>targetProxy</key>
+			<string>DE26548C1D101A860083F742</string>
+		</dict>
+		<key>DE26548E1D101A860083F742</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>DE26548F1D101A860083F742</string>
+				<string>DE2654911D101A860083F742</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>NetEaseCloudMusicTests</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE26548F1D101A860083F742</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>NetEaseCloudMusicTests.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE2654901D101A860083F742</key>
+		<dict>
+			<key>fileRef</key>
+			<string>DE26548F1D101A860083F742</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>DE2654911D101A860083F742</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE2654921D101A860083F742</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>DE26549B1D101A860083F742</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>DE2654931D101A860083F742</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>DE2654941D101A860083F742</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXResourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>DE2654951D101A860083F742</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>DE2654A51D101A860083F742</string>
+			<key>buildPhases</key>
+			<array>
+				<string>DE2654921D101A860083F742</string>
+				<string>DE2654931D101A860083F742</string>
+				<string>DE2654941D101A860083F742</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array>
+				<string>DE2654981D101A860083F742</string>
+			</array>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>NetEaseCloudMusicUITests</string>
+			<key>productName</key>
+			<string>NetEaseCloudMusicUITests</string>
+			<key>productReference</key>
+			<string>DE2654961D101A860083F742</string>
+			<key>productType</key>
+			<string>com.apple.product-type.bundle.ui-testing</string>
+		</dict>
+		<key>DE2654961D101A860083F742</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.cfbundle</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>NetEaseCloudMusicUITests.xctest</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>DE2654971D101A860083F742</key>
+		<dict>
+			<key>containerPortal</key>
+			<string>DE26546D1D101A860083F742</string>
+			<key>isa</key>
+			<string>PBXContainerItemProxy</string>
+			<key>proxyType</key>
+			<string>1</string>
+			<key>remoteGlobalIDString</key>
+			<string>DE2654741D101A860083F742</string>
+			<key>remoteInfo</key>
+			<string>NetEaseCloudMusic</string>
+		</dict>
+		<key>DE2654981D101A860083F742</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXTargetDependency</string>
+			<key>target</key>
+			<string>DE2654741D101A860083F742</string>
+			<key>targetProxy</key>
+			<string>DE2654971D101A860083F742</string>
+		</dict>
+		<key>DE2654991D101A860083F742</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>DE26549A1D101A860083F742</string>
+				<string>DE26549C1D101A860083F742</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>NetEaseCloudMusicUITests</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE26549A1D101A860083F742</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>NetEaseCloudMusicUITests.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE26549B1D101A860083F742</key>
+		<dict>
+			<key>fileRef</key>
+			<string>DE26549A1D101A860083F742</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>DE26549C1D101A860083F742</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE26549D1D101A860083F742</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>CLANG_ANALYZER_NONNULL</key>
+				<string>YES</string>
+				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
+				<string>gnu++0x</string>
+				<key>CLANG_CXX_LIBRARY</key>
+				<string>libc++</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
+				<key>CLANG_ENABLE_OBJC_ARC</key>
+				<string>YES</string>
+				<key>CLANG_WARN_BOOL_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_EMPTY_BODY</key>
+				<string>YES</string>
+				<key>CLANG_WARN_ENUM_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_UNREACHABLE_CODE</key>
+				<string>YES</string>
+				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
+				<string>YES</string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>NO</string>
+				<key>DEBUG_INFORMATION_FORMAT</key>
+				<string>dwarf</string>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>ENABLE_TESTABILITY</key>
+				<string>YES</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_DYNAMIC_NO_PIC</key>
+				<string>NO</string>
+				<key>GCC_NO_COMMON_BLOCKS</key>
+				<string>YES</string>
+				<key>GCC_OPTIMIZATION_LEVEL</key>
+				<string>0</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>DEBUG=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
+				<string>YES</string>
+				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
+				<string>YES_ERROR</string>
+				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
+				<string>YES_AGGRESSIVE</string>
+				<key>GCC_WARN_UNUSED_FUNCTION</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_VARIABLE</key>
+				<string>YES</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>9.3</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>YES</string>
+				<key>ONLY_ACTIVE_ARCH</key>
+				<string>YES</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SWIFT_OPTIMIZATION_LEVEL</key>
+				<string>-Onone</string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>1,2</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>DE26549E1D101A860083F742</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>CLANG_ANALYZER_NONNULL</key>
+				<string>YES</string>
+				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
+				<string>gnu++0x</string>
+				<key>CLANG_CXX_LIBRARY</key>
+				<string>libc++</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
+				<key>CLANG_ENABLE_OBJC_ARC</key>
+				<string>YES</string>
+				<key>CLANG_WARN_BOOL_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_EMPTY_BODY</key>
+				<string>YES</string>
+				<key>CLANG_WARN_ENUM_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_UNREACHABLE_CODE</key>
+				<string>YES</string>
+				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
+				<string>YES</string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>NO</string>
+				<key>DEBUG_INFORMATION_FORMAT</key>
+				<string>dwarf-with-dsym</string>
+				<key>ENABLE_NS_ASSERTIONS</key>
+				<string>NO</string>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_NO_COMMON_BLOCKS</key>
+				<string>YES</string>
+				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
+				<string>YES</string>
+				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
+				<string>YES_ERROR</string>
+				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
+				<string>YES_AGGRESSIVE</string>
+				<key>GCC_WARN_UNUSED_FUNCTION</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_VARIABLE</key>
+				<string>YES</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>9.3</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>NO</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>1,2</string>
+				<key>VALIDATE_PRODUCT</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>DE26549F1D101A860083F742</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>DE2654A01D101A860083F742</string>
+				<string>DE2654A11D101A860083F742</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>DE2654A01D101A860083F742</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>C681789F70D8D427BB9A1604</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
+				<string>AppIcon</string>
+				<key>CODE_SIGN_IDENTITY</key>
+				<string>iPhone Developer</string>
+				<key>INFOPLIST_FILE</key>
+				<string>NetEaseCloudMusic/Info.plist</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<string>$(inherited) @executable_path/Frameworks</string>
+				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
+				<string>com.danlee.NetEaseCloudMusic</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>DE2654A11D101A860083F742</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>C2FE4E75AA0B108BB1B196B5</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
+				<string>AppIcon</string>
+				<key>CODE_SIGN_IDENTITY</key>
+				<string>iPhone Developer</string>
+				<key>INFOPLIST_FILE</key>
+				<string>NetEaseCloudMusic/Info.plist</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<string>$(inherited) @executable_path/Frameworks</string>
+				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
+				<string>com.danlee.NetEaseCloudMusic</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>DE2654A21D101A860083F742</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>DE2654A31D101A860083F742</string>
+				<string>DE2654A41D101A860083F742</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>DE2654A31D101A860083F742</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>BUNDLE_LOADER</key>
+				<string>$(TEST_HOST)</string>
+				<key>INFOPLIST_FILE</key>
+				<string>NetEaseCloudMusicTests/Info.plist</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<string>$(inherited) @executable_path/Frameworks @loader_path/Frameworks</string>
+				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
+				<string>com.danlee.NetEaseCloudMusicTests</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>TEST_HOST</key>
+				<string>$(BUILT_PRODUCTS_DIR)/NetEaseCloudMusic.app/NetEaseCloudMusic</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>DE2654A41D101A860083F742</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>BUNDLE_LOADER</key>
+				<string>$(TEST_HOST)</string>
+				<key>INFOPLIST_FILE</key>
+				<string>NetEaseCloudMusicTests/Info.plist</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<string>$(inherited) @executable_path/Frameworks @loader_path/Frameworks</string>
+				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
+				<string>com.danlee.NetEaseCloudMusicTests</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>TEST_HOST</key>
+				<string>$(BUILT_PRODUCTS_DIR)/NetEaseCloudMusic.app/NetEaseCloudMusic</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>DE2654A51D101A860083F742</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>DE2654A61D101A860083F742</string>
+				<string>DE2654A71D101A860083F742</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>DE2654A61D101A860083F742</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>INFOPLIST_FILE</key>
+				<string>NetEaseCloudMusicUITests/Info.plist</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<string>$(inherited) @executable_path/Frameworks @loader_path/Frameworks</string>
+				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
+				<string>com.danlee.NetEaseCloudMusicUITests</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>TEST_TARGET_NAME</key>
+				<string>NetEaseCloudMusic</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>DE2654A71D101A860083F742</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>INFOPLIST_FILE</key>
+				<string>NetEaseCloudMusicUITests/Info.plist</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<string>$(inherited) @executable_path/Frameworks @loader_path/Frameworks</string>
+				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
+				<string>com.danlee.NetEaseCloudMusicUITests</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>TEST_TARGET_NAME</key>
+				<string>NetEaseCloudMusic</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>DE2654AA1D101D440083F742</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>FindMusicViewController.swift</string>
+			<key>path</key>
+			<string>FindMusic/FindMusicViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE2654AB1D101D440083F742</key>
+		<dict>
+			<key>fileRef</key>
+			<string>DE2654AA1D101D440083F742</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>DE2654AC1D101D4B0083F742</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>DE2654AA1D101D440083F742</string>
+				<string>DE2654C01D10249D0083F742</string>
+				<string>DE2654E21D1028C60083F742</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>FindMusic</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE2654AD1D101D7A0083F742</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>MyMusicViewController.swift</string>
+			<key>path</key>
+			<string>MyMusic/MyMusicViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE2654AE1D101D7A0083F742</key>
+		<dict>
+			<key>fileRef</key>
+			<string>DE2654AD1D101D7A0083F742</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>DE2654AF1D101D7F0083F742</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>DE2654AD1D101D7A0083F742</string>
+				<string>DE2654C21D1024F90083F742</string>
+				<string>DE2654E31D1028FE0083F742</string>
+				<string>DE2654E61D10295D0083F742</string>
+				<string>DE2654E91D1029A20083F742</string>
+				<string>DE2654EA1D1029DE0083F742</string>
+				<string>DE2654EE1D102A0C0083F742</string>
+				<string>DE2654F31D102AA10083F742</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>MyMusic</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE2654B01D101DA90083F742</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>FriendViewController.swift</string>
+			<key>path</key>
+			<string>Friend/FriendViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE2654B11D101DA90083F742</key>
+		<dict>
+			<key>fileRef</key>
+			<string>DE2654B01D101DA90083F742</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>DE2654B21D101DAD0083F742</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>DE2654B01D101DA90083F742</string>
+				<string>DE2654C81D1025C70083F742</string>
+				<string>DE2654CA1D1025E60083F742</string>
+				<string>DE2654CC1D1025F90083F742</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Friend</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE2654B31D101DD30083F742</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>AccountViewController.swift</string>
+			<key>path</key>
+			<string>Account/AccountViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE2654B41D101DD30083F742</key>
+		<dict>
+			<key>fileRef</key>
+			<string>DE2654B31D101DD30083F742</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>DE2654B51D101DD60083F742</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>DE2654B31D101DD30083F742</string>
+				<string>DE2654F71D103A8D0083F742</string>
+				<string>DE2654F41D10301D0083F742</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Account</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE2654B81D1022F10083F742</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>RecommendViewController.swift</string>
+			<key>path</key>
+			<string>FindMusic/RecommendViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE2654B91D1022F10083F742</key>
+		<dict>
+			<key>fileRef</key>
+			<string>DE2654B81D1022F10083F742</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>DE2654BA1D10232C0083F742</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>SongSheetViewController.swift</string>
+			<key>path</key>
+			<string>FindMusic/SongSheetViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE2654BB1D10232C0083F742</key>
+		<dict>
+			<key>fileRef</key>
+			<string>DE2654BA1D10232C0083F742</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>DE2654BC1D10236F0083F742</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>RadioViewController.swift</string>
+			<key>path</key>
+			<string>FindMusic/RadioViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE2654BD1D10236F0083F742</key>
+		<dict>
+			<key>fileRef</key>
+			<string>DE2654BC1D10236F0083F742</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>DE2654BE1D1023990083F742</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>RankListViewController.swift</string>
+			<key>path</key>
+			<string>FindMusic/RankListViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE2654BF1D1023990083F742</key>
+		<dict>
+			<key>fileRef</key>
+			<string>DE2654BE1D1023990083F742</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>DE2654C01D10249D0083F742</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>SoundHoundViewController.swift</string>
+			<key>path</key>
+			<string>FindMusic/SoundHoundViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE2654C11D10249D0083F742</key>
+		<dict>
+			<key>fileRef</key>
+			<string>DE2654C01D10249D0083F742</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>DE2654C21D1024F90083F742</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>PlaySongViewController.swift</string>
+			<key>path</key>
+			<string>MyMusic/PlaySongViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE2654C31D1024F90083F742</key>
+		<dict>
+			<key>fileRef</key>
+			<string>DE2654C21D1024F90083F742</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>DE2654C41D1025460083F742</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>AddSongSheetViewController.swift</string>
+			<key>path</key>
+			<string>MyMusic/AddSongSheetViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE2654C51D1025460083F742</key>
+		<dict>
+			<key>fileRef</key>
+			<string>DE2654C41D1025460083F742</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>DE2654C61D1025730083F742</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>MyMusicCloudBoxViewController.swift</string>
+			<key>path</key>
+			<string>MyMusic/MyMusicCloudBoxViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE2654C71D1025730083F742</key>
+		<dict>
+			<key>fileRef</key>
+			<string>DE2654C61D1025730083F742</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>DE2654C81D1025C70083F742</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>AddFocusViewController.swift</string>
+			<key>path</key>
+			<string>Friend/AddFocusViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE2654C91D1025C70083F742</key>
+		<dict>
+			<key>fileRef</key>
+			<string>DE2654C81D1025C70083F742</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>DE2654CA1D1025E60083F742</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>FocusViewController.swift</string>
+			<key>path</key>
+			<string>Friend/FocusViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE2654CB1D1025E60083F742</key>
+		<dict>
+			<key>fileRef</key>
+			<string>DE2654CA1D1025E60083F742</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>DE2654CC1D1025F90083F742</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>NearByViewController.swift</string>
+			<key>path</key>
+			<string>Friend/NearByViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE2654CD1D1025F90083F742</key>
+		<dict>
+			<key>fileRef</key>
+			<string>DE2654CC1D1025F90083F742</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>DE2654CE1D1026710083F742</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>MyMessageViewController.swift</string>
+			<key>path</key>
+			<string>Account/MyMessageViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE2654CF1D1026710083F742</key>
+		<dict>
+			<key>fileRef</key>
+			<string>DE2654CE1D1026710083F742</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>DE2654D01D1026B50083F742</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>PaidMusicViewController.swift</string>
+			<key>path</key>
+			<string>Account/PaidMusicViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE2654D11D1026B50083F742</key>
+		<dict>
+			<key>fileRef</key>
+			<string>DE2654D01D1026B50083F742</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>DE2654D21D1026DA0083F742</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>PointMallViewController.swift</string>
+			<key>path</key>
+			<string>Account/PointMallViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE2654D31D1026DA0083F742</key>
+		<dict>
+			<key>fileRef</key>
+			<string>DE2654D21D1026DA0083F742</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>DE2654D41D10271A0083F742</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>OnlineFreePlayViewController.swift</string>
+			<key>path</key>
+			<string>Account/OnlineFreePlayViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE2654D51D10271A0083F742</key>
+		<dict>
+			<key>fileRef</key>
+			<string>DE2654D41D10271A0083F742</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>DE2654D61D1027540083F742</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>SettingViewController.swift</string>
+			<key>path</key>
+			<string>Account/SettingViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE2654D71D1027540083F742</key>
+		<dict>
+			<key>fileRef</key>
+			<string>DE2654D61D1027540083F742</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>DE2654D81D1027780083F742</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>ThemeSkinViewController.swift</string>
+			<key>path</key>
+			<string>Account/ThemeSkinViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE2654D91D1027780083F742</key>
+		<dict>
+			<key>fileRef</key>
+			<string>DE2654D81D1027780083F742</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>DE2654DA1D1027CA0083F742</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>CountDownViewController.swift</string>
+			<key>path</key>
+			<string>Account/CountDownViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE2654DB1D1027CA0083F742</key>
+		<dict>
+			<key>fileRef</key>
+			<string>DE2654DA1D1027CA0083F742</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>DE2654DC1D1027E40083F742</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>MusicAlarmViewController.swift</string>
+			<key>path</key>
+			<string>Account/MusicAlarmViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE2654DD1D1027E40083F742</key>
+		<dict>
+			<key>fileRef</key>
+			<string>DE2654DC1D1027E40083F742</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>DE2654DE1D1027FF0083F742</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>DrivingModeViewController.swift</string>
+			<key>path</key>
+			<string>Account/DrivingModeViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE2654DF1D1027FF0083F742</key>
+		<dict>
+			<key>fileRef</key>
+			<string>DE2654DE1D1027FF0083F742</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>DE2654E01D1028160083F742</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>AboutViewController.swift</string>
+			<key>path</key>
+			<string>Account/AboutViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE2654E11D1028160083F742</key>
+		<dict>
+			<key>fileRef</key>
+			<string>DE2654E01D1028160083F742</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>DE2654E21D1028C60083F742</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>DE2654B81D1022F10083F742</string>
+				<string>DE2654BA1D10232C0083F742</string>
+				<string>DE2654BC1D10236F0083F742</string>
+				<string>DE2654BE1D1023990083F742</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>ContentVC</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE2654E31D1028FE0083F742</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>DE2654C41D1025460083F742</string>
+				<string>DE2654C61D1025730083F742</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>More</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE2654E41D1029590083F742</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>DownLoadViewController.swift</string>
+			<key>path</key>
+			<string>MyMusic/DownLoad/DownLoadViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE2654E51D1029590083F742</key>
+		<dict>
+			<key>fileRef</key>
+			<string>DE2654E41D1029590083F742</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>DE2654E61D10295D0083F742</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>DE2654E41D1029590083F742</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>DownLoad</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE2654E71D10299F0083F742</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>RecentPlayedViewController.swift</string>
+			<key>path</key>
+			<string>MyMusic/RecentPlayed/RecentPlayedViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE2654E81D10299F0083F742</key>
+		<dict>
+			<key>fileRef</key>
+			<string>DE2654E71D10299F0083F742</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>DE2654E91D1029A20083F742</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>DE2654E71D10299F0083F742</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>RecentPlayed</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE2654EA1D1029DE0083F742</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>MySingerViewController.swift</string>
+			<key>path</key>
+			<string>MyMusic/MySingerViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE2654EB1D1029DE0083F742</key>
+		<dict>
+			<key>fileRef</key>
+			<string>DE2654EA1D1029DE0083F742</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>DE2654EC1D102A070083F742</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>MyMVViewController.swift</string>
+			<key>path</key>
+			<string>MyMusic/MyMV/MyMVViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE2654ED1D102A070083F742</key>
+		<dict>
+			<key>fileRef</key>
+			<string>DE2654EC1D102A070083F742</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>DE2654EE1D102A0C0083F742</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>DE2654EC1D102A070083F742</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>MyMV</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE2654F11D102A9D0083F742</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>MyRadioViewController.swift</string>
+			<key>path</key>
+			<string>MyMusic/MyRadio/MyRadioViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE2654F21D102A9D0083F742</key>
+		<dict>
+			<key>fileRef</key>
+			<string>DE2654F11D102A9D0083F742</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>DE2654F31D102AA10083F742</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>DE2654F11D102A9D0083F742</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>MyRadio</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE2654F41D10301D0083F742</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>DE2654CE1D1026710083F742</string>
+				<string>DE2654D01D1026B50083F742</string>
+				<string>DE2654D21D1026DA0083F742</string>
+				<string>DE2654D41D10271A0083F742</string>
+				<string>DE2654D61D1027540083F742</string>
+				<string>DE2654D81D1027780083F742</string>
+				<string>DE2654DA1D1027CA0083F742</string>
+				<string>DE2654DC1D1027E40083F742</string>
+				<string>DE2654DE1D1027FF0083F742</string>
+				<string>DE2654E01D1028160083F742</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>ContentVC</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE2654F71D103A8D0083F742</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>AccountTableViewCell.swift</string>
+			<key>path</key>
+			<string>Account/AccountTableViewCell.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE2654F81D103A8D0083F742</key>
+		<dict>
+			<key>fileRef</key>
+			<string>DE2654F71D103A8D0083F742</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>DFA7455DED046E4D37EE8D4B</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>D42FA2A00EA9169F711A1E81</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Frameworks</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>EB11B0F7C0EE28112D75A367</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D42FA2A00EA9169F711A1E81</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+	</dict>
+	<key>rootObject</key>
+	<string>DE26546D1D101A860083F742</string>
+</dict>
+</plist>
