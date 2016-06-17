@@ -282,12 +282,12 @@
                                                 </mask>
                                             </variation>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="签到" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wUv-I0-nVO">
-                                            <rect key="frame" x="546" y="29" width="34" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mNV-mc-jJF">
+                                            <rect key="frame" x="550" y="25" width="30" height="30"/>
+                                            <state key="normal" title="签到">
+                                                <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
@@ -298,29 +298,19 @@
                                         <constraint firstItem="dlw-kX-PgR" firstAttribute="leading" secondItem="hRt-IX-8rh" secondAttribute="trailing" constant="34" id="I4m-Km-MVV"/>
                                         <constraint firstAttribute="trailing" secondItem="Z3f-hc-TZ6" secondAttribute="trailing" constant="20" symbolic="YES" id="IW8-Nk-iqL"/>
                                         <constraint firstItem="EjH-Rh-w4E" firstAttribute="leading" secondItem="e6J-MY-Epw" secondAttribute="leading" id="IYF-em-PLt"/>
-                                        <constraint firstItem="wUv-I0-nVO" firstAttribute="trailing" secondItem="EjH-Rh-w4E" secondAttribute="trailing" id="JVc-Rr-aZD"/>
                                         <constraint firstItem="hRt-IX-8rh" firstAttribute="top" secondItem="e6J-MY-Epw" secondAttribute="topMargin" id="Je7-k1-Mgf"/>
                                         <constraint firstItem="Z3f-hc-TZ6" firstAttribute="leading" secondItem="e6J-MY-Epw" secondAttribute="leading" constant="20" symbolic="YES" id="Mky-jU-4g8"/>
                                         <constraint firstItem="hRt-IX-8rh" firstAttribute="centerY" secondItem="dlw-kX-PgR" secondAttribute="centerY" id="bl1-hH-9UZ"/>
-                                        <constraint firstItem="wUv-I0-nVO" firstAttribute="trailing" secondItem="e6J-MY-Epw" secondAttribute="trailingMargin" id="dTA-I2-xkZ"/>
                                         <constraint firstAttribute="bottom" secondItem="Z3f-hc-TZ6" secondAttribute="bottom" id="dcw-qR-05Q"/>
-                                        <constraint firstItem="Z3f-hc-TZ6" firstAttribute="top" secondItem="wUv-I0-nVO" secondAttribute="bottom" constant="34" id="fhd-Gy-xRQ"/>
+                                        <constraint firstItem="mNV-mc-jJF" firstAttribute="centerY" secondItem="dlw-kX-PgR" secondAttribute="centerY" id="ggv-4F-Rfe"/>
                                         <constraint firstAttribute="height" constant="130" id="hB8-gH-jPu"/>
-                                        <constraint firstItem="wUv-I0-nVO" firstAttribute="centerY" secondItem="dlw-kX-PgR" secondAttribute="centerY" id="hZ8-D6-ZHT"/>
-                                        <constraint firstAttribute="trailing" secondItem="wUv-I0-nVO" secondAttribute="trailing" constant="20" symbolic="YES" id="iWV-HU-Y1q"/>
                                         <constraint firstAttribute="trailing" secondItem="EjH-Rh-w4E" secondAttribute="trailing" id="lhU-A0-5oi"/>
-                                        <constraint firstItem="wUv-I0-nVO" firstAttribute="centerY" secondItem="dlw-kX-PgR" secondAttribute="centerY" id="lub-ZW-DN9"/>
-                                        <constraint firstAttribute="trailing" secondItem="wUv-I0-nVO" secondAttribute="trailing" constant="40" id="pET-dx-Xj5"/>
+                                        <constraint firstAttribute="trailing" secondItem="mNV-mc-jJF" secondAttribute="trailing" constant="20" symbolic="YES" id="qIz-rJ-6So"/>
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
                                             <exclude reference="I4m-Km-MVV"/>
                                             <exclude reference="0Mo-xf-hwZ"/>
-                                            <exclude reference="fhd-Gy-xRQ"/>
-                                            <exclude reference="JVc-Rr-aZD"/>
-                                            <exclude reference="dTA-I2-xkZ"/>
-                                            <exclude reference="hZ8-D6-ZHT"/>
-                                            <exclude reference="pET-dx-Xj5"/>
                                         </mask>
                                     </variation>
                                 </view>
@@ -351,12 +341,19 @@
                     <navigationItem key="navigationItem" title="账号" id="mIY-cQ-6xI"/>
                     <connections>
                         <outlet property="accountHeadView" destination="e6J-MY-Epw" id="bGL-5n-f5a"/>
+                        <outlet property="activityStackView" destination="VmZ-K3-njo" id="tOS-fj-sap"/>
+                        <outlet property="checkInButton" destination="mNV-mc-jJF" id="cSG-F4-t18"/>
+                        <outlet property="editStackView" destination="zEx-sn-hxz" id="rhl-IB-6n2"/>
+                        <outlet property="fansStackView" destination="ps1-Du-kzD" id="88w-jO-dFL"/>
+                        <outlet property="focusStackView" destination="aY8-17-0Ay" id="I95-RP-s9J"/>
+                        <outlet property="headImageView" destination="hRt-IX-8rh" id="VW0-Vr-kaX"/>
+                        <outlet property="nickNameStackView" destination="dlw-kX-PgR" id="S4N-z0-2uC"/>
                         <outlet property="tableView" destination="Whl-zo-9hf" id="EQ5-Qi-JiI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p7O-jo-FbD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1574" y="2292"/>
+            <point key="canvasLocation" x="1588" y="2281"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">

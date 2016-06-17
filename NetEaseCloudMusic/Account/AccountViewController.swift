@@ -28,7 +28,53 @@ class AccountViewController: UIViewController {
             tableView.contentInset = UIEdgeInsetsMake(-10, 0, 0, 0)
         }
     }
+    
+    @IBOutlet weak var headImageView: UIImageView! {
+        didSet {
+            
+        }
+    }
+    
+    @IBOutlet weak var nickNameStackView: UIStackView! {
+        didSet {
+            
+        }
+    }
+    
+    
+    
+    @IBOutlet weak var checkInButton: UIButton! {
+        didSet {
+            
+        }
+    }
+    
+    @IBOutlet weak var activityStackView: UIStackView! {
+        didSet {
+            
+        }
+    }
 
+    @IBOutlet weak var focusStackView: UIStackView! {
+        didSet {
+            
+        }
+    }
+    
+    @IBOutlet weak var fansStackView: UIStackView! {
+        didSet {
+            
+        }
+    }
+    
+    @IBOutlet weak var editStackView: UIStackView! {
+        didSet {
+            
+        }
+    }
+    
+    
+    
     
     private var titleArray = [["我的消息"],
                               ["付费音乐包" , "积分商城" , "在线听歌免流量"],
