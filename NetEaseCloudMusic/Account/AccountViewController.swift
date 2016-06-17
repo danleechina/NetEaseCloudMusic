@@ -9,6 +9,24 @@
 import UIKit
 
 class AccountViewController: UIViewController {
+    
+    @IBOutlet weak var accountHeadView: UIView! {
+        didSet {
+            
+        }
+    }
+    
+    @IBOutlet weak var tableView: UITableView! {
+        didSet {
+            tableView.delegate = self
+            tableView.dataSource = self
+            tableView.backgroundColor = UIColor.clearColor()
+            tableView.tableFooterView = UIView()
+//            tableView.tableHeaderView = UIView.init(frame: CGRectMake(0, 0, tableView.bounds.size.width, 130))
+        }
+    }
+
+    
     private var titleArray = [["我的消息"],
                               ["付费音乐包" , "积分商城" , "在线听歌免流量"],
                               ["设置" , "主题换肤" , "夜间模式" , "定时关闭" , "音乐闹钟" , "驾驶模式"],
@@ -17,22 +35,11 @@ class AccountViewController: UIViewController {
                                   ["second", "first", "second"],
                                   ["first", "second", "first", "second", "first", "second"],
                                   ["first", "second"]]
-    
-    private lazy var tableView: UITableView = {
-        let tableView = UITableView()
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.frame = self.view.frame
-        tableView.backgroundColor = UIColor.clearColor()
-        tableView.tableFooterView = UIView()
-        return tableView
-    }()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "账号"
         self.view.backgroundColor = UIColor.whiteColor()
-        self.view.addSubview(self.tableView)
     }
 }
 
@@ -72,60 +79,4 @@ extension AccountViewController:UITableViewDelegate, UITableViewDataSource {
     }
     
     
-}
-
-
-class AccountHeadView: UIView {
-    private lazy var faceIconView: UIImageView = {
-        let imageView = UIImageView()
-        return imageView
-    }()
-    
-    private lazy var nickNameLabel: UILabel = {
-        let label = UILabel()
-        return label
-    }()
-    
-    private lazy var levelLabel: UILabel = {
-        let label = UILabel()
-        return label
-    }()
-    
-    private lazy var checkInLabel: UILabel = {
-        let label = UILabel()
-        return label
-    }()
-    
-    private lazy var activityLabel: UILabel = {
-        let label = UILabel()
-        return label
-    }()
-    
-    private lazy var activityLabel: UILabel = {
-        let label = UILabel()
-        return label
-    }()
-    
-    private lazy var focusLabel: UILabel = {
-        let label = UILabel()
-        return label
-    }()
-    
-    private lazy var fansLabel: UILabel = {
-        let label = UILabel()
-        return label
-    }()
-    
-    private lazy var editInfoView: UIImageView = {
-        let imageView = UIImageView()
-        return imageView
-    }()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 }
