@@ -45,7 +45,9 @@ class AccountViewController: UIViewController {
     
     @IBOutlet weak var checkInButton: UIButton! {
         didSet {
-            
+            checkInButton.layer.borderColor = FixedValue.mainRedColor.CGColor
+            checkInButton.layer.borderWidth = 1.5
+            checkInButton.layer.cornerRadius = 3
         }
     }
     
