@@ -21,8 +21,11 @@ class AccountViewController: UIViewController {
             tableView.delegate = self
             tableView.dataSource = self
             tableView.backgroundColor = UIColor.clearColor()
+            tableView.showsVerticalScrollIndicator = false
+            //avoid line separate happened everywhere
             tableView.tableFooterView = UIView()
-//            tableView.tableHeaderView = UIView.init(frame: CGRectMake(0, 0, tableView.bounds.size.width, 130))
+            //avoid floating section
+            tableView.contentInset = UIEdgeInsetsMake(-10, 0, 0, 0)
         }
     }
 
@@ -39,7 +42,6 @@ class AccountViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.whiteColor()
     }
 }
 
