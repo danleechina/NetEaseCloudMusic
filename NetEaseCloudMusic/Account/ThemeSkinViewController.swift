@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ThemeSkinViewController: UIViewController {
+class ThemeSkinViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

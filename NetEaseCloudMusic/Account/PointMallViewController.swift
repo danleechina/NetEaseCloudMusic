@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PointMallViewController: UIViewController {
+class PointMallViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

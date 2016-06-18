@@ -90,67 +90,27 @@ class AccountViewController: UIViewController {
                                   ["first", "second", "first", "second", "first", "second"],
                                   ["first", "second"],
                                   ["first"]]
-
-    private var actionArray = [[#selector(toMyMessageViewController),],
-                               [#selector(toPaidMusicViewController),#selector(toPointMallViewController),#selector(toOnlineFreePlayViewController),],
-                               [#selector(toSettingViewController),#selector(toThemeSkinViewController),#selector(changeDayMode),#selector(toCountDownViewController),#selector(toMusicAlarmViewController),#selector(toDrivingModeViewController),],
-                               [#selector(shareTheApp),#selector(toAboutViewController),],
-                               [#selector(logout),]]
+    
+    private var actionArray:[[UIViewController.Type]] = [[MyMessageViewController.self,],
+                                           [PaidMusicViewController.self, PointMallViewController.self, OnlineFreePlayViewController.self,],
+                                           [SettingViewController.self, ThemeSkinViewController.self, UIViewController.self, CountDownViewController.self, MusicAlarmViewController.self, DrivingModeViewController.self,],
+                                           [UIViewController.self, AboutViewController.self,],
+                                           [UIViewController.self,]]
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    func toMyMessageViewController() -> Void {
-        self.navigationController?.pushViewController(MyMessageViewController(), animated:true)
-    }
-    
-    func toPaidMusicViewController() -> Void {
-        
-    }
-    
-    func toPointMallViewController() -> Void {
-        
-    }
-    
-    func toOnlineFreePlayViewController() -> Void {
-        
-    }
-    
-    func toSettingViewController() -> Void {
-        
-    }
-    
-    func toThemeSkinViewController() -> Void {
-        
-    }
-    
     func changeDayMode() -> Void {
-        
-    }
-    
-    func toCountDownViewController() -> Void {
-        
-    }
-    
-    func toMusicAlarmViewController() -> Void {
-        
-    }
-    
-    func toDrivingModeViewController() -> Void {
-        
+        print("change mode")
     }
     
     func shareTheApp() -> Void {
-        
-    }
-    
-    func toAboutViewController() -> Void {
-        
+        print("share the app")
     }
     
     func logout() -> Void {
-        
+        print("logout")
     }
 }
 
@@ -171,14 +131,25 @@ extension AccountViewController:UITableViewDelegate, UITableViewDataSource {
             cell.isOn = true
         } else if indexPath.section == 4 && indexPath.row == 0 {
             cell.isLogin = true
-            cell.accessoryView?.hidden = true
+            cell.accessoryType = .None
         }
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        performSelector(self.actionArray[indexPath.section][indexPath.row])
+        let vc = actionArray[indexPath.section][indexPath.row].init()
+        if vc.superclass == BaseViewController.self {
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            if indexPath.section == 2 && indexPath.row == 2 {
+                changeDayMode()
+            } else if indexPath.section == 3 && indexPath.row == 0 {
+                shareTheApp()
+            } else if indexPath.section == 4 && indexPath.row == 0 {
+                logout()
+            }
+        }
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -189,7 +160,7 @@ extension AccountViewController:UITableViewDelegate, UITableViewDataSource {
         if section == 4 {
             return 10
         }
-        return 0.1
+        return 0
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

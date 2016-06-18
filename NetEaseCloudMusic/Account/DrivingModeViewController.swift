@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DrivingModeViewController: UIViewController {
+class DrivingModeViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CountDownViewController: UIViewController {
+class CountDownViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

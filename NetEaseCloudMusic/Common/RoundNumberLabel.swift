@@ -24,6 +24,8 @@ class RoundNumberLabel: UIView {
         }
     }
     
+    
+    
     private lazy var numberLabel:UILabel = {
         let label = UILabel()
         label.textColor = UIColor.whiteColor()

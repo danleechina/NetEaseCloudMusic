@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OnlineFreePlayViewController: UIViewController {
+class OnlineFreePlayViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MusicAlarmViewController: UIViewController {
+class MusicAlarmViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

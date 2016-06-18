@@ -39,7 +39,7 @@ class AccountTableViewCell: BaseTableViewCell {
             roundNumberLabel.hidden = false
             rightInfoLabel.hidden = true
             switchButton.hidden = true
-            logoutButton.hidden = true
+            logoutLabel.hidden = true
         }
     }
     
@@ -52,7 +52,7 @@ class AccountTableViewCell: BaseTableViewCell {
             roundNumberLabel.hidden = true
             rightInfoLabel.hidden = false
             switchButton.hidden = true
-            logoutButton.hidden =  true
+            logoutLabel.hidden =  true
         }
     }
     
@@ -65,22 +65,22 @@ class AccountTableViewCell: BaseTableViewCell {
             roundNumberLabel.hidden = true
             rightInfoLabel.hidden = true
             switchButton.hidden = false
-            logoutButton.hidden = true
+            logoutLabel.hidden = true
             self.accessoryView = switchButton
         }
     }
     
     var isLogin: Bool {
         get {
-            return !logoutButton.hidden
+            return !logoutLabel.hidden
         }
         set {
             if newValue {
-                logoutButton.hidden = false
+                logoutLabel.hidden = false
                 titleLabel.hidden = true
                 titleImageView.hidden = true
             } else {
-                logoutButton.hidden = true
+                logoutLabel.hidden = true
                 titleLabel.hidden = false
                 titleImageView.hidden = false
             }
@@ -122,13 +122,13 @@ class AccountTableViewCell: BaseTableViewCell {
     }()
     
     
-    private lazy var logoutButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("退出登录", forState: .Normal)
-        button.setTitleColor(FixedValue.mainRedColor, forState: .Normal)
-        button.titleLabel?.textAlignment = .Center
-        button.hidden = true
-        return button
+    private lazy var logoutLabel: UILabel = {
+        let label = UILabel()
+        label.text = "退出登录"
+        label.textColor = FixedValue.mainRedColor
+        label.textAlignment = .Center
+        label.hidden = true
+        return label
     }()
     
     
@@ -143,7 +143,7 @@ class AccountTableViewCell: BaseTableViewCell {
         cell?.rightInfoLabel.hidden = true
         cell?.roundNumberLabel.hidden = true
         cell?.switchButton.hidden = true
-        cell?.logoutButton.hidden = true
+        cell?.logoutLabel.hidden = true
         return cell!
     }
 
@@ -155,7 +155,7 @@ class AccountTableViewCell: BaseTableViewCell {
         self.addSubview(roundNumberLabel)
         self.addSubview(rightInfoLabel)
         self.addSubview(switchButton)
-        self.addSubview(logoutButton)
+        self.addSubview(logoutLabel)
     }
     
     override func layoutSubviews() {
@@ -186,7 +186,7 @@ class AccountTableViewCell: BaseTableViewCell {
             make.centerY.equalTo(self.snp_centerY)
         }
         
-        logoutButton.snp_makeConstraints { (make) in
+        logoutLabel.snp_makeConstraints { (make) in
             make.center.equalTo(self.snp_center)
             make.width.equalTo(self.snp_width)
             make.height.equalTo(self.snp_height)
