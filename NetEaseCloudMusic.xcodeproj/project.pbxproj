@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DE19D2141D12DAFC008A575C /* FixedValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE19D2131D12DAFC008A575C /* FixedValue.swift */; };
 		DE2654791D101A860083F742 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654781D101A860083F742 /* AppDelegate.swift */; };
 		DE2654801D101A860083F742 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE26547E1D101A860083F742 /* Main.storyboard */; };
 		DE2654821D101A860083F742 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE2654811D101A860083F742 /* Assets.xcassets */; };
@@ -44,6 +45,10 @@
 		DE2654ED1D102A070083F742 /* MyMVViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654EC1D102A070083F742 /* MyMVViewController.swift */; };
 		DE2654F21D102A9D0083F742 /* MyRadioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654F11D102A9D0083F742 /* MyRadioViewController.swift */; };
 		DE2654F81D103A8D0083F742 /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654F71D103A8D0083F742 /* AccountTableViewCell.swift */; };
+		DE4068541D12A3190067F0FE /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4068531D12A3190067F0FE /* BaseTableViewCell.swift */; };
+		DE4068571D12A4DA0067F0FE /* RoundNumberLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4068561D12A4DA0067F0FE /* RoundNumberLabel.swift */; };
+		DEAB13C21D1518D2001FD8E8 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAB13C11D1518D2001FD8E8 /* BaseViewController.swift */; };
+		EB11B0F7C0EE28112D75A367 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D42FA2A00EA9169F711A1E81 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +69,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C2FE4E75AA0B108BB1B196B5 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		C681789F70D8D427BB9A1604 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		D42FA2A00EA9169F711A1E81 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE19D2131D12DAFC008A575C /* FixedValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FixedValue.swift; path = Util/FixedValue.swift; sourceTree = "<group>"; };
 		DE2654751D101A860083F742 /* NetEaseCloudMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetEaseCloudMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE2654781D101A860083F742 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE26547F1D101A860083F742 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -107,6 +116,9 @@
 		DE2654EC1D102A070083F742 /* MyMVViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyMVViewController.swift; path = MyMusic/MyMV/MyMVViewController.swift; sourceTree = "<group>"; };
 		DE2654F11D102A9D0083F742 /* MyRadioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyRadioViewController.swift; path = MyMusic/MyRadio/MyRadioViewController.swift; sourceTree = "<group>"; };
 		DE2654F71D103A8D0083F742 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountTableViewCell.swift; path = Account/AccountTableViewCell.swift; sourceTree = "<group>"; };
+		DE4068531D12A3190067F0FE /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseTableViewCell.swift; path = Common/BaseTableViewCell.swift; sourceTree = "<group>"; };
+		DE4068561D12A4DA0067F0FE /* RoundNumberLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoundNumberLabel.swift; path = Common/RoundNumberLabel.swift; sourceTree = "<group>"; };
+		DEAB13C11D1518D2001FD8E8 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = Common/BaseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +126,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB11B0F7C0EE28112D75A367 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,6 +147,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2BF63923C7212F1DBCF7D30B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C681789F70D8D427BB9A1604 /* Pods.debug.xcconfig */,
+				C2FE4E75AA0B108BB1B196B5 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		DE19D2151D12DB03008A575C /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				DE19D2131D12DAFC008A575C /* FixedValue.swift */,
+			);
+			name = Util;
+			sourceTree = "<group>";
+		};
 		DE26546C1D101A860083F742 = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +171,8 @@
 				DE26548E1D101A860083F742 /* NetEaseCloudMusicTests */,
 				DE2654991D101A860083F742 /* NetEaseCloudMusicUITests */,
 				DE2654761D101A860083F742 /* Products */,
+				2BF63923C7212F1DBCF7D30B /* Pods */,
+				DFA7455DED046E4D37EE8D4B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -162,6 +194,8 @@
 				DE2654831D101A860083F742 /* LaunchScreen.storyboard */,
 				DE26547E1D101A860083F742 /* Main.storyboard */,
 				DE2654781D101A860083F742 /* AppDelegate.swift */,
+				DE19D2151D12DB03008A575C /* Util */,
+				DE4068551D12A3240067F0FE /* Common */,
 				DE2654AC1D101D4B0083F742 /* FindMusic */,
 				DE2654AF1D101D7F0083F742 /* MyMusic */,
 				DE2654B21D101DAD0083F742 /* Friend */,
@@ -303,6 +337,24 @@
 			name = ContentVC;
 			sourceTree = "<group>";
 		};
+		DE4068551D12A3240067F0FE /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				DE4068531D12A3190067F0FE /* BaseTableViewCell.swift */,
+				DE4068561D12A4DA0067F0FE /* RoundNumberLabel.swift */,
+				DEAB13C11D1518D2001FD8E8 /* BaseViewController.swift */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		DFA7455DED046E4D37EE8D4B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D42FA2A00EA9169F711A1E81 /* Pods.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -310,9 +362,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DE26549F1D101A860083F742 /* Build configuration list for PBXNativeTarget "NetEaseCloudMusic" */;
 			buildPhases = (
+				39616E5D14E70B703CD8A92A /* Check Pods Manifest.lock */,
 				DE2654711D101A860083F742 /* Sources */,
 				DE2654721D101A860083F742 /* Frameworks */,
 				DE2654731D101A860083F742 /* Resources */,
+				7723313C856F8013CCCDB762 /* Embed Pods Frameworks */,
+				21AC9F49F70667ECF863948E /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -430,6 +485,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		21AC9F49F70667ECF863948E /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		39616E5D14E70B703CD8A92A /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7723313C856F8013CCCDB762 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		DE2654711D101A860083F742 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -440,6 +543,7 @@
 				DE2654DB1D1027CA0083F742 /* CountDownViewController.swift in Sources */,
 				DE2654ED1D102A070083F742 /* MyMVViewController.swift in Sources */,
 				DE2654F21D102A9D0083F742 /* MyRadioViewController.swift in Sources */,
+				DEAB13C21D1518D2001FD8E8 /* BaseViewController.swift in Sources */,
 				DE2654F81D103A8D0083F742 /* AccountTableViewCell.swift in Sources */,
 				DE2654D11D1026B50083F742 /* PaidMusicViewController.swift in Sources */,
 				DE2654C11D10249D0083F742 /* SoundHoundViewController.swift in Sources */,
@@ -451,6 +555,7 @@
 				DE2654CD1D1025F90083F742 /* NearByViewController.swift in Sources */,
 				DE2654CF1D1026710083F742 /* MyMessageViewController.swift in Sources */,
 				DE2654BD1D10236F0083F742 /* RadioViewController.swift in Sources */,
+				DE4068541D12A3190067F0FE /* BaseTableViewCell.swift in Sources */,
 				DE2654BB1D10232C0083F742 /* SongSheetViewController.swift in Sources */,
 				DE2654C71D1025730083F742 /* MyMusicCloudBoxViewController.swift in Sources */,
 				DE2654C91D1025C70083F742 /* AddFocusViewController.swift in Sources */,
@@ -461,12 +566,14 @@
 				DE2654791D101A860083F742 /* AppDelegate.swift in Sources */,
 				DE2654AE1D101D7A0083F742 /* MyMusicViewController.swift in Sources */,
 				DE2654C31D1024F90083F742 /* PlaySongViewController.swift in Sources */,
+				DE4068571D12A4DA0067F0FE /* RoundNumberLabel.swift in Sources */,
 				DE2654AB1D101D440083F742 /* FindMusicViewController.swift in Sources */,
 				DE2654B91D1022F10083F742 /* RecommendViewController.swift in Sources */,
 				DE2654E81D10299F0083F742 /* RecentPlayedViewController.swift in Sources */,
 				DE2654DD1D1027E40083F742 /* MusicAlarmViewController.swift in Sources */,
 				DE2654E11D1028160083F742 /* AboutViewController.swift in Sources */,
 				DE2654D31D1026DA0083F742 /* PointMallViewController.swift in Sources */,
+				DE19D2141D12DAFC008A575C /* FixedValue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -608,8 +715,10 @@
 		};
 		DE2654A01D101A860083F742 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C681789F70D8D427BB9A1604 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = NetEaseCloudMusic/Info.plist;
@@ -622,8 +731,10 @@
 		};
 		DE2654A11D101A860083F742 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C2FE4E75AA0B108BB1B196B5 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = NetEaseCloudMusic/Info.plist;
