@@ -349,11 +349,41 @@
                         <outlet property="headImageView" destination="hRt-IX-8rh" id="VW0-Vr-kaX"/>
                         <outlet property="nickNameStackView" destination="dlw-kX-PgR" id="S4N-z0-2uC"/>
                         <outlet property="tableView" destination="Whl-zo-9hf" id="EQ5-Qi-JiI"/>
+                        <segue destination="6do-bE-z6T" kind="show" identifier="toMyMessageViewController" id="EFX-CA-vC5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p7O-jo-FbD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1588" y="2281"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="nHn-6A-oqE">
+            <objects>
+                <tableViewController id="6do-bE-z6T" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="jaf-SW-No3">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <segmentedControl key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" id="zLs-Ml-TD5">
+                            <rect key="frame" x="0.0" y="64" width="600" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="@我"/>
+                                <segment title="私信"/>
+                                <segment title="评论"/>
+                                <segment title="通知"/>
+                            </segments>
+                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </segmentedControl>
+                        <connections>
+                            <outlet property="dataSource" destination="6do-bE-z6T" id="oBo-lm-DeA"/>
+                            <outlet property="delegate" destination="6do-bE-z6T" id="JSp-n6-64B"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Dv-fJ-ndW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2295" y="2281"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">

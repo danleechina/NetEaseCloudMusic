@@ -48,6 +48,7 @@ class AccountViewController: UIViewController {
             checkInButton.layer.borderColor = FixedValue.mainRedColor.CGColor
             checkInButton.layer.borderWidth = 1.5
             checkInButton.layer.cornerRadius = 3
+            checkInButton.contentEdgeInsets = UIEdgeInsetsMake(5, 10, 5, 10)
         }
     }
     
@@ -81,15 +82,75 @@ class AccountViewController: UIViewController {
     private var titleArray = [["我的消息"],
                               ["付费音乐包" , "积分商城" , "在线听歌免流量"],
                               ["设置" , "主题换肤" , "夜间模式" , "定时关闭" , "音乐闹钟" , "驾驶模式"],
-                              ["分享网易云音乐", "关于"]]
+                              ["分享网易云音乐", "关于"],
+                              ["退出登录"]]
+    
     private var imageNameArray = [["first"],
                                   ["second", "first", "second"],
                                   ["first", "second", "first", "second", "first", "second"],
-                                  ["first", "second"]]
+                                  ["first", "second"],
+                                  ["first"]]
 
+    private var actionArray = [[#selector(toMyMessageViewController),],
+                               [#selector(toPaidMusicViewController),#selector(toPointMallViewController),#selector(toOnlineFreePlayViewController),],
+                               [#selector(toSettingViewController),#selector(toThemeSkinViewController),#selector(changeDayMode),#selector(toCountDownViewController),#selector(toMusicAlarmViewController),#selector(toDrivingModeViewController),],
+                               [#selector(shareTheApp),#selector(toAboutViewController),],
+                               [#selector(logout),]]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    func toMyMessageViewController() -> Void {
+        self.navigationController?.pushViewController(MyMessageViewController(), animated:true)
+    }
+    
+    func toPaidMusicViewController() -> Void {
+        
+    }
+    
+    func toPointMallViewController() -> Void {
+        
+    }
+    
+    func toOnlineFreePlayViewController() -> Void {
+        
+    }
+    
+    func toSettingViewController() -> Void {
+        
+    }
+    
+    func toThemeSkinViewController() -> Void {
+        
+    }
+    
+    func changeDayMode() -> Void {
+        
+    }
+    
+    func toCountDownViewController() -> Void {
+        
+    }
+    
+    func toMusicAlarmViewController() -> Void {
+        
+    }
+    
+    func toDrivingModeViewController() -> Void {
+        
+    }
+    
+    func shareTheApp() -> Void {
+        
+    }
+    
+    func toAboutViewController() -> Void {
+        
+    }
+    
+    func logout() -> Void {
+        
     }
 }
 
@@ -106,10 +167,18 @@ extension AccountViewController:UITableViewDelegate, UITableViewDataSource {
             cell.rightInfoText = "3积分"
         } else if indexPath.section == 2 && indexPath.row == 1 {
             cell.rightInfoText = "官方红"
-        } else if indexPath.section == 2 && indexPath.row == 1 {
+        } else if indexPath.section == 2 && indexPath.row == 2 {
             cell.isOn = true
+        } else if indexPath.section == 4 && indexPath.row == 0 {
+            cell.isLogin = true
+            cell.accessoryView?.hidden = true
         }
         return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        performSelector(self.actionArray[indexPath.section][indexPath.row])
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -117,6 +186,9 @@ extension AccountViewController:UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if section == 4 {
+            return 10
+        }
         return 0.1
     }
     

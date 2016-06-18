@@ -47,6 +47,7 @@
 		DE2654F81D103A8D0083F742 /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654F71D103A8D0083F742 /* AccountTableViewCell.swift */; };
 		DE4068541D12A3190067F0FE /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4068531D12A3190067F0FE /* BaseTableViewCell.swift */; };
 		DE4068571D12A4DA0067F0FE /* RoundNumberLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4068561D12A4DA0067F0FE /* RoundNumberLabel.swift */; };
+		DEAB13C21D1518D2001FD8E8 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAB13C11D1518D2001FD8E8 /* BaseViewController.swift */; };
 		EB11B0F7C0EE28112D75A367 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D42FA2A00EA9169F711A1E81 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -117,6 +118,7 @@
 		DE2654F71D103A8D0083F742 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountTableViewCell.swift; path = Account/AccountTableViewCell.swift; sourceTree = "<group>"; };
 		DE4068531D12A3190067F0FE /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseTableViewCell.swift; path = Common/BaseTableViewCell.swift; sourceTree = "<group>"; };
 		DE4068561D12A4DA0067F0FE /* RoundNumberLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoundNumberLabel.swift; path = Common/RoundNumberLabel.swift; sourceTree = "<group>"; };
+		DEAB13C11D1518D2001FD8E8 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = Common/BaseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -340,6 +342,7 @@
 			children = (
 				DE4068531D12A3190067F0FE /* BaseTableViewCell.swift */,
 				DE4068561D12A4DA0067F0FE /* RoundNumberLabel.swift */,
+				DEAB13C11D1518D2001FD8E8 /* BaseViewController.swift */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -539,6 +542,7 @@
 				DE2654DB1D1027CA0083F742 /* CountDownViewController.swift in Sources */,
 				DE2654ED1D102A070083F742 /* MyMVViewController.swift in Sources */,
 				DE2654F21D102A9D0083F742 /* MyRadioViewController.swift in Sources */,
+				DEAB13C21D1518D2001FD8E8 /* BaseViewController.swift in Sources */,
 				DE2654F81D103A8D0083F742 /* AccountTableViewCell.swift in Sources */,
 				DE2654D11D1026B50083F742 /* PaidMusicViewController.swift in Sources */,
 				DE2654C11D10249D0083F742 /* SoundHoundViewController.swift in Sources */,
@@ -713,6 +717,7 @@
 			baseConfigurationReference = C681789F70D8D427BB9A1604 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = NetEaseCloudMusic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -726,6 +731,7 @@
 			baseConfigurationReference = C2FE4E75AA0B108BB1B196B5 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = NetEaseCloudMusic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
