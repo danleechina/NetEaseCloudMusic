@@ -9,8 +9,8 @@
 import UIKit
 
 class RoundNumberLabel: UIView {
-    static let height:CGFloat = 15
-    var width:CGFloat = 15
+    static let height:CGFloat = 20
+    var width:CGFloat = 20
     
     
     var number:Int? = 0 {
@@ -21,10 +21,13 @@ class RoundNumberLabel: UIView {
             }
             self.numberLabel.text = numberStr
             self.sizeToFit()
+            if number == 0 {
+                self.hidden = true
+            } else {
+                self.hidden = false
+            }
         }
     }
-    
-    
     
     private lazy var numberLabel:UILabel = {
         let label = UILabel()
@@ -45,6 +48,7 @@ class RoundNumberLabel: UIView {
         super.layoutSubviews()
         
         self.numberLabel.sizeToFit()
+        self.sizeToFit()
         let size = self.numberLabel.bounds.size
         self.numberLabel.frame = CGRectMake(width/2 - size.width/2, RoundNumberLabel.height/2 - size.height/2, size.width, size.height)
     }
@@ -52,7 +56,7 @@ class RoundNumberLabel: UIView {
     override func sizeToFit() {
         width = RoundNumberLabel.height
         if number > 99 {
-            width *= 2.2
+            width *= 2
         } else if number >= 10 {
             width *= 1.5
         } else if number > 0 {

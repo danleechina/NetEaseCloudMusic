@@ -7,31 +7,53 @@
 //
 
 import UIKit
+import SnapKit
 
 class HeadIconView: UIView {
 
-    private lazy var imageView: UIImageView = {
+     lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         return imageView
     }()
     
     
-    private lazy var roundNumberLabel: RoundNumberLabel = {
+     lazy var roundNumberLabel: RoundNumberLabel = {
        let label = RoundNumberLabel()
         return label
     }()
     
     
-    private lazy var rankLabel: RoundNumberLabel = {
-        let label = RoundNumberLabel()
+     lazy var rankRoundLabel: RankRoundLabel = {
+        let label = RankRoundLabel()
         return label
     }()
     
-    init(headImageName: String, number: Int, rank: String) {
+    init(frame: CGRect, headImageName: String, number: Int, rank: String) {
+        super.init(frame: frame)
         imageView.image = UIImage.init(named: headImageName)
         roundNumberLabel.number = number
-        rankLabel.
-        super.init(frame: CGRectZero)
+        rankRoundLabel.rankText = rank
+        addSubview(imageView)
+        addSubview(roundNumberLabel)
+        addSubview(rankRoundLabel)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        imageView.snp_makeConstraints { (make) in
+            make.center.equalTo(self.snp_center)
+        }
+        
+        roundNumberLabel.snp_makeConstraints { (make) in
+            make.right.equalTo(imageView.snp_right)
+            make.top.equalTo(imageView.snp_top)
+        }
+        
+        rankRoundLabel.snp_makeConstraints { (make) in
+            make.right.equalTo(imageView.snp_right).offset(-FixedValue.defaultMargin)
+            make.bottom.equalTo(imageView.snp_bottom)
+        }
+        
     }
     
     required init?(coder aDecoder: NSCoder) {

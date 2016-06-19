@@ -48,6 +48,13 @@
 		DE2654F81D103A8D0083F742 /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654F71D103A8D0083F742 /* AccountTableViewCell.swift */; };
 		DE4068541D12A3190067F0FE /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4068531D12A3190067F0FE /* BaseTableViewCell.swift */; };
 		DE4068571D12A4DA0067F0FE /* RoundNumberLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4068561D12A4DA0067F0FE /* RoundNumberLabel.swift */; };
+		DE79E6EE1D163B35006B9926 /* RankRoundLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE79E6ED1D163B35006B9926 /* RankRoundLabel.swift */; };
+		DE79E6F01D167209006B9926 /* AtMineListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE79E6EF1D167209006B9926 /* AtMineListTableView.swift */; };
+		DE79E6F21D167232006B9926 /* PrivateMessageListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE79E6F11D167232006B9926 /* PrivateMessageListTableView.swift */; };
+		DE79E6F41D167262006B9926 /* CommentListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE79E6F31D167262006B9926 /* CommentListTableView.swift */; };
+		DE79E6F61D167282006B9926 /* BaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE79E6F51D167282006B9926 /* BaseTableView.swift */; };
+		DE79E6F81D1672BE006B9926 /* NotificationListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE79E6F71D1672BE006B9926 /* NotificationListTableView.swift */; };
+		DE79E6FB1D1677C2006B9926 /* HasInfoSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE79E6FA1D1677C2006B9926 /* HasInfoSegmentedControl.swift */; };
 		DEAB13C21D1518D2001FD8E8 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAB13C11D1518D2001FD8E8 /* BaseViewController.swift */; };
 		EB11B0F7C0EE28112D75A367 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D42FA2A00EA9169F711A1E81 /* Pods.framework */; };
 /* End PBXBuildFile section */
@@ -120,6 +127,13 @@
 		DE2654F71D103A8D0083F742 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountTableViewCell.swift; path = Account/AccountTableViewCell.swift; sourceTree = "<group>"; };
 		DE4068531D12A3190067F0FE /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseTableViewCell.swift; path = Common/BaseTableViewCell.swift; sourceTree = "<group>"; };
 		DE4068561D12A4DA0067F0FE /* RoundNumberLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoundNumberLabel.swift; path = Common/RoundNumberLabel.swift; sourceTree = "<group>"; };
+		DE79E6ED1D163B35006B9926 /* RankRoundLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RankRoundLabel.swift; path = Common/RankRoundLabel.swift; sourceTree = "<group>"; };
+		DE79E6EF1D167209006B9926 /* AtMineListTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AtMineListTableView.swift; path = Account/AtMineListTableView.swift; sourceTree = "<group>"; };
+		DE79E6F11D167232006B9926 /* PrivateMessageListTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrivateMessageListTableView.swift; path = Account/PrivateMessageListTableView.swift; sourceTree = "<group>"; };
+		DE79E6F31D167262006B9926 /* CommentListTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommentListTableView.swift; path = Account/CommentListTableView.swift; sourceTree = "<group>"; };
+		DE79E6F51D167282006B9926 /* BaseTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseTableView.swift; path = Common/BaseTableView.swift; sourceTree = "<group>"; };
+		DE79E6F71D1672BE006B9926 /* NotificationListTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationListTableView.swift; path = Account/NotificationListTableView.swift; sourceTree = "<group>"; };
+		DE79E6FA1D1677C2006B9926 /* HasInfoSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HasInfoSegmentedControl.swift; path = Common/HasInfoSegmentedControl.swift; sourceTree = "<group>"; };
 		DEAB13C11D1518D2001FD8E8 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = Common/BaseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -325,7 +339,7 @@
 		DE2654F41D10301D0083F742 /* ContentVC */ = {
 			isa = PBXGroup;
 			children = (
-				DE2654CE1D1026710083F742 /* MyMessageViewController.swift */,
+				DE79E6F91D1672CC006B9926 /* MyMessage */,
 				DE2654D01D1026B50083F742 /* PaidMusicViewController.swift */,
 				DE2654D21D1026DA0083F742 /* PointMallViewController.swift */,
 				DE2654D41D10271A0083F742 /* OnlineFreePlayViewController.swift */,
@@ -342,12 +356,27 @@
 		DE4068551D12A3240067F0FE /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				DE79E6F51D167282006B9926 /* BaseTableView.swift */,
 				DE4068531D12A3190067F0FE /* BaseTableViewCell.swift */,
 				DE4068561D12A4DA0067F0FE /* RoundNumberLabel.swift */,
+				DE79E6ED1D163B35006B9926 /* RankRoundLabel.swift */,
 				DEAB13C11D1518D2001FD8E8 /* BaseViewController.swift */,
 				A0BE95BE1D157ABB009A84F0 /* HeadIconView.swift */,
+				DE79E6FA1D1677C2006B9926 /* HasInfoSegmentedControl.swift */,
 			);
 			name = Common;
+			sourceTree = "<group>";
+		};
+		DE79E6F91D1672CC006B9926 /* MyMessage */ = {
+			isa = PBXGroup;
+			children = (
+				DE2654CE1D1026710083F742 /* MyMessageViewController.swift */,
+				DE79E6EF1D167209006B9926 /* AtMineListTableView.swift */,
+				DE79E6F11D167232006B9926 /* PrivateMessageListTableView.swift */,
+				DE79E6F31D167262006B9926 /* CommentListTableView.swift */,
+				DE79E6F71D1672BE006B9926 /* NotificationListTableView.swift */,
+			);
+			name = MyMessage;
 			sourceTree = "<group>";
 		};
 		DFA7455DED046E4D37EE8D4B /* Frameworks */ = {
@@ -429,7 +458,6 @@
 				TargetAttributes = {
 					DE2654741D101A860083F742 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = VCJVQ6T6G2;
 					};
 					DE26548A1D101A860083F742 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -546,6 +574,7 @@
 				DE2654DB1D1027CA0083F742 /* CountDownViewController.swift in Sources */,
 				DE2654ED1D102A070083F742 /* MyMVViewController.swift in Sources */,
 				DE2654F21D102A9D0083F742 /* MyRadioViewController.swift in Sources */,
+				DE79E6FB1D1677C2006B9926 /* HasInfoSegmentedControl.swift in Sources */,
 				DEAB13C21D1518D2001FD8E8 /* BaseViewController.swift in Sources */,
 				DE2654F81D103A8D0083F742 /* AccountTableViewCell.swift in Sources */,
 				DE2654D11D1026B50083F742 /* PaidMusicViewController.swift in Sources */,
@@ -559,17 +588,23 @@
 				DE2654CF1D1026710083F742 /* MyMessageViewController.swift in Sources */,
 				DE2654BD1D10236F0083F742 /* RadioViewController.swift in Sources */,
 				DE4068541D12A3190067F0FE /* BaseTableViewCell.swift in Sources */,
+				DE79E6F01D167209006B9926 /* AtMineListTableView.swift in Sources */,
+				DE79E6F81D1672BE006B9926 /* NotificationListTableView.swift in Sources */,
 				DE2654BB1D10232C0083F742 /* SongSheetViewController.swift in Sources */,
 				DE2654C71D1025730083F742 /* MyMusicCloudBoxViewController.swift in Sources */,
 				DE2654C91D1025C70083F742 /* AddFocusViewController.swift in Sources */,
+				DE79E6F61D167282006B9926 /* BaseTableView.swift in Sources */,
+				DE79E6F41D167262006B9926 /* CommentListTableView.swift in Sources */,
 				DE2654D91D1027780083F742 /* ThemeSkinViewController.swift in Sources */,
 				DE2654C51D1025460083F742 /* AddSongSheetViewController.swift in Sources */,
 				DE2654D51D10271A0083F742 /* OnlineFreePlayViewController.swift in Sources */,
+				DE79E6F21D167232006B9926 /* PrivateMessageListTableView.swift in Sources */,
 				DE2654E51D1029590083F742 /* DownLoadViewController.swift in Sources */,
 				DE2654791D101A860083F742 /* AppDelegate.swift in Sources */,
 				DE2654AE1D101D7A0083F742 /* MyMusicViewController.swift in Sources */,
 				DE2654C31D1024F90083F742 /* PlaySongViewController.swift in Sources */,
 				A0BE95BF1D157ABB009A84F0 /* HeadIconView.swift in Sources */,
+				DE79E6EE1D163B35006B9926 /* RankRoundLabel.swift in Sources */,
 				DE4068571D12A4DA0067F0FE /* RoundNumberLabel.swift in Sources */,
 				DE2654AB1D101D440083F742 /* FindMusicViewController.swift in Sources */,
 				DE2654B91D1022F10083F742 /* RecommendViewController.swift in Sources */,

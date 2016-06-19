@@ -10,4 +10,7 @@ import UIKit
 
 class BaseTableViewCell: UITableViewCell {
 
+    func setData() -> Void {
+        
+    }
 }

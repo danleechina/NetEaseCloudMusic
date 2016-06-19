@@ -11,4 +11,7 @@ import UIKit
 
 class FixedValue {
     static let mainRedColor:UIColor = UIColor.redColor()
+    
+    static let defaultMargin:CGFloat = 5
+    static let segementHeight:CGFloat = 30
 }

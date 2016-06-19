@@ -1,0 +1,144 @@
+//
+//  HasInfoSegmentedControl.swift
+//  NetEaseCloudMusic
+//
+//  Created by Ampire_Dan on 16/6/19.
+//  Copyright © 2016年 Ampire_Dan. All rights reserved.
+//
+
+import UIKit
+
+
+//TODO: 圆角处理
+class HasInfoSegmentedControl: UIView {
+    static let height:CGFloat = 30
+    static let offsetFromCenterY:CGFloat = 3
+    var titles = [String]() {
+        didSet {
+            
+        }
+    }
+    
+    var numbers = [Int]() {
+        didSet {
+            
+        }
+    }
+    
+    private var titleButtons = [UIButton]()
+    private var roundNumberLabels = [RoundNumberLabel]()
+    private var seperateLineViews = [UIView]()
+    private var maskBackgroundView = UIView()
+    
+    init(frame: CGRect, numbers: Array<Int>, items: Array<String>) {
+        super.init(frame: frame)
+        let length = numbers.count < items.count ? numbers.count : items.count
+        
+        addSubview(maskBackgroundView)
+        self.maskBackgroundView.backgroundColor = UIColor.lightGrayColor()
+        
+        for index in 0 ..< length {
+            self.titles.append(items[index])
+            self.numbers.append(numbers[index])
+            let button = getAButton(items[index], tag: index)
+            if index == 0 || index == length - 1 {
+                button.layer.cornerRadius = 3
+            }
+            titleButtons.append(button)
+            addSubview(titleButtons[index])
+        }
+        
+        for index in 0 ..< length {
+            if isNeedLeftBorder(index, total: length) {
+                seperateLineViews.append(getASeperateLine())
+                addSubview(seperateLineViews[index])
+            }
+        }
+        
+        for index in 0 ..< length {
+            roundNumberLabels.append(getARoundNumberLabel(numbers[index], tag: index))
+            addSubview(roundNumberLabels[index])
+        }
+        
+        self.layer.borderColor = UIColor.lightGrayColor().CGColor
+        self.layer.borderWidth = 0.5
+        self.layer.cornerRadius = 3
+        self.backgroundColor = UIColor.whiteColor()
+        self.clipsToBounds = true
+    }
+    
+    func isNeedLeftBorder(index: Int, total: Int) -> Bool {
+        if total <= 1 {
+            return false
+        } else if index < total {
+            return true
+        }
+        return false
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        let length = numbers.count
+        let width:CGFloat = self.bounds.size.width/CGFloat(length)
+        
+        for index in 0 ..< length {
+            titleButtons[index].frame = CGRectMake(CGFloat(index) * width, 0, width, HasInfoSegmentedControl.height)
+            
+            roundNumberLabels[index].sizeToFit()
+            
+            let constraintRect = CGSize(width: width, height: HasInfoSegmentedControl.height)
+            let sizeOfText = titleButtons[index].currentTitle!.boundingRectWithSize(constraintRect, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName:
+                titleButtons[index].titleLabel!.font], context: nil)
+            let roundNumberLabelSize = roundNumberLabels[index].bounds.size
+            roundNumberLabels[index].frame = CGRectMake(CGFloat(index) * width + width/2 + sizeOfText.width/2, HasInfoSegmentedControl.height/2 - sizeOfText.height/2 - HasInfoSegmentedControl.offsetFromCenterY, roundNumberLabelSize.width, roundNumberLabelSize.height)
+            
+        }
+        
+        for index in 0 ..< length {
+            seperateLineViews[index].frame = CGRectMake(CGFloat(index) * width, 0, 0.5, HasInfoSegmentedControl.height)
+        }
+        
+    }
+    
+    func getAButton(text: String, tag: Int) -> UIButton {
+        let button = UIButton()
+        button.setTitle(text, forState: .Normal)
+        button.setTitleColor(UIColor.whiteColor(), forState: .Selected)
+        button.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        button.addTarget(self, action: #selector(changeApperance), forControlEvents: .TouchUpInside)
+        button.tag = tag
+        button.titleLabel?.font = UIFont.systemFontOfSize(12)
+        button.backgroundColor = UIColor.clearColor()
+        return button
+    }
+    
+    func getARoundNumberLabel(number: Int, tag: Int) -> RoundNumberLabel {
+        let roundNumberLabel = RoundNumberLabel()
+        roundNumberLabel.number = number
+        roundNumberLabel.tag = tag
+        return roundNumberLabel
+    }
+    
+    func getASeperateLine() -> UIView {
+        let view = UIView()
+        view.backgroundColor = UIColor.lightGrayColor()
+        return view
+    }
+    
+    func changeApperance(sender: UIButton) -> Void {
+        for button in self.titleButtons {
+            button.selected = false
+        }
+        sender.selected = true
+        
+        let length = numbers.count
+        let width:CGFloat = self.bounds.size.width/CGFloat(length)
+        self.maskBackgroundView.frame = CGRectMake(CGFloat(sender.tag) * width, 0, width, HasInfoSegmentedControl.height)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+}
+
