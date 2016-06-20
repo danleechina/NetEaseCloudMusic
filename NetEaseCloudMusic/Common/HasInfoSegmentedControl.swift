@@ -11,7 +11,7 @@ import UIKit
 
 //TODO: 圆角处理
 class HasInfoSegmentedControl: UIView {
-    static let height:CGFloat = 30
+    static let height:CGFloat = FixedValue.segementHeight * 0.7
     static let offsetFromCenterY:CGFloat = 3
     var titles = [String]() {
         didSet {
@@ -29,12 +29,13 @@ class HasInfoSegmentedControl: UIView {
     private var roundNumberLabels = [RoundNumberLabel]()
     private var seperateLineViews = [UIView]()
     private var maskBackgroundView = UIView()
+    private var contentView = UIView()
     
     init(frame: CGRect, numbers: Array<Int>, items: Array<String>) {
         super.init(frame: frame)
         let length = numbers.count < items.count ? numbers.count : items.count
         
-        addSubview(maskBackgroundView)
+        contentView.addSubview(maskBackgroundView)
         self.maskBackgroundView.backgroundColor = UIColor.lightGrayColor()
         
         for index in 0 ..< length {
@@ -45,32 +46,32 @@ class HasInfoSegmentedControl: UIView {
                 button.layer.cornerRadius = 3
             }
             titleButtons.append(button)
-            addSubview(titleButtons[index])
+            contentView.addSubview(titleButtons[index])
         }
         
         for index in 0 ..< length {
             if isNeedLeftBorder(index, total: length) {
                 seperateLineViews.append(getASeperateLine())
-                addSubview(seperateLineViews[index])
+                contentView.addSubview(seperateLineViews[index])
             }
         }
+        
+        addSubview(contentView)
         
         for index in 0 ..< length {
             roundNumberLabels.append(getARoundNumberLabel(numbers[index], tag: index))
             addSubview(roundNumberLabels[index])
         }
         
-        self.layer.borderColor = UIColor.lightGrayColor().CGColor
-        self.layer.borderWidth = 0.5
-        self.layer.cornerRadius = 3
-        self.backgroundColor = UIColor.whiteColor()
-        self.clipsToBounds = true
+        contentView.layer.borderColor = UIColor.lightGrayColor().CGColor
+        contentView.layer.borderWidth = 0.5
+        contentView.layer.cornerRadius = 3
+        contentView.backgroundColor = UIColor.whiteColor()
+        contentView.clipsToBounds = true
     }
     
     func isNeedLeftBorder(index: Int, total: Int) -> Bool {
-        if total <= 1 {
-            return false
-        } else if index < total {
+        if index < total {
             return true
         }
         return false
@@ -80,17 +81,16 @@ class HasInfoSegmentedControl: UIView {
         super.layoutSubviews()
         let length = numbers.count
         let width:CGFloat = self.bounds.size.width/CGFloat(length)
-        
+        self.contentView.frame = CGRectMake(0, FixedValue.segementHeight/2 - HasInfoSegmentedControl.height/2, self.bounds.size.width, HasInfoSegmentedControl.height)
         for index in 0 ..< length {
             titleButtons[index].frame = CGRectMake(CGFloat(index) * width, 0, width, HasInfoSegmentedControl.height)
             
             roundNumberLabels[index].sizeToFit()
-            
             let constraintRect = CGSize(width: width, height: HasInfoSegmentedControl.height)
             let sizeOfText = titleButtons[index].currentTitle!.boundingRectWithSize(constraintRect, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName:
                 titleButtons[index].titleLabel!.font], context: nil)
             let roundNumberLabelSize = roundNumberLabels[index].bounds.size
-            roundNumberLabels[index].frame = CGRectMake(CGFloat(index) * width + width/2 + sizeOfText.width/2, HasInfoSegmentedControl.height/2 - sizeOfText.height/2 - HasInfoSegmentedControl.offsetFromCenterY, roundNumberLabelSize.width, roundNumberLabelSize.height)
+            roundNumberLabels[index].frame = CGRectMake(CGFloat(index) * width + width/2 + sizeOfText.width/2, FixedValue.segementHeight/2  - sizeOfText.height/2 - HasInfoSegmentedControl.offsetFromCenterY - roundNumberLabelSize.height/2, roundNumberLabelSize.width, roundNumberLabelSize.height)
             
         }
         
