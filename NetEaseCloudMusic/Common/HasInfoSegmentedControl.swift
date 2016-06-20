@@ -10,9 +10,11 @@ import UIKit
 
 
 //TODO: 圆角处理
-class HasInfoSegmentedControl: UIView {
+class HasInfoSegmentedControl: UIControl {
     static let height:CGFloat = FixedValue.segementHeight * 0.7
     static let offsetFromCenterY:CGFloat = 3
+    var currentSelectedIndex = 0
+    
     var titles = [String]() {
         didSet {
             
@@ -97,7 +99,7 @@ class HasInfoSegmentedControl: UIView {
         for index in 0 ..< length {
             seperateLineViews[index].frame = CGRectMake(CGFloat(index) * width, 0, 0.5, HasInfoSegmentedControl.height)
         }
-        
+        self.maskBackgroundView.frame = CGRectMake(CGFloat(currentSelectedIndex) * width, 0, width, HasInfoSegmentedControl.height)
     }
     
     func getAButton(text: String, tag: Int) -> UIButton {
@@ -133,7 +135,9 @@ class HasInfoSegmentedControl: UIView {
         
         let length = numbers.count
         let width:CGFloat = self.bounds.size.width/CGFloat(length)
-        self.maskBackgroundView.frame = CGRectMake(CGFloat(sender.tag) * width, 0, width, HasInfoSegmentedControl.height)
+        currentSelectedIndex = sender.tag
+        self.maskBackgroundView.frame = CGRectMake(CGFloat(currentSelectedIndex) * width, 0, width, HasInfoSegmentedControl.height)
+        self.sendActionsForControlEvents(.ValueChanged)
     }
     
     required init?(coder aDecoder: NSCoder) {

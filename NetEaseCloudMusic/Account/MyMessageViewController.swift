@@ -12,7 +12,7 @@ class MyMessageViewController: BaseViewController {
 
     private lazy var segementView:HasInfoSegmentedControl = {
        let segement = HasInfoSegmentedControl.init(frame: CGRectZero, numbers: [0, 100, 0, 0], items: ["@我的", "私信", "评论", "通知"])
-//        segement.addTarget(self, action: #selector(segeementTouched), forControlEvents: .ValueChanged)
+        segement.addTarget(self, action: #selector(segeementTouched), forControlEvents: .ValueChanged)
         return segement
     }()
     
@@ -110,26 +110,26 @@ class MyMessageViewController: BaseViewController {
         }
     }
     
-    func segeementTouched(sender: UISegmentedControl) -> Void {
-        if sender.selectedSegmentIndex == 0 {
-            
+    func segeementTouched(sender: HasInfoSegmentedControl) -> Void {
+        print(sender.currentSelectedIndex)
+        if sender.currentSelectedIndex == 0 {
             atMineListTableView.hidden = false
             privateMessageListTableView.hidden = true
             commentListTableView.hidden = true
             notificationListTableView.hidden = true
-        } else if sender.selectedSegmentIndex == 1 {
+        } else if sender.currentSelectedIndex == 1 {
             
             atMineListTableView.hidden = true
             privateMessageListTableView.hidden = false
             commentListTableView.hidden = true
             notificationListTableView.hidden = true
-        } else if sender.selectedSegmentIndex == 2 {
+        } else if sender.currentSelectedIndex == 2 {
             
             atMineListTableView.hidden = true
             privateMessageListTableView.hidden = true
             commentListTableView.hidden = false
             notificationListTableView.hidden = true
-        } else if sender.selectedSegmentIndex == 3 {
+        } else if sender.currentSelectedIndex == 3 {
             
             atMineListTableView.hidden = true
             privateMessageListTableView.hidden = true
