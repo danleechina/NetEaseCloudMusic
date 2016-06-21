@@ -13,7 +13,19 @@ import UIKit
 class HasInfoSegmentedControl: UIControl {
     static let height:CGFloat = FixedValue.segementHeight * 0.7
     static let offsetFromCenterY:CGFloat = 3
-    var currentSelectedIndex = 0
+    var currentSelectedIndex = 0 {
+        didSet {
+            for button in self.titleButtons {
+                button.selected = false
+            }
+            titleButtons[currentSelectedIndex].selected = true
+            
+            let length = numbers.count
+            let width:CGFloat = self.bounds.size.width/CGFloat(length)
+            self.maskBackgroundView.frame = CGRectMake(CGFloat(currentSelectedIndex) * width, 0, width, HasInfoSegmentedControl.height)
+            self.sendActionsForControlEvents(.ValueChanged)
+        }
+    }
     
     var titles = [String]() {
         didSet {
@@ -70,6 +82,9 @@ class HasInfoSegmentedControl: UIControl {
         contentView.layer.cornerRadius = 3
         contentView.backgroundColor = UIColor.whiteColor()
         contentView.clipsToBounds = true
+        
+        currentSelectedIndex = 0
+        titleButtons[currentSelectedIndex].selected = true
     }
     
     func isNeedLeftBorder(index: Int, total: Int) -> Bool {
@@ -105,7 +120,7 @@ class HasInfoSegmentedControl: UIControl {
     func getAButton(text: String, tag: Int) -> UIButton {
         let button = UIButton()
         button.setTitle(text, forState: .Normal)
-        button.setTitleColor(UIColor.whiteColor(), forState: .Selected)
+        button.setTitleColor(UIColor.whiteColor(), forState: [.Selected])
         button.setTitleColor(UIColor.blackColor(), forState: .Normal)
         button.addTarget(self, action: #selector(changeApperance), forControlEvents: .TouchUpInside)
         button.tag = tag
@@ -128,16 +143,9 @@ class HasInfoSegmentedControl: UIControl {
     }
     
     func changeApperance(sender: UIButton) -> Void {
-        for button in self.titleButtons {
-            button.selected = false
+        if currentSelectedIndex != sender.tag {
+            currentSelectedIndex = sender.tag
         }
-        sender.selected = true
-        
-        let length = numbers.count
-        let width:CGFloat = self.bounds.size.width/CGFloat(length)
-        currentSelectedIndex = sender.tag
-        self.maskBackgroundView.frame = CGRectMake(CGFloat(currentSelectedIndex) * width, 0, width, HasInfoSegmentedControl.height)
-        self.sendActionsForControlEvents(.ValueChanged)
     }
     
     required init?(coder aDecoder: NSCoder) {
