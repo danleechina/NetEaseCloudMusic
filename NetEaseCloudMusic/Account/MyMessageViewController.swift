@@ -29,12 +29,17 @@ class MyMessageViewController: BaseViewController {
     
     private lazy var privateMessageListTableView:PrivateMessageListTableView = {
         let tableView = PrivateMessageListTableView()
-        tableView.delegate = self
-        tableView.dataSource = self
+        tableView.delegate = self.privateMessageListDAD
+        tableView.dataSource = self.privateMessageListDAD
         tableView.hidden = true
         tableView.backgroundColor = UIColor.clearColor()
         tableView.tableFooterView = UIView()
         return tableView
+    }()
+    
+    private lazy var privateMessageListDAD:PrivateMessageListDAD = {
+       let dad = PrivateMessageListDAD()
+        return dad
     }()
     
     private lazy var commentListTableView:CommentListTableView = {

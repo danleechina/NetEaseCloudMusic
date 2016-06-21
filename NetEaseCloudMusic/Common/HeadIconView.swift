@@ -10,20 +10,49 @@ import UIKit
 import SnapKit
 
 class HeadIconView: UIView {
+    var image:UIImage? {
+        set {
+            imageView.image = newValue
+        }
+        get {
+            return imageView.image
+        }
+    }
+    
+    var number:Int? {
+        set {
+            roundNumberLabel.number = newValue
+        }
+        get {
+            return roundNumberLabel.number
+        }
+    }
+    
+    var rank:String {
+        set {
+            rankRoundLabel.rankText = newValue
+        }
+        get {
+            return rankRoundLabel.rankText
+        }
+    }
+    
+    
+    
 
-     lazy var imageView: UIImageView = {
+    private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         return imageView
     }()
     
     
-     lazy var roundNumberLabel: RoundNumberLabel = {
+    private lazy var roundNumberLabel: RoundNumberLabel = {
        let label = RoundNumberLabel()
         return label
     }()
     
     
-     lazy var rankRoundLabel: RankRoundLabel = {
+    private lazy var rankRoundLabel: RankRoundLabel = {
         let label = RankRoundLabel()
         return label
     }()

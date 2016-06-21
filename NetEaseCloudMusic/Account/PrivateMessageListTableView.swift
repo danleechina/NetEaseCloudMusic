@@ -12,10 +12,37 @@ class PrivateMessageListTableView: BaseTableView {
 
 }
 
+class PrivateMessageListDAD: NSObject, UITableViewDelegate, UITableViewDataSource {
+    var models:Array<PrivateMessageModel> = [PrivateMessageModel]()
+    
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = PrivateMessageCell.cellFor(tableView)
+        cell.model = PrivateMessageModel.dictToModel(nil)
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return models.count
+        return 20
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 60
+    }
+    
+}
+
 class PrivateMessageCell: BaseTableViewCell {
     
     static let reuseIdentifier = "PrivateMessageCell"
     static let margin:CGFloat = 5
+    var model:PrivateMessageModel = PrivateMessageModel() {
+        didSet {
+            setData()
+        }
+    }
+    
     
     private lazy var headIconView:HeadIconView = {
         let headIconView = HeadIconView.init(frame: CGRectZero, headImageName: "second", number: 1, rank: "V")
@@ -50,10 +77,15 @@ class PrivateMessageCell: BaseTableViewCell {
     }
     
     override func setData() -> Void {
-        nickNameLabel.text = "薛之谦"
-        messageLabel.text = "MV: [刚刚好]"
-        timeLabel.text = "昨天 12:42"
-        //        headIconView.
+        headIconView.number = model.number
+        headIconView.image = UIImage.init(named: model.iconName)
+        nickNameLabel.text = model.nickName
+        messageLabel.text = model.message
+        model.rankStr = "V"
+        //TODO: 日期处理
+        let dateformatter = NSDateFormatter()
+        dateformatter.dateFormat = "mm dd"
+        timeLabel.text = dateformatter .stringFromDate(model.time)
     }
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -98,4 +130,32 @@ class PrivateMessageCell: BaseTableViewCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+
+class PrivateMessageModel: NSObject {
+    var iconName = ""
+    var nickName = ""
+    var message = ""
+    var number = 0
+    var rankStr = "V"
+    var time = NSDate()
+    
+    
+    static func dictToModel(dict: Dictionary<String, String>?) -> PrivateMessageModel {
+        let model = PrivateMessageModel()
+        if dict == nil {
+            model.iconName = "first"
+            model.nickName = "薛之谦"
+            model.message = "hello from me"
+            model.number = 2
+            model.rankStr = "V"
+            model.time = NSDate()
+        } else {
+            //TODO：数据处理
+        }
+        return model
+    }
+    
+    
 }
