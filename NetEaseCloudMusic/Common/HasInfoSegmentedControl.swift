@@ -15,10 +15,10 @@ class HasInfoSegmentedControl: UIControl {
     static let offsetFromCenterY:CGFloat = 3
     var currentSelectedIndex = 0 {
         didSet {
-            for button in self.titleButtons {
-                button.selected = false
+            for button in titleButtons {
+                button.setTitleColor(UIColor.blackColor(), forState: .Normal)
             }
-            titleButtons[currentSelectedIndex].selected = true
+            titleButtons[currentSelectedIndex].setTitleColor(UIColor.whiteColor(), forState: .Normal)
             
             let length = numbers.count
             let width:CGFloat = self.bounds.size.width/CGFloat(length)
@@ -84,7 +84,7 @@ class HasInfoSegmentedControl: UIControl {
         contentView.clipsToBounds = true
         
         currentSelectedIndex = 0
-        titleButtons[currentSelectedIndex].selected = true
+        titleButtons[currentSelectedIndex].setTitleColor(UIColor.whiteColor(), forState: .Normal)
     }
     
     func isNeedLeftBorder(index: Int, total: Int) -> Bool {
@@ -120,7 +120,7 @@ class HasInfoSegmentedControl: UIControl {
     func getAButton(text: String, tag: Int) -> UIButton {
         let button = UIButton()
         button.setTitle(text, forState: .Normal)
-        button.setTitleColor(UIColor.whiteColor(), forState: [.Selected])
+//        button.setTitleColor(UIColor.whiteColor(), forState: [.Selected])
         button.setTitleColor(UIColor.blackColor(), forState: .Normal)
         button.addTarget(self, action: #selector(changeApperance), forControlEvents: .TouchUpInside)
         button.tag = tag
