@@ -13,53 +13,44 @@ class CommentCell: UITableViewCell {
     
     @IBOutlet weak var headIconView: HeadIconView! {
         didSet {
-            
+            headIconView.image = UIImage.init(named: "first")
+            headIconView.number = 0
+            headIconView.rank = "V"
         }
     }
     
     @IBOutlet weak var nickNameLabel: UILabel! {
         didSet {
-            
+            nickNameLabel.text = "ampiredan leee"
         }
     }
     
     @IBOutlet weak var timeLabel: UILabel! {
         didSet {
-            
+            timeLabel.text = "10021dsaf"
         }
     }
     
     
     @IBOutlet weak var commentInfoLabel: UILabel! {
         didSet {
-            
+            commentInfoLabel.text = "dsfaddsfsdfsdfa"
         }
     }
     
     
     @IBOutlet weak var originalCommentInfoLabel: UILabel! {
         didSet {
-            
+            originalCommentInfoLabel.text = "dsfafdfadfasdfa"
         }
     }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
     
     static let reuseIdentifier = "CommentCell"
     static func cellFor(table: UITableView) -> CommentCell {
         var cell = table.dequeueReusableCellWithIdentifier(reuseIdentifier) as? CommentCell
         if cell == nil {
-            cell = CommentCell.init(style: .Default, reuseIdentifier: reuseIdentifier)
+            table.registerNib(UINib.init(nibName: "CommentCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
+            cell = table.dequeueReusableCellWithIdentifier(reuseIdentifier) as? CommentCell
         }
         return cell!
     }

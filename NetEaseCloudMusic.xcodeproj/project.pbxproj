@@ -378,9 +378,9 @@
 				DE79E6EF1D167209006B9926 /* AtMineListTableView.swift */,
 				DE79E6F11D167232006B9926 /* PrivateMessageListTableView.swift */,
 				DE79E6F31D167262006B9926 /* CommentListTableView.swift */,
-				DE79E6F71D1672BE006B9926 /* NotificationListTableView.swift */,
 				DE2474721D1AB83C00EBAA37 /* CommentCell.swift */,
 				DE2474731D1AB83C00EBAA37 /* CommentCell.xib */,
+				DE79E6F71D1672BE006B9926 /* NotificationListTableView.swift */,
 			);
 			name = MyMessage;
 			sourceTree = "<group>";

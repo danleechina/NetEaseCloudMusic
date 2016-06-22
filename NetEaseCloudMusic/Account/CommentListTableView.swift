@@ -11,3 +11,20 @@ import UIKit
 class CommentListTableView: BaseTableView {
 
 }
+
+
+class CommentListDAD: NSObject, UITableViewDelegate, UITableViewDataSource {
+    var models:Array<PrivateMessageModel> = [PrivateMessageModel]()
+    
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = CommentCell.cellFor(tableView)
+//        cell.model = CommentCell.dictToModel(nil)
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //        return models.count
+        return 20
+    }
+}

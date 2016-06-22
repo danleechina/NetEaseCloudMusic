@@ -16,7 +16,7 @@ class MyMessageViewController: BaseViewController {
         return segement
     }()
     
-    
+    //at我的
     private lazy var atMineListTableView:AtMineListTableView = {
        let tableView = AtMineListTableView()
         tableView.delegate = self
@@ -27,6 +27,7 @@ class MyMessageViewController: BaseViewController {
         return tableView
     }()
     
+    //私信
     private lazy var privateMessageListTableView:PrivateMessageListTableView = {
         let tableView = PrivateMessageListTableView()
         tableView.delegate = self.privateMessageListDAD
@@ -42,16 +43,23 @@ class MyMessageViewController: BaseViewController {
         return dad
     }()
     
+    //评论
     private lazy var commentListTableView:CommentListTableView = {
         let tableView = CommentListTableView()
-        tableView.delegate = self
-        tableView.dataSource = self
+        tableView.delegate = self.commentListDAD
+        tableView.dataSource = self.commentListDAD
         tableView.hidden = true
         tableView.backgroundColor = UIColor.clearColor()
         tableView.tableFooterView = UIView()
         return tableView
     }()
     
+    private lazy var commentListDAD:CommentListDAD = {
+        let dad = CommentListDAD()
+        return dad
+    }()
+    
+    //通知
     private lazy var notificationListTableView:NotificationListTableView = {
         let tableView = NotificationListTableView()
         tableView.delegate = self
@@ -158,7 +166,7 @@ extension MyMessageViewController: UITableViewDelegate, UITableViewDataSource {
             cell = PrivateMessageCell.cellFor(tableView)
         } else if tableView .isKindOfClass(AtMineListTableView) {
             
-            cell = CommentCell.cellFor(tableView)
+//            cell = CommentCell.cellFor(tableView)
         } else if tableView .isKindOfClass(AtMineListTableView) {
             
             cell = NotificationCell.cellFor(tableView)
