@@ -51,6 +51,9 @@ class MyMessageViewController: BaseViewController {
         tableView.hidden = true
         tableView.backgroundColor = UIColor.clearColor()
         tableView.tableFooterView = UIView()
+        tableView.registerNib(UINib.init(nibName: "CommentCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "CommentCell")
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 110
         return tableView
     }()
     

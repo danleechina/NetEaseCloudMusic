@@ -25,6 +25,10 @@ class CommentListDAD: NSObject, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //        return models.count
-        return 20
+        return 2
     }
+    
+//    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        return 110
+//    }
 }

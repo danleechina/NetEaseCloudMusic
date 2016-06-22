@@ -13,9 +13,6 @@ class CommentCell: UITableViewCell {
     
     @IBOutlet weak var headIconView: HeadIconView! {
         didSet {
-            headIconView.image = UIImage.init(named: "first")
-            headIconView.number = 0
-            headIconView.rank = "V"
         }
     }
     
@@ -34,7 +31,7 @@ class CommentCell: UITableViewCell {
     
     @IBOutlet weak var commentInfoLabel: UILabel! {
         didSet {
-            commentInfoLabel.text = "dsfaddsfsdfsdfa"
+            commentInfoLabel.text = "回复我：dsfaddsfsdfsdfa"
         }
     }
     
@@ -47,12 +44,17 @@ class CommentCell: UITableViewCell {
     
     static let reuseIdentifier = "CommentCell"
     static func cellFor(table: UITableView) -> CommentCell {
-        var cell = table.dequeueReusableCellWithIdentifier(reuseIdentifier) as? CommentCell
-        if cell == nil {
-            table.registerNib(UINib.init(nibName: "CommentCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
-            cell = table.dequeueReusableCellWithIdentifier(reuseIdentifier) as? CommentCell
+        if let cell =  table.dequeueReusableCellWithIdentifier(reuseIdentifier) as? CommentCell{
+            
+            cell.headIconView.image = UIImage.init(named: "first")
+            cell.headIconView.number = 0
+            cell.headIconView.rank = "V"
+            cell.setNeedsUpdateConstraints()
+            cell.updateConstraintsIfNeeded()
+            return cell
         }
-        return cell!
+        assert(false)
+        return CommentCell()
     }
     
     

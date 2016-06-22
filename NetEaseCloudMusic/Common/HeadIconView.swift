@@ -86,6 +86,12 @@ class HeadIconView: UIView {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
+        imageView.image = UIImage.init(named: "second")
+        roundNumberLabel.number = number
+        rankRoundLabel.rankText = rank
+        addSubview(imageView)
+        addSubview(roundNumberLabel)
+        addSubview(rankRoundLabel)
     }
 }
