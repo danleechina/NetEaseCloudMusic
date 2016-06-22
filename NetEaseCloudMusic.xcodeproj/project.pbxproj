@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		A0BE95BF1D157ABB009A84F0 /* HeadIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BE95BE1D157ABB009A84F0 /* HeadIconView.swift */; };
 		DE19D2141D12DAFC008A575C /* FixedValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE19D2131D12DAFC008A575C /* FixedValue.swift */; };
+		DE2474741D1AB83C00EBAA37 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2474721D1AB83C00EBAA37 /* CommentCell.swift */; };
+		DE2474751D1AB83C00EBAA37 /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE2474731D1AB83C00EBAA37 /* CommentCell.xib */; };
 		DE2654791D101A860083F742 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654781D101A860083F742 /* AppDelegate.swift */; };
 		DE2654801D101A860083F742 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE26547E1D101A860083F742 /* Main.storyboard */; };
 		DE2654821D101A860083F742 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE2654811D101A860083F742 /* Assets.xcassets */; };
@@ -82,6 +84,8 @@
 		C681789F70D8D427BB9A1604 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D42FA2A00EA9169F711A1E81 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE19D2131D12DAFC008A575C /* FixedValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FixedValue.swift; path = Util/FixedValue.swift; sourceTree = "<group>"; };
+		DE2474721D1AB83C00EBAA37 /* CommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommentCell.swift; path = Account/CommentCell.swift; sourceTree = "<group>"; };
+		DE2474731D1AB83C00EBAA37 /* CommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CommentCell.xib; path = Account/CommentCell.xib; sourceTree = "<group>"; };
 		DE2654751D101A860083F742 /* NetEaseCloudMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetEaseCloudMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE2654781D101A860083F742 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE26547F1D101A860083F742 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -375,6 +379,8 @@
 				DE79E6F11D167232006B9926 /* PrivateMessageListTableView.swift */,
 				DE79E6F31D167262006B9926 /* CommentListTableView.swift */,
 				DE79E6F71D1672BE006B9926 /* NotificationListTableView.swift */,
+				DE2474721D1AB83C00EBAA37 /* CommentCell.swift */,
+				DE2474731D1AB83C00EBAA37 /* CommentCell.xib */,
 			);
 			name = MyMessage;
 			sourceTree = "<group>";
@@ -497,6 +503,7 @@
 				DE2654851D101A860083F742 /* LaunchScreen.storyboard in Resources */,
 				DE2654821D101A860083F742 /* Assets.xcassets in Resources */,
 				DE2654801D101A860083F742 /* Main.storyboard in Resources */,
+				DE2474751D1AB83C00EBAA37 /* CommentCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -574,6 +581,7 @@
 				DE2654DB1D1027CA0083F742 /* CountDownViewController.swift in Sources */,
 				DE2654ED1D102A070083F742 /* MyMVViewController.swift in Sources */,
 				DE2654F21D102A9D0083F742 /* MyRadioViewController.swift in Sources */,
+				DE2474741D1AB83C00EBAA37 /* CommentCell.swift in Sources */,
 				DE79E6FB1D1677C2006B9926 /* HasInfoSegmentedControl.swift in Sources */,
 				DEAB13C21D1518D2001FD8E8 /* BaseViewController.swift in Sources */,
 				DE2654F81D103A8D0083F742 /* AccountTableViewCell.swift in Sources */,
