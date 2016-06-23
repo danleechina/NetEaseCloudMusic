@@ -19,16 +19,17 @@ class CommentListDAD: NSObject, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = CommentCell.cellFor(tableView)
+        cell.headIconView.image = UIImage.init(named: "first")
+        cell.headIconView.number = 0
+        cell.headIconView.rank = "V"
+        cell.setNeedsUpdateConstraints()
+        cell.updateConstraintsIfNeeded()
 //        cell.model = CommentCell.dictToModel(nil)
         return cell
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //        return models.count
-        return 2
+        return 20
     }
-    
-//    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        return 110
-//    }
 }

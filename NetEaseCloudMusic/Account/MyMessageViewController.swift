@@ -19,8 +19,8 @@ class MyMessageViewController: BaseViewController {
     //at我的
     private lazy var atMineListTableView:AtMineListTableView = {
        let tableView = AtMineListTableView()
-        tableView.delegate = self
-        tableView.dataSource = self
+//        tableView.delegate = self
+//        tableView.dataSource = self
         tableView.hidden = true
         tableView.backgroundColor = UIColor.clearColor()
         tableView.tableFooterView = UIView()
@@ -54,6 +54,7 @@ class MyMessageViewController: BaseViewController {
         tableView.registerNib(UINib.init(nibName: "CommentCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "CommentCell")
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 110
+        tableView.allowsSelection = false
         return tableView
     }()
     
@@ -65,8 +66,8 @@ class MyMessageViewController: BaseViewController {
     //通知
     private lazy var notificationListTableView:NotificationListTableView = {
         let tableView = NotificationListTableView()
-        tableView.delegate = self
-        tableView.dataSource = self
+//        tableView.delegate = self
+//        tableView.dataSource = self
         tableView.hidden = true
         tableView.backgroundColor = UIColor.clearColor()
         tableView.tableFooterView = UIView()
@@ -155,40 +156,3 @@ class MyMessageViewController: BaseViewController {
     }
 
 }
-
-
-extension MyMessageViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = BaseTableViewCell()
-        if tableView .isKindOfClass(AtMineListTableView) {
-            
-            cell = AtMineCell.cellFor(tableView)
-        } else if tableView .isKindOfClass(AtMineListTableView) {
-            
-            cell = PrivateMessageCell.cellFor(tableView)
-        } else if tableView .isKindOfClass(AtMineListTableView) {
-            
-//            cell = CommentCell.cellFor(tableView)
-        } else if tableView .isKindOfClass(AtMineListTableView) {
-            
-            cell = NotificationCell.cellFor(tableView)
-        }
-        cell.setData()
-        return cell
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 19
-    }
-    
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 80
-    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-    }
-}
-
-

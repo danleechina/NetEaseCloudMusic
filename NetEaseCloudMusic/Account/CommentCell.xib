@@ -35,14 +35,14 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HAC-lU-kMd">
-                        <rect key="frame" x="66" y="58" width="42" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HAC-lU-kMd">
+                        <rect key="frame" x="66" y="58" width="246" height="44"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jY8-Mb-GIE">
-                        <rect key="frame" x="66" y="87" width="42" height="21"/>
+                        <rect key="frame" x="66" y="110" width="246" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
@@ -51,6 +51,7 @@
                 <constraints>
                     <constraint firstItem="jY8-Mb-GIE" firstAttribute="leading" secondItem="yQr-pY-uVI" secondAttribute="trailing" constant="8" symbolic="YES" id="2KD-Hd-7x8"/>
                     <constraint firstAttribute="trailingMargin" secondItem="Kbk-Ei-3iR" secondAttribute="trailing" id="2mo-aF-Qc0"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="jY8-Mb-GIE" secondAttribute="bottom" id="3fq-IK-P4e"/>
                     <constraint firstItem="Kbk-Ei-3iR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="4LT-bO-lTI"/>
                     <constraint firstItem="pVk-a8-pdg" firstAttribute="leading" secondItem="yQr-pY-uVI" secondAttribute="trailing" constant="8" symbolic="YES" id="ADl-Fz-f7O"/>
                     <constraint firstItem="jY8-Mb-GIE" firstAttribute="top" secondItem="HAC-lU-kMd" secondAttribute="bottom" constant="8" symbolic="YES" id="F7j-OM-utK"/>
@@ -58,7 +59,9 @@
                     <constraint firstItem="HAC-lU-kMd" firstAttribute="top" secondItem="yQr-pY-uVI" secondAttribute="bottom" id="XN5-Gt-dvY"/>
                     <constraint firstItem="pVk-a8-pdg" firstAttribute="baseline" secondItem="Kbk-Ei-3iR" secondAttribute="baseline" id="Yyd-TC-BKp"/>
                     <constraint firstAttribute="topMargin" secondItem="yQr-pY-uVI" secondAttribute="top" id="bqd-jH-BZ9"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="HAC-lU-kMd" secondAttribute="trailing" id="dOE-ay-DaM"/>
                     <constraint firstItem="HAC-lU-kMd" firstAttribute="leading" secondItem="yQr-pY-uVI" secondAttribute="trailing" constant="8" symbolic="YES" id="dcX-Go-TRd"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="jY8-Mb-GIE" secondAttribute="trailing" id="wXV-SU-p8c"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
