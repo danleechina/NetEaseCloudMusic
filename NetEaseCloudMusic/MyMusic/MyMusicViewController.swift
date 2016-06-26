@@ -9,27 +9,81 @@
 import UIKit
 
 class MyMusicViewController: UIViewController {
+    var mySongSheet: [[MyMusicModel]] = [[MyMusicModel]]()
+    
+    
+    private lazy var tableView:UITableView = {
+       let tableView = UITableView()
+        tableView.delegate = self
+        tableView.dataSource = self
+        return tableView
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        view.addSubview(self.tableView)
     }
+}
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
+extension MyMusicViewController:UITableViewDelegate, UITableViewDataSource {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return mySongSheet[section].count
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return mySongSheet.count
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 10
     }
-    */
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let label = UILabel()
+        if section == 1 {
+            label.text = "我创建的歌单(\(mySongSheet[0].count))"
+        } else if section == 0 {
+            label.text = "我收藏的歌单(\(mySongSheet[1].count))"
+        }
+        return label
+    }
+    
+}
 
+class MyMusicHeadModel: NSObject {
+    
+}
+
+
+class MyMusicModel: NSObject {
+    var titleImage:UIImage?
+    var titleName:String?
+    var numberOfSongs: String?
+    var downloadedSongs: String?
+    var authorID: String?
+    
+    class func dictToModel(data: Dictionary<String, String>?) -> MyMusicModel {
+        let model = MyMusicModel()
+        if let dict = data {
+            model.titleImage = UIImage.init(named: dict["titleImage"] ?? "first")
+            model.titleName = dict["titleName"]
+            model.numberOfSongs = dict["numberOfSongs"]
+            model.downloadedSongs = dict["downloadedSongs"]
+            model.authorID = dict["authorID"]
+        } else {
+            model.titleImage = UIImage.init(named: "first")
+            model.titleName = "song sheet name"
+            model.numberOfSongs = "66"
+            model.downloadedSongs = "6"
+            model.authorID = "authorID"
+        }
+        return model
+    }
 }
