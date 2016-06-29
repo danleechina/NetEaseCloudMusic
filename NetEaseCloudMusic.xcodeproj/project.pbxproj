@@ -58,6 +58,7 @@
 		DE79E6F81D1672BE006B9926 /* NotificationListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE79E6F71D1672BE006B9926 /* NotificationListTableView.swift */; };
 		DE79E6FB1D1677C2006B9926 /* HasInfoSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE79E6FA1D1677C2006B9926 /* HasInfoSegmentedControl.swift */; };
 		DEAB13C21D1518D2001FD8E8 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAB13C11D1518D2001FD8E8 /* BaseViewController.swift */; };
+		DEC8F3111D23E0B700C30661 /* NetworkMusicApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC8F3101D23E0B700C30661 /* NetworkMusicApi.swift */; };
 		EB11B0F7C0EE28112D75A367 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D42FA2A00EA9169F711A1E81 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -139,6 +140,7 @@
 		DE79E6F71D1672BE006B9926 /* NotificationListTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationListTableView.swift; path = Account/NotificationListTableView.swift; sourceTree = "<group>"; };
 		DE79E6FA1D1677C2006B9926 /* HasInfoSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HasInfoSegmentedControl.swift; path = Common/HasInfoSegmentedControl.swift; sourceTree = "<group>"; };
 		DEAB13C11D1518D2001FD8E8 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = Common/BaseViewController.swift; sourceTree = "<group>"; };
+		DEC8F3101D23E0B700C30661 /* NetworkMusicApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkMusicApi.swift; path = API/NetworkMusicApi.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,6 +222,7 @@
 				DE2654AF1D101D7F0083F742 /* MyMusic */,
 				DE2654B21D101DAD0083F742 /* Friend */,
 				DE2654B51D101DD60083F742 /* Account */,
+				DEC8F3121D23E0BC00C30661 /* API */,
 			);
 			path = NetEaseCloudMusic;
 			sourceTree = "<group>";
@@ -383,6 +386,14 @@
 				DE79E6F71D1672BE006B9926 /* NotificationListTableView.swift */,
 			);
 			name = MyMessage;
+			sourceTree = "<group>";
+		};
+		DEC8F3121D23E0BC00C30661 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				DEC8F3101D23E0B700C30661 /* NetworkMusicApi.swift */,
+			);
+			name = API;
 			sourceTree = "<group>";
 		};
 		DFA7455DED046E4D37EE8D4B /* Frameworks */ = {
@@ -621,6 +632,7 @@
 				DE2654E11D1028160083F742 /* AboutViewController.swift in Sources */,
 				DE2654D31D1026DA0083F742 /* PointMallViewController.swift in Sources */,
 				DE19D2141D12DAFC008A575C /* FixedValue.swift in Sources */,
+				DEC8F3111D23E0B700C30661 /* NetworkMusicApi.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
