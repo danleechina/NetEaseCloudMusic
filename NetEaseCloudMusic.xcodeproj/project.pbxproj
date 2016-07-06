@@ -132,6 +132,7 @@
 		DE2654F71D103A8D0083F742 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountTableViewCell.swift; path = Account/AccountTableViewCell.swift; sourceTree = "<group>"; };
 		DE4068531D12A3190067F0FE /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseTableViewCell.swift; path = Common/BaseTableViewCell.swift; sourceTree = "<group>"; };
 		DE4068561D12A4DA0067F0FE /* RoundNumberLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoundNumberLabel.swift; path = Common/RoundNumberLabel.swift; sourceTree = "<group>"; };
+		DE42A5A61D2D26FF002D3B60 /* NetEaseCloudMusic-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NetEaseCloudMusic-Bridging-Header.h"; sourceTree = "<group>"; };
 		DE79E6ED1D163B35006B9926 /* RankRoundLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RankRoundLabel.swift; path = Common/RankRoundLabel.swift; sourceTree = "<group>"; };
 		DE79E6EF1D167209006B9926 /* AtMineListTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AtMineListTableView.swift; path = Account/AtMineListTableView.swift; sourceTree = "<group>"; };
 		DE79E6F11D167232006B9926 /* PrivateMessageListTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrivateMessageListTableView.swift; path = Account/PrivateMessageListTableView.swift; sourceTree = "<group>"; };
@@ -216,6 +217,7 @@
 				DE2654831D101A860083F742 /* LaunchScreen.storyboard */,
 				DE26547E1D101A860083F742 /* Main.storyboard */,
 				DE2654781D101A860083F742 /* AppDelegate.swift */,
+				DE42A5A61D2D26FF002D3B60 /* NetEaseCloudMusic-Bridging-Header.h */,
 				DE19D2151D12DB03008A575C /* Util */,
 				DE4068551D12A3240067F0FE /* Common */,
 				DE2654AC1D101D4B0083F742 /* FindMusic */,
@@ -785,6 +787,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.danlee.NetEaseCloudMusic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "NetEaseCloudMusic/NetEaseCloudMusic-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -801,6 +805,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.danlee.NetEaseCloudMusic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "NetEaseCloudMusic/NetEaseCloudMusic-Bridging-Header.h";
 			};
 			name = Release;
 		};
