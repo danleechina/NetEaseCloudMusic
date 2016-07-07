@@ -53,20 +53,23 @@ class NetworkMusicApi: NSObject {
 
         if method == "POST" {
             request.URL = NSURL.init(string: url)
-            let postData = NSKeyedArchiver .archivedDataWithRootObject(data)
-            let length = postData.length
+            let newdata = "username=349604757@qq.com&password=1d44443dc866fc6a79bda75a89807354&rememberLogin=true"
+            let nnd = newdata.dataUsingEncoding(NSUTF8StringEncoding)
+//            let postData = NSKeyedArchiver .archivedDataWithRootObject(data)
+            let length = newdata.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)
             request.HTTPMethod = "POST"
-            request.HTTPBody = postData
+            request.HTTPBody = nnd
             
+            request.timeoutInterval = 10
             request.setValue("\(length)", forHTTPHeaderField: "Content-Length")
-            request.setValue("*/*", forHTTPHeaderField: "Accept")
-            request.setValue("gzip,deflate,sdch", forHTTPHeaderField: "Accept-Encoding")
-            request.setValue("zh-CN,zh;q=0.8,gl;q=0.6,zh-TW;q=0.4", forHTTPHeaderField: "Accept-Language")
-            request.setValue("keep-alive", forHTTPHeaderField: "Connection")
+//            request.setValue("*/*", forHTTPHeaderField: "Accept")
+//            request.setValue("gzip,deflate,sdch", forHTTPHeaderField: "Accept-Encoding")
+//            request.setValue("zh-CN,zh;q=0.8,gl;q=0.6,zh-TW;q=0.4", forHTTPHeaderField: "Accept-Language")
+//            request.setValue("keep-alive", forHTTPHeaderField: "Connection")
             request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-            request.setValue("music.163.com", forHTTPHeaderField: "Host")
-            request.setValue("http://music.163.com/search/", forHTTPHeaderField: "Referer")
-            request.setValue("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.152 Safari/537.36", forHTTPHeaderField: "User-Agent")
+//            request.setValue("music.163.com", forHTTPHeaderField: "Host")
+//            request.setValue("http://music.163.com/search/", forHTTPHeaderField: "Referer")
+//            request.setValue("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.152 Safari/537.36", forHTTPHeaderField: "User-Agent")
             
             dataTask = defaultSession.dataTaskWithRequest(request, completionHandler: { (data, response, error) in
                 if let err = error {
@@ -91,7 +94,7 @@ class NetworkMusicApi: NSObject {
     func login(userName: String, password: String) -> Void {
         // http://music.163.com/api/login/
         let md5Password = md5(string: password)
-        let urlStr = "http://music.163.com/api/login/?username=\(userName)&password=\(md5Password)"
+        let urlStr = "http://music.163.com/api/login/"
         let data = ["username":userName, "password":md5Password, "rememberLogin":"true"]
         doHttpRequest("POST", url: urlStr, data: data)
     }
