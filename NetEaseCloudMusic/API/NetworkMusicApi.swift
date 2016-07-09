@@ -12,41 +12,6 @@ class NetworkMusicApi: NSObject {
 
     let defaultSession = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
     var dataTask: NSURLSessionDataTask? = nil
-    
-//    func defaultFunc() -> Void {
-//        if dataTask != nil {
-//            dataTask?.cancel()
-//        }
-//        
-//        let url = NSURL(string: "http://music.163.com/discover/toplist")
-//        let request = NSMutableURLRequest.init(URL: url!)
-//        request.setValue("*/*", forHTTPHeaderField: "Accept")
-//        request.setValue("gzip,deflate,sdch", forHTTPHeaderField: "Accept-Encoding")
-//        request.setValue("zh-CN,zh;q=0.8,gl;q=0.6,zh-TW;q=0.4", forHTTPHeaderField: "Accept-Language")
-//        request.setValue("keep-alive", forHTTPHeaderField: "Connection")
-//        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-//        request.setValue("music.163.com", forHTTPHeaderField: "Host")
-//        request.setValue("http://music.163.com/search/", forHTTPHeaderField: "Referer")
-//        request.setValue("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.152 Safari/537.36", forHTTPHeaderField: "User-Agent")
-//        
-//        
-//        dataTask = defaultSession.dataTaskWithRequest(request, completionHandler: { (data, urlResponse, error) in
-//            if let err = error {
-//                print(err.localizedDescription)
-//            } else if let httpResponse = urlResponse as? NSHTTPURLResponse {
-//                if httpResponse.statusCode == 200 {
-//                    let decodedString = NSString(data: data!, encoding: NSUTF8StringEncoding)
-//                    print(decodedString!)
-////                        if let data = data, response = try NSJSONSerialization.JSONObjectWithData(data, options:NSJSONReadingOptions(rawValue:0)) {
-////                            print(response)
-////                        }
-//                }
-//            }
-//        })
-//        
-//        dataTask?.resume()
-//    }
-    
     func doHttpRequest(method: String, url: String, data: Dictionary<String, String>) -> Void {
         //
         let request = NSMutableURLRequest.init()
@@ -54,22 +19,22 @@ class NetworkMusicApi: NSObject {
         if method == "POST" {
             request.URL = NSURL.init(string: url)
             let newdata = "username=349604757@qq.com&password=1d44443dc866fc6a79bda75a89807354&rememberLogin=true"
+            
             let nnd = newdata.dataUsingEncoding(NSUTF8StringEncoding)
-//            let postData = NSKeyedArchiver .archivedDataWithRootObject(data)
             let length = newdata.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)
             request.HTTPMethod = "POST"
             request.HTTPBody = nnd
             
             request.timeoutInterval = 10
             request.setValue("\(length)", forHTTPHeaderField: "Content-Length")
-//            request.setValue("*/*", forHTTPHeaderField: "Accept")
-//            request.setValue("gzip,deflate,sdch", forHTTPHeaderField: "Accept-Encoding")
-//            request.setValue("zh-CN,zh;q=0.8,gl;q=0.6,zh-TW;q=0.4", forHTTPHeaderField: "Accept-Language")
-//            request.setValue("keep-alive", forHTTPHeaderField: "Connection")
+            request.setValue("*/*", forHTTPHeaderField: "Accept")
+            request.setValue("gzip,deflate,sdch", forHTTPHeaderField: "Accept-Encoding")
+            request.setValue("zh-CN,zh;q=0.8,gl;q=0.6,zh-TW;q=0.4", forHTTPHeaderField: "Accept-Language")
+            request.setValue("keep-alive", forHTTPHeaderField: "Connection")
             request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-//            request.setValue("music.163.com", forHTTPHeaderField: "Host")
-//            request.setValue("http://music.163.com/search/", forHTTPHeaderField: "Referer")
-//            request.setValue("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.152 Safari/537.36", forHTTPHeaderField: "User-Agent")
+            request.setValue("music.163.com", forHTTPHeaderField: "Host")
+            request.setValue("http://music.163.com/search/", forHTTPHeaderField: "Referer")
+            request.setValue("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.152 Safari/537.36", forHTTPHeaderField: "User-Agent")
             
             dataTask = defaultSession.dataTaskWithRequest(request, completionHandler: { (data, response, error) in
                 if let err = error {
