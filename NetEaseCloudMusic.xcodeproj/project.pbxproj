@@ -48,6 +48,8 @@
 		DE2654ED1D102A070083F742 /* MyMVViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654EC1D102A070083F742 /* MyMVViewController.swift */; };
 		DE2654F21D102A9D0083F742 /* MyRadioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654F11D102A9D0083F742 /* MyRadioViewController.swift */; };
 		DE2654F81D103A8D0083F742 /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2654F71D103A8D0083F742 /* AccountTableViewCell.swift */; };
+		DE35EB821D30E66D00485339 /* SongSheets.geojson in Resources */ = {isa = PBXBuildFile; fileRef = DE35EB811D30E66D00485339 /* SongSheets.geojson */; };
+		DE35EB851D30E89F00485339 /* SongSheetDetails.geojson in Resources */ = {isa = PBXBuildFile; fileRef = DE35EB841D30E89F00485339 /* SongSheetDetails.geojson */; };
 		DE4068541D12A3190067F0FE /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4068531D12A3190067F0FE /* BaseTableViewCell.swift */; };
 		DE4068571D12A4DA0067F0FE /* RoundNumberLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4068561D12A4DA0067F0FE /* RoundNumberLabel.swift */; };
 		DE79E6EE1D163B35006B9926 /* RankRoundLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE79E6ED1D163B35006B9926 /* RankRoundLabel.swift */; };
@@ -130,6 +132,8 @@
 		DE2654EC1D102A070083F742 /* MyMVViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyMVViewController.swift; path = MyMusic/MyMV/MyMVViewController.swift; sourceTree = "<group>"; };
 		DE2654F11D102A9D0083F742 /* MyRadioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyRadioViewController.swift; path = MyMusic/MyRadio/MyRadioViewController.swift; sourceTree = "<group>"; };
 		DE2654F71D103A8D0083F742 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountTableViewCell.swift; path = Account/AccountTableViewCell.swift; sourceTree = "<group>"; };
+		DE35EB811D30E66D00485339 /* SongSheets.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SongSheets.geojson; path = Resources/SongSheets.geojson; sourceTree = "<group>"; };
+		DE35EB841D30E89F00485339 /* SongSheetDetails.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SongSheetDetails.geojson; sourceTree = "<group>"; };
 		DE4068531D12A3190067F0FE /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseTableViewCell.swift; path = Common/BaseTableViewCell.swift; sourceTree = "<group>"; };
 		DE4068561D12A4DA0067F0FE /* RoundNumberLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoundNumberLabel.swift; path = Common/RoundNumberLabel.swift; sourceTree = "<group>"; };
 		DE42A5A61D2D26FF002D3B60 /* NetEaseCloudMusic-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NetEaseCloudMusic-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -224,6 +228,7 @@
 				DE2654AF1D101D7F0083F742 /* MyMusic */,
 				DE2654B21D101DAD0083F742 /* Friend */,
 				DE2654B51D101DD60083F742 /* Account */,
+				DE35EB831D30E68400485339 /* Resources */,
 				DEC8F3121D23E0BC00C30661 /* API */,
 			);
 			path = NetEaseCloudMusic;
@@ -360,6 +365,16 @@
 				DE2654E01D1028160083F742 /* AboutViewController.swift */,
 			);
 			name = ContentVC;
+			sourceTree = "<group>";
+		};
+		DE35EB831D30E68400485339 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				DE35EB811D30E66D00485339 /* SongSheets.geojson */,
+				DE35EB841D30E89F00485339 /* SongSheetDetails.geojson */,
+			);
+			name = Resources;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		DE4068551D12A3240067F0FE /* Common */ = {
@@ -517,6 +532,8 @@
 				DE2654821D101A860083F742 /* Assets.xcassets in Resources */,
 				DE2654801D101A860083F742 /* Main.storyboard in Resources */,
 				DE2474751D1AB83C00EBAA37 /* CommentCell.xib in Resources */,
+				DE35EB821D30E66D00485339 /* SongSheets.geojson in Resources */,
+				DE35EB851D30E89F00485339 /* SongSheetDetails.geojson in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

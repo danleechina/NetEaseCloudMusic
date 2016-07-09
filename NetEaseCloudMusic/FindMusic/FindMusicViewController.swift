@@ -7,29 +7,39 @@
 //
 
 import UIKit
+import AVFoundation
 
 class FindMusicViewController: UIViewController {
 
+    private var songPlayer = AVPlayer.init()
+    private var out_context = 0
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+//        playIt("http://m2.music.126.net/U2CxR3MGaqD-DHlsCYgksg==/3291937813618641.mp3")
     }
     
-
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func playIt(urlString: String) -> Void {
+        let player = AVPlayer.init(URL: NSURL.init(string: urlString)!)
+        songPlayer = player
+        NSNotificationCenter .defaultCenter().addObserver(self, selector: #selector(playerItemDidReachEnd(_:)), name: AVPlayerItemDidPlayToEndTimeNotification, object: songPlayer.currentItem)
+        songPlayer.addObserver(self, forKeyPath: "status", options: NSKeyValueObservingOptions.New, context: &out_context)
+        songPlayer.play()
     }
-    */
+    
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) -> Void {
+        if context == &out_context {
+            print("changed")
+        }
+    }
 
+    func playerItemDidReachEnd(notification: NSNotification) -> Void {
+        print("playerItemDidReachEnd")
+    }
+    
+    func updateProgress() -> Void {
+        print("updateProgress")
+    }
+ */
 }
