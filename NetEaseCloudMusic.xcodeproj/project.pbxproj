@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A0BE95BF1D157ABB009A84F0 /* HeadIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BE95BE1D157ABB009A84F0 /* HeadIconView.swift */; };
+		DE13AB111D3511D0004BA90C /* SongSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE13AB101D3511D0004BA90C /* SongSheet.swift */; };
 		DE19D2141D12DAFC008A575C /* FixedValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE19D2131D12DAFC008A575C /* FixedValue.swift */; };
 		DE2474741D1AB83C00EBAA37 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2474721D1AB83C00EBAA37 /* CommentCell.swift */; };
 		DE2474751D1AB83C00EBAA37 /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE2474731D1AB83C00EBAA37 /* CommentCell.xib */; };
@@ -86,6 +87,7 @@
 		C2FE4E75AA0B108BB1B196B5 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C681789F70D8D427BB9A1604 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D42FA2A00EA9169F711A1E81 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE13AB101D3511D0004BA90C /* SongSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SongSheet.swift; path = Model/SongSheet.swift; sourceTree = "<group>"; };
 		DE19D2131D12DAFC008A575C /* FixedValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FixedValue.swift; path = Util/FixedValue.swift; sourceTree = "<group>"; };
 		DE2474721D1AB83C00EBAA37 /* CommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommentCell.swift; path = Account/CommentCell.swift; sourceTree = "<group>"; };
 		DE2474731D1AB83C00EBAA37 /* CommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CommentCell.xib; path = Account/CommentCell.xib; sourceTree = "<group>"; };
@@ -183,6 +185,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		DE13AB121D3511D5004BA90C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DE13AB101D3511D0004BA90C /* SongSheet.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		DE19D2151D12DB03008A575C /* Util */ = {
 			isa = PBXGroup;
 			children = (
@@ -258,6 +268,7 @@
 				DE2654AA1D101D440083F742 /* FindMusicViewController.swift */,
 				DE2654C01D10249D0083F742 /* SoundHoundViewController.swift */,
 				DE2654E21D1028C60083F742 /* ContentVC */,
+				DE13AB121D3511D5004BA90C /* Model */,
 			);
 			name = FindMusic;
 			sourceTree = "<group>";
@@ -624,6 +635,7 @@
 				DE2654EB1D1029DE0083F742 /* MySingerViewController.swift in Sources */,
 				DE2654CD1D1025F90083F742 /* NearByViewController.swift in Sources */,
 				DE2654CF1D1026710083F742 /* MyMessageViewController.swift in Sources */,
+				DE13AB111D3511D0004BA90C /* SongSheet.swift in Sources */,
 				DE2654BD1D10236F0083F742 /* RadioViewController.swift in Sources */,
 				DE4068541D12A3190067F0FE /* BaseTableViewCell.swift in Sources */,
 				DE79E6F01D167209006B9926 /* AtMineListTableView.swift in Sources */,

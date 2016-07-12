@@ -9,6 +9,7 @@
 import UIKit
 
 class SongSheetViewController: UIViewController {
+    private var collectData = [SongSheet]()
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView.init(frame: self.view.bounds, collectionViewLayout: self.collectionViewFlowLayout)
         collectionView.delegate = self
@@ -25,7 +26,7 @@ class SongSheetViewController: UIViewController {
        let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .Vertical
         layout.headerReferenceSize = CGSizeMake(CGRectGetWidth(self.view.frame), 100)
-        layout.itemSize = CGSizeMake(145, 140)
+        layout.itemSize = CGSizeMake(145, 170)
         layout.minimumLineSpacing = 2
         layout.sectionInset = UIEdgeInsetsMake(2, 0, 5, 0)
         return layout
@@ -35,6 +36,12 @@ class SongSheetViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.whiteColor()
         view.addSubview(self.collectionView)
+        
+        SongSheet.loadSongSheetData { (data, error) in
+            if error == nil {
+                self.collectData = data!
+            }
+        }
     }
 
 }
@@ -44,11 +51,12 @@ extension SongSheetViewController: UICollectionViewDelegate, UICollectionViewDat
     // MARK: - DataSource
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return collectData.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(SongSheetCollectionViewCell.identifier, forIndexPath: indexPath) as! SongSheetCollectionViewCell
+        cell.modelData = collectData[indexPath.row]
         return cell
     }
     
@@ -72,9 +80,29 @@ extension SongSheetViewController: UICollectionViewDelegate, UICollectionViewDat
 class SongSheetCollectionViewCell: UICollectionViewCell {
     static let identifier = "SongSheetCollectionViewCell"
     
+    var modelData: SongSheet? = SongSheet() {
+        didSet {
+            if modelData != nil {
+                titleLabel.text = modelData!.name
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+                    let imageData = NSData.init(contentsOfURL: NSURL.init(string: self.modelData!.coverImgUrl)!)
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.imageView.image = UIImage.init(data: imageData!)
+                    })
+                }
+                authorLabel.text = modelData!.nickname
+                subscribeLabel.text = "\(modelData!.subscribedCount)"
+            }
+        }
+    }
+    
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
+        label.preferredMaxLayoutWidth = 145
         label.text = "this is title"
+        label.textAlignment = .Center
+        label.font = UIFont.systemFontOfSize(13)
+        label.numberOfLines = 0
         return label
     }()
     
@@ -91,6 +119,7 @@ class SongSheetCollectionViewCell: UICollectionViewCell {
     private lazy var authorLabel: UILabel = {
         let label = UILabel()
         label.text = "Dan Lee"
+        label.font = UIFont.systemFontOfSize(10)
         label.textColor = UIColor.whiteColor()
         return label
     }()
@@ -103,6 +132,7 @@ class SongSheetCollectionViewCell: UICollectionViewCell {
     private lazy var subscribeLabel: UILabel = {
         let label = UILabel()
         label.text = "1234567"
+        label.font = UIFont.systemFontOfSize(10)
         label.textColor = UIColor.whiteColor()
         return label
     }()
@@ -136,7 +166,7 @@ class SongSheetCollectionViewCell: UICollectionViewCell {
         }
         
         imageContentView.snp_makeConstraints { (make) in
-            make.edges.equalTo(self).inset(UIEdgeInsetsMake(0, 0, 20, 0))
+            make.edges.equalTo(self).inset(UIEdgeInsetsMake(0, 0, 40, 0))
         }
         
         imageView.snp_makeConstraints { (make) in
@@ -157,9 +187,15 @@ class SongSheetCollectionViewCell: UICollectionViewCell {
             make.right.equalTo(imageView.snp_right)
             make.top.equalTo(imageView.snp_top)
         }
-        
-        
-        
     }
+    
+    override func prepareForReuse() {
+        modelData = nil
+        titleLabel.text = ""
+        imageView.image = nil
+        authorLabel.text = ""
+        subscribeLabel.text = ""
+    }
+    
     
 }
