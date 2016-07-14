@@ -4,3 +4,4 @@ use_frameworks!
 
 pod 'SnapKit', '~> 0.15.0'
 pod 'YYKit'
+pod 'SDWebImage', '~>3.8'
