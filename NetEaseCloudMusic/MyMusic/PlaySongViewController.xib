@@ -6,6 +6,20 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PlaySongViewController" customModule="NetEaseCloudMusic" customModuleProvider="target">
             <connections>
+                <outlet property="commentImageView" destination="rAU-OC-DBu" id="kyv-M0-v5s"/>
+                <outlet property="downloadImageView" destination="qz0-sd-sHX" id="z1l-iB-GAI"/>
+                <outlet property="lastSongImageView" destination="fnA-x8-nAD" id="yWj-nG-c7h"/>
+                <outlet property="loveImageView" destination="AXa-8c-EHe" id="ZG7-bQ-1ZS"/>
+                <outlet property="needleImageView" destination="nv9-Oh-cTI" id="4DS-50-GnX"/>
+                <outlet property="nextImageView" destination="Ljs-1s-Jq3" id="bZR-ei-qzZ"/>
+                <outlet property="playImageView" destination="gyT-3S-crh" id="fOj-1x-Na6"/>
+                <outlet property="playModeImageView" destination="7K2-4K-fah" id="zKB-gy-6yG"/>
+                <outlet property="settingImageView" destination="DXd-kU-Q9x" id="qY7-QP-w6m"/>
+                <outlet property="songProgressView" destination="6Fg-uV-DWA" id="wpd-x0-F8r"/>
+                <outlet property="themePicImageView" destination="SLQ-ln-h2g" id="XoQ-Bu-LW2"/>
+                <outlet property="timePointLabel" destination="nst-YT-lRa" id="Gq9-bq-zhy"/>
+                <outlet property="totalSettingImageView" destination="TsB-nh-0hX" id="kdi-wi-oZy"/>
+                <outlet property="totalTimeLabel" destination="9Db-RD-NNa" id="iRE-Q2-WWr"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -76,13 +90,6 @@
                         <constraint firstAttribute="width" constant="55" id="lfr-So-QW6"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="first" translatesAutoresizingMaskIntoConstraints="NO" id="TsB-nh-0hX">
-                    <rect key="frame" x="400" y="520" width="55" height="55"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="55" id="fBA-fV-e7i"/>
-                        <constraint firstAttribute="height" constant="55" id="shY-5m-tNG"/>
-                    </constraints>
-                </imageView>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="OmY-l2-7gG">
                     <rect key="frame" x="190" y="445" width="220" height="40"/>
                     <subviews>
@@ -116,6 +123,13 @@
                         </imageView>
                     </subviews>
                 </stackView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="first" translatesAutoresizingMaskIntoConstraints="NO" id="TsB-nh-0hX">
+                    <rect key="frame" x="400" y="520" width="55" height="55"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="55" id="fBA-fV-e7i"/>
+                        <constraint firstAttribute="height" constant="55" id="shY-5m-tNG"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
@@ -154,7 +168,7 @@
                     <exclude reference="q0k-cc-wOG"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="152" y="113"/>
+            <point key="canvasLocation" x="165" y="110"/>
         </view>
     </objects>
     <resources>
