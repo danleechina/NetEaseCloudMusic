@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class SongSheetViewController: UIViewController {
     private var collectData = [SongSheet]()
@@ -84,14 +85,9 @@ class SongSheetCollectionViewCell: UICollectionViewCell {
         didSet {
             if modelData != nil {
                 titleLabel.text = modelData!.name
-                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
-                    let imageData = NSData.init(contentsOfURL: NSURL.init(string: self.modelData!.coverImgUrl)!)
-                    dispatch_async(dispatch_get_main_queue(), {
-                        self.imageView.image = UIImage.init(data: imageData!)
-                    })
-                }
                 authorLabel.text = modelData!.nickname
                 subscribeLabel.text = "\(modelData!.subscribedCount)"
+                self.imageView.sd_setImageWithURL(NSURL.init(string: self.modelData!.coverImgUrl)!)
             }
         }
     }
