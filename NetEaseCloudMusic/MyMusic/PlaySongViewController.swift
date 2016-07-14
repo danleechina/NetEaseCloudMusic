@@ -2,7 +2,7 @@
 //  PlaySongViewController.swift
 //  NetEaseCloudMusic
 //
-//  Created by Ampire_Dan on 16/6/14.
+//  Created by Ampire_Dan on 2016/7/14.
 //  Copyright © 2016年 Ampire_Dan. All rights reserved.
 //
 
@@ -12,8 +12,15 @@ class PlaySongViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+    }
+    
+    override func viewDidLayoutSubviews() {
+        
+        var frame = view.frame
+        frame.origin.y += 64
+        frame.size.height -= 64
+        view.frame = frame
     }
 
 }

@@ -54,7 +54,10 @@ extension CertainSongSheetViewController: UITableViewDelegate, UITableViewDataSo
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        
+        let mp3Url = data.tracks[indexPath.row]["mp3Url"] as! String
+        let vc = PlaySongViewController()
+        vc.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(vc, animated: true)
 //        playMusic
     }
     
