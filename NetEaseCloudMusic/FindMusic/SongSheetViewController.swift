@@ -70,7 +70,8 @@ extension SongSheetViewController: UICollectionViewDelegate, UICollectionViewDat
     // MARK: - Delegate
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        
+        let vc = CertainSongSheetViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }
