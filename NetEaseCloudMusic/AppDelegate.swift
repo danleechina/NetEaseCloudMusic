@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } catch _ {
             print("error")
         }
+        
         return true
     }
 

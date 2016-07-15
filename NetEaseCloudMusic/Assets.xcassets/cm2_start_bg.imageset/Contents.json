@@ -1,0 +1,29 @@
+{
+  "images" : [
+    {
+      "idiom" : "universal",
+      "filename" : "cm2_start_bg.jpg",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "cm2_start_bg@2x.jpg",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "cm2_start_bg@3x.jpg",
+      "scale" : "3x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "cm2_start_bg-568h@2x.jpg",
+      "subtype" : "retina4",
+      "scale" : "2x"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}
