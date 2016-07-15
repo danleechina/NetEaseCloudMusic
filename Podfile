@@ -6,3 +6,4 @@ pod 'SnapKit', '~> 0.15.0'
 pod 'YYKit'
 pod 'SDWebImage', '~>3.8'
 pod 'Reveal-iOS-SDK', :configurations => ['Debug']
+pod 'MLeaksFinder'
