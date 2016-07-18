@@ -15,12 +15,23 @@ class PlaySongViewController: UIViewController {
         didSet {
         }
     }
+    @IBOutlet weak var blurBackgroundImageView: UIImageView! {
+        didSet {
+            let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .Light))
+            visualEffectView.frame = blurBackgroundImageView.bounds
+            blurBackgroundImageView.addSubview(visualEffectView)
+        }
+    }
     
     @IBOutlet weak var themePicImageView: UIImageView!{
         didSet {
             
         }
     }
+    
+    
+    @IBOutlet weak var headPicImageView: UIImageView!
+    
     
     @IBOutlet weak var loveImageView: UIImageView!{
         didSet {
@@ -105,6 +116,12 @@ class PlaySongViewController: UIViewController {
         }
     }
     
+    var mp3Url = ""
+    var picUrl = ""
+    var blurPicUrl = ""
+    var songname = ""
+    var singers = ""
+    
     var isPlaying = false
     
     func tapPlayImage() -> Void {
@@ -144,6 +161,18 @@ class PlaySongViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         isPlaying = true
+        
+        headPicImageView.sd_setImageWithURL(NSURL.init(string: picUrl))
+        headPicImageView.layer.cornerRadius = 80
+        
+        blurBackgroundImageView.sd_setImageWithURL(NSURL.init(string: blurPicUrl))
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.translucent = true
     }
     
 //    override func viewDidLayoutSubviews() {
