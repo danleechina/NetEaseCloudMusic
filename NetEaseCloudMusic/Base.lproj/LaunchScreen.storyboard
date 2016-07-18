@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16A239j" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -15,7 +16,30 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchImage-700" translatesAutoresizingMaskIntoConstraints="NO" id="Toj-jZ-yZV">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Toj-jZ-yZV" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" id="9B0-sV-mKN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Toj-jZ-yZV" secondAttribute="trailing" id="COs-dA-KKV"/>
+                            <constraint firstItem="Toj-jZ-yZV" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" id="CWd-9m-BKw"/>
+                            <constraint firstItem="Toj-jZ-yZV" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="JO4-tX-AhF"/>
+                            <constraint firstItem="Toj-jZ-yZV" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="QHq-fS-pXp"/>
+                            <constraint firstItem="Toj-jZ-yZV" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" id="ULk-h8-NbN"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="Toj-jZ-yZV" secondAttribute="bottom" id="WSO-Io-I24"/>
+                            <constraint firstItem="Toj-jZ-yZV" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" id="Xgo-EA-iaB"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="9B0-sV-mKN"/>
+                                <exclude reference="COs-dA-KKV"/>
+                                <exclude reference="CWd-9m-BKw"/>
+                                <exclude reference="WSO-Io-I24"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -23,4 +47,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="LaunchImage-700" width="320" height="568"/>
+    </resources>
 </document>

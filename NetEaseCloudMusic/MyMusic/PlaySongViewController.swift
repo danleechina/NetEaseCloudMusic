@@ -95,6 +95,11 @@ class PlaySongViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var dotCurrentProcess: UIImageView! {
+        didSet {
+            
+        }
+    }
     
     
     override func viewDidLoad() {
