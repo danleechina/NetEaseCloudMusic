@@ -30,7 +30,11 @@ class PlaySongViewController: UIViewController {
     }
     
     
-    @IBOutlet weak var headPicImageView: UIImageView!
+    @IBOutlet weak var headPicImageView: UIImageView!{
+        didSet {
+            headPicImageView.layer.cornerRadius = 80
+        }
+    }
     
     
     @IBOutlet weak var loveImageView: UIImageView!{
@@ -163,7 +167,6 @@ class PlaySongViewController: UIViewController {
         isPlaying = true
         
         headPicImageView.sd_setImageWithURL(NSURL.init(string: picUrl))
-        headPicImageView.layer.cornerRadius = 80
         
         blurBackgroundImageView.sd_setImageWithURL(NSURL.init(string: blurPicUrl))
     }
