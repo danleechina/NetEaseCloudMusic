@@ -36,7 +36,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </imageView>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_play_disc_mask" translatesAutoresizingMaskIntoConstraints="NO" id="Ry2-qp-xQN">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_play_disc_mask" translatesAutoresizingMaskIntoConstraints="NO" id="Ry2-qp-xQN">
                     <rect key="frame" x="0.0" y="-18" width="600" height="600"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="300" id="JZN-Hk-MN4"/>
@@ -53,7 +53,7 @@
                         </mask>
                     </variation>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_play_btn_shuffle_prs" translatesAutoresizingMaskIntoConstraints="NO" id="7K2-4K-fah">
+                <imageView contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_play_btn_shuffle_prs" translatesAutoresizingMaskIntoConstraints="NO" id="7K2-4K-fah">
                     <rect key="frame" x="140" y="520" width="55" height="55"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="55" id="3mZ-ia-H8T"/>
@@ -72,7 +72,7 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PBY-Ja-nsG">
+                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PBY-Ja-nsG">
                     <rect key="frame" x="220" y="180" width="160" height="160"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -80,7 +80,7 @@
                         <constraint firstAttribute="height" constant="160" id="tS3-C8-jrk"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_play_disc-ip6" translatesAutoresizingMaskIntoConstraints="NO" id="SLQ-ln-h2g">
+                <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_play_disc-ip6" translatesAutoresizingMaskIntoConstraints="NO" id="SLQ-ln-h2g">
                     <rect key="frame" x="180" y="140" width="240" height="240"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -88,7 +88,7 @@
                         <constraint firstAttribute="width" constant="240" id="Zcj-vr-BRa"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_play_needle_play" translatesAutoresizingMaskIntoConstraints="NO" id="nv9-Oh-cTI">
+                <imageView contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_play_needle_play" translatesAutoresizingMaskIntoConstraints="NO" id="nv9-Oh-cTI">
                     <rect key="frame" x="283" y="47" width="80" height="140"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -102,7 +102,7 @@
                         </mask>
                     </variation>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_play_btn_prev" translatesAutoresizingMaskIntoConstraints="NO" id="fnA-x8-nAD">
+                <imageView contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_play_btn_prev" translatesAutoresizingMaskIntoConstraints="NO" id="fnA-x8-nAD">
                     <rect key="frame" x="210" y="520" width="55" height="55"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="55" id="LVv-2T-RN1"/>
@@ -116,7 +116,7 @@
                         <constraint firstAttribute="height" constant="55" id="v2x-JR-iIp"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_fm_btn_next" translatesAutoresizingMaskIntoConstraints="NO" id="Ljs-1s-Jq3">
+                <imageView contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_fm_btn_next" translatesAutoresizingMaskIntoConstraints="NO" id="Ljs-1s-Jq3">
                     <rect key="frame" x="330" y="520" width="55" height="55"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="55" id="HlU-9P-JWg"/>
@@ -126,28 +126,28 @@
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="OmY-l2-7gG">
                     <rect key="frame" x="190" y="444" width="220" height="40"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_play_icn_love" translatesAutoresizingMaskIntoConstraints="NO" id="AXa-8c-EHe">
+                        <imageView contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_play_icn_love" translatesAutoresizingMaskIntoConstraints="NO" id="AXa-8c-EHe">
                             <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="40" id="DF4-PS-MqA"/>
                                 <constraint firstAttribute="height" constant="40" id="Fry-9l-cCp"/>
                             </constraints>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_play_icn_dld" translatesAutoresizingMaskIntoConstraints="NO" id="qz0-sd-sHX">
+                        <imageView contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_play_icn_dld" translatesAutoresizingMaskIntoConstraints="NO" id="qz0-sd-sHX">
                             <rect key="frame" x="60" y="0.0" width="40" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="40" id="O7Z-by-OgN"/>
                                 <constraint firstAttribute="height" constant="40" id="ZT2-Sf-bcp"/>
                             </constraints>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_play_icn_cmt_num" translatesAutoresizingMaskIntoConstraints="NO" id="rAU-OC-DBu">
+                        <imageView contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_play_icn_cmt_num" translatesAutoresizingMaskIntoConstraints="NO" id="rAU-OC-DBu">
                             <rect key="frame" x="120" y="0.0" width="40" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="2l4-ET-UBa"/>
                                 <constraint firstAttribute="width" constant="40" id="j8o-bJ-TiK"/>
                             </constraints>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_play_icn_more" translatesAutoresizingMaskIntoConstraints="NO" id="DXd-kU-Q9x">
+                        <imageView contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_play_icn_more" translatesAutoresizingMaskIntoConstraints="NO" id="DXd-kU-Q9x">
                             <rect key="frame" x="180" y="0.0" width="40" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="2HQ-i4-fkS"/>
@@ -156,7 +156,7 @@
                         </imageView>
                     </subviews>
                 </stackView>
-                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_play_btn_src_prs" translatesAutoresizingMaskIntoConstraints="NO" id="TsB-nh-0hX">
+                <imageView contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_play_btn_src_prs" translatesAutoresizingMaskIntoConstraints="NO" id="TsB-nh-0hX">
                     <rect key="frame" x="400" y="520" width="55" height="55"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="55" id="fBA-fV-e7i"/>
@@ -180,7 +180,7 @@
             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="Ry2-qp-xQN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="2cE-Ik-Y1R"/>
-                <constraint firstItem="SLQ-ln-h2g" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-40" id="3AB-Xo-Af4"/>
+                <constraint firstItem="SLQ-ln-h2g" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-35" id="3AB-Xo-Af4"/>
                 <constraint firstItem="9Db-RD-NNa" firstAttribute="leading" secondItem="h7x-k6-kHX" secondAttribute="trailing" constant="8" symbolic="YES" id="4en-aB-e3b"/>
                 <constraint firstItem="Ry2-qp-xQN" firstAttribute="top" secondItem="nv9-Oh-cTI" secondAttribute="bottom" constant="42" id="5lU-1A-avm"/>
                 <constraint firstItem="h7x-k6-kHX" firstAttribute="centerY" secondItem="9Db-RD-NNa" secondAttribute="centerY" id="5xb-2l-Min"/>
@@ -211,14 +211,14 @@
                 <constraint firstItem="h7x-k6-kHX" firstAttribute="top" secondItem="OmY-l2-7gG" secondAttribute="bottom" constant="8" symbolic="YES" id="Ysb-O5-Hbc"/>
                 <constraint firstItem="oaW-jk-qCH" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" id="a4W-kM-Wv3"/>
                 <constraint firstItem="SLQ-ln-h2g" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="a4Y-y5-xFD"/>
-                <constraint firstItem="nv9-Oh-cTI" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="47" id="cIQ-AA-HYl"/>
+                <constraint firstItem="nv9-Oh-cTI" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="37" id="cIQ-AA-HYl"/>
                 <constraint firstItem="Ry2-qp-xQN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="cQl-dR-uo0"/>
                 <constraint firstItem="gyT-3S-crh" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="-2.5" id="ceM-bU-zQx"/>
                 <constraint firstItem="Ry2-qp-xQN" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" id="dt1-yq-HCg"/>
                 <constraint firstAttribute="trailing" secondItem="Ry2-qp-xQN" secondAttribute="trailing" id="duP-Rb-C8T"/>
-                <constraint firstItem="nv9-Oh-cTI" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="-17" id="e8x-x2-jeZ"/>
+                <constraint firstItem="nv9-Oh-cTI" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="-23" id="e8x-x2-jeZ"/>
                 <constraint firstItem="Ry2-qp-xQN" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="8:15" id="fyY-zW-KWT"/>
-                <constraint firstItem="Ry2-qp-xQN" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-18" id="gfG-VZ-ftP"/>
+                <constraint firstItem="Ry2-qp-xQN" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="gfG-VZ-ftP"/>
                 <constraint firstItem="Ry2-qp-xQN" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-30" id="hLd-2o-PKy"/>
                 <constraint firstAttribute="bottom" secondItem="Ry2-qp-xQN" secondAttribute="bottom" id="hYl-sh-Q86"/>
                 <constraint firstItem="Ry2-qp-xQN" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-55" id="hbi-8b-wOO"/>
@@ -276,11 +276,11 @@
         <image name="cm2_play_btn_shuffle_prs" width="28" height="28"/>
         <image name="cm2_play_btn_src_prs" width="28" height="28"/>
         <image name="cm2_play_disc-ip6" width="298" height="298"/>
-        <image name="cm2_play_disc_mask" width="320" height="480"/>
+        <image name="cm2_play_disc_mask" width="320" height="568"/>
         <image name="cm2_play_icn_cmt_num" width="40" height="40"/>
         <image name="cm2_play_icn_dld" width="40" height="40"/>
         <image name="cm2_play_icn_love" width="40" height="40"/>
         <image name="cm2_play_icn_more" width="40" height="40"/>
-        <image name="cm2_play_needle_play" width="80" height="140"/>
+        <image name="cm2_play_needle_play" width="97" height="153"/>
     </resources>
 </document>

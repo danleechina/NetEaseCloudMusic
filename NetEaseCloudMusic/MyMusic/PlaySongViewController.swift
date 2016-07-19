@@ -39,7 +39,9 @@ class PlaySongViewController: UIViewController {
     
     @IBOutlet weak var loveImageView: UIImageView!{
         didSet {
-            
+            let tapGest = UITapGestureRecognizer.init(target: self, action: #selector(tapLoveImage))
+            tapGest.numberOfTapsRequired = 1
+            loveImageView.addGestureRecognizer(tapGest)
         }
     }
     
@@ -127,6 +129,7 @@ class PlaySongViewController: UIViewController {
     var singers = ""
     
     var isPlaying = false
+    var isLike = false
     
     func tapPlayImage() -> Void {
         var angle:CGFloat = 0
@@ -137,11 +140,35 @@ class PlaySongViewController: UIViewController {
             playImageView.image = UIImage.init(named: "cm2_fm_btn_play")
             angle = CGFloat(0)
         }
-        self.setAnchorPoint(CGPointMake(0.1, 0.1), forView: self.needleImageView)
+        let point = self.view.convertPoint(CGPointMake(self.view.bounds.size.width/2, 64), toView: self.needleImageView)
+        let anchorPoint = CGPointMake(point.x/self.needleImageView.bounds.size.width, point.y/self.needleImageView.bounds.size.height)
+        self.setAnchorPoint(anchorPoint, forView: self.needleImageView)
         UIView .animateWithDuration(0.2) {
             self.needleImageView.transform = CGAffineTransformMakeRotation(angle)
         }
         isPlaying = !isPlaying
+    }
+    
+    func tapLoveImage() {
+        if isLike {
+            loveImageView.image = UIImage.init(named: "cm2_play_icn_love")
+        } else {
+            loveImageView.image = UIImage.init(named: "cm2_play_icn_loved")
+            UIView.animateWithDuration(0.1, animations: {
+                self.loveImageView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.2, 1.2)
+                }, completion: { (finished) in
+                    UIView.animateWithDuration(0.1, animations: {
+                        self.loveImageView.transform = CGAffineTransformScale(self.loveImageView.transform, 0.8, 0.8)
+                        }, completion: { (finished) in
+                            UIView.animateWithDuration(0.1, animations: {
+                                self.loveImageView.transform = CGAffineTransformScale(self.loveImageView.transform, 1, 1)
+                                }, completion: { (finished) in
+                                    self.loveImageView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1, 1)
+                            })
+                    })
+            })
+        }
+        isLike = !isLike
     }
     
     func setAnchorPoint(anchorPoint: CGPoint, forView view: UIView) {
@@ -171,19 +198,22 @@ class PlaySongViewController: UIViewController {
         blurBackgroundImageView.sd_setImageWithURL(NSURL.init(string: blurPicUrl))
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.translucent = true
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.setAnchorPoint(CGPointMake(0.5, 0.5), forView: self.needleImageView)
     }
     
-//    override func viewDidLayoutSubviews() {
-//        
-//        var frame = view.frame
-//        frame.origin.y += 64
-//        frame.size.height -= 64
-//        view.frame = frame
-//    }
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        // TODO: we need a navigationController when navigationBar being setted, pop to last vc when restore the appearance.
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage.init(named: "cm2_fm_playbar_bg"), forBarMetrics: .Default)
+        self.navigationController?.navigationBar.shadowImage = UIImage.init(named: "cm2_play_topbar_shadow")
+//        self.navigationController?.navigationBar.translucent = true
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+    }
 
 }
