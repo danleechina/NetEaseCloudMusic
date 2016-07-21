@@ -26,7 +26,13 @@ class PlaySongViewController: UIViewController {
     
     @IBOutlet weak var themePicImageView: UIImageView!{
         didSet {
+            let lswipeGest = UISwipeGestureRecognizer.init(target: self, action: #selector(swipeThemePictImageView))
+            lswipeGest.direction = UISwipeGestureRecognizerDirection.Left
+            themePicImageView.addGestureRecognizer(lswipeGest)
             
+            let rswipeGest = UISwipeGestureRecognizer.init(target: self, action: #selector(swipeThemePictImageView))
+            rswipeGest.direction = UISwipeGestureRecognizerDirection.Right
+            themePicImageView.addGestureRecognizer(rswipeGest)
         }
     }
     
@@ -53,11 +59,7 @@ class PlaySongViewController: UIViewController {
         }
     }
     
-    @IBOutlet weak var downloadImageView: UIImageView!{
-        didSet {
-            
-        }
-    }
+    @IBOutlet weak var downloadImageView: UIImageView!
     
     @IBOutlet weak var commentImageView: UIImageView!{
         didSet {
@@ -93,7 +95,9 @@ class PlaySongViewController: UIViewController {
     
     @IBOutlet weak var playModeImageView: UIImageView!{
         didSet {
-            
+            let tapGest = UITapGestureRecognizer.init(target: self, action: #selector(tapPlayModeImage))
+            tapGest.numberOfTapsRequired = 1
+            playModeImageView.addGestureRecognizer(tapGest)
         }
     }
     
@@ -129,15 +133,6 @@ class PlaySongViewController: UIViewController {
             
         }
     }
-    
-    var mp3Url = ""
-    var picUrl = ""
-    var blurPicUrl = ""
-    var songname = ""
-    var singers = ""
-    
-    var isPlaying = false
-    var isLike = false
     
     func pauseHeadPicImageViewAnimate() {
         let pausedTime = headPicImageView.layer .convertTime(CACurrentMediaTime(), fromLayer: nil)
@@ -201,6 +196,44 @@ class PlaySongViewController: UIViewController {
         isLike = !isLike
     }
     
+    func tapPlayModeImage() {
+        playMode += 1
+        playMode = playMode == 4 ? 0 : playMode
+        switch playMode {
+        case 0:
+            playModeImageView.image = UIImage.init(named: "cm2_icn_shuffle")
+            playModeImageView.highlightedImage = UIImage.init(named: "cm2_icn_shuffle_prs")
+            break
+        case 1:
+            playModeImageView.image = UIImage.init(named: "cm2_icn_loop")
+            playModeImageView.highlightedImage = UIImage.init(named: "cm2_icn_loop_prs")
+            break
+        case 2:
+            playModeImageView.image = UIImage.init(named: "cm2_icn_one")
+            playModeImageView.highlightedImage = UIImage.init(named: "cm2_icn_one_prs")
+            break
+        case 3:
+            playModeImageView.image = UIImage.init(named: "cm2_icn_order")
+            playModeImageView.highlightedImage = UIImage.init(named: "cm2_icn_order_prs")
+            break
+        default:
+            break
+        }
+    }
+    
+    func swipeThemePictImageView(sender: UISwipeGestureRecognizer) {
+        switch sender.direction {
+        case UISwipeGestureRecognizerDirection.Left:
+            
+            break
+            
+        case UISwipeGestureRecognizerDirection.Right:
+            break
+        default:
+            break
+        }
+    }
+    
     func setAnchorPoint(anchorPoint: CGPoint, forView view: UIView) {
         var newPoint = CGPointMake(view.bounds.size.width * anchorPoint.x, view.bounds.size.height * anchorPoint.y)
         var oldPoint = CGPointMake(view.bounds.size.width * view.layer.anchorPoint.x, view.bounds.size.height * view.layer.anchorPoint.y)
@@ -219,31 +252,58 @@ class PlaySongViewController: UIViewController {
         view.layer.anchorPoint = anchorPoint
     }
     
+    
+    var mp3Url = ""
+    var picUrl = ""
+    var blurPicUrl = ""
+    var songname = ""
+    var singers = ""
+    
+    var isPlaying = false
+    var isLike = false
+    var playMode = 0
+    
+    private lazy var marqueeTitleLabel: MarqueeLabel = {
+        let label =  MarqueeLabel.init(frame: CGRectMake(0, 0, 50, 44), duration: 2, fadeLength: 0)
+        label.textColor = UIColor.whiteColor()
+        label.backgroundColor = UIColor.blackColor()
+        return label
+    }()
+    
+    private lazy var singerNameLabel: UILabel = {
+        let label = UILabel()
+        return label
+    }()
+    
+    private lazy var titleView: UIView = {
+        let view = UIView()
+        view.addSubview(self.marqueeTitleLabel)
+        view.addSubview(self.singerNameLabel)
+        return view
+    }()
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         isPlaying = true
         
         headPicImageView.sd_setImageWithURL(NSURL.init(string: picUrl))
-        
         blurBackgroundImageView.sd_setImageWithURL(NSURL.init(string: blurPicUrl))
+        
+        let barAppearance = self.navigationController?.navigationBar
+        barAppearance?.translucent = true
+        barAppearance?.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+
+        marqueeTitleLabel.text = songname + "2222222222"
+        marqueeTitleLabel.triggerScrollStart()
+
+        self.navigationItem.titleView = titleView
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         
-        self.setAnchorPoint(CGPointMake(0.5, 0.5), forView: self.needleImageView)
+        setAnchorPoint(CGPointMake(0.5, 0.5), forView: self.needleImageView)
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        // TODO: we need a navigationController when navigationBar being setted, pop to last vc when restore the appearance.
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage.init(named: "cm2_fm_playbar_bg"), forBarMetrics: .Default)
-        self.navigationController?.navigationBar.shadowImage = UIImage.init(named: "cm2_play_topbar_shadow")
-//        self.navigationController?.navigationBar.translucent = true
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-    }
-
 }

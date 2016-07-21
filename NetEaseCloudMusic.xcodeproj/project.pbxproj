@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A02A3EE41D40FBD100A3956F /* MarqueeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02A3EE31D40FBD100A3956F /* MarqueeLabel.swift */; };
 		A0BE95BF1D157ABB009A84F0 /* HeadIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BE95BE1D157ABB009A84F0 /* HeadIconView.swift */; };
 		DE13AB111D3511D0004BA90C /* SongSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE13AB101D3511D0004BA90C /* SongSheet.swift */; };
 		DE13AB1B1D378CD9004BA90C /* CertainSongSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE13AB1A1D378CD9004BA90C /* CertainSongSheetViewController.swift */; };
@@ -86,6 +87,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A02A3EE31D40FBD100A3956F /* MarqueeLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarqueeLabel.swift; path = Vendor/MarqueeLabel.swift; sourceTree = "<group>"; };
 		A0BE95BE1D157ABB009A84F0 /* HeadIconView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeadIconView.swift; path = Common/HeadIconView.swift; sourceTree = "<group>"; };
 		C2FE4E75AA0B108BB1B196B5 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C681789F70D8D427BB9A1604 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -191,6 +193,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		A02A3EE51D40FBDD00A3956F /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				A02A3EE31D40FBD100A3956F /* MarqueeLabel.swift */,
+			);
+			name = Vendor;
+			sourceTree = "<group>";
+		};
 		DE13AB121D3511D5004BA90C /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -247,6 +257,7 @@
 				DE2654B51D101DD60083F742 /* Account */,
 				DE35EB831D30E68400485339 /* Resources */,
 				DEC8F3121D23E0BC00C30661 /* API */,
+				A02A3EE51D40FBDD00A3956F /* Vendor */,
 			);
 			path = NetEaseCloudMusic;
 			sourceTree = "<group>";
@@ -674,6 +685,7 @@
 				DE2654DD1D1027E40083F742 /* MusicAlarmViewController.swift in Sources */,
 				DE2654E11D1028160083F742 /* AboutViewController.swift in Sources */,
 				DE2654D31D1026DA0083F742 /* PointMallViewController.swift in Sources */,
+				A02A3EE41D40FBD100A3956F /* MarqueeLabel.swift in Sources */,
 				DE19D2141D12DAFC008A575C /* FixedValue.swift in Sources */,
 				DEC8F3111D23E0B700C30661 /* NetworkMusicApi.swift in Sources */,
 			);

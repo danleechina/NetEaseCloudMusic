@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -53,7 +53,7 @@
                         </mask>
                     </variation>
                 </imageView>
-                <imageView contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_play_btn_shuffle_prs" translatesAutoresizingMaskIntoConstraints="NO" id="7K2-4K-fah">
+                <imageView contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_icn_shuffle" highlightedImage="cm2_icn_shuffle_prs" translatesAutoresizingMaskIntoConstraints="NO" id="7K2-4K-fah">
                     <rect key="frame" x="140" y="520" width="55" height="55"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="55" id="3mZ-ia-H8T"/>
@@ -72,7 +72,7 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PBY-Ja-nsG">
+                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_default_cover_play" translatesAutoresizingMaskIntoConstraints="NO" id="PBY-Ja-nsG">
                     <rect key="frame" x="220" y="185" width="160" height="160"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -102,21 +102,21 @@
                         </mask>
                     </variation>
                 </imageView>
-                <imageView contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_play_btn_prev" translatesAutoresizingMaskIntoConstraints="NO" id="fnA-x8-nAD">
+                <imageView contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_play_btn_prev" highlightedImage="cm2_play_btn_prev_prs" translatesAutoresizingMaskIntoConstraints="NO" id="fnA-x8-nAD">
                     <rect key="frame" x="210" y="520" width="55" height="55"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="55" id="LVv-2T-RN1"/>
                         <constraint firstAttribute="height" constant="55" id="jjQ-wo-MeT"/>
                     </constraints>
                 </imageView>
-                <imageView contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_fm_btn_play" translatesAutoresizingMaskIntoConstraints="NO" id="gyT-3S-crh">
+                <imageView contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_fm_btn_play" highlightedImage="cm2_fm_btn_play_prs" translatesAutoresizingMaskIntoConstraints="NO" id="gyT-3S-crh">
                     <rect key="frame" x="270" y="520" width="55" height="55"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="55" id="jzf-7B-Xhs"/>
                         <constraint firstAttribute="height" constant="55" id="v2x-JR-iIp"/>
                     </constraints>
                 </imageView>
-                <imageView contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_fm_btn_next" translatesAutoresizingMaskIntoConstraints="NO" id="Ljs-1s-Jq3">
+                <imageView contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_fm_btn_next" highlightedImage="cm2_fm_btn_next_prs" translatesAutoresizingMaskIntoConstraints="NO" id="Ljs-1s-Jq3">
                     <rect key="frame" x="330" y="520" width="55" height="55"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="55" id="HlU-9P-JWg"/>
@@ -140,14 +140,14 @@
                                 <constraint firstAttribute="height" constant="40" id="ZT2-Sf-bcp"/>
                             </constraints>
                         </imageView>
-                        <imageView contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_play_icn_cmt_num" translatesAutoresizingMaskIntoConstraints="NO" id="rAU-OC-DBu">
+                        <imageView contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_play_icn_cmt_num" highlightedImage="cm2_play_icn_cmt_num_prs" translatesAutoresizingMaskIntoConstraints="NO" id="rAU-OC-DBu">
                             <rect key="frame" x="120" y="0.0" width="40" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="2l4-ET-UBa"/>
                                 <constraint firstAttribute="width" constant="40" id="j8o-bJ-TiK"/>
                             </constraints>
                         </imageView>
-                        <imageView contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_play_icn_more" translatesAutoresizingMaskIntoConstraints="NO" id="DXd-kU-Q9x">
+                        <imageView contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_play_icn_more" highlightedImage="cm2_play_icn_more_prs" translatesAutoresizingMaskIntoConstraints="NO" id="DXd-kU-Q9x">
                             <rect key="frame" x="180" y="0.0" width="40" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="2HQ-i4-fkS"/>
@@ -156,7 +156,7 @@
                         </imageView>
                     </subviews>
                 </stackView>
-                <imageView contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_play_btn_src_prs" translatesAutoresizingMaskIntoConstraints="NO" id="TsB-nh-0hX">
+                <imageView contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_icn_list" highlightedImage="cm2_icn_list_prs" translatesAutoresizingMaskIntoConstraints="NO" id="TsB-nh-0hX">
                     <rect key="frame" x="400" y="520" width="55" height="55"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="55" id="fBA-fV-e7i"/>
@@ -270,17 +270,25 @@
         </view>
     </objects>
     <resources>
+        <image name="cm2_default_cover_play" width="150" height="150"/>
         <image name="cm2_fm_btn_next" width="49" height="49"/>
+        <image name="cm2_fm_btn_next_prs" width="49" height="49"/>
         <image name="cm2_fm_btn_play" width="68" height="68"/>
+        <image name="cm2_fm_btn_play_prs" width="68" height="68"/>
+        <image name="cm2_icn_list" width="44" height="44"/>
+        <image name="cm2_icn_list_prs" width="44" height="44"/>
+        <image name="cm2_icn_shuffle" width="44" height="44"/>
+        <image name="cm2_icn_shuffle_prs" width="44" height="44"/>
         <image name="cm2_play_btn_prev" width="49" height="49"/>
-        <image name="cm2_play_btn_shuffle_prs" width="28" height="28"/>
-        <image name="cm2_play_btn_src_prs" width="28" height="28"/>
+        <image name="cm2_play_btn_prev_prs" width="49" height="49"/>
         <image name="cm2_play_disc-ip6" width="298" height="298"/>
         <image name="cm2_play_disc_mask" width="320" height="568"/>
         <image name="cm2_play_icn_cmt_num" width="40" height="40"/>
+        <image name="cm2_play_icn_cmt_num_prs" width="40" height="40"/>
         <image name="cm2_play_icn_dld" width="40" height="40"/>
         <image name="cm2_play_icn_love" width="40" height="40"/>
         <image name="cm2_play_icn_more" width="40" height="40"/>
+        <image name="cm2_play_icn_more_prs" width="40" height="40"/>
         <image name="cm2_play_needle_play" width="97" height="153"/>
     </resources>
 </document>
