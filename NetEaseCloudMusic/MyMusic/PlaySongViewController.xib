@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="16A254g" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -37,7 +37,7 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </imageView>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_play_disc_mask" translatesAutoresizingMaskIntoConstraints="NO" id="Ry2-qp-xQN">
-                    <rect key="frame" x="0.0" y="-18" width="600" height="600"/>
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="300" id="JZN-Hk-MN4"/>
                         <constraint firstAttribute="width" constant="300" id="JrZ-I5-XSm"/>
@@ -73,7 +73,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PBY-Ja-nsG">
-                    <rect key="frame" x="220" y="180" width="160" height="160"/>
+                    <rect key="frame" x="220" y="185" width="160" height="160"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="160" id="ggS-5M-Gf8"/>
@@ -81,7 +81,7 @@
                     </constraints>
                 </imageView>
                 <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_play_disc-ip6" translatesAutoresizingMaskIntoConstraints="NO" id="SLQ-ln-h2g">
-                    <rect key="frame" x="180" y="140" width="240" height="240"/>
+                    <rect key="frame" x="180" y="145" width="240" height="240"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="240" id="LVp-G1-bR7"/>
@@ -89,7 +89,7 @@
                     </constraints>
                 </imageView>
                 <imageView contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_play_needle_play" translatesAutoresizingMaskIntoConstraints="NO" id="nv9-Oh-cTI">
-                    <rect key="frame" x="283" y="47" width="80" height="140"/>
+                    <rect key="frame" x="277" y="37" width="97" height="153"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="90" id="Zxq-8P-kuk"/>

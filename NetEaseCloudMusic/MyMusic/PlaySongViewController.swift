@@ -15,6 +15,7 @@ class PlaySongViewController: UIViewController {
         didSet {
         }
     }
+    
     @IBOutlet weak var blurBackgroundImageView: UIImageView! {
         didSet {
             let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .Light))
@@ -33,6 +34,13 @@ class PlaySongViewController: UIViewController {
     @IBOutlet weak var headPicImageView: UIImageView!{
         didSet {
             headPicImageView.layer.cornerRadius = 80
+            let rotationAnimation = CABasicAnimation.init(keyPath: "transform.rotation.z")
+            rotationAnimation.toValue = Double(2 * M_PI)
+            rotationAnimation.duration = 10
+            rotationAnimation.cumulative = true
+            rotationAnimation.repeatCount = Float.infinity
+            headPicImageView.layer.addAnimation(rotationAnimation, forKey: "rotationAnimation")
+            pauseHeadPicImageViewAnimate()
         }
     }
     
@@ -131,14 +139,33 @@ class PlaySongViewController: UIViewController {
     var isPlaying = false
     var isLike = false
     
+    func pauseHeadPicImageViewAnimate() {
+        let pausedTime = headPicImageView.layer .convertTime(CACurrentMediaTime(), fromLayer: nil)
+        headPicImageView.layer.speed = 0
+        headPicImageView.layer.timeOffset = pausedTime
+    }
+    
+    func resumeHeadPicImageViewAnimate() {
+        let pausedTime = headPicImageView.layer.timeOffset
+        headPicImageView.layer.speed = 1
+        headPicImageView.layer.timeOffset = 0
+        headPicImageView.layer.beginTime = 0
+        let timeSincePause = headPicImageView.layer .convertTime(CACurrentMediaTime(), fromLayer: nil) - pausedTime
+        headPicImageView.layer.beginTime = timeSincePause
+    }
+    
     func tapPlayImage() -> Void {
         var angle:CGFloat = 0
         if isPlaying {
             playImageView.image = UIImage.init(named: "cm2_fm_btn_pause")
             angle = -CGFloat(M_PI/360 * 80)
+            
+            pauseHeadPicImageViewAnimate()
         } else {
             playImageView.image = UIImage.init(named: "cm2_fm_btn_play")
             angle = CGFloat(0)
+            
+            resumeHeadPicImageViewAnimate()
         }
         let point = self.view.convertPoint(CGPointMake(self.view.bounds.size.width/2, 64), toView: self.needleImageView)
         let anchorPoint = CGPointMake(point.x/self.needleImageView.bounds.size.width, point.y/self.needleImageView.bounds.size.height)
@@ -146,6 +173,9 @@ class PlaySongViewController: UIViewController {
         UIView .animateWithDuration(0.2) {
             self.needleImageView.transform = CGAffineTransformMakeRotation(angle)
         }
+        
+        
+        
         isPlaying = !isPlaying
     }
     
