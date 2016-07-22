@@ -266,6 +266,7 @@ class PlaySongViewController: UIViewController {
     private lazy var marqueeTitleLabel: MarqueeLabel = {
         let label =  MarqueeLabel.init(frame: CGRectMake(0, 0, 150, 24), duration: 10, fadeLength:10)
         label.textColor = UIColor.whiteColor()
+        label.textAlignment = .Center
         label.type = .Continuous
         label.font = UIFont.systemFontOfSize(15)
         return label
@@ -299,10 +300,8 @@ class PlaySongViewController: UIViewController {
         barAppearance?.translucent = true
         barAppearance?.setBackgroundImage(UIImage(), forBarMetrics: .Default)
 
-        marqueeTitleLabel.text = songname + "2222222222"
+        marqueeTitleLabel.text = songname + "22222220000000000222"
         singerNameLabel.text = singers
-//        marqueeTitleLabel.triggerScrollStart()
-
         self.navigationItem.titleView = titleView
     }
     
