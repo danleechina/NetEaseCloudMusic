@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MyMusicViewController: UIViewController {
+class MyMusicViewController: BaseViewController {
     var mySongSheet: [[MyMusicModel]] = [[MyMusicModel]]()
     
     

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RecommendViewController: UIViewController {
+class RecommendViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

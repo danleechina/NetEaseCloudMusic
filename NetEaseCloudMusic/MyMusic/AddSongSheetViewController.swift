@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddSongSheetViewController: UIViewController {
+class AddSongSheetViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

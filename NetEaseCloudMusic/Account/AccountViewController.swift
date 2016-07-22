@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AccountViewController: UIViewController {
+class AccountViewController: BaseViewController {
     
     @IBOutlet weak var accountHeadView: UIView! {
         didSet {

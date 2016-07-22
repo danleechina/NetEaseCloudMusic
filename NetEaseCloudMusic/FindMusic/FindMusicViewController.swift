@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class FindMusicViewController: UIViewController {
+class FindMusicViewController: BaseViewController {
 
     private var songPlayer = AVPlayer.init()
     private var out_context = 0

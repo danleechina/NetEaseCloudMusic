@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PlaySongViewController: UIViewController {
+class PlaySongViewController: BaseViewController {
     //I made a mistake, I should let the type be UIButton not UIImageView, but I am lazy to change. So be it
     
     @IBOutlet weak var needleImageView: UIImageView! {
@@ -134,6 +134,18 @@ class PlaySongViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var backButton: UIButton! {
+        didSet {
+            backButton.addTarget(self, action: #selector(tapBackButton), forControlEvents: .TouchUpInside)
+        }
+    }
+    
+    
+    @IBOutlet weak var shareButton: UIButton! {
+        didSet {
+            shareButton.addTarget(self, action: #selector(tapShareButton), forControlEvents: .TouchUpInside)
+        }
+    }
     func pauseHeadPicImageViewAnimate() {
         let pausedTime = headPicImageView.layer .convertTime(CACurrentMediaTime(), fromLayer: nil)
         headPicImageView.layer.speed = 0
@@ -153,7 +165,7 @@ class PlaySongViewController: UIViewController {
         var angle:CGFloat = 0
         if isPlaying {
             playImageView.image = UIImage.init(named: "cm2_fm_btn_pause")
-            angle = -CGFloat(M_PI/360 * 80)
+            angle = -CGFloat(M_PI/360 * 50)
             
             pauseHeadPicImageViewAnimate()
         } else {
@@ -165,12 +177,9 @@ class PlaySongViewController: UIViewController {
         let point = self.view.convertPoint(CGPointMake(self.view.bounds.size.width/2, 64), toView: self.needleImageView)
         let anchorPoint = CGPointMake(point.x/self.needleImageView.bounds.size.width, point.y/self.needleImageView.bounds.size.height)
         self.setAnchorPoint(anchorPoint, forView: self.needleImageView)
-        UIView .animateWithDuration(0.2) {
+        UIView.animateWithDuration(0.2, delay: 0, options: .CurveEaseInOut, animations: { 
             self.needleImageView.transform = CGAffineTransformMakeRotation(angle)
-        }
-        
-        
-        
+            }, completion: nil)
         isPlaying = !isPlaying
     }
     
@@ -221,6 +230,14 @@ class PlaySongViewController: UIViewController {
         }
     }
     
+    func tapBackButton() {
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    func tapShareButton() {
+        
+    }
+    
     func swipeThemePictImageView(sender: UISwipeGestureRecognizer) {
         switch sender.direction {
         case UISwipeGestureRecognizerDirection.Left:
@@ -264,7 +281,7 @@ class PlaySongViewController: UIViewController {
     var playMode = 0
     
     private lazy var marqueeTitleLabel: MarqueeLabel = {
-        let label =  MarqueeLabel.init(frame: CGRectMake(0, 0, 150, 24), duration: 10, fadeLength:10)
+        let label =  MarqueeLabel.init(frame: CGRectMake(0, 0, 200, 24), duration: 10, fadeLength:10)
         label.textColor = UIColor.whiteColor()
         label.textAlignment = .Center
         label.type = .Continuous
@@ -273,42 +290,59 @@ class PlaySongViewController: UIViewController {
     }()
     
     private lazy var singerNameLabel: UILabel = {
-        let label = UILabel.init(frame: CGRectMake(0, 0, 150, 20))
+        let label = UILabel.init(frame: CGRectMake(0, 0, 200, 20))
         label.textColor = UIColor.whiteColor()
         label.font = UIFont.systemFontOfSize(11)
-        label.center = CGPointMake(75, 33)
+        label.center = CGPointMake(100, 33)
         label.textAlignment = .Center
         return label
     }()
     
-    private lazy var titleView: UIView = {
-        let view = UIView.init(frame: CGRectMake(0, 0, 150, 44))
-        view.addSubview(self.marqueeTitleLabel)
-        view.addSubview(self.singerNameLabel)
-        return view
-    }()
-
+    @IBOutlet weak var titleView: UIView! {
+        didSet {
+            titleView.addSubview(self.marqueeTitleLabel)
+            titleView.addSubview(self.singerNameLabel)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         isPlaying = true
         
-        headPicImageView.sd_setImageWithURL(NSURL.init(string: picUrl))
+        headPicImageView.sd_setImageWithURL(NSURL.init(string: picUrl), placeholderImage: UIImage.init(named: "cm2_default_cover_play"))
         blurBackgroundImageView.sd_setImageWithURL(NSURL.init(string: blurPicUrl))
         
-        let barAppearance = self.navigationController?.navigationBar
-        barAppearance?.translucent = true
-        barAppearance?.setBackgroundImage(UIImage(), forBarMetrics: .Default)
-
         marqueeTitleLabel.text = songname + "22222220000000000222"
         singerNameLabel.text = singers
-        self.navigationItem.titleView = titleView
+        
+        // this is weird.
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        UIApplication.sharedApplication().statusBarStyle = .Default
         setAnchorPoint(CGPointMake(0.5, 0.5), forView: self.needleImageView)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        var backButtonCenter = backButton.center
+        backButtonCenter.y = 44
+        backButton.center = backButtonCenter
+        
+        var shareButtonCenter = shareButton.center
+        shareButtonCenter.y = 44
+        shareButton.center = shareButtonCenter
     }
     
 }

@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class CertainSongSheetViewController: UIViewController {
+class CertainSongSheetViewController: BaseViewController {
     var data = CertainSongSheet()
     
     private lazy var tableView: UITableView = {
@@ -64,8 +64,6 @@ extension CertainSongSheetViewController: UITableViewDelegate, UITableViewDataSo
         
         
         vc.hidesBottomBarWhenPushed = true
-        //暂时只能这样子隐藏返回按钮的文字
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
         self.navigationController?.pushViewController(vc, animated: true)
 //        playMusic
     }

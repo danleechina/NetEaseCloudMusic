@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RadioViewController: UIViewController {
+class RadioViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -9,7 +9,7 @@
 import UIKit
 import SDWebImage
 
-class SongSheetViewController: UIViewController {
+class SongSheetViewController: BaseViewController {
     private var collectData = [SongSheet]()
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView.init(frame: self.view.bounds, collectionViewLayout: self.collectionViewFlowLayout)
