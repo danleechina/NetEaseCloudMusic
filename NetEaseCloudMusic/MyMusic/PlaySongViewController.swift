@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class PlaySongViewController: BaseViewController {
     //I made a mistake, I should let the type be UIButton not UIImageView, but I am lazy to change. So be it
     
@@ -291,7 +292,7 @@ class PlaySongViewController: BaseViewController {
     var isPlaying = false
     var isLike = false
     var playMode = 0
-    
+        
     private lazy var marqueeTitleLabel: MarqueeLabel = {
         let label =  MarqueeLabel.init(frame: CGRectMake(0, 0, 200, 24), duration: 10, fadeLength:10)
         label.textColor = UIColor.whiteColor()
@@ -359,5 +360,5 @@ class PlaySongViewController: BaseViewController {
         shareButtonCenter.y = 44
         shareButton.center = shareButtonCenter
     }
-    
+ 
 }

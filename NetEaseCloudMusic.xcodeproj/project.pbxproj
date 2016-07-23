@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A02A3EE41D40FBD100A3956F /* MarqueeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02A3EE31D40FBD100A3956F /* MarqueeLabel.swift */; };
+		A02A3EE71D435D1400A3956F /* PlaySongService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02A3EE61D435D1300A3956F /* PlaySongService.swift */; };
 		A0BE95BF1D157ABB009A84F0 /* HeadIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BE95BE1D157ABB009A84F0 /* HeadIconView.swift */; };
 		DE13AB111D3511D0004BA90C /* SongSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE13AB101D3511D0004BA90C /* SongSheet.swift */; };
 		DE13AB1B1D378CD9004BA90C /* CertainSongSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE13AB1A1D378CD9004BA90C /* CertainSongSheetViewController.swift */; };
@@ -88,6 +89,7 @@
 
 /* Begin PBXFileReference section */
 		A02A3EE31D40FBD100A3956F /* MarqueeLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarqueeLabel.swift; path = Vendor/MarqueeLabel.swift; sourceTree = "<group>"; };
+		A02A3EE61D435D1300A3956F /* PlaySongService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaySongService.swift; path = Service/PlaySongService.swift; sourceTree = "<group>"; };
 		A0BE95BE1D157ABB009A84F0 /* HeadIconView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeadIconView.swift; path = Common/HeadIconView.swift; sourceTree = "<group>"; };
 		C2FE4E75AA0B108BB1B196B5 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C681789F70D8D427BB9A1604 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -201,6 +203,14 @@
 			name = Vendor;
 			sourceTree = "<group>";
 		};
+		A02A3EE81D4360B900A3956F /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				A02A3EE61D435D1300A3956F /* PlaySongService.swift */,
+			);
+			name = Service;
+			sourceTree = "<group>";
+		};
 		DE13AB121D3511D5004BA90C /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -258,6 +268,7 @@
 				DE35EB831D30E68400485339 /* Resources */,
 				DEC8F3121D23E0BC00C30661 /* API */,
 				A02A3EE51D40FBDD00A3956F /* Vendor */,
+				A02A3EE81D4360B900A3956F /* Service */,
 			);
 			path = NetEaseCloudMusic;
 			sourceTree = "<group>";
@@ -667,6 +678,7 @@
 				DE2654C71D1025730083F742 /* MyMusicCloudBoxViewController.swift in Sources */,
 				DE2654C91D1025C70083F742 /* AddFocusViewController.swift in Sources */,
 				DE79E6F61D167282006B9926 /* BaseTableView.swift in Sources */,
+				A02A3EE71D435D1400A3956F /* PlaySongService.swift in Sources */,
 				DE79E6F41D167262006B9926 /* CommentListTableView.swift in Sources */,
 				DE2654D91D1027780083F742 /* ThemeSkinViewController.swift in Sources */,
 				DE2654C51D1025460083F742 /* AddSongSheetViewController.swift in Sources */,

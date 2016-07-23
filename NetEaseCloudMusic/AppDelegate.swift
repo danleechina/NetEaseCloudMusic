@@ -23,7 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let barbutton = UIBarButtonItem.appearance()
         barbutton.setBackButtonBackgroundImage(backImage, forState: .Normal, barMetrics: .Default)
         barbutton.setTitlePositionAdjustment(UIOffsetMake(0, -60), forBarMetrics: .Default)
-        
         return true
     }
 }
