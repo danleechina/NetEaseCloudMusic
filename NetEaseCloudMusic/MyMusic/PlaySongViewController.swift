@@ -269,6 +269,18 @@ class PlaySongViewController: BaseViewController {
         view.layer.anchorPoint = anchorPoint
     }
     
+    var data: CertainSongSheet?
+    var currentSongIndex = 0 {
+        didSet {
+            if let da = data {
+                self.mp3Url = da.tracks[currentSongIndex]["mp3Url"] as! String
+                self.picUrl = da.tracks[currentSongIndex]["album"]!["picUrl"] as! String
+                self.blurPicUrl = da.tracks[currentSongIndex]["album"]!["blurPicUrl"] as! String
+                self.songname = da.tracks[currentSongIndex]["name"] as! String
+                self.singers = da.tracks[currentSongIndex]["artists"]![0]["name"] as! String
+            }
+        }
+    }
     
     var mp3Url = ""
     var picUrl = ""

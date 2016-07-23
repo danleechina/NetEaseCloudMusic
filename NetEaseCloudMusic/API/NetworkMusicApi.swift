@@ -12,56 +12,54 @@ class NetworkMusicApi: NSObject {
 
     let defaultSession = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
     var dataTask: NSURLSessionDataTask? = nil
-    func doHttpRequest(method: String, url: String, data: Dictionary<String, String>) -> Void {
+    func doHttpRequest(method: String, url: String, data: Dictionary<String, String>?, complete: (data: String?, error: NSError?) -> Void) -> Void {
         //
         let request = NSMutableURLRequest.init()
+        request.URL = NSURL.init(string: url)
+        request.setValue("*/*", forHTTPHeaderField: "Accept")
+        request.setValue("gzip,deflate,sdch", forHTTPHeaderField: "Accept-Encoding")
+        request.setValue("zh-CN,zh;q=0.8,gl;q=0.6,zh-TW;q=0.4", forHTTPHeaderField: "Accept-Language")
+        request.setValue("keep-alive", forHTTPHeaderField: "Connection")
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue("music.163.com", forHTTPHeaderField: "Host")
+        request.setValue("http://music.163.com/search/", forHTTPHeaderField: "Referer")
+        request.setValue("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.152 Safari/537.36", forHTTPHeaderField: "User-Agent")
+        request.timeoutInterval = 10
+        request.HTTPMethod = method
 
         if method == "POST" {
-            request.URL = NSURL.init(string: url)
-            let newdata = "username=349604757@qq.com&password=1d44443dc866fc6a79bda75a89807354&rememberLogin=true"
-            
-            let nnd = newdata.dataUsingEncoding(NSUTF8StringEncoding)
-            let length = newdata.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)
-            request.HTTPMethod = "POST"
-            request.HTTPBody = nnd
-            
-            request.timeoutInterval = 10
-            request.setValue("\(length)", forHTTPHeaderField: "Content-Length")
-            request.setValue("*/*", forHTTPHeaderField: "Accept")
-            request.setValue("gzip,deflate,sdch", forHTTPHeaderField: "Accept-Encoding")
-            request.setValue("zh-CN,zh;q=0.8,gl;q=0.6,zh-TW;q=0.4", forHTTPHeaderField: "Accept-Language")
-            request.setValue("keep-alive", forHTTPHeaderField: "Connection")
-            request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-            request.setValue("music.163.com", forHTTPHeaderField: "Host")
-            request.setValue("http://music.163.com/search/", forHTTPHeaderField: "Referer")
-            request.setValue("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.152 Safari/537.36", forHTTPHeaderField: "User-Agent")
-            
+//            let newdata = "username=349604757@qq.com&password=1d44443dc866fc6a79bda75a89807354&rememberLogin=true"
+//            let nnd = newdata.dataUsingEncoding(NSUTF8StringEncoding)
+//            let length = newdata.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)
+//            request.HTTPBody = nnd
+//            request.setValue("\(length)", forHTTPHeaderField: "Content-Length")
+            dataTask = defaultSession.dataTaskWithRequest(request, completionHandler: { (data, response, error) in
+            })
+        } else if method == "GET" {
             dataTask = defaultSession.dataTaskWithRequest(request, completionHandler: { (data, response, error) in
                 if let err = error {
-                    print(err.localizedDescription)
+                    complete(data: nil, error: err)
                 } else if let httpResponse = response as? NSHTTPURLResponse {
                     if httpResponse.statusCode == 200 {
-                        let dataFromRes = NSKeyedUnarchiver.unarchiveObjectWithData(data!)
-                        print(dataFromRes)
                         let decodedString = NSString(data: data!, encoding: NSUTF8StringEncoding)
-                        print(decodedString!)
+                        complete(data: decodedString as? String, error: nil)
                     } else {
-                        print(httpResponse.statusCode)
+                        complete(data: nil, error: nil)
                     }
                 }
             })
-            dataTask?.resume()
         }
+        dataTask?.resume()
     }
     
     
     // 登录
     func login(userName: String, password: String) -> Void {
         // http://music.163.com/api/login/
-        let md5Password = md5(string: password)
-        let urlStr = "http://music.163.com/api/login/"
-        let data = ["username":userName, "password":md5Password, "rememberLogin":"true"]
-        doHttpRequest("POST", url: urlStr, data: data)
+//        let md5Password = md5(string: password)
+//        let urlStr = "http://music.163.com/api/login/"
+//        let data = ["username":userName, "password":md5Password, "rememberLogin":"true"]
+//        doHttpRequest("POST", url: urlStr, data: data)
     }
     
     //用户歌单
@@ -83,16 +81,20 @@ class NetworkMusicApi: NSObject {
     
     
     // 歌单（网友精选碟） hot||new http://music.163.com/#/discover/playlist/
-    func top_playlists() -> Void {
+    func top_playlists(complete: (data: String?, error: NSError?) -> Void) -> Void {
         // action = 'http://music.163.com/api/playlist/list?cat=' + category + '&order=' + order + '&offset=' + str(offset) + '&total=' + ('true' if offset else 'false') + '&limit=' + str(limit)
-
+        let action = "http://music.163.com/api/playlist/list?cat=全部&order=hot&offset=0&total=false&limit=50"
+        let escapedAddress = action.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
+        doHttpRequest("GET", url: escapedAddress!, data: nil, complete: complete)
     }
     
     
     // 歌单详情
-    func playlist_detail() -> Void {
-        //         action = 'http://music.163.com/api/playlist/detail?id=' + str(playlist_id)
-
+    func playlist_detail(playListID: String, complete: (data: String?, error: NSError?) -> Void) -> Void {
+        let action = "http://music.163.com/api/playlist/detail?id=" + playListID
+        let escapedAddress = action.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
+        doHttpRequest("GET", url: escapedAddress!, data: nil, complete: complete)
+        
     }
     
     // 热门歌手 http://music.163.com/#/discover/artist/

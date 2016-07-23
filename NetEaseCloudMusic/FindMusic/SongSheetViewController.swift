@@ -10,7 +10,11 @@ import UIKit
 import SDWebImage
 
 class SongSheetViewController: BaseViewController {
-    private var collectData = [SongSheet]()
+    private var collectData = [SongSheet]() {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView.init(frame: self.view.bounds, collectionViewLayout: self.collectionViewFlowLayout)
         collectionView.delegate = self
@@ -71,6 +75,7 @@ extension SongSheetViewController: UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let vc = CertainSongSheetViewController()
+        vc.playListID = self.collectData[indexPath.row].playListID
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

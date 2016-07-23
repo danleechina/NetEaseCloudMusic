@@ -10,6 +10,19 @@ import UIKit
 import SnapKit
 
 class CertainSongSheetViewController: BaseViewController {
+    var playListID = "" {
+        didSet {
+            if playListID != "" {
+                CertainSongSheet.loadSongSheetData(self.playListID) { (data, error) in
+                    if error == nil && data != nil{
+                        self.data = data!
+                        self.tableView.reloadData()
+                    }
+                }
+            }
+        }
+    }
+    
     var data = CertainSongSheet()
     
     private lazy var tableView: UITableView = {
@@ -29,11 +42,6 @@ class CertainSongSheetViewController: BaseViewController {
 
         view.addSubview(tableView)
         view.backgroundColor = UIColor.whiteColor()
-        CertainSongSheet.loadSongSheetData { (data, error) in
-            if error == nil && data != nil{
-                self.data = data!
-            }
-        }
     }
 
 }
@@ -56,12 +64,8 @@ extension CertainSongSheetViewController: UITableViewDelegate, UITableViewDataSo
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         let vc = PlaySongViewController()
-        vc.mp3Url = data.tracks[indexPath.row]["mp3Url"] as! String
-        vc.picUrl = data.tracks[indexPath.row]["album"]!["picUrl"] as! String
-        vc.blurPicUrl = data.tracks[indexPath.row]["album"]!["blurPicUrl"] as! String
-        vc.songname = data.tracks[indexPath.row]["name"] as! String
-        vc.singers = data.tracks[indexPath.row]["artists"]![0]["name"] as! String
-        
+        vc.data = data
+        vc.currentSongIndex = indexPath.row
         
         vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
