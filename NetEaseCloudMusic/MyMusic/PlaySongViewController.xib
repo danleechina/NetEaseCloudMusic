@@ -139,7 +139,7 @@
                         <constraint firstAttribute="height" constant="55" id="jjQ-wo-MeT"/>
                     </constraints>
                 </imageView>
-                <imageView contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_fm_btn_play" highlightedImage="cm2_fm_btn_play_prs" translatesAutoresizingMaskIntoConstraints="NO" id="gyT-3S-crh">
+                <imageView contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_fm_btn_pause" highlightedImage="cm2_fm_btn_play_prs" translatesAutoresizingMaskIntoConstraints="NO" id="gyT-3S-crh">
                     <rect key="frame" x="270" y="520" width="55" height="55"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="55" id="jzf-7B-Xhs"/>
@@ -321,7 +321,7 @@
         <image name="cm2_default_cover_play" width="150" height="150"/>
         <image name="cm2_fm_btn_next" width="49" height="49"/>
         <image name="cm2_fm_btn_next_prs" width="49" height="49"/>
-        <image name="cm2_fm_btn_play" width="68" height="68"/>
+        <image name="cm2_fm_btn_pause" width="68" height="68"/>
         <image name="cm2_fm_btn_play_prs" width="68" height="68"/>
         <image name="cm2_icn_back" width="25" height="25"/>
         <image name="cm2_icn_list" width="44" height="44"/>

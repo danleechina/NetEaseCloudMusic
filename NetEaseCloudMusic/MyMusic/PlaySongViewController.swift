@@ -164,12 +164,12 @@ class PlaySongViewController: BaseViewController {
     func tapPlayImage() -> Void {
         var angle:CGFloat = 0
         if isPlaying {
-            playImageView.image = UIImage.init(named: "cm2_fm_btn_pause")
+            playImageView.image = UIImage.init(named: "cm2_fm_btn_play")
             angle = -CGFloat(M_PI/360 * 50)
             
             pauseHeadPicImageViewAnimate()
         } else {
-            playImageView.image = UIImage.init(named: "cm2_fm_btn_play")
+            playImageView.image = UIImage.init(named: "cm2_fm_btn_pause")
             angle = CGFloat(0)
             
             resumeHeadPicImageViewAnimate()
@@ -315,6 +315,9 @@ class PlaySongViewController: BaseViewController {
         marqueeTitleLabel.text = songname + "22222220000000000222"
         singerNameLabel.text = singers
         
+        if isPlaying {
+            resumeHeadPicImageViewAnimate()
+        }
         // this is weird.
         self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
     }
