@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A02A3EE41D40FBD100A3956F /* MarqueeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02A3EE31D40FBD100A3956F /* MarqueeLabel.swift */; };
 		A02A3EE71D435D1400A3956F /* PlaySongService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02A3EE61D435D1300A3956F /* PlaySongService.swift */; };
+		A02A3EEA1D44BF6600A3956F /* SwipeDiscScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02A3EE91D44BF6600A3956F /* SwipeDiscScrollView.swift */; };
 		A0BE95BF1D157ABB009A84F0 /* HeadIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BE95BE1D157ABB009A84F0 /* HeadIconView.swift */; };
 		DE13AB111D3511D0004BA90C /* SongSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE13AB101D3511D0004BA90C /* SongSheet.swift */; };
 		DE13AB1B1D378CD9004BA90C /* CertainSongSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE13AB1A1D378CD9004BA90C /* CertainSongSheetViewController.swift */; };
@@ -90,6 +91,7 @@
 /* Begin PBXFileReference section */
 		A02A3EE31D40FBD100A3956F /* MarqueeLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarqueeLabel.swift; path = Vendor/MarqueeLabel.swift; sourceTree = "<group>"; };
 		A02A3EE61D435D1300A3956F /* PlaySongService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaySongService.swift; path = Service/PlaySongService.swift; sourceTree = "<group>"; };
+		A02A3EE91D44BF6600A3956F /* SwipeDiscScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwipeDiscScrollView.swift; path = MyMusic/SwipeDiscScrollView.swift; sourceTree = "<group>"; };
 		A0BE95BE1D157ABB009A84F0 /* HeadIconView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeadIconView.swift; path = Common/HeadIconView.swift; sourceTree = "<group>"; };
 		C2FE4E75AA0B108BB1B196B5 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C681789F70D8D427BB9A1604 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -308,6 +310,7 @@
 				DE2654AD1D101D7A0083F742 /* MyMusicViewController.swift */,
 				DE13AB1E1D37AAE1004BA90C /* PlaySongViewController.swift */,
 				DE13AB1F1D37AAE1004BA90C /* PlaySongViewController.xib */,
+				A02A3EE91D44BF6600A3956F /* SwipeDiscScrollView.swift */,
 				DE2654E31D1028FE0083F742 /* More */,
 				DE2654E61D10295D0083F742 /* DownLoad */,
 				DE2654E91D1029A20083F742 /* RecentPlayed */,
@@ -654,6 +657,7 @@
 				DE2654DB1D1027CA0083F742 /* CountDownViewController.swift in Sources */,
 				DE2654ED1D102A070083F742 /* MyMVViewController.swift in Sources */,
 				DE13AB1B1D378CD9004BA90C /* CertainSongSheetViewController.swift in Sources */,
+				A02A3EEA1D44BF6600A3956F /* SwipeDiscScrollView.swift in Sources */,
 				DE2654F21D102A9D0083F742 /* MyRadioViewController.swift in Sources */,
 				DE2474741D1AB83C00EBAA37 /* CommentCell.swift in Sources */,
 				DE79E6FB1D1677C2006B9926 /* HasInfoSegmentedControl.swift in Sources */,
