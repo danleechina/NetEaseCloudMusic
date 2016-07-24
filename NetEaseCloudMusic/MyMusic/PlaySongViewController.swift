@@ -97,21 +97,20 @@ class PlaySongViewController: BaseViewController {
     @IBOutlet weak var playModeImageView: UIImageView!{
         didSet {
             let tapGest = UITapGestureRecognizer.init(target: self, action: #selector(tapPlayModeImage))
-            tapGest.numberOfTapsRequired = 1
             playModeImageView.addGestureRecognizer(tapGest)
         }
     }
     
     @IBOutlet weak var lastSongImageView: UIImageView!{
         didSet {
-            
+            let tapGest = UITapGestureRecognizer.init(target: self, action: #selector(tapPrevSongImage))
+            lastSongImageView.addGestureRecognizer(tapGest)
         }
     }
     
     @IBOutlet weak var playImageView: UIImageView!{
         didSet {
             let tapGest = UITapGestureRecognizer.init(target: self, action: #selector(tapPlayImage))
-            tapGest.numberOfTapsRequired = 1
             playImageView.addGestureRecognizer(tapGest)
         }
     }
@@ -119,7 +118,8 @@ class PlaySongViewController: BaseViewController {
     
     @IBOutlet weak var nextImageView: UIImageView!{
         didSet {
-            
+            let tapGest = UITapGestureRecognizer.init(target: self, action: #selector(tapNextSongImage))
+            nextImageView.addGestureRecognizer(tapGest)
         }
     }
     
@@ -147,6 +147,7 @@ class PlaySongViewController: BaseViewController {
             shareButton.addTarget(self, action: #selector(tapShareButton), forControlEvents: .TouchUpInside)
         }
     }
+    
     func pauseHeadPicImageViewAnimate() {
         let pausedTime = headPicImageView.layer .convertTime(CACurrentMediaTime(), fromLayer: nil)
         headPicImageView.layer.speed = 0
@@ -182,6 +183,20 @@ class PlaySongViewController: BaseViewController {
             self.needleImageView.transform = CGAffineTransformMakeRotation(angle)
             }, completion: nil)
         isPlaying = !isPlaying
+        
+        if isPlaying {
+            playSongService.startPlay()
+        } else {
+            playSongService.pausePlay()
+        }
+    }
+    
+    func tapPrevSongImage() {
+        playSongService.playPrev()
+    }
+    
+    func tapNextSongImage() {
+        playSongService.playNext()
     }
     
     func tapLoveImage() {
@@ -207,26 +222,23 @@ class PlaySongViewController: BaseViewController {
     }
     
     func tapPlayModeImage() {
-        playMode += 1
-        playMode = playMode == 4 ? 0 : playMode
+        playMode.next()
         switch playMode {
-        case 0:
+        case PlayMode.Shuffle:
             playModeImageView.image = UIImage.init(named: "cm2_icn_shuffle")
             playModeImageView.highlightedImage = UIImage.init(named: "cm2_icn_shuffle_prs")
             break
-        case 1:
+        case PlayMode.Cycle:
             playModeImageView.image = UIImage.init(named: "cm2_icn_loop")
             playModeImageView.highlightedImage = UIImage.init(named: "cm2_icn_loop_prs")
             break
-        case 2:
+        case PlayMode.Repeat:
             playModeImageView.image = UIImage.init(named: "cm2_icn_one")
             playModeImageView.highlightedImage = UIImage.init(named: "cm2_icn_one_prs")
             break
-        case 3:
+        case PlayMode.Order:
             playModeImageView.image = UIImage.init(named: "cm2_icn_order")
             playModeImageView.highlightedImage = UIImage.init(named: "cm2_icn_order_prs")
-            break
-        default:
             break
         }
     }
@@ -270,7 +282,12 @@ class PlaySongViewController: BaseViewController {
         view.layer.anchorPoint = anchorPoint
     }
     
-    var data: CertainSongSheet?
+    var data: CertainSongSheet? {
+        didSet {
+            playSongService.playLists = data
+        }
+    }
+    
     var currentSongIndex = 0 {
         didSet {
             if let da = data {
@@ -291,7 +308,13 @@ class PlaySongViewController: BaseViewController {
     
     var isPlaying = false
     var isLike = false
-    var playMode = 0
+    var playMode = PlayMode.Order {
+        didSet {
+            playSongService.playMode = playMode
+        }
+    }
+    
+    let playSongService = PlaySongService.sharedInstance
         
     private lazy var marqueeTitleLabel: MarqueeLabel = {
         let label =  MarqueeLabel.init(frame: CGRectMake(0, 0, 200, 24), duration: 10, fadeLength:10)
