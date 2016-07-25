@@ -25,32 +25,37 @@ class PlaySongViewController: BaseViewController {
         }
     }
     
-    @IBOutlet weak var themePicImageView: UIImageView!{
+//    @IBOutlet weak var themePicImageView: UIImageView!{
+//        didSet {
+//            let lswipeGest = UISwipeGestureRecognizer.init(target: self, action: #selector(swipeThemePictImageView))
+//            lswipeGest.direction = UISwipeGestureRecognizerDirection.Left
+//            themePicImageView.addGestureRecognizer(lswipeGest)
+//            
+//            let rswipeGest = UISwipeGestureRecognizer.init(target: self, action: #selector(swipeThemePictImageView))
+//            rswipeGest.direction = UISwipeGestureRecognizerDirection.Right
+//            themePicImageView.addGestureRecognizer(rswipeGest)
+//        }
+//    }
+//    
+//    
+//    @IBOutlet weak var headPicImageView: UIImageView!{
+//        didSet {
+//            headPicImageView.layer.cornerRadius = 80
+//            let rotationAnimation = CABasicAnimation.init(keyPath: "transform.rotation.z")
+//            rotationAnimation.toValue = Double(2 * M_PI)
+//            rotationAnimation.duration = 10
+////            rotationAnimation.cumulative = true
+//            rotationAnimation.repeatCount = Float.infinity
+//            headPicImageView.layer.addAnimation(rotationAnimation, forKey: "rotationAnimation")
+//            pauseHeadPicImageViewAnimate()
+//        }
+//    }
+    
+    @IBOutlet weak var swipableDiscView: UIScrollView! {
         didSet {
-            let lswipeGest = UISwipeGestureRecognizer.init(target: self, action: #selector(swipeThemePictImageView))
-            lswipeGest.direction = UISwipeGestureRecognizerDirection.Left
-            themePicImageView.addGestureRecognizer(lswipeGest)
-            
-            let rswipeGest = UISwipeGestureRecognizer.init(target: self, action: #selector(swipeThemePictImageView))
-            rswipeGest.direction = UISwipeGestureRecognizerDirection.Right
-            themePicImageView.addGestureRecognizer(rswipeGest)
+            swipableDiscView.delegate = self
         }
     }
-    
-    
-    @IBOutlet weak var headPicImageView: UIImageView!{
-        didSet {
-            headPicImageView.layer.cornerRadius = 80
-            let rotationAnimation = CABasicAnimation.init(keyPath: "transform.rotation.z")
-            rotationAnimation.toValue = Double(2 * M_PI)
-            rotationAnimation.duration = 10
-            rotationAnimation.cumulative = true
-            rotationAnimation.repeatCount = Float.infinity
-            headPicImageView.layer.addAnimation(rotationAnimation, forKey: "rotationAnimation")
-            pauseHeadPicImageViewAnimate()
-        }
-    }
-    
     
     @IBOutlet weak var loveImageView: UIImageView!{
         didSet {
@@ -149,18 +154,18 @@ class PlaySongViewController: BaseViewController {
     }
     
     func pauseHeadPicImageViewAnimate() {
-        let pausedTime = headPicImageView.layer .convertTime(CACurrentMediaTime(), fromLayer: nil)
-        headPicImageView.layer.speed = 0
-        headPicImageView.layer.timeOffset = pausedTime
+//        let pausedTime = headPicImageView.layer .convertTime(CACurrentMediaTime(), fromLayer: nil)
+//        headPicImageView.layer.speed = 0
+//        headPicImageView.layer.timeOffset = pausedTime
     }
     
     func resumeHeadPicImageViewAnimate() {
-        let pausedTime = headPicImageView.layer.timeOffset
-        headPicImageView.layer.speed = 1
-        headPicImageView.layer.timeOffset = 0
-        headPicImageView.layer.beginTime = 0
-        let timeSincePause = headPicImageView.layer .convertTime(CACurrentMediaTime(), fromLayer: nil) - pausedTime
-        headPicImageView.layer.beginTime = timeSincePause
+//        let pausedTime = headPicImageView.layer.timeOffset
+//        headPicImageView.layer.speed = 1
+//        headPicImageView.layer.timeOffset = 0
+//        headPicImageView.layer.beginTime = 0
+//        let timeSincePause = headPicImageView.layer .convertTime(CACurrentMediaTime(), fromLayer: nil) - pausedTime
+//        headPicImageView.layer.beginTime = timeSincePause
     }
     
     func tapPlayImage() -> Void {
@@ -345,7 +350,7 @@ class PlaySongViewController: BaseViewController {
         super.viewDidLoad()
         isPlaying = true
         
-        headPicImageView.sd_setImageWithURL(NSURL.init(string: picUrl), placeholderImage: UIImage.init(named: "cm2_default_cover_play"))
+//        headPicImageView.sd_setImageWithURL(NSURL.init(string: picUrl), placeholderImage: UIImage.init(named: "cm2_default_cover_play"))
         blurBackgroundImageView.sd_setImageWithURL(NSURL.init(string: blurPicUrl))
         
         marqueeTitleLabel.text = songname + "22222220000000000222"
@@ -384,4 +389,8 @@ class PlaySongViewController: BaseViewController {
         shareButton.center = shareButtonCenter
     }
  
+}
+
+extension PlaySongViewController: UIScrollViewDelegate {
+    scrold
 }
