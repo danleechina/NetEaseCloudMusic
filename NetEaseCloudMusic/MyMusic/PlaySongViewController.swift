@@ -392,5 +392,4 @@ class PlaySongViewController: BaseViewController {
 }
 
 extension PlaySongViewController: UIScrollViewDelegate {
-    scrold
 }
