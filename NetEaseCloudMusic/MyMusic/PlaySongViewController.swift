@@ -153,33 +153,18 @@ class PlaySongViewController: BaseViewController {
         }
     }
     
-    func pauseHeadPicImageViewAnimate() {
-//        let pausedTime = headPicImageView.layer .convertTime(CACurrentMediaTime(), fromLayer: nil)
-//        headPicImageView.layer.speed = 0
-//        headPicImageView.layer.timeOffset = pausedTime
-    }
-    
-    func resumeHeadPicImageViewAnimate() {
-//        let pausedTime = headPicImageView.layer.timeOffset
-//        headPicImageView.layer.speed = 1
-//        headPicImageView.layer.timeOffset = 0
-//        headPicImageView.layer.beginTime = 0
-//        let timeSincePause = headPicImageView.layer .convertTime(CACurrentMediaTime(), fromLayer: nil) - pausedTime
-//        headPicImageView.layer.beginTime = timeSincePause
-    }
-    
     func tapPlayImage() -> Void {
         var angle:CGFloat = 0
         if isPlaying {
             playImageView.image = UIImage.init(named: "cm2_fm_btn_play")
             angle = -CGFloat(M_PI/360 * 50)
             
-            pauseHeadPicImageViewAnimate()
+//            pauseHeadPicImageViewAnimate()
         } else {
             playImageView.image = UIImage.init(named: "cm2_fm_btn_pause")
             angle = CGFloat(0)
             
-            resumeHeadPicImageViewAnimate()
+//            resumeHeadPicImageViewAnimate()
         }
         let point = self.view.convertPoint(CGPointMake(self.view.bounds.size.width/2, 64), toView: self.needleImageView)
         let anchorPoint = CGPointMake(point.x/self.needleImageView.bounds.size.width, point.y/self.needleImageView.bounds.size.height)
@@ -357,7 +342,7 @@ class PlaySongViewController: BaseViewController {
         singerNameLabel.text = singers
         
         if isPlaying {
-            resumeHeadPicImageViewAnimate()
+//            resumeHeadPicImageViewAnimate()
         }
         // this is weird.
         self.navigationController?.interactivePopGestureRecognizer?.delegate = nil

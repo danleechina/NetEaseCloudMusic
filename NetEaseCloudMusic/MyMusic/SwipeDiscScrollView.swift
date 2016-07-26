@@ -10,10 +10,13 @@ import UIKit
 
 class SwipeDiscScrollView: UIScrollView {
 
-    private var visibleDiscView = Array<DiscView>()
+    var leftDiscHeadImage = UIImage.init(named: "cm2_default_cover_play")
+    var rightDiscHeadImage = UIImage.init(named: "cm2_default_cover_play")
+    
+    var visibleDiscView = Array<DiscView>()
     private var discViewContainerView = UIView()
     
-    func recenterIfNecessary() {
+    private func recenterIfNecessary() {
         let currentOffset = contentOffset
         let contentWidth = contentSize.width
         let centerOffsetX = (contentWidth - bounds.size.width)/2
@@ -30,13 +33,13 @@ class SwipeDiscScrollView: UIScrollView {
         
     }
     
-    func insertNewDiscView() -> DiscView {
+    private func insertNewDiscView() -> DiscView {
         let discView = DiscView.init(frame: CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height))
         self.discViewContainerView.addSubview(discView)
         return discView
     }
     
-    func placeNewDiscOnRight(rightEdge: CGFloat) -> CGFloat {
+    private func placeNewDiscOnRight(rightEdge: CGFloat) -> CGFloat {
         let discView = insertNewDiscView()
         visibleDiscView.append(discView)
         var frame = discView.frame
@@ -46,7 +49,7 @@ class SwipeDiscScrollView: UIScrollView {
         return CGRectGetMaxX(frame)
     }
     
-    func placeNewDiscOnLeft(leftEdge: CGFloat) -> CGFloat {
+    private func placeNewDiscOnLeft(leftEdge: CGFloat) -> CGFloat {
         let discView = insertNewDiscView()
         visibleDiscView.insert(discView, atIndex: 0)
         var frame = discView.frame
@@ -56,7 +59,7 @@ class SwipeDiscScrollView: UIScrollView {
         return CGRectGetMinX(frame)
     }
     
-    func tileDiscFrom(minX: CGFloat, maxX: CGFloat) {
+    private func tileDiscFrom(minX: CGFloat, maxX: CGFloat) {
         if visibleDiscView.count == 0 {
             placeNewDiscOnRight(minX)
         }
@@ -97,20 +100,13 @@ class SwipeDiscScrollView: UIScrollView {
         let maxX = CGRectGetMaxX(visibleBounds)
         
         tileDiscFrom(minX, maxX: maxX)
+        
+        visibleDiscView[0].headPicImage = leftDiscHeadImage
+        if visibleDiscView.count > 1 {
+            visibleDiscView[1].headPicImage = rightDiscHeadImage
+        }
     }
     
-//    override init(frame: CGRect) {
-//        super.init(frame: frame)
-//        
-//        contentSize = CGSizeMake(self.bounds.width * 2, self.bounds.height)
-//        addSubview(discViewContainerView)
-//        showsHorizontalScrollIndicator = false
-//        
-//        discViewContainerView.frame = CGRectMake(0, 0, self.bounds.width, self.bounds.height)
-//    }
-//    
-//    required init?(coder aDecoder: NSCoder) {
-//    }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
@@ -156,6 +152,21 @@ class DiscView: UIView {
         let centerOfAll = CGPointMake(self.bounds.size.width/2, self.bounds.size.height/2)
         headPicCycleImageView.center = centerOfAll
         blackCycleImageView.center = centerOfAll
+    }
+    
+    func pauseHeadPicImageViewAnimate() {
+        let pausedTime = headPicCycleImageView.layer .convertTime(CACurrentMediaTime(), fromLayer: nil)
+        headPicCycleImageView.layer.speed = 0
+        headPicCycleImageView.layer.timeOffset = pausedTime
+    }
+    
+    func resumeHeadPicImageViewAnimate() {
+        let pausedTime = headPicCycleImageView.layer.timeOffset
+        headPicCycleImageView.layer.speed = 1
+        headPicCycleImageView.layer.timeOffset = 0
+        headPicCycleImageView.layer.beginTime = 0
+        let timeSincePause = headPicCycleImageView.layer .convertTime(CACurrentMediaTime(), fromLayer: nil) - pausedTime
+        headPicCycleImageView.layer.beginTime = timeSincePause
     }
     
     required init?(coder aDecoder: NSCoder) {
