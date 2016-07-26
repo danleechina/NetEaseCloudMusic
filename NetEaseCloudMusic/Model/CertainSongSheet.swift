@@ -12,6 +12,14 @@ class CertainSongSheet: NSObject {
 
     var tracks = Array<Dictionary<String, AnyObject>>()
     
+    class func getFilePath() -> NSURL? {
+        if let dir = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .AllDomainsMask, true).first {
+            let path = NSURL(fileURLWithPath: dir).URLByAppendingPathComponent("CertainSongSheet")
+            return path;
+        }
+        return nil
+    }
+    
     
     class func loadSongSheetData(playListID: String, completion:(data: CertainSongSheet?, error: NSError?) -> Void) {
         let netease = NetworkMusicApi()
