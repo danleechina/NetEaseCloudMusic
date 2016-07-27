@@ -34,72 +34,43 @@ class PlaySongViewController: BaseViewController {
     // MARK: - Tap Action
     
     func tapPlayImage() -> Void {
-        if isPlaying {
-            playImageView.image = UIImage.init(named: "cm2_fm_btn_play")
-            needleDown()
-        } else {
-            playImageView.image = UIImage.init(named: "cm2_fm_btn_pause")
-            needleUp()
-        }
         isPlaying = !isPlaying
         isPlaying ? playSongService.startPlay() : playSongService.pausePlay()
+        
+        changePlayImage()
+        changeNeedlePosition(true)
     }
     
     func tapPrevSongImage() {
         playSongService.playPrev()
+        
         currentSongIndex = playSongService.currentPlaySong
         currentSongIndexChange()
+        
+        changeTitleText()
+        changeBackgroundBlurImage()
     }
     
     func tapNextSongImage() {
         playSongService.playNext()
+        
         currentSongIndex = playSongService.currentPlaySong
         currentSongIndexChange()
+        
+        changeTitleText()
+        changeBackgroundBlurImage()
     }
     
     func tapLoveImage() {
-        if isLike {
-            loveImageView.image = UIImage.init(named: "cm2_play_icn_love")
-        } else {
-            loveImageView.image = UIImage.init(named: "cm2_play_icn_loved")
-            UIView.animateWithDuration(0.1, animations: {
-                self.loveImageView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.2, 1.2)
-                }, completion: { (finished) in
-                    UIView.animateWithDuration(0.1, animations: {
-                        self.loveImageView.transform = CGAffineTransformScale(self.loveImageView.transform, 0.8, 0.8)
-                        }, completion: { (finished) in
-                            UIView.animateWithDuration(0.1, animations: {
-                                self.loveImageView.transform = CGAffineTransformScale(self.loveImageView.transform, 1, 1)
-                                }, completion: { (finished) in
-                                    self.loveImageView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1, 1)
-                            })
-                    })
-            })
-        }
         isLike = !isLike
+        changeLikeImage(true)
     }
     
     func tapPlayModeImage() {
         playMode.next()
         playModeChange()
-        switch playMode {
-        case PlayMode.Shuffle:
-            playModeImageView.image = UIImage.init(named: "cm2_icn_shuffle")
-            playModeImageView.highlightedImage = UIImage.init(named: "cm2_icn_shuffle_prs")
-            break
-        case PlayMode.Cycle:
-            playModeImageView.image = UIImage.init(named: "cm2_icn_loop")
-            playModeImageView.highlightedImage = UIImage.init(named: "cm2_icn_loop_prs")
-            break
-        case PlayMode.Repeat:
-            playModeImageView.image = UIImage.init(named: "cm2_icn_one")
-            playModeImageView.highlightedImage = UIImage.init(named: "cm2_icn_one_prs")
-            break
-        case PlayMode.Order:
-            playModeImageView.image = UIImage.init(named: "cm2_icn_order")
-            playModeImageView.highlightedImage = UIImage.init(named: "cm2_icn_order_prs")
-            break
-        }
+        
+        changePlayModeImage()
     }
     
     func tapBackButton() {
@@ -107,7 +78,6 @@ class PlaySongViewController: BaseViewController {
     }
     
     func tapShareButton() {
-        
     }
     
     // MARK: - Property
@@ -185,6 +155,8 @@ class PlaySongViewController: BaseViewController {
     // dataInit called only once
     func dataInit() {
         playSongService.playLists = data
+        playModeChange()
+        currentSongIndexChange()
         if isPlaying {
             playSongService.playCertainSong(currentSongIndex)
         }
@@ -197,8 +169,6 @@ class PlaySongViewController: BaseViewController {
             self.songname = da.tracks[currentSongIndex]["name"] as! String
             self.singers = da.tracks[currentSongIndex]["artists"]![0]["name"] as! String
         }
-        changeTitleText()
-        changeBackgroundBlurImage()
     }
     
     func playModeChange() {
@@ -249,11 +219,13 @@ class PlaySongViewController: BaseViewController {
         backButton.addTarget(self, action: #selector(tapBackButton), forControlEvents: .TouchUpInside)
         shareButton.addTarget(self, action: #selector(tapShareButton), forControlEvents: .TouchUpInside)
         
+        
+        
         changeTitleText()
         changeBackgroundBlurImage()
-//        if isPlaying {
-//            needleDown()
-//        }
+        changePlayModeImage()
+        changePlayImage()
+//        changeNeedlePosition(false)
     }
     
     func setAnchorPoint(anchorPoint: CGPoint, forView view: UIView) {
@@ -275,37 +247,103 @@ class PlaySongViewController: BaseViewController {
     }
     
     
-    func needleUp() {
-        
+    func needleUp(animate: Bool) {
         let point = self.view.convertPoint(CGPointMake(self.view.bounds.size.width/2, 64), toView: self.needleImageView)
         let anchorPoint = CGPointMake(point.x/self.needleImageView.bounds.size.width, point.y/self.needleImageView.bounds.size.height)
         self.setAnchorPoint(anchorPoint, forView: self.needleImageView)
         
         let angle = CGFloat(0)
-        UIView.animateWithDuration(0.2, delay: 0, options: .CurveEaseInOut, animations: {
+        if animate {
+            UIView.animateWithDuration(0.2, delay: 0, options: .CurveEaseInOut, animations: {
+                self.needleImageView.transform = CGAffineTransformMakeRotation(angle)
+                }, completion: nil)
+        } else {
             self.needleImageView.transform = CGAffineTransformMakeRotation(angle)
-            }, completion: nil)
+        }
     }
     
-    func needleDown() {
-        
+    func needleDown(animate: Bool) {
         let point = self.view.convertPoint(CGPointMake(self.view.bounds.size.width/2, 64), toView: self.needleImageView)
         let anchorPoint = CGPointMake(point.x/self.needleImageView.bounds.size.width, point.y/self.needleImageView.bounds.size.height)
         self.setAnchorPoint(anchorPoint, forView: self.needleImageView)
         
         let angle = -CGFloat(M_PI/360 * 50)
-        UIView.animateWithDuration(0.2, delay: 0, options: .CurveEaseInOut, animations: {
+        if animate {
+            UIView.animateWithDuration(0.2, delay: 0, options: .CurveEaseInOut, animations: {
+                self.needleImageView.transform = CGAffineTransformMakeRotation(angle)
+                }, completion: nil)
+        } else {
             self.needleImageView.transform = CGAffineTransformMakeRotation(angle)
-            }, completion: nil)
+        }
     }
     
     func changeTitleText() {
-        marqueeTitleLabel.text = songname + "22222220000000000222"
+        marqueeTitleLabel.text = songname
         singerNameLabel.text = singers
     }
     
     func changeBackgroundBlurImage() {
         blurBackgroundImageView?.sd_setImageWithURL(NSURL.init(string: blurPicUrl))
+    }
+    
+    func changePlayModeImage() {
+        switch playMode {
+        case PlayMode.Shuffle:
+            playModeImageView.image = UIImage.init(named: "cm2_icn_shuffle")
+            playModeImageView.highlightedImage = UIImage.init(named: "cm2_icn_shuffle_prs")
+            break
+        case PlayMode.Cycle:
+            playModeImageView.image = UIImage.init(named: "cm2_icn_loop")
+            playModeImageView.highlightedImage = UIImage.init(named: "cm2_icn_loop_prs")
+            break
+        case PlayMode.Repeat:
+            playModeImageView.image = UIImage.init(named: "cm2_icn_one")
+            playModeImageView.highlightedImage = UIImage.init(named: "cm2_icn_one_prs")
+            break
+        case PlayMode.Order:
+            playModeImageView.image = UIImage.init(named: "cm2_icn_order")
+            playModeImageView.highlightedImage = UIImage.init(named: "cm2_icn_order_prs")
+            break
+        }
+    }
+    
+    func changePlayImage() {
+        if isPlaying {
+            playImageView.image = UIImage.init(named: "cm2_fm_btn_pause")
+        } else {
+            playImageView.image = UIImage.init(named: "cm2_fm_btn_play")
+        }
+    }
+    
+    func changeNeedlePosition(animate: Bool) {
+        if isPlaying {
+            needleDown(animate)
+        } else {
+            needleUp(animate)
+        }
+    }
+    
+    func changeLikeImage(animate: Bool) {
+        if isLike {
+            loveImageView.image = UIImage.init(named: "cm2_play_icn_loved")
+            if animate {
+                UIView.animateWithDuration(0.1, animations: {
+                    self.loveImageView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.2, 1.2)
+                    }, completion: { (finished) in
+                        UIView.animateWithDuration(0.1, animations: {
+                            self.loveImageView.transform = CGAffineTransformScale(self.loveImageView.transform, 0.8, 0.8)
+                            }, completion: { (finished) in
+                                UIView.animateWithDuration(0.1, animations: {
+                                    self.loveImageView.transform = CGAffineTransformScale(self.loveImageView.transform, 1, 1)
+                                    }, completion: { (finished) in
+                                        self.loveImageView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1, 1)
+                                })
+                        })
+                })
+            }
+        } else {
+            loveImageView.image = UIImage.init(named: "cm2_play_icn_love")
+        }
     }
 }
 

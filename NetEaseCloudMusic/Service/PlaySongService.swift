@@ -32,9 +32,7 @@ enum PlayMode: Int {
 
 class PlaySongService: NSObject {
     static let sharedInstance = PlaySongService()
-    private override init() {
-        
-    }
+    private override init() {}
     
     var playMode = PlayMode.Order
     var playLists: CertainSongSheet? {
