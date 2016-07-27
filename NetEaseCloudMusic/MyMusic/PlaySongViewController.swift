@@ -10,183 +10,51 @@ import UIKit
 
 
 class PlaySongViewController: BaseViewController {
-    //I made a mistake, I should let the type be UIButton not UIImageView, but I am lazy to change. So be it
     
-    @IBOutlet weak var needleImageView: UIImageView! {
-        didSet {
-        }
-    }
-    
-    @IBOutlet weak var blurBackgroundImageView: UIImageView! {
-        didSet {
-            let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .Light))
-            visualEffectView.frame = blurBackgroundImageView.bounds
-            blurBackgroundImageView.addSubview(visualEffectView)
-        }
-    }
-    
-//    @IBOutlet weak var themePicImageView: UIImageView!{
-//        didSet {
-//            let lswipeGest = UISwipeGestureRecognizer.init(target: self, action: #selector(swipeThemePictImageView))
-//            lswipeGest.direction = UISwipeGestureRecognizerDirection.Left
-//            themePicImageView.addGestureRecognizer(lswipeGest)
-//            
-//            let rswipeGest = UISwipeGestureRecognizer.init(target: self, action: #selector(swipeThemePictImageView))
-//            rswipeGest.direction = UISwipeGestureRecognizerDirection.Right
-//            themePicImageView.addGestureRecognizer(rswipeGest)
-//        }
-//    }
-//    
-//    
-//    @IBOutlet weak var headPicImageView: UIImageView!{
-//        didSet {
-//            headPicImageView.layer.cornerRadius = 80
-//            let rotationAnimation = CABasicAnimation.init(keyPath: "transform.rotation.z")
-//            rotationAnimation.toValue = Double(2 * M_PI)
-//            rotationAnimation.duration = 10
-////            rotationAnimation.cumulative = true
-//            rotationAnimation.repeatCount = Float.infinity
-//            headPicImageView.layer.addAnimation(rotationAnimation, forKey: "rotationAnimation")
-//            pauseHeadPicImageViewAnimate()
-//        }
-//    }
-    
-    @IBOutlet weak var swipableDiscView: UIScrollView! {
-        didSet {
-            swipableDiscView.delegate = self
-        }
-    }
-    
-    @IBOutlet weak var loveImageView: UIImageView!{
-        didSet {
-            let tapGest = UITapGestureRecognizer.init(target: self, action: #selector(tapLoveImage))
-            tapGest.numberOfTapsRequired = 1
-            loveImageView.addGestureRecognizer(tapGest)
-        }
-    }
-    
+    // MARK: - IBOutlet
+    @IBOutlet weak var needleImageView: UIImageView!
+    @IBOutlet weak var blurBackgroundImageView: UIImageView!
+    @IBOutlet weak var swipableDiscView: UIScrollView!
+    @IBOutlet weak var loveImageView: UIImageView!
     @IBOutlet weak var downloadImageView: UIImageView!
+    @IBOutlet weak var commentImageView: UIImageView!
+    @IBOutlet weak var settingImageView: UIImageView!
+    @IBOutlet weak var timePointLabel: UILabel!
+    @IBOutlet weak var totalTimeLabel: UILabel!
+    @IBOutlet weak var currentLocationSlider: UISlider!
+    @IBOutlet weak var playModeImageView: UIImageView!
+    @IBOutlet weak var lastSongImageView: UIImageView!
+    @IBOutlet weak var playImageView: UIImageView!
+    @IBOutlet weak var nextImageView: UIImageView!
+    @IBOutlet weak var totalSettingImageView: UIImageView!
+    @IBOutlet weak var dotCurrentProcess: UIImageView!
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var shareButton: UIButton!
     
-    @IBOutlet weak var commentImageView: UIImageView!{
-        didSet {
-            
-        }
-    }
-    
-    @IBOutlet weak var settingImageView: UIImageView!{
-        didSet {
-            
-        }
-    }
-    
-    @IBOutlet weak var timePointLabel: UILabel!{
-        didSet {
-            
-        }
-    }
-    
-    @IBOutlet weak var totalTimeLabel: UILabel!{
-        didSet {
-            
-        }
-    }
-    
-    @IBOutlet weak var currentLocationSlider: UISlider! {
-        didSet {
-            currentLocationSlider.setThumbImage(UIImage.init(named: "cm2_fm_playbar_btn"), forState: .Normal)
-            currentLocationSlider.minimumTrackTintColor = FixedValue.mainRedColor
-        }
-    }
-    
-    
-    @IBOutlet weak var playModeImageView: UIImageView!{
-        didSet {
-            let tapGest = UITapGestureRecognizer.init(target: self, action: #selector(tapPlayModeImage))
-            playModeImageView.addGestureRecognizer(tapGest)
-        }
-    }
-    
-    @IBOutlet weak var lastSongImageView: UIImageView!{
-        didSet {
-            let tapGest = UITapGestureRecognizer.init(target: self, action: #selector(tapPrevSongImage))
-            lastSongImageView.addGestureRecognizer(tapGest)
-        }
-    }
-    
-    @IBOutlet weak var playImageView: UIImageView!{
-        didSet {
-            let tapGest = UITapGestureRecognizer.init(target: self, action: #selector(tapPlayImage))
-            playImageView.addGestureRecognizer(tapGest)
-        }
-    }
-    
-    
-    @IBOutlet weak var nextImageView: UIImageView!{
-        didSet {
-            let tapGest = UITapGestureRecognizer.init(target: self, action: #selector(tapNextSongImage))
-            nextImageView.addGestureRecognizer(tapGest)
-        }
-    }
-    
-    @IBOutlet weak var totalSettingImageView: UIImageView!{
-        didSet {
-            
-        }
-    }
-    
-    @IBOutlet weak var dotCurrentProcess: UIImageView! {
-        didSet {
-            
-        }
-    }
-    
-    @IBOutlet weak var backButton: UIButton! {
-        didSet {
-            backButton.addTarget(self, action: #selector(tapBackButton), forControlEvents: .TouchUpInside)
-        }
-    }
-    
-    
-    @IBOutlet weak var shareButton: UIButton! {
-        didSet {
-            shareButton.addTarget(self, action: #selector(tapShareButton), forControlEvents: .TouchUpInside)
-        }
-    }
+    // MARK: - Tap Action
     
     func tapPlayImage() -> Void {
-        var angle:CGFloat = 0
         if isPlaying {
             playImageView.image = UIImage.init(named: "cm2_fm_btn_play")
-            angle = -CGFloat(M_PI/360 * 50)
-            
-//            pauseHeadPicImageViewAnimate()
+            needleDown()
         } else {
             playImageView.image = UIImage.init(named: "cm2_fm_btn_pause")
-            angle = CGFloat(0)
-            
-//            resumeHeadPicImageViewAnimate()
+            needleUp()
         }
-        let point = self.view.convertPoint(CGPointMake(self.view.bounds.size.width/2, 64), toView: self.needleImageView)
-        let anchorPoint = CGPointMake(point.x/self.needleImageView.bounds.size.width, point.y/self.needleImageView.bounds.size.height)
-        self.setAnchorPoint(anchorPoint, forView: self.needleImageView)
-        UIView.animateWithDuration(0.2, delay: 0, options: .CurveEaseInOut, animations: { 
-            self.needleImageView.transform = CGAffineTransformMakeRotation(angle)
-            }, completion: nil)
         isPlaying = !isPlaying
-        
-        if isPlaying {
-            playSongService.startPlay()
-        } else {
-            playSongService.pausePlay()
-        }
+        isPlaying ? playSongService.startPlay() : playSongService.pausePlay()
     }
     
     func tapPrevSongImage() {
         playSongService.playPrev()
+        currentSongIndex = playSongService.currentPlaySong
+        currentSongIndexChange()
     }
     
     func tapNextSongImage() {
         playSongService.playNext()
+        currentSongIndex = playSongService.currentPlaySong
+        currentSongIndexChange()
     }
     
     func tapLoveImage() {
@@ -213,6 +81,7 @@ class PlaySongViewController: BaseViewController {
     
     func tapPlayModeImage() {
         playMode.next()
+        playModeChange()
         switch playMode {
         case PlayMode.Shuffle:
             playModeImageView.image = UIImage.init(named: "cm2_icn_shuffle")
@@ -241,56 +110,10 @@ class PlaySongViewController: BaseViewController {
         
     }
     
-    func swipeThemePictImageView(sender: UISwipeGestureRecognizer) {
-        switch sender.direction {
-        case UISwipeGestureRecognizerDirection.Left:
-            
-            break
-            
-        case UISwipeGestureRecognizerDirection.Right:
-            break
-        default:
-            break
-        }
-    }
+    // MARK: - Property
     
-    func setAnchorPoint(anchorPoint: CGPoint, forView view: UIView) {
-        var newPoint = CGPointMake(view.bounds.size.width * anchorPoint.x, view.bounds.size.height * anchorPoint.y)
-        var oldPoint = CGPointMake(view.bounds.size.width * view.layer.anchorPoint.x, view.bounds.size.height * view.layer.anchorPoint.y)
-        
-        newPoint = CGPointApplyAffineTransform(newPoint, view.transform)
-        oldPoint = CGPointApplyAffineTransform(oldPoint, view.transform)
-        
-        var position = view.layer.position
-        position.x -= oldPoint.x
-        position.x += newPoint.x
-        
-        position.y -= oldPoint.y
-        position.y += newPoint.y
-        
-        view.layer.position = position
-        view.layer.anchorPoint = anchorPoint
-    }
-    
-    var data: CertainSongSheet? {
-        didSet {
-            playSongService.playLists = data
-        }
-    }
-    
-    var currentSongIndex = 0 {
-        didSet {
-            if let da = data {
-                self.mp3Url = da.tracks[currentSongIndex]["mp3Url"] as! String
-                self.picUrl = da.tracks[currentSongIndex]["album"]!["picUrl"] as! String
-                self.blurPicUrl = da.tracks[currentSongIndex]["album"]!["blurPicUrl"] as! String
-                self.songname = da.tracks[currentSongIndex]["name"] as! String
-                self.singers = da.tracks[currentSongIndex]["artists"]![0]["name"] as! String
-            }
-        }
-    }
-    
-    var mp3Url = ""
+    var data: CertainSongSheet?
+    var currentSongIndex = 0
     var picUrl = ""
     var blurPicUrl = ""
     var songname = ""
@@ -298,11 +121,7 @@ class PlaySongViewController: BaseViewController {
     
     var isPlaying = false
     var isLike = false
-    var playMode = PlayMode.Order {
-        didSet {
-            playSongService.playMode = playMode
-        }
-    }
+    var playMode = PlayMode.Order
     
     let playSongService = PlaySongService.sharedInstance
         
@@ -324,27 +143,14 @@ class PlaySongViewController: BaseViewController {
         return label
     }()
     
-    @IBOutlet weak var titleView: UIView! {
-        didSet {
-            titleView.addSubview(self.marqueeTitleLabel)
-            titleView.addSubview(self.singerNameLabel)
-        }
-    }
+    @IBOutlet weak var titleView: UIView!
+    
+    // MARK: Override method
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        isPlaying = true
-        
-//        headPicImageView.sd_setImageWithURL(NSURL.init(string: picUrl), placeholderImage: UIImage.init(named: "cm2_default_cover_play"))
-        blurBackgroundImageView.sd_setImageWithURL(NSURL.init(string: blurPicUrl))
-        
-        marqueeTitleLabel.text = songname + "22222220000000000222"
-        singerNameLabel.text = singers
-        
-        if isPlaying {
-//            resumeHeadPicImageViewAnimate()
-        }
-        // this is weird.
+        dataInit()
+        viewsInit()
         self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
     }
     
@@ -373,7 +179,134 @@ class PlaySongViewController: BaseViewController {
         shareButtonCenter.y = 44
         shareButton.center = shareButtonCenter
     }
- 
+    
+    // MARK: Supporting For Data
+    
+    // dataInit called only once
+    func dataInit() {
+        playSongService.playLists = data
+        if isPlaying {
+            playSongService.playCertainSong(currentSongIndex)
+        }
+    }
+    
+    func currentSongIndexChange()  {
+        if let da = data {
+            self.picUrl = da.tracks[currentSongIndex]["album"]!["picUrl"] as! String
+            self.blurPicUrl = da.tracks[currentSongIndex]["album"]!["blurPicUrl"] as! String
+            self.songname = da.tracks[currentSongIndex]["name"] as! String
+            self.singers = da.tracks[currentSongIndex]["artists"]![0]["name"] as! String
+        }
+        changeTitleText()
+        changeBackgroundBlurImage()
+    }
+    
+    func playModeChange() {
+        playSongService.playMode = playMode
+    }
+    
+    // MARK: Supporting For View
+    
+    // viewsInit called only once
+    func viewsInit() {
+        // blurBackgroundImageView
+        let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .Light))
+        visualEffectView.frame = blurBackgroundImageView.bounds
+        blurBackgroundImageView.addSubview(visualEffectView)
+        
+        // swipableDiscView
+        swipableDiscView.delegate = self
+        
+        // loveImageView
+        let tapGest = UITapGestureRecognizer.init(target: self, action: #selector(tapLoveImage))
+        tapGest.numberOfTapsRequired = 1
+        loveImageView.addGestureRecognizer(tapGest)
+        
+        // currentLocationSlider
+        currentLocationSlider.setThumbImage(UIImage.init(named: "cm2_fm_playbar_btn"), forState: .Normal)
+        currentLocationSlider.minimumTrackTintColor = FixedValue.mainRedColor
+        
+        // playModeImageView
+        let ptapGest = UITapGestureRecognizer.init(target: self, action: #selector(tapPlayModeImage))
+        playModeImageView.addGestureRecognizer(ptapGest)
+        
+        // lastSongImageView
+        let ltapGest = UITapGestureRecognizer.init(target: self, action: #selector(tapPrevSongImage))
+        lastSongImageView.addGestureRecognizer(ltapGest)
+        
+        // playImageView
+        let PIVtapGest = UITapGestureRecognizer.init(target: self, action: #selector(tapPlayImage))
+        playImageView.addGestureRecognizer(PIVtapGest)
+        
+        // nextImageView
+        let ntapGest = UITapGestureRecognizer.init(target: self, action: #selector(tapNextSongImage))
+        nextImageView.addGestureRecognizer(ntapGest)
+        
+        // titleView
+        titleView.addSubview(self.marqueeTitleLabel)
+        titleView.addSubview(self.singerNameLabel)
+        
+        backButton.addTarget(self, action: #selector(tapBackButton), forControlEvents: .TouchUpInside)
+        shareButton.addTarget(self, action: #selector(tapShareButton), forControlEvents: .TouchUpInside)
+        
+        changeTitleText()
+        changeBackgroundBlurImage()
+//        if isPlaying {
+//            needleDown()
+//        }
+    }
+    
+    func setAnchorPoint(anchorPoint: CGPoint, forView view: UIView) {
+        var newPoint = CGPointMake(view.bounds.size.width * anchorPoint.x, view.bounds.size.height * anchorPoint.y)
+        var oldPoint = CGPointMake(view.bounds.size.width * view.layer.anchorPoint.x, view.bounds.size.height * view.layer.anchorPoint.y)
+        
+        newPoint = CGPointApplyAffineTransform(newPoint, view.transform)
+        oldPoint = CGPointApplyAffineTransform(oldPoint, view.transform)
+        
+        var position = view.layer.position
+        position.x -= oldPoint.x
+        position.x += newPoint.x
+        
+        position.y -= oldPoint.y
+        position.y += newPoint.y
+        
+        view.layer.position = position
+        view.layer.anchorPoint = anchorPoint
+    }
+    
+    
+    func needleUp() {
+        
+        let point = self.view.convertPoint(CGPointMake(self.view.bounds.size.width/2, 64), toView: self.needleImageView)
+        let anchorPoint = CGPointMake(point.x/self.needleImageView.bounds.size.width, point.y/self.needleImageView.bounds.size.height)
+        self.setAnchorPoint(anchorPoint, forView: self.needleImageView)
+        
+        let angle = CGFloat(0)
+        UIView.animateWithDuration(0.2, delay: 0, options: .CurveEaseInOut, animations: {
+            self.needleImageView.transform = CGAffineTransformMakeRotation(angle)
+            }, completion: nil)
+    }
+    
+    func needleDown() {
+        
+        let point = self.view.convertPoint(CGPointMake(self.view.bounds.size.width/2, 64), toView: self.needleImageView)
+        let anchorPoint = CGPointMake(point.x/self.needleImageView.bounds.size.width, point.y/self.needleImageView.bounds.size.height)
+        self.setAnchorPoint(anchorPoint, forView: self.needleImageView)
+        
+        let angle = -CGFloat(M_PI/360 * 50)
+        UIView.animateWithDuration(0.2, delay: 0, options: .CurveEaseInOut, animations: {
+            self.needleImageView.transform = CGAffineTransformMakeRotation(angle)
+            }, completion: nil)
+    }
+    
+    func changeTitleText() {
+        marqueeTitleLabel.text = songname + "22222220000000000222"
+        singerNameLabel.text = singers
+    }
+    
+    func changeBackgroundBlurImage() {
+        blurBackgroundImageView?.sd_setImageWithURL(NSURL.init(string: blurPicUrl))
+    }
 }
 
 extension PlaySongViewController: UIScrollViewDelegate {

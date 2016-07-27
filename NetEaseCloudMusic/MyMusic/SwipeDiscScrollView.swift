@@ -119,6 +119,34 @@ class SwipeDiscScrollView: UIScrollView {
 }
 
 class DiscView: UIView {
+    
+    
+    //    @IBOutlet weak var themePicImageView: UIImageView!{
+    //        didSet {
+    //            let lswipeGest = UISwipeGestureRecognizer.init(target: self, action: #selector(swipeThemePictImageView))
+    //            lswipeGest.direction = UISwipeGestureRecognizerDirection.Left
+    //            themePicImageView.addGestureRecognizer(lswipeGest)
+    //
+    //            let rswipeGest = UISwipeGestureRecognizer.init(target: self, action: #selector(swipeThemePictImageView))
+    //            rswipeGest.direction = UISwipeGestureRecognizerDirection.Right
+    //            themePicImageView.addGestureRecognizer(rswipeGest)
+    //        }
+    //    }
+    //
+    //
+    //    @IBOutlet weak var headPicImageView: UIImageView!{
+    //        didSet {
+    //            headPicImageView.layer.cornerRadius = 80
+    //            let rotationAnimation = CABasicAnimation.init(keyPath: "transform.rotation.z")
+    //            rotationAnimation.toValue = Double(2 * M_PI)
+    //            rotationAnimation.duration = 10
+    ////            rotationAnimation.cumulative = true
+    //            rotationAnimation.repeatCount = Float.infinity
+    //            headPicImageView.layer.addAnimation(rotationAnimation, forKey: "rotationAnimation")
+    //            pauseHeadPicImageViewAnimate()
+    //        }
+    //    }
+    
     var headPicImage = UIImage.init(named: "cm2_default_cover_play") {
         didSet {
             headPicCycleImageView.image = headPicImage

@@ -66,6 +66,7 @@ extension CertainSongSheetViewController: UITableViewDelegate, UITableViewDataSo
         let vc = PlaySongViewController()
         vc.data = data
         vc.currentSongIndex = indexPath.row
+        vc.isPlaying = true
         
         vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
