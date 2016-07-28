@@ -177,6 +177,10 @@ class PlaySongViewController: BaseViewController {
         playSongService.playMode = playMode
     }
     
+    func sliderValueChanged(sender: UISlider) {
+        playSongService.playStartPoint(sender.value)
+    }
+    
     // MARK: Supporting For View
     
     // viewsInit called only once
@@ -217,6 +221,9 @@ class PlaySongViewController: BaseViewController {
         // titleView
         titleView.addSubview(self.marqueeTitleLabel)
         titleView.addSubview(self.singerNameLabel)
+        
+        currentLocationSlider.continuous = true
+        currentLocationSlider.addTarget(self, action: #selector(sliderValueChanged), forControlEvents: .ValueChanged)
         
         backButton.addTarget(self, action: #selector(tapBackButton), forControlEvents: .TouchUpInside)
         shareButton.addTarget(self, action: #selector(tapShareButton), forControlEvents: .TouchUpInside)
@@ -390,5 +397,13 @@ extension PlaySongViewController: UIScrollViewDelegate {
 extension PlaySongViewController: PlaySongServiceDelegate {
     func updateProgress(currentTime: Float64, durationTime: Float64) {
         changeProgressAndText(currentTime, duration: durationTime)
+    }
+    func didChangeSong() {
+        currentSongIndex = playSongService.currentPlaySong
+        currentSongIndexChange()
+        
+        changeTitleText()
+        changeBackgroundBlurImage()
+        changeProgressAndText(0, duration: 0)
     }
 }

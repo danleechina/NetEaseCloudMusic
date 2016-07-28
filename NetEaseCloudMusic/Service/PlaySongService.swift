@@ -31,6 +31,7 @@ enum PlayMode: Int {
 
 protocol PlaySongServiceDelegate: class {
     func updateProgress(currentTime: Float64, durationTime: Float64)
+    func didChangeSong()
 }
 
 
@@ -94,8 +95,10 @@ class PlaySongService: NSObject {
     }
     
     // play a song at a certain time point
-    func playStartPoint() {
-        
+    func playStartPoint(percent: Float) {
+        let timeScale = self.songPlayer?.currentItem?.asset.duration.timescale
+        let targetTime = CMTimeMakeWithSeconds(Float64(percent) * CMTimeGetSeconds((self.songPlayer?.currentItem?.duration)!), timeScale!)
+        songPlayer?.seekToTime(targetTime)
     }
     
     func startPlay() {
@@ -152,6 +155,7 @@ class PlaySongService: NSObject {
                 return
             }
             playNext()
+            self.delegate?.didChangeSong()
         }
     }
     
