@@ -29,10 +29,16 @@ enum PlayMode: Int {
     }
 }
 
+protocol PlaySongServiceDelegate: class {
+    func updateProgress(currentTime: Float64, durationTime: Float64)
+}
+
 
 class PlaySongService: NSObject {
     static let sharedInstance = PlaySongService()
     private override init() {}
+    
+    weak var delegate: PlaySongServiceDelegate?
     
     var playMode = PlayMode.Order
     var playLists: CertainSongSheet? {
@@ -45,7 +51,7 @@ class PlaySongService: NSObject {
     
     private var songPlayer: AVPlayer?
     private var out_context = 0
-
+    private var playTimeObserver: AnyObject?
     
     // play next song
     func playNext() {
@@ -109,8 +115,17 @@ class PlaySongService: NSObject {
             songplayer.removeObserver(self, forKeyPath: "status")
             // songPlayer can only be assign here
             NSNotificationCenter.defaultCenter().removeObserver(self, name: AVPlayerItemDidPlayToEndTimeNotification, object: nil)
+            if playTimeObserver != nil {
+                songplayer.removeTimeObserver(playTimeObserver!)
+                playTimeObserver = nil
+            }
         }
         songPlayer = player
+        playTimeObserver = songPlayer?.addPeriodicTimeObserverForInterval(CMTimeMake(1, 1), queue: dispatch_get_main_queue(), usingBlock: { [unowned self] (time) in
+            let currentTime = CMTimeGetSeconds(time)
+            let totalTime = CMTimeGetSeconds((self.songPlayer?.currentItem?.duration)!)
+            self.delegate?.updateProgress(currentTime, durationTime: totalTime)
+        })
     }
     
     override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) -> Void {
@@ -140,7 +155,4 @@ class PlaySongService: NSObject {
         }
     }
     
-    func updateProgress() -> Void {
-        print("updateProgress")
-    }
 }

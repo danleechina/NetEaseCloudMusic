@@ -30,6 +30,7 @@ class PlaySongViewController: BaseViewController {
     @IBOutlet weak var dotCurrentProcess: UIImageView!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var shareButton: UIButton!
+    @IBOutlet weak var titleView: UIView!
     
     // MARK: - Tap Action
     
@@ -49,6 +50,7 @@ class PlaySongViewController: BaseViewController {
         
         changeTitleText()
         changeBackgroundBlurImage()
+        changeProgressAndText(0, duration: 0)
     }
     
     func tapNextSongImage() {
@@ -59,6 +61,7 @@ class PlaySongViewController: BaseViewController {
         
         changeTitleText()
         changeBackgroundBlurImage()
+        changeProgressAndText(0, duration: 0)
     }
     
     func tapLoveImage() {
@@ -113,8 +116,6 @@ class PlaySongViewController: BaseViewController {
         return label
     }()
     
-    @IBOutlet weak var titleView: UIView!
-    
     // MARK: Override method
     
     override func viewDidLoad() {
@@ -154,6 +155,7 @@ class PlaySongViewController: BaseViewController {
     
     // dataInit called only once
     func dataInit() {
+        playSongService.delegate = self
         playSongService.playLists = data
         playModeChange()
         currentSongIndexChange()
@@ -226,6 +228,7 @@ class PlaySongViewController: BaseViewController {
         changePlayModeImage()
         changePlayImage()
 //        changeNeedlePosition(false)
+        changeProgressAndText(0, duration: 0)
     }
     
     func setAnchorPoint(anchorPoint: CGPoint, forView view: UIView) {
@@ -345,7 +348,47 @@ class PlaySongViewController: BaseViewController {
             loveImageView.image = UIImage.init(named: "cm2_play_icn_love")
         }
     }
+    
+    func changeProgressAndText(current: Float64, duration: Float64) {
+        self.totalTimeLabel.text = getFormatTime(duration)
+        self.timePointLabel.text = getFormatTime(current)
+        if duration != 0 && !duration.isNaN && !current.isNaN {
+            self.currentLocationSlider.setValue(Float(current / duration) , animated: true)
+        } else {
+            self.currentLocationSlider.setValue(0 , animated: true)
+        }
+    }
+    
+    // MARK: Data Util
+    
+    func getFormatTime(time: Float64) -> String {
+        if time.isNaN {
+            return "00:00"
+        }
+        let minuteValue = Int(time / 60)
+        let secondValue = Int(time) - minuteValue * 60
+        
+        var secondStr = "\(secondValue)"
+        if secondValue < 10 {
+            secondStr = "0" + secondStr
+        }
+        
+        var minStr = "\(minuteValue)"
+        if minuteValue < 0 {
+            minStr = "00"
+        } else if minuteValue < 9 {
+            minStr = "0" + minStr
+        }
+        
+        return minStr + ":" + secondStr
+    }
 }
 
 extension PlaySongViewController: UIScrollViewDelegate {
+}
+
+extension PlaySongViewController: PlaySongServiceDelegate {
+    func updateProgress(currentTime: Float64, durationTime: Float64) {
+        changeProgressAndText(currentTime, duration: durationTime)
+    }
 }
