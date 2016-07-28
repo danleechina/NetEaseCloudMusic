@@ -192,6 +192,8 @@ class PlaySongViewController: BaseViewController {
         
         // swipableDiscView
         swipableDiscView.delegate = self
+        swipableDiscView.pagingEnabled = true
+        swipableDiscView.clipsToBounds = false
         
         // loveImageView
         let tapGest = UITapGestureRecognizer.init(target: self, action: #selector(tapLoveImage))
@@ -392,6 +394,13 @@ class PlaySongViewController: BaseViewController {
 }
 
 extension PlaySongViewController: UIScrollViewDelegate {
+    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        
+    }
+    
+    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        
+    }
 }
 
 extension PlaySongViewController: PlaySongServiceDelegate {

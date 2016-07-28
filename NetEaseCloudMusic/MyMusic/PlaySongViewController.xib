@@ -71,11 +71,12 @@
                     </variation>
                 </imageView>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v1X-Ot-QFP" customClass="SwipeDiscScrollView" customModule="NetEaseCloudMusic" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="145" width="600" height="240"/>
+                    <rect key="frame" x="180" y="145" width="240" height="240"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="240" id="6XQ-m3-RyL"/>
                         <constraint firstAttribute="height" constant="240" id="GOY-x8-dbs"/>
                         <constraint firstAttribute="height" constant="240" id="J1y-OH-Kff"/>
+                        <constraint firstAttribute="width" constant="240" id="NjS-7p-fhs"/>
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">
@@ -231,7 +232,7 @@
                 <constraint firstAttribute="trailing" secondItem="UGs-4u-wkl" secondAttribute="trailing" constant="10" id="F4p-tn-nUT"/>
                 <constraint firstItem="TsB-nh-0hX" firstAttribute="leading" secondItem="Ljs-1s-Jq3" secondAttribute="trailing" constant="15" id="F7U-fC-m4r"/>
                 <constraint firstItem="fnA-x8-nAD" firstAttribute="leading" secondItem="7K2-4K-fah" secondAttribute="trailing" constant="15" id="G2Q-JA-4nW"/>
-                <constraint firstItem="v1X-Ot-QFP" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="IST-mi-Ljn"/>
+                <constraint firstItem="v1X-Ot-QFP" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" constant="240" id="IST-mi-Ljn"/>
                 <constraint firstItem="Ry2-qp-xQN" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="IiZ-o0-0yQ"/>
                 <constraint firstItem="h7x-k6-kHX" firstAttribute="top" secondItem="OmY-l2-7gG" secondAttribute="bottom" constant="-6" id="P4F-3C-2Oh"/>
                 <constraint firstAttribute="bottom" secondItem="gyT-3S-crh" secondAttribute="bottom" constant="25" id="QkR-9Y-toL"/>
@@ -291,6 +292,7 @@
                     <exclude reference="hbi-8b-wOO"/>
                     <exclude reference="v3I-Zf-HBF"/>
                     <exclude reference="vQ3-cR-7Da"/>
+                    <exclude reference="IST-mi-Ljn"/>
                     <exclude reference="Ee3-ec-zqm"/>
                     <exclude reference="RsD-wY-eIM"/>
                     <exclude reference="5xb-2l-Min"/>

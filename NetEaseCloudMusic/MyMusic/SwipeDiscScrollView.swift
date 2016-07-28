@@ -116,6 +116,14 @@ class SwipeDiscScrollView: UIScrollView {
         
         discViewContainerView.frame = CGRectMake(0, 0, self.bounds.width, self.bounds.height)
     }
+    
+    func pauseHeadPicImageViewAnimate() {
+        
+    }
+    
+    func resumeHeadPicImageViewAnimate() {
+        
+    }
 }
 
 class DiscView: UIView {
