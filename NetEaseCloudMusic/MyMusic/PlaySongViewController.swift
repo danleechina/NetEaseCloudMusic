@@ -195,6 +195,14 @@ class PlaySongViewController: BaseViewController {
         swipableDiscView.pagingEnabled = true
         swipableDiscView.clipsToBounds = false
         
+        let screenWidth = UIScreen.mainScreen().bounds.size.width
+        let discWidth: CGFloat = 240
+//        let paddingToEdge = (screenWidth - discWidth) / 2
+        swipableDiscView.addSubview(DiscView.init(frame: CGRectMake(-screenWidth, 0, discWidth, discWidth)))
+        swipableDiscView.addSubview(DiscView.init(frame: CGRectMake(0, 0, discWidth, discWidth)))
+        swipableDiscView.addSubview(DiscView.init(frame: CGRectMake(screenWidth, 0, discWidth, discWidth)))
+        swipableDiscView.contentSize = CGSizeMake(3 * screenWidth, discWidth)
+    
         // loveImageView
         let tapGest = UITapGestureRecognizer.init(target: self, action: #selector(tapLoveImage))
         tapGest.numberOfTapsRequired = 1
