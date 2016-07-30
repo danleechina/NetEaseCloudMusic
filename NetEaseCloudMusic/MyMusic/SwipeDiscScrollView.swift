@@ -128,47 +128,23 @@ class SwipeDiscScrollView: UIScrollView {
 
 class DiscView: UIView {
     
-    
-    //    @IBOutlet weak var themePicImageView: UIImageView!{
-    //        didSet {
-    //            let lswipeGest = UISwipeGestureRecognizer.init(target: self, action: #selector(swipeThemePictImageView))
-    //            lswipeGest.direction = UISwipeGestureRecognizerDirection.Left
-    //            themePicImageView.addGestureRecognizer(lswipeGest)
-    //
-    //            let rswipeGest = UISwipeGestureRecognizer.init(target: self, action: #selector(swipeThemePictImageView))
-    //            rswipeGest.direction = UISwipeGestureRecognizerDirection.Right
-    //            themePicImageView.addGestureRecognizer(rswipeGest)
-    //        }
-    //    }
-    //
-    //
-    //    @IBOutlet weak var headPicImageView: UIImageView!{
-    //        didSet {
-    //            headPicImageView.layer.cornerRadius = 80
-    //            let rotationAnimation = CABasicAnimation.init(keyPath: "transform.rotation.z")
-    //            rotationAnimation.toValue = Double(2 * M_PI)
-    //            rotationAnimation.duration = 10
-    ////            rotationAnimation.cumulative = true
-    //            rotationAnimation.repeatCount = Float.infinity
-    //            headPicImageView.layer.addAnimation(rotationAnimation, forKey: "rotationAnimation")
-    //            pauseHeadPicImageViewAnimate()
-    //        }
-    //    }
-    
-    var headPicImage = UIImage.init(named: "cm2_default_cover_play") {
-        didSet {
-            headPicCycleImageView.image = headPicImage
-        }
-    }
-    
     private var blackCycleImageView = UIImageView.init(image: UIImage.init(named: "cm2_play_disc-ip6"))
-    private var headPicCycleImageView = UIImageView.init(image: UIImage.init(named: "cm2_default_cover_play"))
+    var headPicCycleImageView = UIImageView.init(image: UIImage.init(named: "cm2_default_cover_play"))
+    private var isPause = false
 
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(headPicCycleImageView)
         addSubview(blackCycleImageView)
+        
+        
+        let rotationAnimation = CABasicAnimation.init(keyPath: "transform.rotation.z")
+        rotationAnimation.toValue = Double(2 * M_PI)
+        rotationAnimation.duration = 10
+        rotationAnimation.repeatCount = Float.infinity
+        headPicCycleImageView.layer.addAnimation(rotationAnimation, forKey: "rotationAnimation")
+        pauseHeadPicImageViewAnimate()
     }
     
     override func layoutSubviews() {
@@ -191,12 +167,20 @@ class DiscView: UIView {
     }
     
     func pauseHeadPicImageViewAnimate() {
+        if isPause {
+            return
+        }
+        isPause = true
         let pausedTime = headPicCycleImageView.layer .convertTime(CACurrentMediaTime(), fromLayer: nil)
         headPicCycleImageView.layer.speed = 0
         headPicCycleImageView.layer.timeOffset = pausedTime
     }
     
     func resumeHeadPicImageViewAnimate() {
+        if !isPause {
+            return
+        }
+        isPause = false
         let pausedTime = headPicCycleImageView.layer.timeOffset
         headPicCycleImageView.layer.speed = 1
         headPicCycleImageView.layer.timeOffset = 0

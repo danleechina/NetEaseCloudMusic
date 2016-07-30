@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="16A254g" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -71,10 +71,11 @@
                     </variation>
                 </imageView>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v1X-Ot-QFP" customClass="SwipeDiscScrollView" customModule="NetEaseCloudMusic" customModuleProvider="target">
-                    <rect key="frame" x="180" y="145" width="240" height="240"/>
+                    <rect key="frame" x="0.0" y="145" width="600" height="240"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="240" id="6XQ-m3-RyL"/>
                         <constraint firstAttribute="height" constant="240" id="GOY-x8-dbs"/>
+                        <constraint firstAttribute="height" constant="240" id="IjU-hQ-PRI"/>
                         <constraint firstAttribute="height" constant="240" id="J1y-OH-Kff"/>
                         <constraint firstAttribute="width" constant="240" id="NjS-7p-fhs"/>
                     </constraints>
@@ -82,6 +83,8 @@
                         <mask key="constraints">
                             <exclude reference="6XQ-m3-RyL"/>
                             <exclude reference="GOY-x8-dbs"/>
+                            <exclude reference="J1y-OH-Kff"/>
+                            <exclude reference="NjS-7p-fhs"/>
                         </mask>
                     </variation>
                 </scrollView>
@@ -224,8 +227,10 @@
                 <constraint firstItem="v1X-Ot-QFP" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-35" id="565-KV-ybg"/>
                 <constraint firstItem="h7x-k6-kHX" firstAttribute="centerY" secondItem="9Db-RD-NNa" secondAttribute="centerY" id="5xb-2l-Min"/>
                 <constraint firstItem="Ry2-qp-xQN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="6qz-mc-UWN"/>
+                <constraint firstItem="v1X-Ot-QFP" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" id="72d-IU-lyH"/>
                 <constraint firstItem="oaW-jk-qCH" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="8yq-sV-ra6"/>
                 <constraint firstItem="h7x-k6-kHX" firstAttribute="centerY" secondItem="nst-YT-lRa" secondAttribute="centerY" id="AMv-hX-QWQ"/>
+                <constraint firstItem="v1X-Ot-QFP" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="CKK-aD-SI8"/>
                 <constraint firstItem="Ry2-qp-xQN" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="Cza-fq-o23"/>
                 <constraint firstItem="h7x-k6-kHX" firstAttribute="leading" secondItem="nst-YT-lRa" secondAttribute="trailing" constant="51" id="D5S-jG-jbZ"/>
                 <constraint firstItem="nst-YT-lRa" firstAttribute="centerX" secondItem="7K2-4K-fah" secondAttribute="centerX" id="Ee3-ec-zqm"/>
@@ -292,6 +297,7 @@
                     <exclude reference="hbi-8b-wOO"/>
                     <exclude reference="v3I-Zf-HBF"/>
                     <exclude reference="vQ3-cR-7Da"/>
+                    <exclude reference="72d-IU-lyH"/>
                     <exclude reference="IST-mi-Ljn"/>
                     <exclude reference="Ee3-ec-zqm"/>
                     <exclude reference="RsD-wY-eIM"/>

@@ -97,6 +97,9 @@ class PlaySongViewController: BaseViewController {
     var playMode = PlayMode.Order
     
     let playSongService = PlaySongService.sharedInstance
+    var userDragging = false
+    var isSwipeLeft = false
+    var isNeedleUp = false
         
     private lazy var marqueeTitleLabel: MarqueeLabel = {
         let label =  MarqueeLabel.init(frame: CGRectMake(0, 0, 200, 24), duration: 10, fadeLength:10)
@@ -114,6 +117,27 @@ class PlaySongViewController: BaseViewController {
         label.center = CGPointMake(100, 33)
         label.textAlignment = .Center
         return label
+    }()
+    
+    private lazy var discLeft: DiscView = {
+        let screenWidth = UIScreen.mainScreen().bounds.size.width
+        let discWidth: CGFloat = 240
+        let paddingToEdge = (screenWidth - discWidth) / 2
+        return DiscView.init(frame: CGRectMake(paddingToEdge, 0, discWidth, discWidth))
+    }()
+    
+    private lazy var discMiddle: DiscView = {
+        let screenWidth = UIScreen.mainScreen().bounds.size.width
+        let discWidth: CGFloat = 240
+        let paddingToEdge = (screenWidth - discWidth) / 2
+        return DiscView.init(frame: CGRectMake(paddingToEdge + screenWidth, 0, discWidth, discWidth))
+    }()
+    
+    private lazy var discRight: DiscView = {
+        let screenWidth = UIScreen.mainScreen().bounds.size.width
+        let discWidth: CGFloat = 240
+        let paddingToEdge = (screenWidth - discWidth) / 2
+        return DiscView.init(frame: CGRectMake(paddingToEdge + 2 * screenWidth, 0, discWidth, discWidth))
     }()
     
     // MARK: Override method
@@ -191,17 +215,16 @@ class PlaySongViewController: BaseViewController {
         blurBackgroundImageView.addSubview(visualEffectView)
         
         // swipableDiscView
-        swipableDiscView.delegate = self
-        swipableDiscView.pagingEnabled = true
-        swipableDiscView.clipsToBounds = false
-        
         let screenWidth = UIScreen.mainScreen().bounds.size.width
         let discWidth: CGFloat = 240
-//        let paddingToEdge = (screenWidth - discWidth) / 2
-        swipableDiscView.addSubview(DiscView.init(frame: CGRectMake(-screenWidth, 0, discWidth, discWidth)))
-        swipableDiscView.addSubview(DiscView.init(frame: CGRectMake(0, 0, discWidth, discWidth)))
-        swipableDiscView.addSubview(DiscView.init(frame: CGRectMake(screenWidth, 0, discWidth, discWidth)))
         swipableDiscView.contentSize = CGSizeMake(3 * screenWidth, discWidth)
+        swipableDiscView.contentOffset = CGPointMake(screenWidth, 0)
+        swipableDiscView.showsHorizontalScrollIndicator = false
+        swipableDiscView.delegate = self
+        swipableDiscView.pagingEnabled = true
+        swipableDiscView.addSubview(self.discLeft)
+        swipableDiscView.addSubview(self.discMiddle)
+        swipableDiscView.addSubview(self.discRight)
     
         // loveImageView
         let tapGest = UITapGestureRecognizer.init(target: self, action: #selector(tapLoveImage))
@@ -246,6 +269,13 @@ class PlaySongViewController: BaseViewController {
         changePlayImage()
 //        changeNeedlePosition(false)
         changeProgressAndText(0, duration: 0)
+        
+        
+        if let songInfo = self.playSongService.getCurrentSongInfo() {
+            discMiddle.headPicCycleImageView.sd_setImageWithURL(NSURL.init(string: songInfo.picUrl)!, placeholderImage: UIImage.init(named: "cm2_default_cover_play"))
+            discMiddle.resumeHeadPicImageViewAnimate()
+//            needleDown(true)
+        }
     }
     
     func setAnchorPoint(anchorPoint: CGPoint, forView view: UIView) {
@@ -268,33 +298,43 @@ class PlaySongViewController: BaseViewController {
     
     
     func needleUp(animate: Bool) {
+        if isNeedleUp {
+            return
+        }
+        let angle = -CGFloat(M_PI/360 * 50)
         let point = self.view.convertPoint(CGPointMake(self.view.bounds.size.width/2, 64), toView: self.needleImageView)
         let anchorPoint = CGPointMake(point.x/self.needleImageView.bounds.size.width, point.y/self.needleImageView.bounds.size.height)
         self.setAnchorPoint(anchorPoint, forView: self.needleImageView)
-        
-        let angle = CGFloat(0)
         if animate {
             UIView.animateWithDuration(0.2, delay: 0, options: .CurveEaseInOut, animations: {
-                self.needleImageView.transform = CGAffineTransformMakeRotation(angle)
+                self.needleImageView.transform = CGAffineTransformRotate(self.needleImageView.transform, angle)
                 }, completion: nil)
         } else {
             self.needleImageView.transform = CGAffineTransformMakeRotation(angle)
         }
+        isNeedleUp = true
     }
     
     func needleDown(animate: Bool) {
+        if !isNeedleUp {
+            return
+        }
+        let angle = CGFloat(M_PI/360 * 50)
+        if CGAffineTransformEqualToTransform(self.needleImageView.transform, CGAffineTransformRotate(CGAffineTransformIdentity, angle)) {
+            return
+        }
         let point = self.view.convertPoint(CGPointMake(self.view.bounds.size.width/2, 64), toView: self.needleImageView)
         let anchorPoint = CGPointMake(point.x/self.needleImageView.bounds.size.width, point.y/self.needleImageView.bounds.size.height)
         self.setAnchorPoint(anchorPoint, forView: self.needleImageView)
         
-        let angle = -CGFloat(M_PI/360 * 50)
         if animate {
             UIView.animateWithDuration(0.2, delay: 0, options: .CurveEaseInOut, animations: {
-                self.needleImageView.transform = CGAffineTransformMakeRotation(angle)
+                self.needleImageView.transform = CGAffineTransformRotate(self.needleImageView.transform, angle)
                 }, completion: nil)
         } else {
             self.needleImageView.transform = CGAffineTransformMakeRotation(angle)
         }
+        isNeedleUp = false
     }
     
     func changeTitleText() {
@@ -330,8 +370,10 @@ class PlaySongViewController: BaseViewController {
     func changePlayImage() {
         if isPlaying {
             playImageView.image = UIImage.init(named: "cm2_fm_btn_pause")
+            discMiddle.resumeHeadPicImageViewAnimate()
         } else {
             playImageView.image = UIImage.init(named: "cm2_fm_btn_play")
+            discMiddle.pauseHeadPicImageViewAnimate()
         }
     }
     
@@ -402,12 +444,53 @@ class PlaySongViewController: BaseViewController {
 }
 
 extension PlaySongViewController: UIScrollViewDelegate {
-    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
-        
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        if self.userDragging {
+            if scrollView.panGestureRecognizer.translationInView(scrollView.superview).x > 0 {
+                // right means prev
+                if let songInfo = self.playSongService.getPrevSongInfo() {
+                    self.discLeft.headPicCycleImageView.sd_setImageWithURL(NSURL.init(string: songInfo.picUrl)!, placeholderImage: UIImage.init(named:"cm2_default_cover_play"))
+                }
+                self.isSwipeLeft = false
+            } else {
+                // left means next
+                if let songInfo = self.playSongService.getNextSongInfo() {
+                    self.discRight.headPicCycleImageView.sd_setImageWithURL(NSURL.init(string: songInfo.picUrl)!, placeholderImage: UIImage.init(named:"cm2_default_cover_play"))
+                }
+                self.isSwipeLeft = true
+            }
+            needleUp(true)
+            discMiddle.pauseHeadPicImageViewAnimate()
+        }
     }
     
     func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        
+        self.userDragging = false
+        scrollView.userInteractionEnabled = false
+    }
+    
+    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        self.userDragging = true
+    }
+    
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        let screenWidth = UIScreen.mainScreen().bounds.size.width
+        var contentOffSet = scrollView.contentOffset
+        if contentOffSet.x == 2 * screenWidth {
+            // play next
+            tapNextSongImage()
+        } else if contentOffSet.x == 0 {
+            // play prev
+            tapPrevSongImage()
+        }
+        contentOffSet.x = screenWidth
+        scrollView.setContentOffset(contentOffSet, animated: false)
+        if let songInfo = self.playSongService.getCurrentSongInfo() {
+            discMiddle.headPicCycleImageView.sd_setImageWithURL(NSURL.init(string: songInfo.picUrl)!, placeholderImage: UIImage.init(named: "cm2_default_cover_play"))
+            discMiddle.resumeHeadPicImageViewAnimate()
+            needleDown(true)
+        }
+        scrollView.userInteractionEnabled = true
     }
 }
 

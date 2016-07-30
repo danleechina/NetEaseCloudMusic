@@ -56,36 +56,25 @@ class PlaySongService: NSObject {
     
     // play next song
     func playNext() {
-        if let playlists = playLists {
-            currentPlaySong = (currentPlaySong + 1) % (playlists.tracks.count)
-            if playMode == .Shuffle {
-                currentPlaySong = random() % (playlists.tracks.count)
-            }
-            playIt(playlists.tracks[currentPlaySong]["mp3Url"] as! String)
+        if let songInfo = getNextSongInfo() {
+            currentPlaySong = songInfo.indexInTheSongSheet
+            playIt(songInfo.mp3Url)
         }
     }
     
     // play prev song
     func playPrev() {
-        if let playlists = playLists {
-            currentPlaySong -= 1
-            if currentPlaySong < 0 {
-                currentPlaySong = (playlists.tracks.count) - 1
-            }
-            if playMode == .Shuffle {
-                currentPlaySong = random() % (playlists.tracks.count)
-            }
-            playIt(playlists.tracks[currentPlaySong]["mp3Url"] as! String)
+        if let songInfo = getPrevSongInfo() {
+            currentPlaySong = songInfo.indexInTheSongSheet
+            playIt(songInfo.mp3Url)
         }
     }
     
     // play index'th song
     func playCertainSong(index: Int) {
-        if let playlists = playLists {
-            if index >= 0 && index < playlists.tracks.count {
-                currentPlaySong = index
-                playIt(playlists.tracks[currentPlaySong]["mp3Url"] as! String)
-            }
+        if let songInfo = getCertainSongInfo(index) {
+            currentPlaySong = index
+            playIt(songInfo.mp3Url)
         }
     }
     
@@ -159,4 +148,105 @@ class PlaySongService: NSObject {
         }
     }
     
+    
+    func getNextSongInfo() -> SongInfo? {
+        var nextIndex = 0
+        if let playlists = playLists {
+            nextIndex = currentPlaySong + 1
+            if nextIndex == playlists.tracks.count {
+                if playMode == .Order {
+                    return nil
+                } else {
+                    nextIndex = 0
+                }
+            }
+            if playMode == .Shuffle {
+                nextIndex = random() % (playlists.tracks.count)
+            }
+        } else {
+            return nil
+        }
+
+        
+        let songInfo = SongInfo()
+        songInfo.picUrl = playLists?.tracks[nextIndex]["album"]!["picUrl"] as! String
+        songInfo.blurPicUrl = playLists?.tracks[nextIndex]["album"]!["blurPicUrl"] as! String
+        songInfo.songname = playLists?.tracks[nextIndex]["name"] as! String
+        songInfo.singers = playLists?.tracks[nextIndex]["artists"]![0]["name"] as! String
+        songInfo.mp3Url = playLists?.tracks[nextIndex]["mp3Url"] as! String
+        songInfo.indexInTheSongSheet = nextIndex
+        return songInfo
+    }
+    
+    func getPrevSongInfo() -> SongInfo? {
+        var prevIndex = 0
+        if let playlists = playLists {
+            prevIndex = currentPlaySong - 1
+            if prevIndex < 0 {
+                prevIndex = (playlists.tracks.count) - 1
+            }
+            if playMode == .Shuffle {
+                prevIndex = random() % (playlists.tracks.count)
+            }
+        } else {
+            return nil
+        }
+        
+        let songInfo = SongInfo()
+        songInfo.picUrl = playLists?.tracks[prevIndex]["album"]!["picUrl"] as! String
+        songInfo.blurPicUrl = playLists?.tracks[prevIndex]["album"]!["blurPicUrl"] as! String
+        songInfo.songname = playLists?.tracks[prevIndex]["name"] as! String
+        songInfo.singers = playLists?.tracks[prevIndex]["artists"]![0]["name"] as! String
+        songInfo.mp3Url = playLists?.tracks[prevIndex]["mp3Url"] as! String
+        songInfo.indexInTheSongSheet = prevIndex
+        return songInfo
+
+    }
+    
+    func getCertainSongInfo(index: Int) -> SongInfo? {
+        var certainIndex = index
+        if let playlists = playLists {
+            if certainIndex >= 0 && certainIndex < playlists.tracks.count {
+                certainIndex = index
+                playIt(playlists.tracks[currentPlaySong]["mp3Url"] as! String)
+            }
+        } else {
+            return nil
+        }
+        
+        let songInfo = SongInfo()
+        songInfo.picUrl = playLists?.tracks[certainIndex]["album"]!["picUrl"] as! String
+        songInfo.blurPicUrl = playLists?.tracks[certainIndex]["album"]!["blurPicUrl"] as! String
+        songInfo.songname = playLists?.tracks[certainIndex]["name"] as! String
+        songInfo.singers = playLists?.tracks[certainIndex]["artists"]![0]["name"] as! String
+        songInfo.mp3Url = playLists?.tracks[certainIndex]["mp3Url"] as! String
+        songInfo.indexInTheSongSheet = certainIndex
+        return songInfo
+    }
+    
+    func getCurrentSongInfo() -> SongInfo? {
+        if playLists == nil {
+            return nil
+        }
+        
+        let songInfo = SongInfo()
+        songInfo.picUrl = playLists?.tracks[currentPlaySong]["album"]!["picUrl"] as! String
+        songInfo.blurPicUrl = playLists?.tracks[currentPlaySong]["album"]!["blurPicUrl"] as! String
+        songInfo.songname = playLists?.tracks[currentPlaySong]["name"] as! String
+        songInfo.singers = playLists?.tracks[currentPlaySong]["artists"]![0]["name"] as! String
+        songInfo.mp3Url = playLists?.tracks[currentPlaySong]["mp3Url"] as! String
+        songInfo.indexInTheSongSheet = currentPlaySong
+        return songInfo
+    }
+
+    
+}
+
+class SongInfo: NSObject {
+    var picUrl = ""
+    var blurPicUrl = ""
+    var songname = ""
+    var singers = ""
+    var mp3Url = ""
+    var indexInTheSongSheet = 0
 }
