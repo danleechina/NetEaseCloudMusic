@@ -53,6 +53,7 @@ class PlaySongService: NSObject {
     private var songPlayer: AVPlayer?
     private var out_context = 0
     private var playTimeObserver: AnyObject?
+    private var netease = NetworkMusicApi.shareInstance
     
     // play next song
     func playNext() {
@@ -127,6 +128,9 @@ class PlaySongService: NSObject {
                     case .Unknown:
                         break
                     case .ReadyToPlay:
+                        netease.songLyricWithSongID((getCurrentSongInfo()?.songID)!, complete: { (data, error) in
+                            print(data!)
+                        })
                         player.play()
                         break
                     case .Failed:
@@ -175,6 +179,8 @@ class PlaySongService: NSObject {
         songInfo.singers = playLists?.tracks[nextIndex]["artists"]![0]["name"] as! String
         songInfo.mp3Url = playLists?.tracks[nextIndex]["mp3Url"] as! String
         songInfo.indexInTheSongSheet = nextIndex
+        songInfo.songID = "\(playLists?.tracks[nextIndex]["id"]!)"
+
         return songInfo
     }
     
@@ -199,6 +205,8 @@ class PlaySongService: NSObject {
         songInfo.singers = playLists?.tracks[prevIndex]["artists"]![0]["name"] as! String
         songInfo.mp3Url = playLists?.tracks[prevIndex]["mp3Url"] as! String
         songInfo.indexInTheSongSheet = prevIndex
+        songInfo.songID = "\(playLists?.tracks[prevIndex]["id"]!)"
+
         return songInfo
 
     }
@@ -221,6 +229,8 @@ class PlaySongService: NSObject {
         songInfo.singers = playLists?.tracks[certainIndex]["artists"]![0]["name"] as! String
         songInfo.mp3Url = playLists?.tracks[certainIndex]["mp3Url"] as! String
         songInfo.indexInTheSongSheet = certainIndex
+        songInfo.songID = "\(playLists?.tracks[certainIndex]["id"]!)"
+
         return songInfo
     }
     
@@ -236,8 +246,11 @@ class PlaySongService: NSObject {
         songInfo.singers = playLists?.tracks[currentPlaySong]["artists"]![0]["name"] as! String
         songInfo.mp3Url = playLists?.tracks[currentPlaySong]["mp3Url"] as! String
         songInfo.indexInTheSongSheet = currentPlaySong
+        songInfo.songID = "\((playLists?.tracks[currentPlaySong]["id"])!)"
         return songInfo
     }
+    
+    
 
     
 }
@@ -249,4 +262,34 @@ class SongInfo: NSObject {
     var singers = ""
     var mp3Url = ""
     var indexInTheSongSheet = 0
+    var songID = ""
+}
+
+
+class SongLyric: NSObject {
+    
+    
+//    "sgc": false,
+//    "sfy": false,
+//    "qfy": false,
+//    "lyricUser": {
+//    "id": 33579068,
+//    "status": 0,
+//    "demand": 0,
+//    "userid": 81989338,
+//    "nickname": "Finale叶",
+//    "uptime": 1440123040116
+//    },
+//    "lrc": {
+//    "version": 3,
+//    "lyric": "[by:Finale叶]\n[00:01.65]归程\n[00:03.63]\n[00:15.01]一条没有方向 走不出寂寞的巷\n[00:21.84]眸子上了 一层霜月光冰凉\n[00:29.35]一个小心翼翼 却无法愈合的伤\n[00:36.40]两人的影 映在黑暗里残破的墙\n[00:44.12]闪烁的灯光 黑白了梦想 欲望是汹涌海洋\n[00:51.39]暧昧的曲调 反复在吟唱\n[00:57.24]风吹动那扇窗 苔藓爬满旧时光\n[01:05.54]吱呀呀叫嚣 少年不敢触及的过往\n[01:12.00]雨淋过的站台 曾经只对你说过的情话\n[01:19.94]我一步步踏上寻找你的 未知的归程\n[01:29.25]一首没有情绪 听到流眼泪的歌\n[01:36.25]白色的衬衣 透明的痕迹\n[01:43.98]一段很长很长 到不会醒来的梦\n[01:51.26]梦里长巷 你头顶路灯昏暗的光\n[01:58.51]闪烁的灯光 黑白了梦想 欲望是汹涌海洋\n[02:05.90]暧昧的曲调 反复在吟唱\n[02:11.88]风吹动那扇窗 苔藓爬满旧时光\n[02:20.26]吱呀呀叫嚣 少年不敢触及的过往\n[02:26.45]雨淋过的站台 曾经只对你说过的情话\n[02:34.45]我一步步踏上寻找你的 未知的归程\n[02:42.05]另一个世界 会不会很冷 请记得告诉我\n[02:48.88]除了黑夜 有无白昼\n[03:01.01]风吹动那扇窗 苔藓爬满旧时光\n[03:09.35]吱呀呀叫嚣 少年不敢触及的过往\n[03:15.60]雨淋过的站台 曾经只对你说过的情话\n[03:23.53]我一步步踏上寻找你的 未知的归程\n[03:31.81]\n"
+//    },
+//    "klyric": {
+//    "version": 0
+//    },
+//    "tlyric": {
+//    "version": 0,
+//    "lyric": null
+//    },
+//    "code": 200
 }

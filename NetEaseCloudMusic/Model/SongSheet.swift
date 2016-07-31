@@ -29,7 +29,7 @@ class SongSheet: NSObject {
             completion(data: transfer(data as String), error: nil)
         }
         
-        let netease = NetworkMusicApi()
+        let netease = NetworkMusicApi.shareInstance
         netease.top_playlists { (data, error) in
             if let err = error {
                 print(err)

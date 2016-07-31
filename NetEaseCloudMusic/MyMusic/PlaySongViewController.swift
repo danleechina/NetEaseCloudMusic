@@ -16,6 +16,7 @@ class PlaySongViewController: BaseViewController {
     @IBOutlet weak var blurBackgroundImageView: UIImageView!
     @IBOutlet weak var swipableDiscView: UIScrollView!
     @IBOutlet weak var loveImageView: UIImageView!
+//    @IBOutlet weak var lyricTableView: UITableView!
     @IBOutlet weak var downloadImageView: UIImageView!
     @IBOutlet weak var commentImageView: UIImageView!
     @IBOutlet weak var settingImageView: UIImageView!
@@ -72,8 +73,21 @@ class PlaySongViewController: BaseViewController {
     func tapPlayModeImage() {
         playMode.next()
         playModeChange()
-        
         changePlayModeImage()
+    }
+    
+    func tapDiscScrollViewOrLyricTableView() {
+//        if !swipableDiscView.hidden {
+//            swipableDiscView.hidden = true
+//            UIView.animateWithDuration(0.2, animations: { 
+//                self.lyricTableView.hidden = false
+//                }, completion: nil)
+//        } else {
+//            lyricTableView.hidden = true
+//            UIView.animateWithDuration(0.2, animations: { 
+//                self.swipableDiscView.hidden = false
+//                }, completion: nil)
+//        }
     }
     
     func tapBackButton() {
@@ -225,7 +239,21 @@ class PlaySongViewController: BaseViewController {
         swipableDiscView.addSubview(self.discLeft)
         swipableDiscView.addSubview(self.discMiddle)
         swipableDiscView.addSubview(self.discRight)
+        swipableDiscView.hidden = false
+        let swipableTapGest = UITapGestureRecognizer.init(target: self, action: #selector(tapDiscScrollViewOrLyricTableView))
+        swipableTapGest.numberOfTapsRequired = 1
+        swipableDiscView.addGestureRecognizer(swipableTapGest)
     
+        // lyricTableView
+//        lyricTableView.delegate = self
+//        lyricTableView.dataSource = self
+//        lyricTableView.hidden = true
+//        lyricTableView.layer.contents = UIImage.init(named: "cm2_lrc_btmmask")?.CGImage
+//        let lyricTapGest = UITapGestureRecognizer.init(target: self, action: #selector(tapDiscScrollViewOrLyricTableView))
+//        lyricTapGest.numberOfTapsRequired = 1
+//        lyricTableView.addGestureRecognizer(lyricTapGest)
+
+        
         // loveImageView
         let tapGest = UITapGestureRecognizer.init(target: self, action: #selector(tapLoveImage))
         tapGest.numberOfTapsRequired = 1
@@ -505,5 +533,27 @@ extension PlaySongViewController: PlaySongServiceDelegate {
         changeTitleText()
         changeBackgroundBlurImage()
         changeProgressAndText(0, duration: 0)
+    }
+}
+
+class LyricCell: UITableViewCell {
+
+}
+
+
+extension PlaySongViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCellWithIdentifier("LyricCell")
+        if cell == nil {
+            cell = UITableViewCell.init(style: .Default, reuseIdentifier: "LyricCell")
+        }
+        cell?.textLabel?.text = "我爱爱爱爱爱爱爱爱爱爱不完"
+        cell?.textLabel?.textAlignment = .Center
+        cell?.textLabel?.textColor = UIColor.whiteColor()
+        return cell!
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 20
     }
 }

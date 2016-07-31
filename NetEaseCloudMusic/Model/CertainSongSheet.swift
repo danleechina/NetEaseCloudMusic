@@ -22,7 +22,7 @@ class CertainSongSheet: NSObject {
     
     
     class func loadSongSheetData(playListID: String, completion:(data: CertainSongSheet?, error: NSError?) -> Void) {
-        let netease = NetworkMusicApi()
+        let netease = NetworkMusicApi.shareInstance
         netease.playlist_detail(playListID) { (data, error) in
             if let err = error {
                 print(err)

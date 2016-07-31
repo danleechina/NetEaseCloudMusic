@@ -70,24 +70,6 @@
                         </mask>
                     </variation>
                 </imageView>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v1X-Ot-QFP" customClass="SwipeDiscScrollView" customModule="NetEaseCloudMusic" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="145" width="600" height="240"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="240" id="6XQ-m3-RyL"/>
-                        <constraint firstAttribute="height" constant="240" id="GOY-x8-dbs"/>
-                        <constraint firstAttribute="height" constant="240" id="IjU-hQ-PRI"/>
-                        <constraint firstAttribute="height" constant="240" id="J1y-OH-Kff"/>
-                        <constraint firstAttribute="width" constant="240" id="NjS-7p-fhs"/>
-                    </constraints>
-                    <variation key="default">
-                        <mask key="constraints">
-                            <exclude reference="6XQ-m3-RyL"/>
-                            <exclude reference="GOY-x8-dbs"/>
-                            <exclude reference="J1y-OH-Kff"/>
-                            <exclude reference="NjS-7p-fhs"/>
-                        </mask>
-                    </variation>
-                </scrollView>
                 <imageView contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_icn_shuffle" highlightedImage="cm2_icn_shuffle_prs" translatesAutoresizingMaskIntoConstraints="NO" id="7K2-4K-fah">
                     <rect key="frame" x="140" y="520" width="55" height="55"/>
                     <constraints>
@@ -95,6 +77,26 @@
                         <constraint firstAttribute="height" constant="55" id="eYo-fU-ijf"/>
                     </constraints>
                 </imageView>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v1X-Ot-QFP" customClass="SwipeDiscScrollView" customModule="NetEaseCloudMusic" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="145" width="600" height="240"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="240" id="6XQ-m3-RyL"/>
+                        <constraint firstAttribute="height" constant="240" id="GOY-x8-dbs"/>
+                        <constraint firstAttribute="height" constant="240" id="IjU-hQ-PRI"/>
+                        <constraint firstAttribute="height" constant="240" id="J1y-OH-Kff"/>
+                        <constraint firstAttribute="width" constant="240" id="NjS-7p-fhs"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="240" id="Zlv-1o-ZOC"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="6XQ-m3-RyL"/>
+                            <exclude reference="GOY-x8-dbs"/>
+                            <exclude reference="J1y-OH-Kff"/>
+                            <exclude reference="NjS-7p-fhs"/>
+                            <exclude reference="Zlv-1o-ZOC"/>
+                        </mask>
+                    </variation>
+                </scrollView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nst-YT-lRa">
                     <rect key="frame" x="153" y="493" width="39" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -222,22 +224,18 @@
             <constraints>
                 <constraint firstItem="0hk-8d-jPC" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="0zO-Ca-XwZ"/>
                 <constraint firstItem="Ry2-qp-xQN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="2cE-Ik-Y1R"/>
-                <constraint firstItem="v1X-Ot-QFP" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="33o-mn-zUA"/>
                 <constraint firstItem="9Db-RD-NNa" firstAttribute="leading" secondItem="h7x-k6-kHX" secondAttribute="trailing" constant="8" symbolic="YES" id="4en-aB-e3b"/>
-                <constraint firstItem="v1X-Ot-QFP" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-35" id="565-KV-ybg"/>
                 <constraint firstItem="h7x-k6-kHX" firstAttribute="centerY" secondItem="9Db-RD-NNa" secondAttribute="centerY" id="5xb-2l-Min"/>
                 <constraint firstItem="Ry2-qp-xQN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="6qz-mc-UWN"/>
-                <constraint firstItem="v1X-Ot-QFP" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" id="72d-IU-lyH"/>
+                <constraint firstItem="v1X-Ot-QFP" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-35" id="7ig-kl-sOX"/>
                 <constraint firstItem="oaW-jk-qCH" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="8yq-sV-ra6"/>
                 <constraint firstItem="h7x-k6-kHX" firstAttribute="centerY" secondItem="nst-YT-lRa" secondAttribute="centerY" id="AMv-hX-QWQ"/>
-                <constraint firstItem="v1X-Ot-QFP" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="CKK-aD-SI8"/>
                 <constraint firstItem="Ry2-qp-xQN" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="Cza-fq-o23"/>
                 <constraint firstItem="h7x-k6-kHX" firstAttribute="leading" secondItem="nst-YT-lRa" secondAttribute="trailing" constant="51" id="D5S-jG-jbZ"/>
                 <constraint firstItem="nst-YT-lRa" firstAttribute="centerX" secondItem="7K2-4K-fah" secondAttribute="centerX" id="Ee3-ec-zqm"/>
                 <constraint firstAttribute="trailing" secondItem="UGs-4u-wkl" secondAttribute="trailing" constant="10" id="F4p-tn-nUT"/>
                 <constraint firstItem="TsB-nh-0hX" firstAttribute="leading" secondItem="Ljs-1s-Jq3" secondAttribute="trailing" constant="15" id="F7U-fC-m4r"/>
                 <constraint firstItem="fnA-x8-nAD" firstAttribute="leading" secondItem="7K2-4K-fah" secondAttribute="trailing" constant="15" id="G2Q-JA-4nW"/>
-                <constraint firstItem="v1X-Ot-QFP" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" constant="240" id="IST-mi-Ljn"/>
                 <constraint firstItem="Ry2-qp-xQN" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="IiZ-o0-0yQ"/>
                 <constraint firstItem="h7x-k6-kHX" firstAttribute="top" secondItem="OmY-l2-7gG" secondAttribute="bottom" constant="-6" id="P4F-3C-2Oh"/>
                 <constraint firstAttribute="bottom" secondItem="gyT-3S-crh" secondAttribute="bottom" constant="25" id="QkR-9Y-toL"/>
@@ -245,6 +243,7 @@
                 <constraint firstItem="h7x-k6-kHX" firstAttribute="leading" secondItem="nst-YT-lRa" secondAttribute="trailing" constant="8" symbolic="YES" id="SRZ-LH-mdo"/>
                 <constraint firstItem="TsB-nh-0hX" firstAttribute="centerY" secondItem="Ljs-1s-Jq3" secondAttribute="centerY" id="Sx8-er-C8Z"/>
                 <constraint firstItem="Ljs-1s-Jq3" firstAttribute="top" secondItem="h7x-k6-kHX" secondAttribute="bottom" constant="11" id="T4z-Pt-A9u"/>
+                <constraint firstItem="v1X-Ot-QFP" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="UL4-1N-DKc"/>
                 <constraint firstItem="Ry2-qp-xQN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="VMC-Mx-BsI"/>
                 <constraint firstItem="h7x-k6-kHX" firstAttribute="centerX" secondItem="OmY-l2-7gG" secondAttribute="centerX" id="Vec-v3-Rl1"/>
                 <constraint firstItem="oaW-jk-qCH" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="W8V-EG-PPs"/>
@@ -265,6 +264,7 @@
                 <constraint firstItem="Ry2-qp-xQN" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-30" id="hLd-2o-PKy"/>
                 <constraint firstAttribute="bottom" secondItem="Ry2-qp-xQN" secondAttribute="bottom" id="hYl-sh-Q86"/>
                 <constraint firstItem="Ry2-qp-xQN" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-55" id="hbi-8b-wOO"/>
+                <constraint firstItem="v1X-Ot-QFP" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="i12-dP-EHQ"/>
                 <constraint firstItem="7K2-4K-fah" firstAttribute="centerY" secondItem="fnA-x8-nAD" secondAttribute="centerY" id="jgA-Dd-Mgi"/>
                 <constraint firstItem="4EP-Pc-gu6" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="jkf-jJ-yBe"/>
                 <constraint firstItem="fnA-x8-nAD" firstAttribute="centerY" secondItem="gyT-3S-crh" secondAttribute="centerY" id="jpe-2H-Nw0"/>
@@ -297,8 +297,6 @@
                     <exclude reference="hbi-8b-wOO"/>
                     <exclude reference="v3I-Zf-HBF"/>
                     <exclude reference="vQ3-cR-7Da"/>
-                    <exclude reference="72d-IU-lyH"/>
-                    <exclude reference="IST-mi-Ljn"/>
                     <exclude reference="Ee3-ec-zqm"/>
                     <exclude reference="RsD-wY-eIM"/>
                     <exclude reference="5xb-2l-Min"/>

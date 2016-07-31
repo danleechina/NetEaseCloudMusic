@@ -9,7 +9,9 @@
 import Foundation
 
 class NetworkMusicApi: NSObject {
-
+    static let shareInstance = NetworkMusicApi()
+    private override init() {}
+    
     let defaultSession = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
     var dataTask: NSURLSessionDataTask? = nil
     func doHttpRequest(method: String, url: String, data: Dictionary<String, String>?, complete: (data: String?, error: NSError?) -> Void) -> Void {
@@ -147,6 +149,14 @@ class NetworkMusicApi: NSObject {
     // 将 channels 整理为 songs 类型
     func channel_detail() -> Void {
         //             action = 'http://music.163.com/api/dj/program/detail?id=' + str(channelids[i])
+
+    }
+    
+    // 根据歌曲ID获取歌词
+    func songLyricWithSongID(songId: String, complete: (data: String?, error: NSError?) -> Void) -> Void {
+        
+        let action = "http://music.163.com/api/song/lyric?os=osx&id=\(songId)&lv=-1&kv=-1&tv=-1"
+        doHttpRequest("GET", url: action, data: nil, complete: complete)
 
     }
     
