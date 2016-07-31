@@ -128,9 +128,6 @@ class PlaySongService: NSObject {
                     case .Unknown:
                         break
                     case .ReadyToPlay:
-                        netease.songLyricWithSongID((getCurrentSongInfo()?.songID)!, complete: { (data, error) in
-                            print(data!)
-                        })
                         player.play()
                         break
                     case .Failed:
@@ -251,7 +248,11 @@ class PlaySongService: NSObject {
     }
     
     
-
+    func getSongLyric(complete: (songLyric: SongLyric?) -> Void) {
+        netease.songLyricWithSongID((getCurrentSongInfo()?.songID)!, complete: { (data, error) in
+            complete(songLyric: SongLyric.getSongLyricFromRawData(data))
+        })
+    }
     
 }
 
@@ -267,6 +268,33 @@ class SongInfo: NSObject {
 
 
 class SongLyric: NSObject {
+    
+    var lyric: String? = ""
+    var nickname = ""
+    var klyric: String? = ""
+    var tlyric: String? = ""
+    
+    class func getSongLyricFromRawData(data: String?) -> SongLyric? {
+        let lyric = SongLyric()
+        
+        do {
+            if data != nil {
+                
+                let dict = try NSJSONSerialization.JSONObjectWithData((data?.dataUsingEncoding(NSUTF8StringEncoding))!, options: []) as? [String:AnyObject]
+                lyric.nickname = dict!["lyricUser"]!["nickname"] as! String
+                lyric.lyric = dict!["lrc"]!["lyric"] as? String
+                lyric.klyric = dict!["klyric"]!["lyric"] as? String
+                lyric.tlyric = dict!["tlyric"]!["lyric"] as? String
+            } else {
+                return nil
+            }
+        } catch let error as NSError {
+            print(error)
+        }
+
+        
+        return lyric
+    }
     
     
 //    "sgc": false,

@@ -78,15 +78,23 @@ class PlaySongViewController: BaseViewController {
     
     func tapDiscScrollViewOrLyricTableView() {
         if !swipableDiscView.hidden {
-            swipableDiscView.hidden = true
             UIView.animateWithDuration(0.2, animations: {
                 self.lyricTableView.hidden = false
+                self.swipableDiscView.hidden = true
+
                 }, completion: nil)
         } else {
-            lyricTableView.hidden = true
             UIView.animateWithDuration(0.2, animations: {
                 self.swipableDiscView.hidden = false
+                self.lyricTableView.hidden = true
+
                 }, completion: nil)
+        }
+        
+        if songLyric == nil && !lyricTableView.hidden {
+            playSongService.getSongLyric({ (songLyric) in
+                self.songLyric = songLyric
+            })
         }
     }
     
@@ -105,6 +113,7 @@ class PlaySongViewController: BaseViewController {
     var blurPicUrl = ""
     var songname = ""
     var singers = ""
+    var songLyric: SongLyric?
     
     var isPlaying = false
     var isLike = false
@@ -568,11 +577,11 @@ extension PlaySongViewController: UITableViewDelegate, UITableViewDataSource {
             cell?.textLabel?.numberOfLines = 0
 //            cell?.textLabel?.preferredMaxLayoutWidth = 100
         }
-        cell?.textLabel?.text = "我爱爱爱爱爱爱爱爱爱爱不完aioaooaoaoaoaoooaoaoaoaoaiaiaiaiaiai"
+        cell?.textLabel?.text = songLyric?.lyric
         return cell!
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return 1
     }
 }
