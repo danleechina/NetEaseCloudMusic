@@ -49,7 +49,6 @@ class PlaySongService: NSObject {
     }
     
     var currentPlaySong: Int = 0
-    
     private var songPlayer: AVPlayer?
     private var out_context = 0
     private var playTimeObserver: AnyObject?
@@ -286,8 +285,17 @@ class SongLyric: NSObject {
         return self.getKLyricWithTime().lyric
     }()
     
-    lazy var lyricTimeArray: Array<String> = {
-        return self.getKLyricWithTime().time
+    lazy var lyricTimeArray: Array<Float64> = {
+        return self.getNumValueFromFormatTimeStringArray(self.getLyricWithTime().time)
+    }()
+    
+    lazy var kLyricTimeArray: Array<Float64> = {
+        return self.getNumValueFromFormatTimeStringArray(self.getKLyricWithTime().time)
+
+    }()
+    
+    lazy var tLyricTimeArray: Array<Float64> = {
+        return self.getNumValueFromFormatTimeStringArray(self.getTLyricWithTime().time)
     }()
     
     
@@ -368,6 +376,23 @@ class SongLyric: NSObject {
         }
         return (retTime, retLyric)
     }
+    
+    func getNumValueFromFormatTimeStringArray(strArray: Array<String>) -> Array<Float64> {
+        var ret = Array<Float64>()
+        for str in strArray {
+            ret.append(getNumValueFromFormatTimeString(str))
+        }
+        return ret
+    }
+    
+    func getNumValueFromFormatTimeString(str: String) -> Float64 {
+        let startIndex = str.startIndex
+        let minStr = str.substringToIndex(startIndex.advancedBy(2))
+        let secStr = str.substringFromIndex(startIndex.advancedBy(3))
+        let value = Float64(minStr)! * 60 + Float64(secStr)!
+        return value
+    }
+
 //    "sgc": false,
 //    "sfy": false,
 //    "qfy": false,

@@ -468,6 +468,18 @@ class PlaySongViewController: BaseViewController {
         }
     }
     
+    func changeSongLyricPosition(current: Float64) {
+        if let lyric = self.songLyric {
+            for (idx, value) in lyric.lyricTimeArray.enumerate() {
+                if current >= value {
+                    let row = idx == 0 ? 0 : idx - 1
+                    self.lyricTableView.scrollToRowAtIndexPath(NSIndexPath.init(forRow: idx - 1, inSection: 0), atScrollPosition: .Middle, animated: true)
+                    break;
+                }
+            }
+        }
+    }
+    
     // MARK: Data Util
     
     func getFormatTime(time: Float64) -> String {
@@ -559,7 +571,9 @@ extension PlaySongViewController: UIScrollViewDelegate {
 extension PlaySongViewController: PlaySongServiceDelegate {
     func updateProgress(currentTime: Float64, durationTime: Float64) {
         changeProgressAndText(currentTime, duration: durationTime)
+        changeSongLyricPosition(currentTime)
     }
+    
     func didChangeSong() {
         currentSongIndex = playSongService.currentPlaySong
         currentSongIndexChange()
