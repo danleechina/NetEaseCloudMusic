@@ -473,7 +473,7 @@ class PlaySongViewController: BaseViewController {
             for (idx, value) in lyric.lyricTimeArray.enumerate() {
                 if current >= value {
                     let row = idx == 0 ? 0 : idx - 1
-                    self.lyricTableView.scrollToRowAtIndexPath(NSIndexPath.init(forRow: row - 1, inSection: 0), atScrollPosition: .Middle, animated: true)
+                    self.lyricTableView.scrollToRowAtIndexPath(NSIndexPath.init(forRow: row, inSection: 0), atScrollPosition: .Middle, animated: true)
                     break;
                 }
             }
