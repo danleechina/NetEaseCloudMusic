@@ -470,12 +470,15 @@ class PlaySongViewController: BaseViewController {
     
     func changeSongLyricPosition(current: Float64) {
         if let lyric = self.songLyric {
+            var lastValue:Float64 = 0
             for (idx, value) in lyric.lyricTimeArray.enumerate() {
-                if current >= value {
+                if current <= value && current > lastValue{
                     let row = idx == 0 ? 0 : idx - 1
+                    print(row)
                     self.lyricTableView.scrollToRowAtIndexPath(NSIndexPath.init(forRow: row, inSection: 0), atScrollPosition: .Middle, animated: true)
                     break;
                 }
+                lastValue = value
             }
         }
     }
