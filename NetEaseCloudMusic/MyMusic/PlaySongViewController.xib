@@ -12,6 +12,7 @@
                 <outlet property="blurBackgroundImageView" destination="oaW-jk-qCH" id="yLJ-Ws-WU6"/>
                 <outlet property="commentImageView" destination="rAU-OC-DBu" id="kyv-M0-v5s"/>
                 <outlet property="currentLocationSlider" destination="h7x-k6-kHX" id="yjs-g2-msF"/>
+                <outlet property="discMaskImageView" destination="Ry2-qp-xQN" id="Btt-R3-g6t"/>
                 <outlet property="downloadImageView" destination="qz0-sd-sHX" id="z1l-iB-GAI"/>
                 <outlet property="lastSongImageView" destination="fnA-x8-nAD" id="yWj-nG-c7h"/>
                 <outlet property="loveImageView" destination="AXa-8c-EHe" id="ZG7-bQ-1ZS"/>

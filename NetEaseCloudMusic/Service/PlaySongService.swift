@@ -274,6 +274,23 @@ class SongLyric: NSObject {
     var klyric: String? = ""
     var tlyric: String? = ""
     
+    lazy var lyricArray: Array<String> = {
+       return self.getLyricWithTime().lyric
+    }()
+    
+    lazy var tLyricArray: Array<String> = {
+        return self.getTLyricWithTime().lyric
+    }()
+    
+    lazy var kLyricArray: Array<String> = {
+        return self.getKLyricWithTime().lyric
+    }()
+    
+    lazy var lyricTimeArray: Array<String> = {
+        return self.getKLyricWithTime().time
+    }()
+    
+    
     class func getSongLyricFromRawData(data: String?) -> SongLyric? {
         let lyric = SongLyric()
         
@@ -281,10 +298,13 @@ class SongLyric: NSObject {
             if data != nil {
                 
                 let dict = try NSJSONSerialization.JSONObjectWithData((data?.dataUsingEncoding(NSUTF8StringEncoding))!, options: []) as? [String:AnyObject]
-                lyric.nickname = dict!["lyricUser"]!["nickname"] as! String
-                lyric.lyric = dict!["lrc"]!["lyric"] as? String
-                lyric.klyric = dict!["klyric"]!["lyric"] as? String
-                lyric.tlyric = dict!["tlyric"]!["lyric"] as? String
+                if ((dict!["uncollected"]?.boolValue) != nil)  {
+                    return nil
+                }
+//                lyric.nickname = dict!["lyricUser"]?["nickname"] as! String
+                lyric.lyric = dict!["lrc"]?["lyric"] as? String
+                lyric.klyric = dict!["klyric"]?["lyric"] as? String
+                lyric.tlyric = dict!["tlyric"]?["lyric"] as? String
             } else {
                 return nil
             }
@@ -296,7 +316,58 @@ class SongLyric: NSObject {
         return lyric
     }
     
+    func getLyricWithTime() ->  (time: Array<String>, lyric:Array<String>){
+        var retTime = Array<String>()
+        var retLyric = Array<String>()
+        if let str = self.lyric {
+            (retTime, retLyric) = seperateFormatData(str)
+        }
+        return (retTime, retLyric)
+    }
     
+    func getTLyricWithTime() -> (time: Array<String>, lyric: Array<String>){
+        var retTime = Array<String>()
+        var retLyric = Array<String>()
+        if let str = self.tlyric {
+            (retTime, retLyric) = seperateFormatData(str)
+        }
+        return (retTime, retLyric)
+    }
+    
+    func getKLyricWithTime() -> (time: Array<String>, lyric: Array<String>){
+        var retTime = Array<String>()
+        var retLyric = Array<String>()
+        if let str = self.klyric {
+            (retTime, retLyric) = seperateFormatData(str)
+        }
+        return (retTime, retLyric)
+    }
+    
+    func seperateFormatData(str: String) -> (Array<String>, Array<String>) {
+        var retTime = Array<String>()
+        var retLyric = Array<String>()
+        
+        var startIndex = str.startIndex
+        while startIndex != str.endIndex {
+            let resultStart = str.rangeOfString("[", options: .LiteralSearch, range: Range(startIndex ..< str.endIndex), locale: nil)
+            let resultEnd = str.rangeOfString("]", options: .LiteralSearch, range: Range(startIndex ..< str.endIndex), locale: nil)
+            let timeStr = str.substringWithRange(Range((resultStart?.startIndex.advancedBy(1))! ..< (resultEnd?.startIndex)!))
+            print(timeStr)
+            
+            let lyricResultStart = resultEnd?.startIndex.advancedBy(1)
+            var lyricResultEnd = str.rangeOfString("[", options: .LiteralSearch, range: Range((resultEnd?.startIndex)! ..< str.endIndex), locale: nil)?.startIndex.advancedBy(-1)
+            if lyricResultEnd == nil {
+                lyricResultEnd = str.endIndex.advancedBy(-1)
+            }
+            let lyricStr = str.substringWithRange(Range(lyricResultStart! ..< lyricResultEnd!))
+            print(lyricStr)
+            
+            retTime.append(timeStr)
+            retLyric.append(lyricStr)
+            startIndex = (lyricResultEnd?.advancedBy(1))!
+        }
+        return (retTime, retLyric)
+    }
 //    "sgc": false,
 //    "sfy": false,
 //    "qfy": false,

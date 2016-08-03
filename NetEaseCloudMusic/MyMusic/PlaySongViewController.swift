@@ -12,6 +12,7 @@ import UIKit
 class PlaySongViewController: BaseViewController {
     
     // MARK: - IBOutlet
+    @IBOutlet weak var discMaskImageView: UIImageView!
     @IBOutlet weak var needleImageView: UIImageView!
     @IBOutlet weak var blurBackgroundImageView: UIImageView!
     @IBOutlet weak var swipableDiscView: UIScrollView!
@@ -81,12 +82,16 @@ class PlaySongViewController: BaseViewController {
             UIView.animateWithDuration(0.2, animations: {
                 self.lyricTableView.hidden = false
                 self.swipableDiscView.hidden = true
+                self.needleImageView.hidden = true
+                self.discMaskImageView.hidden = true
 
                 }, completion: nil)
         } else {
             UIView.animateWithDuration(0.2, animations: {
                 self.swipableDiscView.hidden = false
                 self.lyricTableView.hidden = true
+                self.needleImageView.hidden = false
+                self.discMaskImageView.hidden = false
 
                 }, completion: nil)
         }
@@ -113,7 +118,11 @@ class PlaySongViewController: BaseViewController {
     var blurPicUrl = ""
     var songname = ""
     var singers = ""
-    var songLyric: SongLyric?
+    var songLyric: SongLyric? {
+        didSet {
+            lyricTableView.reloadData()
+        }
+    }
     
     var isPlaying = false
     var isLike = false
@@ -258,7 +267,7 @@ class PlaySongViewController: BaseViewController {
         lyricTableView.delegate = self
         lyricTableView.dataSource = self
         lyricTableView.hidden = true
-        lyricTableView.layer.contents = UIImage.init(named: "cm2_lrc_btmmask")?.CGImage
+        lyricTableView.backgroundColor = UIColor.clearColor()
         let lyricTapGest = UITapGestureRecognizer.init(target: self, action: #selector(tapDiscScrollViewOrLyricTableView))
         lyricTapGest.numberOfTapsRequired = 1
         lyricTableView.addGestureRecognizer(lyricTapGest)
@@ -577,11 +586,14 @@ extension PlaySongViewController: UITableViewDelegate, UITableViewDataSource {
             cell?.textLabel?.numberOfLines = 0
 //            cell?.textLabel?.preferredMaxLayoutWidth = 100
         }
-        cell?.textLabel?.text = songLyric?.lyric
+        cell?.textLabel?.text = songLyric?.lyricArray[indexPath.row]
         return cell!
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        if let count = songLyric?.lyricArray.count {
+            return count
+        }
+        return 0
     }
 }

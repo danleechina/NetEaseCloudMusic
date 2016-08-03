@@ -16,7 +16,9 @@ class CertainSongSheetViewController: BaseViewController {
                 CertainSongSheet.loadSongSheetData(self.playListID) { (data, error) in
                     if error == nil && data != nil{
                         self.data = data!
-                        self.tableView.reloadData()
+                        dispatch_async(dispatch_get_main_queue(), {
+                            self.tableView.reloadData()
+                        })
                     }
                 }
             }
