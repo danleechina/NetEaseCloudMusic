@@ -13,9 +13,9 @@ class CertainSongSheet: NSObject {
     var tracks = Array<Dictionary<String, AnyObject>>()
     var id = -1
     
-    class func getFilePath() -> NSURL? {
+    class func getFilePath(id: Int) -> NSURL? {
         if let dir = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .AllDomainsMask, true).first {
-            let path = NSURL(fileURLWithPath: dir).URLByAppendingPathComponent("CertainSongSheet")
+            let path = NSURL(fileURLWithPath: dir).URLByAppendingPathComponent("CertainSongSheet+\(id)")
             return path;
         }
         return nil
@@ -31,7 +31,7 @@ class CertainSongSheet: NSObject {
             let currentDay = NSCalendar.currentCalendar().component(.Day, fromDate: currentDate)
             
             if dateDay == currentDay {
-                let data = try! NSString(contentsOfURL: getFilePath()!, encoding: NSUTF8StringEncoding)
+                let data = try! NSString(contentsOfURL: getFilePath(Int(playListID)!)!, encoding: NSUTF8StringEncoding)
                 completion(data: transfer(data as String), error: nil)
                 return
             }
@@ -44,16 +44,16 @@ class CertainSongSheet: NSObject {
                 print(err)
             } else {
                 if let nndata = data {
-                    do {
-                        try nndata.writeToURL(getFilePath()!, atomically: false, encoding: NSUTF8StringEncoding)
-                    } catch let error as NSError {
-                        print(error)
-                    }
                     let tranData = transfer(nndata)
                     completion(data: tranData, error: nil)
                     NSUserDefaults.standardUserDefaults().setBool(true, forKey: "CertainSongSheetCache+\(tranData.id)" )
                     NSUserDefaults.standardUserDefaults().setObject(NSDate(), forKey: "CertainSongSheetTime+\(tranData.id)")
                     NSUserDefaults.standardUserDefaults().synchronize()
+                    do {
+                        try nndata.writeToURL(getFilePath(tranData.id)!, atomically: false, encoding: NSUTF8StringEncoding)
+                    } catch let error as NSError {
+                        print(error)
+                    }
                 }
             }
         }

@@ -24,8 +24,8 @@ class SongSheet: NSObject {
     }
     
     class func loadSongSheetData(completion:(data: [SongSheet]?, error: NSError?) -> Void) {
-        if NSUserDefaults.standardUserDefaults().boolForKey("songsheetcache") {
-            let date = NSUserDefaults.standardUserDefaults().objectForKey("songsheetcacheTime") as! NSDate
+        if NSUserDefaults.standardUserDefaults().boolForKey("SongSheetCache") {
+            let date = NSUserDefaults.standardUserDefaults().objectForKey("SongSheetCacheTime") as! NSDate
             let dateDay = NSCalendar.currentCalendar().component(.Day, fromDate: date)
             
             let currentDate = NSDate()
@@ -49,8 +49,8 @@ class SongSheet: NSObject {
                         do {
                             try data?.writeToURL(getFilePath()!, atomically: false, encoding: NSUTF8StringEncoding)
                         }
-                        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "songsheetcache")
-                        NSUserDefaults.standardUserDefaults().setObject(NSDate(), forKey: "songsheetcacheTime")
+                        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "SongSheetCache")
+                        NSUserDefaults.standardUserDefaults().setObject(NSDate(), forKey: "SongSheetCacheTime")
                         NSUserDefaults.standardUserDefaults().synchronize()
                         let songSheets = transfer(data)
                         completion(data: songSheets, error: nil)
