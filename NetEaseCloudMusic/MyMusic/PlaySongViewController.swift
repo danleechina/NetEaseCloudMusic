@@ -33,6 +33,7 @@ class PlaySongViewController: BaseViewController {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var titleView: UIView!
+    @IBOutlet weak var controlStackView: UIStackView!
     
     // MARK: - Tap Action
     
@@ -44,7 +45,7 @@ class PlaySongViewController: BaseViewController {
         changeNeedlePosition(true)
     }
     
-    func tapPrevSongImage() {
+    func tapPrevSongImage(sender: UIImageView?) {
         playSongService.playPrev()
         
         currentSongIndex = playSongService.currentPlaySong
@@ -53,10 +54,15 @@ class PlaySongViewController: BaseViewController {
         changeTitleText()
         changeBackgroundBlurImage()
         changeProgressAndText(0, duration: 0)
+        changeSongLyricPosition(0)
+        if sender != nil {
+            changeDisc(0)
+        }
+        self.songLyric = nil
         playSongService.getSongLyric { (songLyric) in self.songLyric = songLyric }
     }
     
-    func tapNextSongImage() {
+    func tapNextSongImage(sender: UIImageView?) {
         playSongService.playNext()
         
         currentSongIndex = playSongService.currentPlaySong
@@ -65,6 +71,11 @@ class PlaySongViewController: BaseViewController {
         changeTitleText()
         changeBackgroundBlurImage()
         changeProgressAndText(0, duration: 0)
+        changeSongLyricPosition(0)
+        if sender != nil {
+            changeDisc(1)
+        }
+        self.songLyric = nil
         playSongService.getSongLyric { (songLyric) in self.songLyric = songLyric }
     }
     
@@ -86,6 +97,7 @@ class PlaySongViewController: BaseViewController {
                 self.swipableDiscView.hidden = true
                 self.needleImageView.hidden = true
                 self.discMaskImageView.hidden = true
+                self.controlStackView.hidden = true
 
                 }, completion: nil)
         } else {
@@ -94,6 +106,7 @@ class PlaySongViewController: BaseViewController {
                 self.lyricTableView.hidden = true
                 self.needleImageView.hidden = false
                 self.discMaskImageView.hidden = false
+                self.controlStackView.hidden = false
 
                 }, completion: nil)
         }
@@ -487,6 +500,53 @@ class PlaySongViewController: BaseViewController {
                 lastValue = value
             }
         }
+        if current == 0 {
+            self.lyricTableView.contentOffset = CGPointZero
+        }
+    }
+    
+    func changeDisc(direction: Int) {
+        let screenWidth = UIScreen.mainScreen().bounds.size.width
+        self.discLeft.headPicCycleImageView.image = UIImage.init(named: "cm2_default_cover_play");
+        self.discRight.headPicCycleImageView.image = UIImage.init(named: "cm2_default_cover_play")
+        discMiddle.pauseHeadPicImageViewAnimate()
+        needleUp(true)
+        
+        if direction == 0 {
+            // to left disc
+            if let songInfo = self.playSongService.getCurrentSongInfo() {
+                discLeft.headPicCycleImageView.sd_setImageWithURL(NSURL.init(string: songInfo.picUrl)!, placeholderImage: UIImage.init(named: "cm2_default_cover_play"))
+            }
+            UIView.animateWithDuration(0.5, animations: {
+                self.swipableDiscView.contentOffset = CGPointMake(0, 0)
+                self.swipableDiscView.userInteractionEnabled = false
+                }, completion: { (finished) in
+                    self.swipableDiscView.setContentOffset(CGPointMake(screenWidth, 0), animated: false)
+                    self.swipableDiscView.userInteractionEnabled = true
+                    self.discMiddle.resumeHeadPicImageViewAnimate()
+                    self.needleDown(true)
+                    if let songInfo = self.playSongService.getCurrentSongInfo() {
+                        self.discMiddle.headPicCycleImageView.sd_setImageWithURL(NSURL.init(string: songInfo.picUrl)!, placeholderImage: UIImage.init(named: "cm2_default_cover_play"))
+                    }
+            })
+        } else if direction == 1 {
+            // to right disc
+            if let songInfo = self.playSongService.getCurrentSongInfo() {
+                discRight.headPicCycleImageView.sd_setImageWithURL(NSURL.init(string: songInfo.picUrl)!, placeholderImage: UIImage.init(named: "cm2_default_cover_play"))
+            }
+            UIView.animateWithDuration(0.5, animations: {
+                self.swipableDiscView.contentOffset = CGPointMake(2 * screenWidth, 0)
+                self.swipableDiscView.userInteractionEnabled = false
+                }, completion: { (finished) in
+                    self.swipableDiscView.setContentOffset(CGPointMake(screenWidth, 0), animated: false)
+                    self.swipableDiscView.userInteractionEnabled = false
+                    self.discMiddle.resumeHeadPicImageViewAnimate()
+                    self.needleDown(true)
+                    if let songInfo = self.playSongService.getCurrentSongInfo() {
+                        self.discMiddle.headPicCycleImageView.sd_setImageWithURL(NSURL.init(string: songInfo.picUrl)!, placeholderImage: UIImage.init(named: "cm2_default_cover_play"))
+                    }
+            })
+        }
     }
     
     // MARK: Data Util
@@ -561,10 +621,10 @@ extension PlaySongViewController: UIScrollViewDelegate {
         var contentOffSet = scrollView.contentOffset
         if contentOffSet.x == 2 * screenWidth {
             // play next
-            tapNextSongImage()
+            tapNextSongImage(nil)
         } else if contentOffSet.x == 0 {
             // play prev
-            tapPrevSongImage()
+            tapPrevSongImage(nil)
         }
         contentOffSet.x = screenWidth
         scrollView.setContentOffset(contentOffSet, animated: false)
