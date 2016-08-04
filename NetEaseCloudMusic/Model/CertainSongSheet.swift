@@ -11,6 +11,7 @@ import UIKit
 class CertainSongSheet: NSObject {
 
     var tracks = Array<Dictionary<String, AnyObject>>()
+    var id = -1
     
     class func getFilePath() -> NSURL? {
         if let dir = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .AllDomainsMask, true).first {
@@ -22,36 +23,53 @@ class CertainSongSheet: NSObject {
     
     
     class func loadSongSheetData(playListID: String, completion:(data: CertainSongSheet?, error: NSError?) -> Void) {
+        if NSUserDefaults.standardUserDefaults().boolForKey("CertainSongSheetCache+\(playListID)") {
+            let date = NSUserDefaults.standardUserDefaults().objectForKey("CertainSongSheetTime+\(playListID)") as! NSDate
+            let dateDay = NSCalendar.currentCalendar().component(.Day, fromDate: date)
+            
+            let currentDate = NSDate()
+            let currentDay = NSCalendar.currentCalendar().component(.Day, fromDate: currentDate)
+            
+            if dateDay == currentDay {
+                let data = try! NSString(contentsOfURL: getFilePath()!, encoding: NSUTF8StringEncoding)
+                completion(data: transfer(data as String), error: nil)
+                return
+            }
+            
+        }
+        
         let netease = NetworkMusicApi.shareInstance
         netease.playlist_detail(playListID) { (data, error) in
             if let err = error {
                 print(err)
             } else {
-                do {
-                    if data != nil {
-                        
-                        let dict = try NSJSONSerialization.JSONObjectWithData((data?.dataUsingEncoding(NSUTF8StringEncoding))!, options: []) as? [String:AnyObject]
-                        let result = dict!["result"] as! Dictionary<String, AnyObject>
-                        let tracks = result["tracks"] as! Array<Dictionary<String, AnyObject>>
-                        let certainSongSheet = CertainSongSheet()
-                        certainSongSheet.tracks = tracks
-                        completion(data: certainSongSheet, error: nil)
+                if let nndata = data {
+                    do {
+                        try nndata.writeToURL(getFilePath()!, atomically: false, encoding: NSUTF8StringEncoding)
+                    } catch let error as NSError {
+                        print(error)
                     }
-                } catch let error as NSError {
-                    print(error)
+                    let tranData = transfer(nndata)
+                    completion(data: tranData, error: nil)
+                    NSUserDefaults.standardUserDefaults().setBool(true, forKey: "CertainSongSheetCache+\(tranData.id)" )
+                    NSUserDefaults.standardUserDefaults().setObject(NSDate(), forKey: "CertainSongSheetTime+\(tranData.id)")
+                    NSUserDefaults.standardUserDefaults().synchronize()
                 }
             }
         }
-
-//        let path = NSBundle.mainBundle().pathForResource("SongSheetDetails", ofType: "geojson")
-//        let data = NSData(contentsOfFile: path!)
-//        if data != nil {
-//            let dict: NSDictionary = (try! NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments)) as! NSDictionary
-//            let result = dict["result"] as! Dictionary<String, AnyObject>
-//            let tracks = result["tracks"] as! Array<Dictionary<String, AnyObject>>
-//            let certainSongSheet = CertainSongSheet()
-//            certainSongSheet.tracks = tracks
-//            completion(data: certainSongSheet, error: nil)
-//        }
+    }
+    
+    class func transfer(data: String?) -> CertainSongSheet {
+        let certainSongSheet = CertainSongSheet()
+        do {
+            let dict = try NSJSONSerialization.JSONObjectWithData((data?.dataUsingEncoding(NSUTF8StringEncoding))!, options: []) as? [String:AnyObject]
+            let result = dict!["result"] as! Dictionary<String, AnyObject>
+            let tracks = result["tracks"] as! Array<Dictionary<String, AnyObject>>
+            certainSongSheet.tracks = tracks
+            certainSongSheet.id = result["id"] as! Int
+        } catch let error as NSError {
+            print(error)
+        }
+        return certainSongSheet
     }
 }

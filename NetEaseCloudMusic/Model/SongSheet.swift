@@ -25,8 +25,18 @@ class SongSheet: NSObject {
     
     class func loadSongSheetData(completion:(data: [SongSheet]?, error: NSError?) -> Void) {
         if NSUserDefaults.standardUserDefaults().boolForKey("songsheetcache") {
-            let data = try! NSString(contentsOfURL: getFilePath()!, encoding: NSUTF8StringEncoding)
-            completion(data: transfer(data as String), error: nil)
+            let date = NSUserDefaults.standardUserDefaults().objectForKey("songsheetcacheTime") as! NSDate
+            let dateDay = NSCalendar.currentCalendar().component(.Day, fromDate: date)
+            
+            let currentDate = NSDate()
+            let currentDay = NSCalendar.currentCalendar().component(.Day, fromDate: currentDate)
+            
+            if dateDay == currentDay {
+                let data = try! NSString(contentsOfURL: getFilePath()!, encoding: NSUTF8StringEncoding)
+                completion(data: transfer(data as String), error: nil)
+                return
+            }
+            
         }
         
         let netease = NetworkMusicApi.shareInstance
@@ -39,9 +49,10 @@ class SongSheet: NSObject {
                         do {
                             try data?.writeToURL(getFilePath()!, atomically: false, encoding: NSUTF8StringEncoding)
                         }
-                        let songSheets = transfer(data)
                         NSUserDefaults.standardUserDefaults().setBool(true, forKey: "songsheetcache")
+                        NSUserDefaults.standardUserDefaults().setObject(NSDate(), forKey: "songsheetcacheTime")
                         NSUserDefaults.standardUserDefaults().synchronize()
+                        let songSheets = transfer(data)
                         completion(data: songSheets, error: nil)
                     }
                 } catch let error as NSError {
@@ -67,21 +78,4 @@ class SongSheet: NSObject {
         }
         return songSheets
     }
-//        let path = NSBundle.mainBundle().pathForResource("SongSheets", ofType: "geojson")
-//        let data = NSData(contentsOfFile: path!)
-//        if data != nil {
-//            let dict: NSDictionary = (try! NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments)) as! NSDictionary
-//            let playLists = dict["playlists"] as! Array< Dictionary<String, AnyObject> >
-//            var songSheets = [SongSheet]()
-//            for item in playLists {
-//                let songSheet = SongSheet()
-//                songSheet.name = item["name"] as! String
-//                songSheet.subscribedCount = item["subscribedCount"] as! Int
-//                songSheet.coverImgUrl = item["coverImgUrl"] as! String
-//                songSheet.nickname = item["creator"]!["nickname"] as! String
-//                songSheets.append(songSheet)
-//            }
-//            
-//            completion(data: songSheets, error: nil)
-//        }
 }
