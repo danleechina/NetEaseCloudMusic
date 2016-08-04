@@ -53,6 +53,7 @@ class PlaySongViewController: BaseViewController {
         changeTitleText()
         changeBackgroundBlurImage()
         changeProgressAndText(0, duration: 0)
+        playSongService.getSongLyric { (songLyric) in self.songLyric = songLyric }
     }
     
     func tapNextSongImage() {
@@ -64,6 +65,7 @@ class PlaySongViewController: BaseViewController {
         changeTitleText()
         changeBackgroundBlurImage()
         changeProgressAndText(0, duration: 0)
+        playSongService.getSongLyric { (songLyric) in self.songLyric = songLyric }
     }
     
     func tapLoveImage() {
@@ -97,9 +99,7 @@ class PlaySongViewController: BaseViewController {
         }
         
         if songLyric == nil && !lyricTableView.hidden {
-            playSongService.getSongLyric({ (songLyric) in
-                self.songLyric = songLyric
-            })
+            playSongService.getSongLyric({ (songLyric) in self.songLyric = songLyric })
         }
     }
     
