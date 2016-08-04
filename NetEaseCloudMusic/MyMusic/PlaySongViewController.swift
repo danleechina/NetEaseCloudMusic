@@ -474,8 +474,14 @@ class PlaySongViewController: BaseViewController {
             for (idx, value) in lyric.lyricTimeArray.enumerate() {
                 if current <= value && current > lastValue{
                     let row = idx == 0 ? 0 : idx - 1
-                    print(row)
-                    self.lyricTableView.scrollToRowAtIndexPath(NSIndexPath.init(forRow: row, inSection: 0), atScrollPosition: .Middle, animated: true)
+                    for cell in self.lyricTableView.visibleCells {
+                        cell.textLabel?.textColor = UIColor.lightGrayColor()
+                    }
+                    if let cell = self.lyricTableView.cellForRowAtIndexPath(NSIndexPath.init(forRow: row, inSection: 0)) {
+                        let startContentOffset = CGPointMake(0, -self.lyricTableView.bounds.size.height / 2 + cell.frame.origin.y)
+                        self.lyricTableView.setContentOffset(startContentOffset, animated: true)
+                        cell.textLabel?.textColor = UIColor.whiteColor()
+                    }
                     break;
                 }
                 lastValue = value
@@ -599,10 +605,9 @@ extension PlaySongViewController: UITableViewDelegate, UITableViewDataSource {
             cell = UITableViewCell.init(style: .Default, reuseIdentifier: "LyricCell")
             cell?.backgroundColor = UIColor.clearColor()
             cell?.textLabel?.textAlignment = .Center
-            cell?.textLabel?.textColor = UIColor.whiteColor()
             cell?.textLabel?.numberOfLines = 0
-//            cell?.textLabel?.preferredMaxLayoutWidth = 100
         }
+        cell?.textLabel?.textColor = UIColor.lightGrayColor()
         cell?.textLabel?.text = songLyric?.lyricArray[indexPath.row]
         return cell!
     }
