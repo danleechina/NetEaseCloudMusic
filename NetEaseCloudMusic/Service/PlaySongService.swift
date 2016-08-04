@@ -356,6 +356,13 @@ class SongLyric: NSObject {
         var retLyric = Array<String>()
         
         var startIndex = str.startIndex
+        
+        let resultStart = str.rangeOfString("[", options: .LiteralSearch, range: Range(startIndex ..< str.endIndex), locale: nil)
+        if resultStart == nil {
+            retLyric.append(str)
+            retTime.append("00:00.000")
+            return (retTime, retLyric)
+        }
         while startIndex != str.endIndex {
             let resultStart = str.rangeOfString("[", options: .LiteralSearch, range: Range(startIndex ..< str.endIndex), locale: nil)
             let resultEnd = str.rangeOfString("]", options: .LiteralSearch, range: Range(startIndex ..< str.endIndex), locale: nil)
