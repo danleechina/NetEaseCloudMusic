@@ -353,6 +353,7 @@ class SongLyric: NSObject {
     }
     
     func seperateFormatData(str: String) -> (Array<String>, Array<String>) {
+        print(str)
         var retTime = Array<String>()
         var retLyric = Array<String>()
         
@@ -397,8 +398,10 @@ class SongLyric: NSObject {
         let startIndex = str.startIndex
         let minStr = str.substringToIndex(startIndex.advancedBy(2))
         let secStr = str.substringFromIndex(startIndex.advancedBy(3))
-        let value = Float64(minStr)! * 60 + Float64(secStr)!
-        return value
+        if let minValue = Float64(minStr), let secValue = Float64(secStr){
+            return minValue * 60 + secValue
+        }
+        return 0
     }
 
 //    "sgc": false,
