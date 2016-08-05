@@ -134,8 +134,10 @@ class PlaySongViewController: BaseViewController {
     var singers = ""
     var songLyric: SongLyric? {
         didSet {
-            lyricStateLabel.hidden = !(songLyric == nil)
-            lyricTableView.reloadData()
+            dispatch_async(dispatch_get_main_queue()) {
+                self.lyricStateLabel.hidden = !(self.songLyric == nil)
+                self.lyricTableView.reloadData()
+            }
         }
     }
     
