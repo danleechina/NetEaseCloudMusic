@@ -100,7 +100,6 @@ class PlaySongService: NSObject {
     
     private func playIt(urlString: String) -> Void {
         let player = AVPlayer.init(URL: NSURL.init(string: urlString)!)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(playerItemDidReachEnd(_:)), name: AVPlayerItemDidPlayToEndTimeNotification, object: player.currentItem)
         player.addObserver(self, forKeyPath: "status", options: NSKeyValueObservingOptions.New, context: &out_context)
         
         if let songplayer = songPlayer {
@@ -112,6 +111,8 @@ class PlaySongService: NSObject {
                 playTimeObserver = nil
             }
         }
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(playerItemDidReachEnd(_:)), name: AVPlayerItemDidPlayToEndTimeNotification, object: player.currentItem)
+        
         songPlayer = player
         playTimeObserver = songPlayer?.addPeriodicTimeObserverForInterval(CMTimeMake(1, 1), queue: dispatch_get_main_queue(), usingBlock: { [unowned self] (time) in
             let currentTime = CMTimeGetSeconds(time)
