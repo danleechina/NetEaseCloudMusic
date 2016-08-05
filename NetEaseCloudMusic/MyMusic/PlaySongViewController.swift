@@ -318,7 +318,7 @@ class PlaySongViewController: BaseViewController {
         titleView.addSubview(self.marqueeTitleLabel)
         titleView.addSubview(self.singerNameLabel)
         
-        currentLocationSlider.continuous = true
+        currentLocationSlider.continuous = false
         currentLocationSlider.addTarget(self, action: #selector(sliderValueChanged), forControlEvents: .ValueChanged)
         
         backButton.addTarget(self, action: #selector(tapBackButton), forControlEvents: .TouchUpInside)
