@@ -34,6 +34,7 @@ class PlaySongViewController: BaseViewController {
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var titleView: UIView!
     @IBOutlet weak var controlStackView: UIStackView!
+    @IBOutlet weak var lyricStateLabel: UILabel!
     
     // MARK: - Tap Action
     
@@ -133,6 +134,7 @@ class PlaySongViewController: BaseViewController {
     var singers = ""
     var songLyric: SongLyric? {
         didSet {
+            lyricStateLabel.hidden = !(songLyric == nil)
             lyricTableView.reloadData()
         }
     }
@@ -287,6 +289,9 @@ class PlaySongViewController: BaseViewController {
         lyricTableView.tag = 2
         lyricTableView.rowHeight = UITableViewAutomaticDimension
         lyricTableView.estimatedRowHeight = 50
+        
+        // lyricStateLabel
+        lyricStateLabel.hidden = true
 
         
         // loveImageView
@@ -474,6 +479,9 @@ class PlaySongViewController: BaseViewController {
     func changeProgressAndText(current: Float64, duration: Float64) {
         self.totalTimeLabel.text = getFormatTime(duration)
         self.timePointLabel.text = getFormatTime(current)
+        if self.currentLocationSlider.tracking {
+            return
+        }
         if duration != 0 && !duration.isNaN && !current.isNaN {
             self.currentLocationSlider.setValue(Float(current / duration) , animated: true)
         } else {

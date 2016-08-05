@@ -17,6 +17,7 @@
                 <outlet property="downloadImageView" destination="qz0-sd-sHX" id="z1l-iB-GAI"/>
                 <outlet property="lastSongImageView" destination="fnA-x8-nAD" id="yWj-nG-c7h"/>
                 <outlet property="loveImageView" destination="AXa-8c-EHe" id="ZG7-bQ-1ZS"/>
+                <outlet property="lyricStateLabel" destination="SwS-e5-kLY" id="ZQU-Pn-zmV"/>
                 <outlet property="lyricTableView" destination="qgF-0G-WQr" id="7pp-qi-D9G"/>
                 <outlet property="needleImageView" destination="nv9-Oh-cTI" id="4DS-50-GnX"/>
                 <outlet property="nextImageView" destination="Ljs-1s-Jq3" id="bZR-ei-qzZ"/>
@@ -229,6 +230,12 @@
                     <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="歌词加载中..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SwS-e5-kLY">
+                    <rect key="frame" x="258" y="268" width="85" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
@@ -243,12 +250,14 @@
                 <constraint firstItem="h7x-k6-kHX" firstAttribute="centerY" secondItem="nst-YT-lRa" secondAttribute="centerY" id="AMv-hX-QWQ"/>
                 <constraint firstItem="Ry2-qp-xQN" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="Cza-fq-o23"/>
                 <constraint firstItem="h7x-k6-kHX" firstAttribute="leading" secondItem="nst-YT-lRa" secondAttribute="trailing" constant="51" id="D5S-jG-jbZ"/>
+                <constraint firstItem="SwS-e5-kLY" firstAttribute="centerY" secondItem="qgF-0G-WQr" secondAttribute="centerY" id="DAa-C6-NK0"/>
                 <constraint firstItem="nst-YT-lRa" firstAttribute="centerX" secondItem="7K2-4K-fah" secondAttribute="centerX" id="Ee3-ec-zqm"/>
                 <constraint firstAttribute="trailing" secondItem="UGs-4u-wkl" secondAttribute="trailing" constant="10" id="F4p-tn-nUT"/>
                 <constraint firstItem="TsB-nh-0hX" firstAttribute="leading" secondItem="Ljs-1s-Jq3" secondAttribute="trailing" constant="15" id="F7U-fC-m4r"/>
                 <constraint firstItem="fnA-x8-nAD" firstAttribute="leading" secondItem="7K2-4K-fah" secondAttribute="trailing" constant="15" id="G2Q-JA-4nW"/>
                 <constraint firstItem="Ry2-qp-xQN" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="IiZ-o0-0yQ"/>
                 <constraint firstItem="h7x-k6-kHX" firstAttribute="top" secondItem="OmY-l2-7gG" secondAttribute="bottom" constant="-6" id="P4F-3C-2Oh"/>
+                <constraint firstItem="SwS-e5-kLY" firstAttribute="centerX" secondItem="qgF-0G-WQr" secondAttribute="centerX" id="Pbo-Uu-1iy"/>
                 <constraint firstAttribute="bottom" secondItem="gyT-3S-crh" secondAttribute="bottom" constant="25" id="QkR-9Y-toL"/>
                 <constraint firstItem="nst-YT-lRa" firstAttribute="baseline" secondItem="9Db-RD-NNa" secondAttribute="baseline" id="RsD-wY-eIM"/>
                 <constraint firstItem="h7x-k6-kHX" firstAttribute="leading" secondItem="nst-YT-lRa" secondAttribute="trailing" constant="8" symbolic="YES" id="SRZ-LH-mdo"/>
