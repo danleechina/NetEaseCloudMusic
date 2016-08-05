@@ -650,6 +650,11 @@ extension PlaySongViewController: PlaySongServiceDelegate {
         changeTitleText()
         changeBackgroundBlurImage()
         changeProgressAndText(0, duration: 0)
+        
+        changeSongLyricPosition(0)
+        changeDisc(1)
+        self.songLyric = nil
+        playSongService.getSongLyric { (songLyric) in self.songLyric = songLyric }
     }
 }
 
