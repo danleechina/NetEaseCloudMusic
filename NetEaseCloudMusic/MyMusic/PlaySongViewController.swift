@@ -262,6 +262,7 @@ class PlaySongViewController: BaseViewController {
         let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .Light))
         visualEffectView.frame = blurBackgroundImageView.bounds
         blurBackgroundImageView.addSubview(visualEffectView)
+        blurBackgroundImageView.backgroundColor = UIColor.blackColor()
         
         // swipableDiscView
         let screenWidth = UIScreen.mainScreen().bounds.size.width
