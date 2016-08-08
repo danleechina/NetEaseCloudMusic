@@ -376,7 +376,10 @@ class SongLyric: NSObject {
             if lyricResultEnd == nil {
                 lyricResultEnd = str.endIndex.advancedBy(-1)
             }
-            let lyricStr = str.substringWithRange(Range(lyricResultStart! ..< lyricResultEnd!))
+            var lyricStr = ""
+            if lyricResultStart! < lyricResultEnd! {
+                lyricStr = str.substringWithRange(Range(lyricResultStart! ..< lyricResultEnd!))
+            }
             print(lyricStr)
             
             retTime.append(timeStr)
