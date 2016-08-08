@@ -35,6 +35,9 @@ class PlaySongViewController: BaseViewController {
     @IBOutlet weak var titleView: UIView!
     @IBOutlet weak var controlStackView: UIStackView!
     @IBOutlet weak var lyricStateLabel: UILabel!
+    @IBOutlet weak var tranglePointView: UIView!
+    @IBOutlet weak var lineView: UIView!
+    @IBOutlet weak var lyricTimeLabel: UILabel!
     
     // MARK: - Tap Action
     
@@ -295,6 +298,15 @@ class PlaySongViewController: BaseViewController {
         
         // lyricStateLabel
         lyricStateLabel.hidden = true
+        
+        // tranglePointView
+        tranglePointView.hidden = true
+        
+        // lineView
+        lineView.hidden = true
+        
+        // lyricTimeLabel
+        lyricTimeLabel.hidden = true
 
         
         // loveImageView
@@ -512,7 +524,7 @@ class PlaySongViewController: BaseViewController {
             }
         }
         if current == 0 {
-            self.lyricTableView.contentOffset = CGPointZero
+            self.lyricTableView.contentOffset = CGPointMake(0, -self.lyricTableView.bounds.size.height / 2)
         }
     }
     
@@ -558,6 +570,12 @@ class PlaySongViewController: BaseViewController {
                     }
             })
         }
+    }
+    
+    func changeLyricPoint(isHidden: Bool) {
+        lyricTimeLabel.hidden = isHidden
+        tranglePointView.hidden = isHidden
+        lineView.hidden = isHidden
     }
     
     // MARK: Data Util
@@ -619,6 +637,7 @@ extension PlaySongViewController: UIScrollViewDelegate {
     
     func scrollViewWillBeginDragging(scrollView: UIScrollView) {
         if scrollView.tag == 2 {
+            changeLyricPoint(false)
             return
         }
         self.userDragging = true
@@ -626,6 +645,7 @@ extension PlaySongViewController: UIScrollViewDelegate {
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         if scrollView.tag == 2 {
+            changeLyricPoint(true)
             return
         }
         let screenWidth = UIScreen.mainScreen().bounds.size.width
