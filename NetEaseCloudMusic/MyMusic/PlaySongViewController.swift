@@ -606,6 +606,25 @@ class PlaySongViewController: BaseViewController {
 extension PlaySongViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(scrollView: UIScrollView) {
         if scrollView.tag == 2 {
+            let compareOffsetY = scrollView.contentOffset.y
+            var ans = 0
+            if let lyric = self.songLyric {
+                var lastValue:CGFloat = -self.lyricTableView.bounds.size.height / 2
+                var startContentOffsetY = lastValue
+                for (idx, _) in lyric.lyricTimeArray.enumerate() {
+                    let row = idx == 0 ? 0 : idx - 1
+                    if let cell = self.lyricTableView.cellForRowAtIndexPath(NSIndexPath.init(forRow: row, inSection: 0)) {
+                        startContentOffsetY = -self.lyricTableView.bounds.size.height / 2 + cell.frame.origin.y
+                        if compareOffsetY > lastValue && compareOffsetY < startContentOffsetY {
+                            ans = idx
+                            break;
+                        }
+                    }
+                    lastValue = startContentOffsetY
+                }
+                lyricTimeLabel.text = "\(lyric.lyricTimeArray[ans])"
+            }
+            
             return
         }
         if self.userDragging {
