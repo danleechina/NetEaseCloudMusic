@@ -392,12 +392,12 @@ class SongLyric: NSObject {
     func getNumValueFromFormatTimeStringArray(strArray: Array<String>) -> Array<Float64> {
         var ret = Array<Float64>()
         for str in strArray {
-            ret.append(getNumValueFromFormatTimeString(str))
+            ret.append(SongLyric.getNumValueFromFormatTimeString(str))
         }
         return ret
     }
     
-    func getNumValueFromFormatTimeString(str: String) -> Float64 {
+    class func getNumValueFromFormatTimeString(str: String) -> Float64 {
         let startIndex = str.startIndex
         let minStr = str.substringToIndex(startIndex.advancedBy(2))
         let secStr = str.substringFromIndex(startIndex.advancedBy(3))
@@ -405,6 +405,23 @@ class SongLyric: NSObject {
             return minValue * 60 + secValue
         }
         return 0
+    }
+    
+    
+    class func getFormatTimeStringFromNumValue(val: Float64) -> String {
+        let minVal = Int(val/60)
+        let secVal = Int(val) - minVal * 60
+        
+        var minStr = "\(minVal)"
+        var secStr = "\(secVal)"
+        
+        if minVal < 10 {
+            minStr = "0\(minVal)"
+        }
+        if secVal < 10 {
+            secStr = "0\(secVal)"
+        }
+        return minStr + ":" + secStr
     }
 
 //    "sgc": false,

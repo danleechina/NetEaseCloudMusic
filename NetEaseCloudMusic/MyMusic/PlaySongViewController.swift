@@ -622,7 +622,7 @@ extension PlaySongViewController: UIScrollViewDelegate {
                     }
                     lastValue = startContentOffsetY
                 }
-                lyricTimeLabel.text = "\(lyric.lyricTimeArray[ans])"
+                lyricTimeLabel.text = SongLyric.getFormatTimeStringFromNumValue(lyric.lyricTimeArray[ans])
             }
             
             return
