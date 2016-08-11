@@ -68,6 +68,8 @@
 		DE79E6FB1D1677C2006B9926 /* HasInfoSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE79E6FA1D1677C2006B9926 /* HasInfoSegmentedControl.swift */; };
 		DEAB13C21D1518D2001FD8E8 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAB13C11D1518D2001FD8E8 /* BaseViewController.swift */; };
 		DEC8F3111D23E0B700C30661 /* NetworkMusicApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC8F3101D23E0B700C30661 /* NetworkMusicApi.swift */; };
+		DED58E111D5C8C8600ED8A74 /* SongLyric.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED58E101D5C8C8600ED8A74 /* SongLyric.swift */; };
+		DED58E131D5C8D0900ED8A74 /* SongInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED58E121D5C8D0900ED8A74 /* SongInfo.swift */; };
 		EB11B0F7C0EE28112D75A367 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D42FA2A00EA9169F711A1E81 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -160,6 +162,8 @@
 		DE79E6FA1D1677C2006B9926 /* HasInfoSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HasInfoSegmentedControl.swift; path = Common/HasInfoSegmentedControl.swift; sourceTree = "<group>"; };
 		DEAB13C11D1518D2001FD8E8 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = Common/BaseViewController.swift; sourceTree = "<group>"; };
 		DEC8F3101D23E0B700C30661 /* NetworkMusicApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkMusicApi.swift; path = API/NetworkMusicApi.swift; sourceTree = "<group>"; };
+		DED58E101D5C8C8600ED8A74 /* SongLyric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SongLyric.swift; path = Model/SongLyric.swift; sourceTree = "<group>"; };
+		DED58E121D5C8D0900ED8A74 /* SongInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SongInfo.swift; path = Model/SongInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,6 +222,8 @@
 			children = (
 				DE13AB101D3511D0004BA90C /* SongSheet.swift */,
 				DE13AB1C1D379290004BA90C /* CertainSongSheet.swift */,
+				DED58E101D5C8C8600ED8A74 /* SongLyric.swift */,
+				DED58E121D5C8D0900ED8A74 /* SongInfo.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -661,6 +667,7 @@
 				DE2654F21D102A9D0083F742 /* MyRadioViewController.swift in Sources */,
 				DE2474741D1AB83C00EBAA37 /* CommentCell.swift in Sources */,
 				DE79E6FB1D1677C2006B9926 /* HasInfoSegmentedControl.swift in Sources */,
+				DED58E111D5C8C8600ED8A74 /* SongLyric.swift in Sources */,
 				DEAB13C21D1518D2001FD8E8 /* BaseViewController.swift in Sources */,
 				DE2654F81D103A8D0083F742 /* AccountTableViewCell.swift in Sources */,
 				DE2654D11D1026B50083F742 /* PaidMusicViewController.swift in Sources */,
@@ -669,6 +676,7 @@
 				DE2654B41D101DD30083F742 /* AccountViewController.swift in Sources */,
 				DE2654D71D1027540083F742 /* SettingViewController.swift in Sources */,
 				DE2654BF1D1023990083F742 /* RankListViewController.swift in Sources */,
+				DED58E131D5C8D0900ED8A74 /* SongInfo.swift in Sources */,
 				DE2654EB1D1029DE0083F742 /* MySingerViewController.swift in Sources */,
 				DE2654CD1D1025F90083F742 /* NearByViewController.swift in Sources */,
 				DE2654CF1D1026710083F742 /* MyMessageViewController.swift in Sources */,
