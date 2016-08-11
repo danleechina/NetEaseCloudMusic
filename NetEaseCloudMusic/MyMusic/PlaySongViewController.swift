@@ -492,8 +492,8 @@ class PlaySongViewController: BaseViewController {
     }
     
     func changeProgressAndText(current: Float64, duration: Float64) {
-        self.totalTimeLabel.text = getFormatTime(duration)
-        self.timePointLabel.text = getFormatTime(current)
+        self.totalTimeLabel.text = SongLyric.getFormatTimeStringFromNumValue(duration)
+        self.timePointLabel.text = SongLyric.getFormatTimeStringFromNumValue(current)
         if self.currentLocationSlider.tracking {
             return
         }
@@ -576,30 +576,6 @@ class PlaySongViewController: BaseViewController {
         lyricTimeLabel.hidden = isHidden
         tranglePointView.hidden = isHidden
         lineView.hidden = isHidden
-    }
-    
-    // MARK: Data Util
-    
-    func getFormatTime(time: Float64) -> String {
-        if time.isNaN {
-            return "00:00"
-        }
-        let minuteValue = Int(time / 60)
-        let secondValue = Int(time) - minuteValue * 60
-        
-        var secondStr = "\(secondValue)"
-        if secondValue < 10 {
-            secondStr = "0" + secondStr
-        }
-        
-        var minStr = "\(minuteValue)"
-        if minuteValue < 0 {
-            minStr = "00"
-        } else if minuteValue < 9 {
-            minStr = "0" + minStr
-        }
-        
-        return minStr + ":" + secondStr
     }
 }
 
