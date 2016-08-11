@@ -150,6 +150,9 @@ class SongLyric: NSObject {
     
     
     class func getFormatTimeStringFromNumValue(val: Float64) -> String {
+        if val.isNaN {
+            return "00:00"
+        }
         let minVal = Int(val/60)
         let secVal = Int(val) - minVal * 60
         
