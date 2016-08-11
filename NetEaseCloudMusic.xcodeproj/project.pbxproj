@@ -269,6 +269,7 @@
 				DE42A5A61D2D26FF002D3B60 /* NetEaseCloudMusic-Bridging-Header.h */,
 				DE19D2151D12DB03008A575C /* Util */,
 				DE4068551D12A3240067F0FE /* Common */,
+				DE13AB121D3511D5004BA90C /* Model */,
 				DE2654AC1D101D4B0083F742 /* FindMusic */,
 				DE2654AF1D101D7F0083F742 /* MyMusic */,
 				DE2654B21D101DAD0083F742 /* Friend */,
@@ -305,7 +306,6 @@
 				DE2654AA1D101D440083F742 /* FindMusicViewController.swift */,
 				DE2654C01D10249D0083F742 /* SoundHoundViewController.swift */,
 				DE2654E21D1028C60083F742 /* ContentVC */,
-				DE13AB121D3511D5004BA90C /* Model */,
 			);
 			name = FindMusic;
 			sourceTree = "<group>";
