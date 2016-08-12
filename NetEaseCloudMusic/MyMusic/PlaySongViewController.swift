@@ -150,6 +150,7 @@ class PlaySongViewController: BaseViewController {
     
     let playSongService = PlaySongService.sharedInstance
     var userDragging = false
+    var userDraggLyricTableView = false
     var isSwipeLeft = false
     var isNeedleUp = false
         
@@ -624,6 +625,7 @@ extension PlaySongViewController: UIScrollViewDelegate {
     
     func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if scrollView.tag == 2 {
+            self.userDraggLyricTableView = false
             return
         }
         self.userDragging = false
@@ -632,6 +634,7 @@ extension PlaySongViewController: UIScrollViewDelegate {
     
     func scrollViewWillBeginDragging(scrollView: UIScrollView) {
         if scrollView.tag == 2 {
+            self.userDraggLyricTableView = true
             changeLyricPoint(false)
             return
         }
@@ -666,7 +669,9 @@ extension PlaySongViewController: UIScrollViewDelegate {
 extension PlaySongViewController: PlaySongServiceDelegate {
     func updateProgress(currentTime: Float64, durationTime: Float64) {
         changeProgressAndText(currentTime, duration: durationTime)
-        changeSongLyricPosition(currentTime)
+        if !self.userDraggLyricTableView {
+            changeSongLyricPosition(currentTime)
+        }
     }
     
     func didChangeSong() {
