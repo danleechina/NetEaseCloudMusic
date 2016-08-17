@@ -114,6 +114,7 @@ class PlaySongViewController: BaseViewController {
 
                 }, completion: nil)
         }
+        changeLyricPoint(true)
         
         if songLyric == nil && !lyricTableView.hidden {
             playSongService.getSongLyric({ (songLyric) in self.songLyric = songLyric })
