@@ -20,9 +20,10 @@ class BaseViewController: UIViewController {
     }
     
     func applyDefaultNavigationBarStyle() {
-        let appearance = self.navigationController?.navigationBar
-        appearance?.translucent = false
-        appearance?.barTintColor = FixedValue.mainRedColor
-        appearance?.barStyle = .Default
+//        let appearance = self.navigationController?.navigationBar
+//        appearance?.translucent = false
+//        appearance?.barTintColor = FixedValue.mainRedColor
+//        appearance?.barStyle = .Default
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
 }

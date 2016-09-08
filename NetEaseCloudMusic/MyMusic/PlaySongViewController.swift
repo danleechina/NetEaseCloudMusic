@@ -102,7 +102,8 @@ class PlaySongViewController: BaseViewController {
                 self.needleImageView.hidden = true
                 self.discMaskImageView.hidden = true
                 self.controlStackView.hidden = true
-
+                self.swipableDiscView.userInteractionEnabled = false
+                self.lyricTableView.userInteractionEnabled = true
                 }, completion: nil)
         } else {
             UIView.animateWithDuration(0.2, animations: {
@@ -111,7 +112,8 @@ class PlaySongViewController: BaseViewController {
                 self.needleImageView.hidden = false
                 self.discMaskImageView.hidden = false
                 self.controlStackView.hidden = false
-
+                self.swipableDiscView.userInteractionEnabled = true
+                self.lyricTableView.userInteractionEnabled = false
                 }, completion: nil)
         }
         changeLyricPoint(true)
@@ -200,19 +202,15 @@ class PlaySongViewController: BaseViewController {
         super.viewDidLoad()
         dataInit()
         viewsInit()
-        self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
         UIApplication.sharedApplication().statusBarStyle = .LightContent
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
         UIApplication.sharedApplication().statusBarStyle = .Default
         setAnchorPoint(CGPointMake(0.5, 0.5), forView: self.needleImageView)
     }
