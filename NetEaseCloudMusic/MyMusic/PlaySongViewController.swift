@@ -35,7 +35,7 @@ class PlaySongViewController: BaseViewController {
     @IBOutlet weak var titleView: UIView!
     @IBOutlet weak var controlStackView: UIStackView!
     @IBOutlet weak var lyricStateLabel: UILabel!
-    @IBOutlet weak var tranglePointView: UIView!
+    @IBOutlet weak var lyricTimeImageView: UIImageView!
     @IBOutlet weak var lineView: UIView!
     @IBOutlet weak var lyricTimeLabel: UILabel!
     
@@ -294,13 +294,18 @@ class PlaySongViewController: BaseViewController {
         lyricTableView.addGestureRecognizer(lyricTapGest)
         lyricTableView.tag = 2
         lyricTableView.rowHeight = UITableViewAutomaticDimension
+        lyricTableView.showsVerticalScrollIndicator = false
         lyricTableView.estimatedRowHeight = 50
+        lyricTableView.tableHeaderView = UIView.init(frame: CGRectMake(0, 0, lyricTableView.bounds.size.width, lyricTableView.bounds.size.height/2))
+        lyricTableView.tableFooterView = UIView.init(frame: CGRectMake(0, 0, lyricTableView.bounds.size.width, lyricTableView.bounds.size.height/2))
+        lyricTableView.tableHeaderView?.backgroundColor = UIColor.clearColor()
+        lyricTableView.tableFooterView?.backgroundColor = UIColor.clearColor()
         
         // lyricStateLabel
         lyricStateLabel.hidden = true
         
-        // tranglePointView
-        tranglePointView.hidden = true
+        // lyricTimeImageView
+        lyricTimeImageView.hidden = true
         
         // lineView
         lineView.hidden = true
@@ -515,7 +520,7 @@ class PlaySongViewController: BaseViewController {
                     }
                     if let cell = self.lyricTableView.cellForRowAtIndexPath(NSIndexPath.init(forRow: row, inSection: 0)) {
                         let startContentOffset = CGPointMake(0, -self.lyricTableView.bounds.size.height / 2 + cell.frame.origin.y)
-                        self.lyricTableView.setContentOffset(startContentOffset, animated: true)
+                        self.lyricTableView.setContentOffset(CGPointMake(startContentOffset.x, startContentOffset.y + cell.bounds.size.height/2), animated: true)
                         cell.textLabel?.textColor = UIColor.whiteColor()
                     }
                     break;
@@ -574,7 +579,7 @@ class PlaySongViewController: BaseViewController {
     
     func changeLyricPoint(isHidden: Bool) {
         lyricTimeLabel.hidden = isHidden
-        tranglePointView.hidden = isHidden
+        lyricTimeImageView.hidden = isHidden
         lineView.hidden = isHidden
     }
 }
@@ -642,7 +647,11 @@ extension PlaySongViewController: UIScrollViewDelegate {
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         if scrollView.tag == 2 {
-            changeLyricPoint(true)
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(2.5 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
+                if self.lyricTableView.hidden || !self.lyricTableView.dragging {
+                    self.changeLyricPoint(true)
+                }
+            })
             return
         }
         let screenWidth = UIScreen.mainScreen().bounds.size.width
@@ -663,12 +672,16 @@ extension PlaySongViewController: UIScrollViewDelegate {
         }
         scrollView.userInteractionEnabled = true
     }
+    
+    func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        
+    }
 }
 
 extension PlaySongViewController: PlaySongServiceDelegate {
     func updateProgress(currentTime: Float64, durationTime: Float64) {
         changeProgressAndText(currentTime, duration: durationTime)
-        if !self.userDraggLyricTableView {
+        if self.lyricTimeImageView.hidden {
             changeSongLyricPosition(currentTime)
         }
     }
@@ -713,4 +726,5 @@ extension PlaySongViewController: UITableViewDelegate, UITableViewDataSource {
         }
         return 0
     }
+    
 }
