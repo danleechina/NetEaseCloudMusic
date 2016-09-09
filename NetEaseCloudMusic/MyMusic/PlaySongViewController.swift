@@ -674,7 +674,17 @@ extension PlaySongViewController: UIScrollViewDelegate {
     }
     
     func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        
+        if scrollView.tag == 2 {
+            let indexPath = self.lyricTableView.indexPathForRowAtPoint(CGPointMake(0, targetContentOffset.memory.y + (self.lyricTableView.tableHeaderView?.bounds.size.height)!))
+            if indexPath == nil {
+                return
+            }
+            let cell = self.lyricTableView.cellForRowAtIndexPath(indexPath!)
+            if cell == nil {
+                return
+            }
+            targetContentOffset.memory = CGPointMake(0, cell!.frame.origin.y + cell!.bounds.size.height/2)
+        }
     }
 }
 
@@ -717,6 +727,9 @@ extension PlaySongViewController: UITableViewDelegate, UITableViewDataSource {
         }
         cell?.textLabel?.textColor = UIColor.lightGrayColor()
         cell?.textLabel?.text = songLyric?.lyricArray[indexPath.row]
+        if indexPath.row % 2 == 0 {
+            cell?.backgroundColor = UIColor.lightGrayColor()
+        }
         return cell!
     }
     
