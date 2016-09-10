@@ -94,7 +94,6 @@ class SongLyric: NSObject {
     }
     
     func seperateFormatData(str: String) -> (Array<String>, Array<String>) {
-        print(str)
         var retTime = Array<String>()
         var retLyric = Array<String>()
         
@@ -110,7 +109,6 @@ class SongLyric: NSObject {
             let resultStart = str.rangeOfString("[", options: .LiteralSearch, range: Range(startIndex ..< str.endIndex), locale: nil)
             let resultEnd = str.rangeOfString("]", options: .LiteralSearch, range: Range(startIndex ..< str.endIndex), locale: nil)
             let timeStr = str.substringWithRange(Range((resultStart?.startIndex.advancedBy(1))! ..< (resultEnd?.startIndex)!))
-            print(timeStr)
             
             let lyricResultStart = resultEnd?.startIndex.advancedBy(1)
             var lyricResultEnd = str.rangeOfString("[", options: .LiteralSearch, range: Range((resultEnd?.startIndex)! ..< str.endIndex), locale: nil)?.startIndex.advancedBy(-1)
@@ -121,7 +119,6 @@ class SongLyric: NSObject {
             if lyricResultStart! < lyricResultEnd! {
                 lyricStr = str.substringWithRange(Range(lyricResultStart! ..< lyricResultEnd!))
             }
-            print(lyricStr)
             
             retTime.append(timeStr)
             retLyric.append(lyricStr)

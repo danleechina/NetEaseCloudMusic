@@ -17,7 +17,7 @@ class PlaySongViewController: BaseViewController {
     @IBOutlet weak var blurBackgroundImageView: UIImageView!
     @IBOutlet weak var swipableDiscView: UIScrollView!
     @IBOutlet weak var loveImageView: UIImageView!
-    @IBOutlet weak var lyricTableView: UITableView!
+    @IBOutlet weak var lyricTableView: LyricTableView!
     @IBOutlet weak var downloadImageView: UIImageView!
     @IBOutlet weak var commentImageView: UIImageView!
     @IBOutlet weak var settingImageView: UIImageView!
@@ -34,11 +34,10 @@ class PlaySongViewController: BaseViewController {
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var titleView: UIView!
     @IBOutlet weak var controlStackView: UIStackView!
-    @IBOutlet weak var lyricStateLabel: UILabel!
     @IBOutlet weak var lyricTimeImageView: UIImageView!
     @IBOutlet weak var lineView: UIView!
+    @IBOutlet weak var lyricStateLabel: UILabel!
     @IBOutlet weak var lyricTimeLabel: UILabel!
-    
     // MARK: - Tap Action
     
     func tapPlayImage() -> Void {
@@ -116,7 +115,7 @@ class PlaySongViewController: BaseViewController {
                 self.lyricTableView.userInteractionEnabled = false
                 }, completion: nil)
         }
-        changeLyricPoint(true)
+        self.lyricTableView.changeLyricPoint(true)
         
         if songLyric == nil && !lyricTableView.hidden {
             playSongService.getSongLyric({ (songLyric) in self.songLyric = songLyric })
@@ -140,10 +139,7 @@ class PlaySongViewController: BaseViewController {
     var singers = ""
     var songLyric: SongLyric? {
         didSet {
-            dispatch_async(dispatch_get_main_queue()) {
-                self.lyricStateLabel.hidden = !((self.songLyric == nil) && !self.lyricTableView.hidden)
-                self.lyricTableView.reloadData()
-            }
+            self.lyricTableView.songLyric = songLyric
         }
     }
     
@@ -153,7 +149,6 @@ class PlaySongViewController: BaseViewController {
     
     let playSongService = PlaySongService.sharedInstance
     var userDragging = false
-    var userDraggLyricTableView = false
     var isSwipeLeft = false
     var isNeedleUp = false
         
@@ -257,6 +252,11 @@ class PlaySongViewController: BaseViewController {
         playSongService.playStartPoint(sender.value)
     }
     
+    func tapLyricTimeImageView() {
+        playSongService.playStartPoint(Float((songLyric?.lyricTimeArray[self.lyricTableView.getMiddleRow()])!))
+        self.lyricTableView.changeLyricPoint(true)
+    }
+    
     // MARK: Supporting For View
     
     // viewsInit called only once
@@ -285,8 +285,8 @@ class PlaySongViewController: BaseViewController {
         swipableDiscView.tag = 1
     
         // lyricTableView
-        lyricTableView.delegate = self
-        lyricTableView.dataSource = self
+        lyricTableView.delegate = self.lyricTableView
+        lyricTableView.dataSource = self.lyricTableView
         lyricTableView.hidden = true
         lyricTableView.backgroundColor = UIColor.clearColor()
         let lyricTapGest = UITapGestureRecognizer.init(target: self, action: #selector(tapDiscScrollViewOrLyricTableView))
@@ -296,22 +296,21 @@ class PlaySongViewController: BaseViewController {
         lyricTableView.rowHeight = UITableViewAutomaticDimension
         lyricTableView.showsVerticalScrollIndicator = false
         lyricTableView.estimatedRowHeight = 50
-        lyricTableView.tableHeaderView = UIView.init(frame: CGRectMake(0, 0, lyricTableView.bounds.size.width, lyricTableView.bounds.size.height/2))
-        lyricTableView.tableFooterView = UIView.init(frame: CGRectMake(0, 0, lyricTableView.bounds.size.width, lyricTableView.bounds.size.height/2))
+        lyricTableView.tableHeaderView = UIView.init(frame:  CGRectMake(0, 0, lyricTableView.bounds.size.width, lyricTableView.bounds.size.height/2))
+        lyricTableView.tableFooterView = UIView.init(frame:  CGRectMake(0, 0, lyricTableView.bounds.size.width, lyricTableView.bounds.size.height/2))
         lyricTableView.tableHeaderView?.backgroundColor = UIColor.clearColor()
         lyricTableView.tableFooterView?.backgroundColor = UIColor.clearColor()
-        
-        // lyricStateLabel
-        lyricStateLabel.hidden = true
+        lyricTableView.lyricStateLabel = self.lyricStateLabel
+        lyricTableView.lyricTimeImageView = self.lyricTimeImageView
+        lyricTableView.lineView = self.lineView
+        lyricTableView.lyricTimeLabel = self.lyricTimeLabel
+        lyricTableView.changeLyricPoint(true)
+        lyricTableView.lyricStateLabel?.hidden = true
         
         // lyricTimeImageView
-        lyricTimeImageView.hidden = true
-        
-        // lineView
-        lineView.hidden = true
-        
-        // lyricTimeLabel
-        lyricTimeLabel.hidden = true
+        let lyricTimeImageTapGest = UITapGestureRecognizer.init(target: self, action: #selector(tapLyricTimeImageView))
+        lyricTimeImageTapGest.numberOfTapsRequired = 1
+        lyricTimeImageView.addGestureRecognizer(lyricTimeImageTapGest)
 
         
         // loveImageView
@@ -576,38 +575,10 @@ class PlaySongViewController: BaseViewController {
             })
         }
     }
-    
-    func changeLyricPoint(isHidden: Bool) {
-        lyricTimeLabel.hidden = isHidden
-        lyricTimeImageView.hidden = isHidden
-        lineView.hidden = isHidden
-    }
 }
 
 extension PlaySongViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        if scrollView.tag == 2 {
-            let compareOffsetY = scrollView.contentOffset.y
-            var ans = 0
-            if let lyric = self.songLyric {
-                var lastValue:CGFloat = -self.lyricTableView.bounds.size.height / 2
-                var startContentOffsetY = lastValue
-                for (idx, _) in lyric.lyricTimeArray.enumerate() {
-                    let row = idx == 0 ? 0 : idx - 1
-                    if let cell = self.lyricTableView.cellForRowAtIndexPath(NSIndexPath.init(forRow: row, inSection: 0)) {
-                        startContentOffsetY = -self.lyricTableView.bounds.size.height / 2 + cell.frame.origin.y
-                        if compareOffsetY > lastValue && compareOffsetY < startContentOffsetY {
-                            ans = idx
-                            break;
-                        }
-                    }
-                    lastValue = startContentOffsetY
-                }
-                lyricTimeLabel.text = SongLyric.getFormatTimeStringFromNumValue(lyric.lyricTimeArray[ans])
-            }
-            
-            return
-        }
         if self.userDragging {
             if scrollView.panGestureRecognizer.translationInView(scrollView.superview).x > 0 {
                 // right means prev
@@ -628,47 +599,15 @@ extension PlaySongViewController: UIScrollViewDelegate {
     }
     
     func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        if scrollView.tag == 2 {
-            self.userDraggLyricTableView = false
-            if !decelerate {
-                if let indexPath = self.lyricTableView.indexPathForRowAtPoint(CGPointMake(0, CGRectGetMinY(self.lyricTableView.bounds) + self.lyricTableView.tableHeaderView!.bounds.height)) {
-                    self.lyricTableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Middle, animated: true)
-                }
-
-            }
-            return
-        }
         self.userDragging = false
         scrollView.userInteractionEnabled = false
     }
     
     func scrollViewWillBeginDragging(scrollView: UIScrollView) {
-        if scrollView.tag == 2 {
-            self.userDraggLyricTableView = true
-            changeLyricPoint(false)
-            return
-        }
         self.userDragging = true
     }
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        if scrollView.tag == 2 {
-            if let indexPath = self.lyricTableView.indexPathForRowAtPoint(CGPointMake(0, CGRectGetMinY(self.lyricTableView.bounds) + self.lyricTableView.tableHeaderView!.bounds.height)) {
-                self.lyricTableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Middle, animated: true)
-            } else {
-                if scrollView.contentOffset.y <= 0 {
-                } else {
-                    let indexPath = NSIndexPath.init(forRow: self.lyricTableView.numberOfRowsInSection(0) - 1, inSection: 0)
-                    self.lyricTableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Middle, animated: true)
-                }
-            }
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(2.5 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
-                if self.lyricTableView.hidden || !self.lyricTableView.dragging {
-                    self.changeLyricPoint(true)
-                }
-            })
-            return
-        }
         let screenWidth = UIScreen.mainScreen().bounds.size.width
         var contentOffSet = scrollView.contentOffset
         if contentOffSet.x == 2 * screenWidth {
@@ -710,36 +649,4 @@ extension PlaySongViewController: PlaySongServiceDelegate {
         self.songLyric = nil
         playSongService.getSongLyric { (songLyric) in self.songLyric = songLyric }
     }
-}
-
-class LyricCell: UITableViewCell {
-
-}
-
-
-extension PlaySongViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("LyricCell")
-        if cell == nil {
-            cell = UITableViewCell.init(style: .Default, reuseIdentifier: "LyricCell")
-            cell?.backgroundColor = UIColor.clearColor()
-            cell?.textLabel?.textAlignment = .Center
-            cell?.textLabel?.numberOfLines = 0
-            let frame = cell!.frame
-            let view = UIView.init(frame: CGRectMake(0, frame.height/2-0.5, frame.size.width, 1));
-            view.backgroundColor = UIColor.redColor()
-            cell?.addSubview(view)
-        }
-        cell?.textLabel?.textColor = UIColor.lightGrayColor()
-        cell?.textLabel?.text = songLyric?.lyricArray[indexPath.row]
-        return cell!
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let count = songLyric?.lyricArray.count {
-            return count
-        }
-        return 0
-    }
-    
 }
