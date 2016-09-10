@@ -630,6 +630,12 @@ extension PlaySongViewController: UIScrollViewDelegate {
     func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if scrollView.tag == 2 {
             self.userDraggLyricTableView = false
+            if !decelerate {
+                if let indexPath = self.lyricTableView.indexPathForRowAtPoint(CGPointMake(0, CGRectGetMinY(self.lyricTableView.bounds) + self.lyricTableView.tableHeaderView!.bounds.height)) {
+                    self.lyricTableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Middle, animated: true)
+                }
+
+            }
             return
         }
         self.userDragging = false
@@ -647,6 +653,15 @@ extension PlaySongViewController: UIScrollViewDelegate {
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         if scrollView.tag == 2 {
+            if let indexPath = self.lyricTableView.indexPathForRowAtPoint(CGPointMake(0, CGRectGetMinY(self.lyricTableView.bounds) + self.lyricTableView.tableHeaderView!.bounds.height)) {
+                self.lyricTableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Middle, animated: true)
+            } else {
+                if scrollView.contentOffset.y <= 0 {
+                } else {
+                    let indexPath = NSIndexPath.init(forRow: self.lyricTableView.numberOfRowsInSection(0) - 1, inSection: 0)
+                    self.lyricTableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Middle, animated: true)
+                }
+            }
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(2.5 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
                 if self.lyricTableView.hidden || !self.lyricTableView.dragging {
                     self.changeLyricPoint(true)
@@ -671,20 +686,6 @@ extension PlaySongViewController: UIScrollViewDelegate {
             needleDown(true)
         }
         scrollView.userInteractionEnabled = true
-    }
-    
-    func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        if scrollView.tag == 2 {
-            let indexPath = self.lyricTableView.indexPathForRowAtPoint(CGPointMake(0, targetContentOffset.memory.y + (self.lyricTableView.tableHeaderView?.bounds.size.height)!))
-            if indexPath == nil {
-                return
-            }
-            let cell = self.lyricTableView.cellForRowAtIndexPath(indexPath!)
-            if cell == nil {
-                return
-            }
-            targetContentOffset.memory = CGPointMake(0, cell!.frame.origin.y + cell!.bounds.size.height/2)
-        }
     }
 }
 
@@ -724,12 +725,13 @@ extension PlaySongViewController: UITableViewDelegate, UITableViewDataSource {
             cell?.backgroundColor = UIColor.clearColor()
             cell?.textLabel?.textAlignment = .Center
             cell?.textLabel?.numberOfLines = 0
+            let frame = cell!.frame
+            let view = UIView.init(frame: CGRectMake(0, frame.height/2-0.5, frame.size.width, 1));
+            view.backgroundColor = UIColor.redColor()
+            cell?.addSubview(view)
         }
         cell?.textLabel?.textColor = UIColor.lightGrayColor()
         cell?.textLabel?.text = songLyric?.lyricArray[indexPath.row]
-        if indexPath.row % 2 == 0 {
-            cell?.backgroundColor = UIColor.lightGrayColor()
-        }
         return cell!
     }
     
