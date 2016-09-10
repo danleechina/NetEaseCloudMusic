@@ -22,6 +22,9 @@ class LyricTableView: UITableView {
             dispatch_async(dispatch_get_main_queue()) {
                 self.lyricStateLabel?.hidden = !((self.songLyric == nil) && !self.hidden)
                 self.reloadData()
+                if self.numberOfRowsInSection(0) <= 0 {
+                    return
+                }
                 let indexPath = NSIndexPath.init(forRow: 0, inSection: 0)
                 self.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Middle, animated: true)
             }
