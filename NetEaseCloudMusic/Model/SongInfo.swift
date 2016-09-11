@@ -16,5 +16,5 @@ class SongInfo: NSObject {
     var singers = ""
     var mp3Url = ""
     var indexInTheSongSheet = 0
-    var songID = ""
+    var songID = 0
 }

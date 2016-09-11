@@ -170,13 +170,13 @@ class PlaySongService: NSObject {
 
         
         let songInfo = SongInfo()
-        songInfo.picUrl = playLists?.tracks[nextIndex]["album"]!["picUrl"] as! String
-        songInfo.blurPicUrl = playLists?.tracks[nextIndex]["album"]!["blurPicUrl"] as! String
-        songInfo.songname = playLists?.tracks[nextIndex]["name"] as! String
-        songInfo.singers = playLists?.tracks[nextIndex]["artists"]![0]["name"] as! String
-        songInfo.mp3Url = playLists?.tracks[nextIndex]["mp3Url"] as! String
+        songInfo.picUrl = (playLists?.tracks[nextIndex].album.picUrl)!
+        songInfo.blurPicUrl = (playLists?.tracks[nextIndex].album.blurPicUrl)!
+        songInfo.songname = (playLists?.tracks[nextIndex].name)!
+        songInfo.singers = (playLists?.tracks[nextIndex].artists[0].name)!
+        songInfo.mp3Url = (playLists?.tracks[nextIndex].mp3Url)!
         songInfo.indexInTheSongSheet = nextIndex
-        songInfo.songID = "\(playLists?.tracks[nextIndex]["id"]!)"
+        songInfo.songID = (playLists?.tracks[nextIndex].id)!
 
         return songInfo
     }
@@ -196,13 +196,13 @@ class PlaySongService: NSObject {
         }
         
         let songInfo = SongInfo()
-        songInfo.picUrl = playLists?.tracks[prevIndex]["album"]!["picUrl"] as! String
-        songInfo.blurPicUrl = playLists?.tracks[prevIndex]["album"]!["blurPicUrl"] as! String
-        songInfo.songname = playLists?.tracks[prevIndex]["name"] as! String
-        songInfo.singers = playLists?.tracks[prevIndex]["artists"]![0]["name"] as! String
-        songInfo.mp3Url = playLists?.tracks[prevIndex]["mp3Url"] as! String
+        songInfo.picUrl = (playLists?.tracks[prevIndex].album.picUrl)!
+        songInfo.blurPicUrl = (playLists?.tracks[prevIndex].album.blurPicUrl)!
+        songInfo.songname = (playLists?.tracks[prevIndex].name)!
+        songInfo.singers = (playLists?.tracks[prevIndex].artists[0].name)!
+        songInfo.mp3Url = (playLists?.tracks[prevIndex].mp3Url)!
         songInfo.indexInTheSongSheet = prevIndex
-        songInfo.songID = "\(playLists?.tracks[prevIndex]["id"]!)"
+        songInfo.songID = (playLists?.tracks[prevIndex].id)!
 
         return songInfo
 
@@ -213,20 +213,20 @@ class PlaySongService: NSObject {
         if let playlists = playLists {
             if certainIndex >= 0 && certainIndex < playlists.tracks.count {
                 certainIndex = index
-                playIt(playlists.tracks[currentPlaySong]["mp3Url"] as! String)
+                playIt(playlists.tracks[currentPlaySong].mp3Url)
             }
         } else {
             return nil
         }
         
         let songInfo = SongInfo()
-        songInfo.picUrl = playLists?.tracks[certainIndex]["album"]!["picUrl"] as! String
-        songInfo.blurPicUrl = playLists?.tracks[certainIndex]["album"]!["blurPicUrl"] as! String
-        songInfo.songname = playLists?.tracks[certainIndex]["name"] as! String
-        songInfo.singers = playLists?.tracks[certainIndex]["artists"]![0]["name"] as! String
-        songInfo.mp3Url = playLists?.tracks[certainIndex]["mp3Url"] as! String
+        songInfo.picUrl = (playLists?.tracks[certainIndex].album.picUrl)!
+        songInfo.blurPicUrl = (playLists?.tracks[certainIndex].album.blurPicUrl)!
+        songInfo.songname = (playLists?.tracks[certainIndex].name)!
+        songInfo.singers = (playLists?.tracks[certainIndex].artists[0].name)!
+        songInfo.mp3Url = (playLists?.tracks[certainIndex].mp3Url)!
         songInfo.indexInTheSongSheet = certainIndex
-        songInfo.songID = "\(playLists?.tracks[certainIndex]["id"]!)"
+        songInfo.songID = (playLists?.tracks[certainIndex].id)!
 
         return songInfo
     }
@@ -237,13 +237,14 @@ class PlaySongService: NSObject {
         }
         
         let songInfo = SongInfo()
-        songInfo.picUrl = playLists?.tracks[currentPlaySong]["album"]!["picUrl"] as! String
-        songInfo.blurPicUrl = playLists?.tracks[currentPlaySong]["album"]!["blurPicUrl"] as! String
-        songInfo.songname = playLists?.tracks[currentPlaySong]["name"] as! String
-        songInfo.singers = playLists?.tracks[currentPlaySong]["artists"]![0]["name"] as! String
-        songInfo.mp3Url = playLists?.tracks[currentPlaySong]["mp3Url"] as! String
+        songInfo.picUrl = (playLists?.tracks[currentPlaySong].album.picUrl)!
+        songInfo.blurPicUrl = (playLists?.tracks[currentPlaySong].album.blurPicUrl)!
+        songInfo.songname = (playLists?.tracks[currentPlaySong].name)!
+        songInfo.singers = (playLists?.tracks[currentPlaySong].artists[0].name)!
+        songInfo.mp3Url = (playLists?.tracks[currentPlaySong].mp3Url)!
         songInfo.indexInTheSongSheet = currentPlaySong
-        songInfo.songID = "\((playLists?.tracks[currentPlaySong]["id"])!)"
+        songInfo.songID = (playLists?.tracks[currentPlaySong].id)!
+
         return songInfo
     }
     

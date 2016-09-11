@@ -237,10 +237,10 @@ class PlaySongViewController: BaseViewController {
     
     func currentSongIndexChange()  {
         if let da = data {
-            self.picUrl = da.tracks[currentSongIndex]["album"]!["picUrl"] as! String
-            self.blurPicUrl = da.tracks[currentSongIndex]["album"]!["blurPicUrl"] as! String
-            self.songname = da.tracks[currentSongIndex]["name"] as! String
-            self.singers = da.tracks[currentSongIndex]["artists"]![0]["name"] as! String
+            self.picUrl = da.tracks[currentSongIndex].album.picUrl//["album"]!["picUrl"] as! String
+            self.blurPicUrl = da.tracks[currentSongIndex].album.blurPicUrl//["album"]!["blurPicUrl"] as! String
+            self.songname = da.tracks[currentSongIndex].name//["name"] as! String
+            self.singers = da.tracks[currentSongIndex].artists[0].name//["artists"]![0]["name"] as! String
         }
     }
     

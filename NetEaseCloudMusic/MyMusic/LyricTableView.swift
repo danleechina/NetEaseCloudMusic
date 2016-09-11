@@ -45,11 +45,9 @@ class LyricTableView: UITableView {
         if self.visibleCells.count > 0 {
             for (idx, cell) in self.visibleCells.enumerate().reverse() {
                 let cellY = CGRectGetMinY(cell.frame)
+                ans = idx
                 if cellY < currentMidY {
-                    ans = idx
                     break
-                } else {
-                    ans = idx
                 }
             }
             let indexPath = self.indexPathForCell(self.visibleCells[ans])
@@ -94,10 +92,6 @@ extension LyricTableView: UITableViewDataSource, UITableViewDelegate {
                 self.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Middle, animated: true)
             }
         }
-        
-    }
-    
-    func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(2.5 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
             if self.hidden || !self.dragging || !self.isUserDragging{
                 self.changeLyricPoint(true)
@@ -105,10 +99,13 @@ extension LyricTableView: UITableViewDataSource, UITableViewDelegate {
         })
     }
     
+    func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView) {
+
+    }
+    
     func scrollViewDidScroll(scrollView: UIScrollView) {
         if let lyric = self.songLyric {
             let ans = getMiddleRow()
-//            print("\(ans + 1)   \(lyric.lyricTimeArray.count)   \(lyric.lyricArray.count) \(lyric.lyricArray[0])    \(lyric.lyricArray.last)")
             lyricTimeLabel?.text = SongLyric.getFormatTimeStringFromNumValue(lyric.lyricTimeArray[ans])
         }
     }
@@ -118,6 +115,11 @@ extension LyricTableView: UITableViewDataSource, UITableViewDelegate {
             if let indexPath = self.indexPathForRowAtPoint(CGPointMake(0, CGRectGetMinY(self.bounds) + self.tableHeaderView!.bounds.size.height)) {
                 self.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Middle, animated: true)
             }
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(2.5 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
+                if self.hidden || !self.dragging || !self.isUserDragging{
+                    self.changeLyricPoint(true)
+                }
+            })
         }
     }
     

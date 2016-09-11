@@ -153,7 +153,7 @@ class NetworkMusicApi: NSObject {
     }
     
     // 根据歌曲ID获取歌词
-    func songLyricWithSongID(songId: String, complete: (data: String?, error: NSError?) -> Void) -> Void {
+    func songLyricWithSongID(songId: Int, complete: (data: String?, error: NSError?) -> Void) -> Void {
         
         let action = "http://music.163.com/api/song/lyric?os=osx&id=\(songId)&lv=-1&kv=-1&tv=-1"
         doHttpRequest("GET", url: action, data: nil, complete: complete)
