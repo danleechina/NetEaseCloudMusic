@@ -101,6 +101,7 @@ class CertainSongSheetViewController: BaseViewController {
         tableView.estimatedRowHeight = 64
         tableView.tableHeaderView = CertainSongSheetTableViewHeadView.init(frame: CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 190))
         tableView.tableFooterView = UIView()
+        tableView.alwaysBounceVertical = true
         return tableView
     }()
     
@@ -384,13 +385,15 @@ class CertainSongSheetTableViewHeadView: UIView {
         let button = UIButton()
         button.frame = CGRectMake(0, 0, 25, 50)
         let spacing:CGFloat = 5.0
-        button.imageEdgeInsets =  UIEdgeInsetsMake(-(10 + spacing), 0, 0, -10)
-        button.titleEdgeInsets = UIEdgeInsetsMake(0, -30, -(30 + spacing), 0)
         button.contentHorizontalAlignment = .Center
         button.contentVerticalAlignment = .Center
         button.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        button.titleLabel?.font = UIFont.systemFontOfSize(12)
         button.setImage(normalImage, forState: .Normal)
         button.setImage(highlightedImage, forState: .Highlighted)
+        button.imageEdgeInsets =  UIEdgeInsetsMake(0, 0, 0, 0)
+        button.titleEdgeInsets = UIEdgeInsetsMake(0, -25, -(40 + spacing), 0)
+
         return button
     }
 }
