@@ -10,6 +10,15 @@ import UIKit
 import SnapKit
 
 class CertainSongSheetViewController: BaseViewController {
+    
+    let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .Light))
+    let backView = UIView()
+    
+    var blurBackgroundImageView: UIImageView = {
+        let imageView = UIImageView()
+        return imageView
+    }()
+    
     var playListID = "" {
         didSet {
             if playListID != "" {
@@ -47,7 +56,7 @@ class CertainSongSheetViewController: BaseViewController {
             
             if let nndata = self.data {
                 self.certainSongSheetTableViewHeadView?.headImageView.imageView.sd_setImageWithURL(NSURL.init(string: nndata.coverImgUrl))
-                self.certainSongSheetTableViewHeadView?.blurBackgroundImageView.sd_setImageWithURL(NSURL.init(string: nndata.coverImgUrl))
+                self.blurBackgroundImageView.sd_setImageWithURL(NSURL.init(string: nndata.coverImgUrl))
                 self.certainSongSheetTableViewHeadView?.titleLabel.text = nndata.name
                 self.certainSongSheetTableViewHeadView?.authorLabel.text = nndata.creator.nickname
                 
@@ -108,7 +117,15 @@ class CertainSongSheetViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        view.addSubview(blurBackgroundImageView)
+        view.addSubview(backView)
+        blurBackgroundImageView.addSubview(visualEffectView)
+        backView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
+        blurBackgroundImageView.frame = view.bounds
+        visualEffectView.frame = view.bounds
+        backView.frame = view.bounds
+        
         view.addSubview(tableView)
         self.certainSongSheetTableViewHeadView = self.tableView.tableHeaderView as? CertainSongSheetTableViewHeadView
         view.backgroundColor = UIColor.whiteColor()
@@ -127,7 +144,7 @@ extension CertainSongSheetViewController: UITableViewDelegate, UITableViewDataSo
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = CertainSongSheetCell.cellFor(tableView) as! CertainSongSheetCell
-        cell.orderLabel.text = "\(indexPath.row)"
+        cell.orderLabel.text = "\(indexPath.row + 1)"
         let val = (data!.tracks[indexPath.row])
         cell.titleLabel.text = val.name
         cell.detailLabel.text = "\(val.artists[0].name)-\(val.album.name)"
@@ -257,13 +274,6 @@ class CertainSongSheetCell: UITableViewCell {
 }
 
 class CertainSongSheetTableViewHeadView: UIView {
-    let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .Light))
-    let backView = UIView()
-    
-    var blurBackgroundImageView: UIImageView = {
-        let imageView = UIImageView()
-        return imageView
-    }()
     
     var headImageView: CertainSongSheetHeadImage = {
         let headImageView = CertainSongSheetHeadImage()
@@ -316,36 +326,20 @@ class CertainSongSheetTableViewHeadView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubview(blurBackgroundImageView)
-        addSubview(backView)
         addSubview(headImageView)
         addSubview(titleLabel)
         addSubview(authorLabel)
         addSubview(bottomControlsStackView)
-        blurBackgroundImageView.addSubview(visualEffectView)
         
         bottomControlsStackView.addArrangedSubview(favoriteButton)
         bottomControlsStackView.addArrangedSubview(commentButton)
         bottomControlsStackView.addArrangedSubview(shareButton)
         bottomControlsStackView.addArrangedSubview(downloadButton)
-        
-        backView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
+        self.backgroundColor = UIColor.clearColor()
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        blurBackgroundImageView.snp_makeConstraints { (make) in
-            make.edges.equalTo(self).inset(UIEdgeInsetsMake(0, 0, 0, 0))
-        }
-        
-        visualEffectView.snp_makeConstraints { (make) in
-            make.edges.equalTo(self).inset(UIEdgeInsetsMake(0, 0, 0, 0))
-        }
-        
-        backView.snp_makeConstraints { (make) in
-            make.edges.equalTo(self).inset(UIEdgeInsetsMake(0, 0, 0, 0))
-        }
         
         headImageView.snp_makeConstraints { (make) in
             make.top.equalTo(self.snp_top).offset(5)
@@ -384,16 +378,14 @@ class CertainSongSheetTableViewHeadView: UIView {
     func getCommonButton(normalImage: UIImage, highlightedImage: UIImage) -> UIButton {
         let button = UIButton()
         button.frame = CGRectMake(0, 0, 25, 50)
-        let spacing:CGFloat = 5.0
         button.contentHorizontalAlignment = .Center
         button.contentVerticalAlignment = .Center
         button.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         button.titleLabel?.font = UIFont.systemFontOfSize(12)
         button.setImage(normalImage, forState: .Normal)
         button.setImage(highlightedImage, forState: .Highlighted)
-        button.imageEdgeInsets =  UIEdgeInsetsMake(0, 0, 0, 0)
-        button.titleEdgeInsets = UIEdgeInsetsMake(0, -25, -(40 + spacing), 0)
-
+        button.imageEdgeInsets =  UIEdgeInsetsMake(0, normalImage.size.width/2, 0, 0)
+        button.titleEdgeInsets = UIEdgeInsetsMake(0, -normalImage.size.width/2, -normalImage.size.height, 0)
         return button
     }
 }
