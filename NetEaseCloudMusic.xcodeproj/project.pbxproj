@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		818E3B141D88272100F29A16 /* BaseNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818E3B131D88272100F29A16 /* BaseNavigationBar.swift */; };
 		A02A3EE41D40FBD100A3956F /* MarqueeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02A3EE31D40FBD100A3956F /* MarqueeLabel.swift */; };
 		A02A3EE71D435D1400A3956F /* PlaySongService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02A3EE61D435D1300A3956F /* PlaySongService.swift */; };
 		A02A3EEA1D44BF6600A3956F /* SwipeDiscScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02A3EE91D44BF6600A3956F /* SwipeDiscScrollView.swift */; };
@@ -92,6 +93,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		818E3B131D88272100F29A16 /* BaseNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseNavigationBar.swift; path = Common/BaseNavigationBar.swift; sourceTree = "<group>"; };
 		A02A3EE31D40FBD100A3956F /* MarqueeLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarqueeLabel.swift; path = Vendor/MarqueeLabel.swift; sourceTree = "<group>"; };
 		A02A3EE61D435D1300A3956F /* PlaySongService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaySongService.swift; path = Service/PlaySongService.swift; sourceTree = "<group>"; };
 		A02A3EE91D44BF6600A3956F /* SwipeDiscScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwipeDiscScrollView.swift; path = MyMusic/SwipeDiscScrollView.swift; sourceTree = "<group>"; };
@@ -441,6 +443,7 @@
 				DEAB13C11D1518D2001FD8E8 /* BaseViewController.swift */,
 				A0BE95BE1D157ABB009A84F0 /* HeadIconView.swift */,
 				DE79E6FA1D1677C2006B9926 /* HasInfoSegmentedControl.swift */,
+				818E3B131D88272100F29A16 /* BaseNavigationBar.swift */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -696,6 +699,7 @@
 				DE2654C91D1025C70083F742 /* AddFocusViewController.swift in Sources */,
 				DE79E6F61D167282006B9926 /* BaseTableView.swift in Sources */,
 				A02A3EE71D435D1400A3956F /* PlaySongService.swift in Sources */,
+				818E3B141D88272100F29A16 /* BaseNavigationBar.swift in Sources */,
 				DE79E6F41D167262006B9926 /* CommentListTableView.swift in Sources */,
 				DE2654D91D1027780083F742 /* ThemeSkinViewController.swift in Sources */,
 				DE2654C51D1025460083F742 /* AddSongSheetViewController.swift in Sources */,
