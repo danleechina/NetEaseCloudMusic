@@ -8,3 +8,4 @@ pod 'SDWebImage', '~>3.8'
 pod 'Reveal-iOS-SDK', :configurations => ['Debug']
 pod 'MLeaksFinder'
 pod 'FDFullscreenPopGesture', '1.1'
+pod 'KMNavigationBarTransition'
