@@ -122,7 +122,7 @@ class PlaySongViewController: BaseViewController {
         }
     }
     
-    func tapBackButton() {
+    override func tapBackButton() {
         self.navigationController?.popViewControllerAnimated(true)
     }
     
@@ -194,6 +194,7 @@ class PlaySongViewController: BaseViewController {
     // MARK: Override method
     
     override func viewDidLoad() {
+        self.needProgramInsertNavigationBar = false
         super.viewDidLoad()
         dataInit()
         viewsInit()

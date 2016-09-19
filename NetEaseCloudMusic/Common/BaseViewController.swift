@@ -9,21 +9,34 @@
 import UIKit
 
 class BaseViewController: UIViewController {
+    var needProgramInsertNavigationBar = true
+    let navigationBar: BaseNavigationBar = {
+        let bar = BaseNavigationBar.init(frame: CGRectMake(0, 20, UIScreen.mainScreen().bounds.size.width, 44))
+        bar.backgroundColor = UIColor.clearColor()
+        return bar
+    }()
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        applyDefaultNavigationBarStyle()
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        applyDefaultNavigationBarStyle()
     }
     
-    func applyDefaultNavigationBarStyle() {
-//        let appearance = self.navigationController?.navigationBar
-//        appearance?.translucent = false
-//        appearance?.barTintColor = FixedValue.mainRedColor
-//        appearance?.barStyle = .Default
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
+    func tapBackButton() {
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    func goPlaySongVC() {
+        let vc = PlaySongViewController()
+        let playSongService = PlaySongService.sharedInstance
+        vc.data = playSongService.playLists
+        vc.currentSongIndex = playSongService.currentPlaySong
+        vc.isPlaying = true
+        
+        vc.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

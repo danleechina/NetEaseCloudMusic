@@ -103,7 +103,7 @@ class CertainSongSheetViewController: BaseViewController {
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
-        tableView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame))
+        tableView.frame = CGRectMake(0, 64, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame))
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = UIColor.clearColor()
@@ -129,6 +129,19 @@ class CertainSongSheetViewController: BaseViewController {
         view.addSubview(tableView)
         self.certainSongSheetTableViewHeadView = self.tableView.tableHeaderView as? CertainSongSheetTableViewHeadView
         view.backgroundColor = UIColor.whiteColor()
+
+        self.view.addSubview(self.navigationBar)
+        self.navigationBar.leftButton.addTarget(self, action: #selector(tapBackButton), forControlEvents: .TouchUpInside)
+        self.navigationBar.leftButton.setImage(UIImage.init(named: "cm2_icn_back"), forState: .Normal)
+        self.navigationBar.leftButton.setImage(UIImage.init(named: "cm2_icn_back"), forState: .Highlighted)
+        let titleLabel = UILabel.init(frame: CGRectMake(0, 0, 150, 44))
+        titleLabel.text = "This is text"
+        titleLabel.textColor = UIColor.whiteColor()
+        titleLabel.textAlignment = .Center
+        self.navigationBar.titleView.addSubview(titleLabel)
+        self.navigationBar.rightButton.addTarget(self, action: #selector(goPlaySongVC), forControlEvents: .TouchUpInside)
+        self.navigationBar.rightButton.setImage(UIImage.init(named: "cm2_topbar_icn_playing"), forState: .Normal)
+        self.navigationBar.rightButton.setImage(UIImage.init(named: "cm2_topbar_icn_playing_prs"), forState: .Highlighted)
     }
     
 }
