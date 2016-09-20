@@ -40,7 +40,15 @@ class CertainSongSheetViewController: BaseViewController {
                     let str1 = NSMutableAttributedString.init(string: "播放全部", attributes: attr1)
                     str1.appendAttributedString(NSAttributedString.init(string: "（共\(nndata.tracks.count)首）", attributes: attr2))
                     self.defaultStyleCertainSongSheetSection.leftButton.setAttributedTitle(str1, forState: .Normal)
-
+                    
+                    self.certainSongSheetTableViewHeadView?.headImageView.imageView.sd_setImageWithURL(NSURL.init(string: nndata.coverImgUrl))
+                    self.blurBackgroundImageView.sd_setImageWithURL(NSURL.init(string: nndata.coverImgUrl))
+                    self.certainSongSheetTableViewHeadView?.titleLabel.text = nndata.name
+                    self.certainSongSheetTableViewHeadView?.authorLabel.text = nndata.creator.nickname
+                    self.certainSongSheetTableViewHeadView?.favoriteButton.setTitle("\(nndata.subscribedCount)", forState: .Normal)
+                    self.certainSongSheetTableViewHeadView?.commentButton.setTitle("\(nndata.commentCount)", forState: .Normal)
+                    self.certainSongSheetTableViewHeadView?.shareButton.setTitle("\(nndata.shareCount)", forState: .Normal)
+                    self.certainSongSheetTableViewHeadView?.downloadButton.setTitle("下载", forState: .Normal)
                 }
                 self.tableView.reloadData()
             })
@@ -48,24 +56,13 @@ class CertainSongSheetViewController: BaseViewController {
         }
     }
     
+    let playSongService: PlaySongService = PlaySongService.sharedInstance
+    
     var certainSongSheetTableViewHeadView: CertainSongSheetTableViewHeadView? {
         didSet {
             certainSongSheetTableViewHeadView?.headImageView.starImageView.hidden = true
             certainSongSheetTableViewHeadView?.headImageView.authorLabel.hidden = true
             certainSongSheetTableViewHeadView?.headImageView.bottomMaskView.hidden = true
-            
-            if let nndata = self.data {
-                self.certainSongSheetTableViewHeadView?.headImageView.imageView.sd_setImageWithURL(NSURL.init(string: nndata.coverImgUrl))
-                self.blurBackgroundImageView.sd_setImageWithURL(NSURL.init(string: nndata.coverImgUrl))
-                self.certainSongSheetTableViewHeadView?.titleLabel.text = nndata.name
-                self.certainSongSheetTableViewHeadView?.authorLabel.text = nndata.creator.nickname
-                
-                self.certainSongSheetTableViewHeadView?.favoriteButton.setTitle("\(nndata.subscribedCount)", forState: .Normal)
-                self.certainSongSheetTableViewHeadView?.commentButton.setTitle("\(nndata.commentCount)", forState: .Normal)
-                self.certainSongSheetTableViewHeadView?.shareButton.setTitle("\(nndata.shareCount)", forState: .Normal)
-                self.certainSongSheetTableViewHeadView?.downloadButton.setTitle("下载", forState: .Normal)
-            }
-
         }
     }
     
@@ -103,7 +100,7 @@ class CertainSongSheetViewController: BaseViewController {
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
-        tableView.frame = CGRectMake(0, 64, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame))
+        tableView.frame = CGRectMake(0, 64, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - 64 - CGRectGetHeight(self.navigationController!.toolbar.frame))
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = UIColor.clearColor()
@@ -114,6 +111,13 @@ class CertainSongSheetViewController: BaseViewController {
         return tableView
     }()
     
+    private lazy var marqueeTitleLabel: MarqueeLabel = {
+        let label =  MarqueeLabel.init(frame: CGRectMake(0, 0, 150, 44), duration: 10, fadeLength:10)
+        label.textColor = UIColor.whiteColor()
+        label.textAlignment = .Center
+        label.type = .Continuous
+        return label
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -134,16 +138,17 @@ class CertainSongSheetViewController: BaseViewController {
         self.navigationBar.leftButton.addTarget(self, action: #selector(tapBackButton), forControlEvents: .TouchUpInside)
         self.navigationBar.leftButton.setImage(UIImage.init(named: "cm2_icn_back"), forState: .Normal)
         self.navigationBar.leftButton.setImage(UIImage.init(named: "cm2_icn_back"), forState: .Highlighted)
-        let titleLabel = UILabel.init(frame: CGRectMake(0, 0, 150, 44))
-        titleLabel.text = "This is text"
-        titleLabel.textColor = UIColor.whiteColor()
-        titleLabel.textAlignment = .Center
-        self.navigationBar.titleView.addSubview(titleLabel)
+        self.marqueeTitleLabel.text = self.data?.name
+        self.navigationBar.titleView.addSubview(marqueeTitleLabel)
         self.navigationBar.rightButton.addTarget(self, action: #selector(goPlaySongVC), forControlEvents: .TouchUpInside)
         self.navigationBar.rightButton.setImage(UIImage.init(named: "cm2_topbar_icn_playing"), forState: .Normal)
         self.navigationBar.rightButton.setImage(UIImage.init(named: "cm2_topbar_icn_playing_prs"), forState: .Highlighted)
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableView.reloadData()
+    }
 }
 
 
@@ -161,6 +166,19 @@ extension CertainSongSheetViewController: UITableViewDelegate, UITableViewDataSo
         let val = (data!.tracks[indexPath.row])
         cell.titleLabel.text = val.name
         cell.detailLabel.text = "\(val.artists[0].name)-\(val.album.name)"
+        if playSongService.currentPlaySong == indexPath.row && playSongService.playLists?.id == Int(playListID) {
+            cell.orderLabel.hidden = true
+            cell.isPlayingImageView.hidden = false
+        } else {
+            cell.orderLabel.hidden = false
+            cell.isPlayingImageView.hidden = true
+        }
+        
+        if val.mvid == 0 {
+            cell.mvButton.hidden = true
+        } else {
+            cell.mvButton.hidden = false
+        }
         return cell
     }
     
@@ -168,7 +186,11 @@ extension CertainSongSheetViewController: UITableViewDelegate, UITableViewDataSo
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         let vc = PlaySongViewController()
-        vc.data = data
+        if Int(playListID) != playSongService.playLists?.id {
+            vc.data = data
+        } else {
+            vc.data = playSongService.playLists
+        }
         vc.currentSongIndex = indexPath.row
         vc.isPlaying = true
         
@@ -193,6 +215,12 @@ class CertainSongSheetCell: UITableViewCell {
         label.textAlignment = .Center
         label.textColor = UIColor.lightGrayColor()
         return label
+    }()
+    
+    lazy var isPlayingImageView: UIImageView = {
+        let imageView = UIImageView.init(image: UIImage.init(named: "cm2_icn_volume"))
+        imageView.contentMode = .Center
+        return imageView
     }()
     
     lazy var titleLabel: UILabel = {
@@ -233,6 +261,13 @@ class CertainSongSheetCell: UITableViewCell {
             make.centerY.equalTo(self.snp_centerY)
         }
         
+        isPlayingImageView.snp_makeConstraints { (make) in
+            make.width.equalTo(20)
+            make.height.equalTo(20)
+            make.centerY.equalTo(self.snp_centerY)
+            make.centerX.equalTo(self.snp_left).offset(22)
+        }
+        
         titleLabel.snp_makeConstraints { (make) in
             make.left.equalTo(orderLabel.snp_right)
             make.right.equalTo(mvButton.snp_left)
@@ -248,9 +283,9 @@ class CertainSongSheetCell: UITableViewCell {
         }
         
         mvButton.snp_makeConstraints { (make) in
-            make.width.equalTo(30)
-            make.height.equalTo(30)
-            make.right.equalTo(moreButton.snp_left).offset(-10)
+            make.width.equalTo(44)
+            make.height.equalTo(44)
+            make.right.equalTo(moreButton.snp_left)
             make.centerY.equalTo(self.snp_centerY)
         }
         
@@ -275,6 +310,7 @@ class CertainSongSheetCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         addSubview(orderLabel)
+        addSubview(isPlayingImageView)
         addSubview(titleLabel)
         addSubview(detailLabel)
         addSubview(moreButton)

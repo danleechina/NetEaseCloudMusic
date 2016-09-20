@@ -137,8 +137,9 @@ class SongLyric: NSObject {
     
     class func getNumValueFromFormatTimeString(str: String) -> Float64 {
         let startIndex = str.startIndex
-        let minStr = str.substringToIndex(startIndex.advancedBy(2))
-        let secStr = str.substringFromIndex(startIndex.advancedBy(3))
+        let endIndex = str.endIndex.advancedBy(-1, limit: startIndex)
+        let minStr = str.substringToIndex(startIndex.advancedBy(2, limit: endIndex))
+        let secStr = str.substringFromIndex(startIndex.advancedBy(3, limit: endIndex))
         if let minValue = Float64(minStr), let secValue = Float64(secStr){
             return minValue * 60 + secValue
         }

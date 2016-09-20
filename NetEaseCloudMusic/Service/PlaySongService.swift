@@ -42,11 +42,7 @@ class PlaySongService: NSObject {
     weak var delegate: PlaySongServiceDelegate?
     
     var playMode = PlayMode.Order
-    var playLists: CertainSongSheet? {
-        didSet {
-            currentPlaySong = 0
-        }
-    }
+    var playLists: CertainSongSheet?
     
     var currentPlaySong: Int = 0
     private var songPlayer: AVPlayer?
@@ -72,6 +68,10 @@ class PlaySongService: NSObject {
     
     // play index'th song
     func playCertainSong(index: Int) {
+        if index == currentPlaySong {
+            startPlay()
+            return
+        }
         if let songInfo = getCertainSongInfo(index) {
             currentPlaySong = index
             playIt(songInfo.mp3Url)
@@ -94,7 +94,10 @@ class PlaySongService: NSObject {
         if let player = songPlayer {
             player.play()
         } else {
-            playCertainSong(0)
+            if let songInfo = getCertainSongInfo(0) {
+                currentPlaySong = 0
+                playIt(songInfo.mp3Url)
+            }
         }
     }
     
@@ -149,7 +152,6 @@ class PlaySongService: NSObject {
         }
     }
     
-    
     func getNextSongInfo() -> SongInfo? {
         var nextIndex = 0
         if let playlists = playLists {
@@ -167,18 +169,7 @@ class PlaySongService: NSObject {
         } else {
             return nil
         }
-
-        
-        let songInfo = SongInfo()
-        songInfo.picUrl = (playLists?.tracks[nextIndex].album.picUrl)!
-        songInfo.blurPicUrl = (playLists?.tracks[nextIndex].album.blurPicUrl)!
-        songInfo.songname = (playLists?.tracks[nextIndex].name)!
-        songInfo.singers = (playLists?.tracks[nextIndex].artists[0].name)!
-        songInfo.mp3Url = (playLists?.tracks[nextIndex].mp3Url)!
-        songInfo.indexInTheSongSheet = nextIndex
-        songInfo.songID = (playLists?.tracks[nextIndex].id)!
-
-        return songInfo
+        return getSongInfoWithIndex(nextIndex)
     }
     
     func getPrevSongInfo() -> SongInfo? {
@@ -194,18 +185,7 @@ class PlaySongService: NSObject {
         } else {
             return nil
         }
-        
-        let songInfo = SongInfo()
-        songInfo.picUrl = (playLists?.tracks[prevIndex].album.picUrl)!
-        songInfo.blurPicUrl = (playLists?.tracks[prevIndex].album.blurPicUrl)!
-        songInfo.songname = (playLists?.tracks[prevIndex].name)!
-        songInfo.singers = (playLists?.tracks[prevIndex].artists[0].name)!
-        songInfo.mp3Url = (playLists?.tracks[prevIndex].mp3Url)!
-        songInfo.indexInTheSongSheet = prevIndex
-        songInfo.songID = (playLists?.tracks[prevIndex].id)!
-
-        return songInfo
-
+        return getSongInfoWithIndex(prevIndex)
     }
     
     func getCertainSongInfo(index: Int) -> SongInfo? {
@@ -218,36 +198,28 @@ class PlaySongService: NSObject {
         } else {
             return nil
         }
-        
-        let songInfo = SongInfo()
-        songInfo.picUrl = (playLists?.tracks[certainIndex].album.picUrl)!
-        songInfo.blurPicUrl = (playLists?.tracks[certainIndex].album.blurPicUrl)!
-        songInfo.songname = (playLists?.tracks[certainIndex].name)!
-        songInfo.singers = (playLists?.tracks[certainIndex].artists[0].name)!
-        songInfo.mp3Url = (playLists?.tracks[certainIndex].mp3Url)!
-        songInfo.indexInTheSongSheet = certainIndex
-        songInfo.songID = (playLists?.tracks[certainIndex].id)!
-
-        return songInfo
+        return getSongInfoWithIndex(certainIndex)
     }
     
     func getCurrentSongInfo() -> SongInfo? {
         if playLists == nil {
             return nil
         }
-        
-        let songInfo = SongInfo()
-        songInfo.picUrl = (playLists?.tracks[currentPlaySong].album.picUrl)!
-        songInfo.blurPicUrl = (playLists?.tracks[currentPlaySong].album.blurPicUrl)!
-        songInfo.songname = (playLists?.tracks[currentPlaySong].name)!
-        songInfo.singers = (playLists?.tracks[currentPlaySong].artists[0].name)!
-        songInfo.mp3Url = (playLists?.tracks[currentPlaySong].mp3Url)!
-        songInfo.indexInTheSongSheet = currentPlaySong
-        songInfo.songID = (playLists?.tracks[currentPlaySong].id)!
-
-        return songInfo
+        return getSongInfoWithIndex(currentPlaySong)
     }
     
+    func getSongInfoWithIndex(index: Int) -> SongInfo? {
+        let songInfo = SongInfo()
+        songInfo.picUrl = (playLists?.tracks[index].album.picUrl)!
+        songInfo.blurPicUrl = (playLists?.tracks[index].album.blurPicUrl)!
+        songInfo.songname = (playLists?.tracks[index].name)!
+        songInfo.singers = (playLists?.tracks[index].artists[0].name)!
+        songInfo.mp3Url = (playLists?.tracks[index].mp3Url)!
+        songInfo.indexInTheSongSheet = index
+        songInfo.songID = (playLists?.tracks[index].id)!
+        
+        return songInfo
+    }
     
     func getSongLyric(complete: (songLyric: SongLyric?) -> Void) {
         netease.songLyricWithSongID((getCurrentSongInfo()?.songID)!, complete: { (data, error) in
