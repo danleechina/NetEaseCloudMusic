@@ -90,6 +90,12 @@ class PlaySongService: NSObject {
         songPlayer?.seekToTime(targetTime)
     }
     
+    func playStartTime(timeValue: Float64) {
+        let timeScale = self.songPlayer?.currentItem?.asset.duration.timescale
+        let targetTime = CMTimeMakeWithSeconds(timeValue, timeScale!)
+        songPlayer?.seekToTime(targetTime)
+    }
+    
     func startPlay() {
         if let player = songPlayer {
             player.play()
@@ -102,6 +108,7 @@ class PlaySongService: NSObject {
     }
     
     private func playIt(urlString: String) -> Void {
+        print("songurl=" + urlString)
         let player = AVPlayer.init(URL: NSURL.init(string: urlString)!)
         player.addObserver(self, forKeyPath: "status", options: NSKeyValueObservingOptions.New, context: &out_context)
         
@@ -129,11 +136,18 @@ class PlaySongService: NSObject {
             if let player = songPlayer {
                 switch player.status {
                     case .Unknown:
+                        print("status=unknown")
                         break
                     case .ReadyToPlay:
+                        print("status=ReadyToPlay")
+//                        if player.currentItem?.duration.value <= 0 {
+//                            print("can not play this song")
+//                            playNext()
+//                        }
                         player.play()
                         break
                     case .Failed:
+                        print("status=Failed")
                         break
                 }
 

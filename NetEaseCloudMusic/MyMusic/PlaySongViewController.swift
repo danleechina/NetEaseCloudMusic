@@ -108,6 +108,7 @@ class PlaySongViewController: BaseViewController {
             UIView.animateWithDuration(0.2, animations: {
                 self.swipableDiscView.hidden = false
                 self.lyricTableView.hidden = true
+                self.lyricStateLabel.hidden = true
                 self.needleImageView.hidden = false
                 self.discMaskImageView.hidden = false
                 self.controlStackView.hidden = false
@@ -238,10 +239,10 @@ class PlaySongViewController: BaseViewController {
     
     func currentSongIndexChange()  {
         if let da = data {
-            self.picUrl = da.tracks[currentSongIndex].album.picUrl//["album"]!["picUrl"] as! String
-            self.blurPicUrl = da.tracks[currentSongIndex].album.blurPicUrl//["album"]!["blurPicUrl"] as! String
-            self.songname = da.tracks[currentSongIndex].name//["name"] as! String
-            self.singers = da.tracks[currentSongIndex].artists[0].name//["artists"]![0]["name"] as! String
+            self.picUrl = da.tracks[currentSongIndex].album.picUrl
+            self.blurPicUrl = da.tracks[currentSongIndex].album.blurPicUrl
+            self.songname = da.tracks[currentSongIndex].name
+            self.singers = da.tracks[currentSongIndex].artists[0].name
         }
     }
     
@@ -254,8 +255,9 @@ class PlaySongViewController: BaseViewController {
     }
     
     func tapLyricTimeImageView() {
-        playSongService.playStartPoint(Float((songLyric?.lyricTimeArray[self.lyricTableView.getMiddleRow()])!))
-        self.lyricTableView.changeLyricPoint(true)
+        if let lyric = songLyric {
+            playSongService.playStartTime(Float64((lyric.lyricTimeArray[self.lyricTableView.getMiddleRow()])))
+        }
     }
     
     // MARK: Supporting For View

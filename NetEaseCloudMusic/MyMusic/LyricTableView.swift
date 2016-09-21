@@ -86,14 +86,16 @@ extension LyricTableView: UITableViewDataSource, UITableViewDelegate {
         if let indexPath = self.indexPathForRowAtPoint(CGPointMake(0, CGRectGetMinY(self.bounds) + self.tableHeaderView!.bounds.height)) {
             self.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Middle, animated: true)
         } else {
-            if scrollView.contentOffset.y <= 0 {
-            } else {
+            if scrollView.contentOffset.y > 0 {
+                if self.numberOfRowsInSection(0) == 0 {
+                    return
+                }
                 let indexPath = NSIndexPath.init(forRow: self.numberOfRowsInSection(0) - 1, inSection: 0)
                 self.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Middle, animated: true)
             }
         }
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(2.5 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
-            if self.hidden || !self.dragging || !self.isUserDragging{
+            if self.hidden || !self.dragging || !self.isUserDragging {
                 self.changeLyricPoint(true)
             }
         })
