@@ -7,6 +7,35 @@
 //
 
 import UIKit
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
+fileprivate func >= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l >= r
+  default:
+    return !(lhs < rhs)
+  }
+}
+
 
 class RoundNumberLabel: UIView {
     static let height:CGFloat = 20
@@ -22,17 +51,17 @@ class RoundNumberLabel: UIView {
             self.numberLabel.text = numberStr
             self.sizeToFit()
             if number == 0 {
-                self.hidden = true
+                self.isHidden = true
             } else {
-                self.hidden = false
+                self.isHidden = false
             }
         }
     }
     
-    private lazy var numberLabel:UILabel = {
+    fileprivate lazy var numberLabel:UILabel = {
         let label = UILabel()
-        label.textColor = UIColor.whiteColor()
-        label.font = UIFont.boldSystemFontOfSize(12)
+        label.textColor = UIColor.white
+        label.font = UIFont.boldSystemFont(ofSize: 12)
         return label
     }()
     
@@ -50,7 +79,7 @@ class RoundNumberLabel: UIView {
         self.numberLabel.sizeToFit()
         self.sizeToFit()
         let size = self.numberLabel.bounds.size
-        self.numberLabel.frame = CGRectMake(width/2 - size.width/2, RoundNumberLabel.height/2 - size.height/2, size.width, size.height)
+        self.numberLabel.frame = CGRect(x: width/2 - size.width/2, y: RoundNumberLabel.height/2 - size.height/2, width: size.width, height: size.height)
     }
     
     override func sizeToFit() {
@@ -64,7 +93,7 @@ class RoundNumberLabel: UIView {
         } else {
             width = 0
         }
-        self.bounds = CGRectMake(0, 0, width, RoundNumberLabel.height)
+        self.bounds = CGRect(x: 0, y: 0, width: width, height: RoundNumberLabel.height)
     }
     
     required init?(coder aDecoder: NSCoder) {

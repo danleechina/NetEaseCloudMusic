@@ -18,10 +18,10 @@ class RankRoundLabel: UIView {
     }
     
     
-    private lazy var randkLabel:UILabel = {
+    fileprivate lazy var randkLabel:UILabel = {
         let label = UILabel()
-        label.textColor = UIColor.whiteColor()
-        label.font = UIFont.boldSystemFontOfSize(12)
+        label.textColor = UIColor.white
+        label.font = UIFont.boldSystemFont(ofSize: 12)
         label.text = "V"
         return label
     }()
@@ -36,9 +36,9 @@ class RankRoundLabel: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         self.randkLabel.sizeToFit()
-        self.bounds = CGRectMake(0, 0, RankRoundLabel.height, RankRoundLabel.height)
+        self.bounds = CGRect(x: 0, y: 0, width: RankRoundLabel.height, height: RankRoundLabel.height)
         let size = self.randkLabel.bounds.size
-        self.randkLabel.frame = CGRectMake(RankRoundLabel.height/2 - size.width/2, RoundNumberLabel.height/2 - size.height/2, size.width, size.height)
+        self.randkLabel.frame = CGRect(x: RankRoundLabel.height/2 - size.width/2, y: RoundNumberLabel.height/2 - size.height/2, width: size.width, height: size.height)
     }
     
     required init?(coder aDecoder: NSCoder) {

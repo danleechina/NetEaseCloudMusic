@@ -15,10 +15,10 @@ class AtMineListTableView: BaseTableView {
 
 class AtMineCell: BaseTableViewCell {
     static let reuseIdentifier = "AtMineCell"
-    static func cellFor(table: UITableView) -> AtMineCell {
-        var cell = table.dequeueReusableCellWithIdentifier(reuseIdentifier) as? AtMineCell
+    static func cellFor(_ table: UITableView) -> AtMineCell {
+        var cell = table.dequeueReusableCell(withIdentifier: reuseIdentifier) as? AtMineCell
         if cell == nil {
-            cell = AtMineCell.init(style: .Default, reuseIdentifier: reuseIdentifier)
+            cell = AtMineCell.init(style: .default, reuseIdentifier: reuseIdentifier)
         }
         return cell!
     }

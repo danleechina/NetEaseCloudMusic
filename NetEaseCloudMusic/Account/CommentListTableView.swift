@@ -17,7 +17,7 @@ class CommentListDAD: NSObject, UITableViewDelegate, UITableViewDataSource {
     var models:Array<PrivateMessageModel> = [PrivateMessageModel]()
     
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = CommentCell.cellFor(tableView)
         cell.headIconView.image = UIImage.init(named: "first")
         cell.headIconView.number = 0
@@ -28,7 +28,7 @@ class CommentListDAD: NSObject, UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //        return models.count
         return 20
     }

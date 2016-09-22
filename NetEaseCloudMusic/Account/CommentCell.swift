@@ -43,8 +43,8 @@ class CommentCell: UITableViewCell {
     }
     
     static let reuseIdentifier = "CommentCell"
-    static func cellFor(table: UITableView) -> CommentCell {
-        if let cell =  table.dequeueReusableCellWithIdentifier(reuseIdentifier) as? CommentCell{
+    static func cellFor(_ table: UITableView) -> CommentCell {
+        if let cell =  table.dequeueReusableCell(withIdentifier: reuseIdentifier) as? CommentCell{
             return cell
         }
         assert(false)

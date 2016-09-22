@@ -14,16 +14,16 @@ class SwipeDiscScrollView: UIScrollView {
         super.init(coder: aDecoder)
     }
     
-    override func hitTest(point: CGPoint, withEvent event: UIEvent?) -> UIView? {
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         return self
     }
 }
 
 class DiscView: UIView {
     
-    private var blackCycleImageView = UIImageView.init(image: UIImage.init(named: "cm2_play_disc-ip6"))
+    fileprivate var blackCycleImageView = UIImageView.init(image: UIImage.init(named: "cm2_play_disc-ip6"))
     var headPicCycleImageView = UIImageView.init(image: UIImage.init(named: "cm2_default_cover_play"))
-    private var isPause = false
+    fileprivate var isPause = false
 
     
     override init(frame: CGRect) {
@@ -36,7 +36,7 @@ class DiscView: UIView {
         rotationAnimation.toValue = Double(2 * M_PI)
         rotationAnimation.duration = 10
         rotationAnimation.repeatCount = Float.infinity
-        headPicCycleImageView.layer.addAnimation(rotationAnimation, forKey: "rotationAnimation")
+        headPicCycleImageView.layer.add(rotationAnimation, forKey: "rotationAnimation")
         pauseHeadPicImageViewAnimate()
     }
     
@@ -54,7 +54,7 @@ class DiscView: UIView {
         frame.size.width = 240
         blackCycleImageView.frame = frame
         
-        let centerOfAll = CGPointMake(self.bounds.size.width/2, self.bounds.size.height/2)
+        let centerOfAll = CGPoint(x: self.bounds.size.width/2, y: self.bounds.size.height/2)
         headPicCycleImageView.center = centerOfAll
         blackCycleImageView.center = centerOfAll
     }
@@ -64,7 +64,7 @@ class DiscView: UIView {
             return
         }
         isPause = true
-        let pausedTime = headPicCycleImageView.layer .convertTime(CACurrentMediaTime(), fromLayer: nil)
+        let pausedTime = headPicCycleImageView.layer .convertTime(CACurrentMediaTime(), from: nil)
         headPicCycleImageView.layer.speed = 0
         headPicCycleImageView.layer.timeOffset = pausedTime
     }
@@ -78,7 +78,7 @@ class DiscView: UIView {
         headPicCycleImageView.layer.speed = 1
         headPicCycleImageView.layer.timeOffset = 0
         headPicCycleImageView.layer.beginTime = 0
-        let timeSincePause = headPicCycleImageView.layer .convertTime(CACurrentMediaTime(), fromLayer: nil) - pausedTime
+        let timeSincePause = headPicCycleImageView.layer .convertTime(CACurrentMediaTime(), from: nil) - pausedTime
         headPicCycleImageView.layer.beginTime = timeSincePause
     }
     

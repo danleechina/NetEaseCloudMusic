@@ -16,13 +16,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         var backImage = UIImage.init(named: "cm2_icn_back")
-        backImage = backImage?.resizableImageWithCapInsets(UIEdgeInsetsMake(0, backImage!.size.width - 1, 0, 0))
+        backImage = backImage?.resizableImage(withCapInsets: UIEdgeInsetsMake(0, backImage!.size.width - 1, 0, 0))
         let barbutton = UIBarButtonItem.appearance()
-        barbutton.setBackButtonBackgroundImage(backImage, forState: .Normal, barMetrics: .Default)
-        barbutton.setTitlePositionAdjustment(UIOffsetMake(0, -60), forBarMetrics: .Default)
+        barbutton.setBackButtonBackgroundImage(backImage, for: UIControlState(), barMetrics: .default)
+        barbutton.setTitlePositionAdjustment(UIOffsetMake(0, -60), for: .default)
         return true
     }
 }

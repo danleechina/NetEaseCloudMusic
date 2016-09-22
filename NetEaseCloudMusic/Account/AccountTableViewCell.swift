@@ -36,10 +36,10 @@ class AccountTableViewCell: BaseTableViewCell {
         }
         set {
             roundNumberLabel.number = newValue
-            roundNumberLabel.hidden = false
-            rightInfoLabel.hidden = true
-            switchButton.hidden = true
-            logoutLabel.hidden = true
+            roundNumberLabel.isHidden = false
+            rightInfoLabel.isHidden = true
+            switchButton.isHidden = true
+            logoutLabel.isHidden = true
         }
     }
     
@@ -49,101 +49,101 @@ class AccountTableViewCell: BaseTableViewCell {
         }
         set {
             rightInfoLabel.text = newValue
-            roundNumberLabel.hidden = true
-            rightInfoLabel.hidden = false
-            switchButton.hidden = true
-            logoutLabel.hidden =  true
+            roundNumberLabel.isHidden = true
+            rightInfoLabel.isHidden = false
+            switchButton.isHidden = true
+            logoutLabel.isHidden =  true
         }
     }
     
     var isOn: Bool {
         get {
-            return switchButton.on
+            return switchButton.isOn
         }
         set {
-            switchButton.on = newValue
-            roundNumberLabel.hidden = true
-            rightInfoLabel.hidden = true
-            switchButton.hidden = false
-            logoutLabel.hidden = true
+            switchButton.isOn = newValue
+            roundNumberLabel.isHidden = true
+            rightInfoLabel.isHidden = true
+            switchButton.isHidden = false
+            logoutLabel.isHidden = true
             self.accessoryView = switchButton
         }
     }
     
     var isLogin: Bool {
         get {
-            return !logoutLabel.hidden
+            return !logoutLabel.isHidden
         }
         set {
             if newValue {
-                logoutLabel.hidden = false
-                titleLabel.hidden = true
-                titleImageView.hidden = true
+                logoutLabel.isHidden = false
+                titleLabel.isHidden = true
+                titleImageView.isHidden = true
             } else {
-                logoutLabel.hidden = true
-                titleLabel.hidden = false
-                titleImageView.hidden = false
+                logoutLabel.isHidden = true
+                titleLabel.isHidden = false
+                titleImageView.isHidden = false
             }
         }
     }
     
     
     /*必有项*/
-    private lazy var titleImageView: UIImageView = {
+    fileprivate lazy var titleImageView: UIImageView = {
         let imageView = UIImageView()
         return imageView
     }()
     
-    private lazy var titleLabel: UILabel = {
+    fileprivate lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
+        label.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.subheadline)
         return label
     }()
     
     /*可选项*/
-    private lazy var roundNumberLabel: RoundNumberLabel = {
+    fileprivate lazy var roundNumberLabel: RoundNumberLabel = {
         let numberLabel = RoundNumberLabel()
-        numberLabel.hidden = true
+        numberLabel.isHidden = true
         return numberLabel
     }()
     
-    private lazy var rightInfoLabel: UILabel = {
+    fileprivate lazy var rightInfoLabel: UILabel = {
         let label = UILabel()
-        label.textColor = UIColor.grayColor()
-        label.font = UIFont.preferredFontForTextStyle(UIFontTextStyleCaption1)
-        label.hidden = true
+        label.textColor = UIColor.gray
+        label.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.caption1)
+        label.isHidden = true
         return label
     }()
     
-    private lazy var switchButton: UISwitch = {
+    fileprivate lazy var switchButton: UISwitch = {
         let switchButton = UISwitch()
-        switchButton.hidden = true
+        switchButton.isHidden = true
         return switchButton
     }()
     
     
-    private lazy var logoutLabel: UILabel = {
+    fileprivate lazy var logoutLabel: UILabel = {
         let label = UILabel()
         label.text = "退出登录"
         label.textColor = FixedValue.mainRedColor
-        label.textAlignment = .Center
-        label.hidden = true
+        label.textAlignment = .center
+        label.isHidden = true
         return label
     }()
     
     
-    static func cellFor(table: UITableView) -> AccountTableViewCell {
-        var cell = table.dequeueReusableCellWithIdentifier(reuseIdentifier) as? AccountTableViewCell
+    static func cellFor(_ table: UITableView) -> AccountTableViewCell {
+        var cell = table.dequeueReusableCell(withIdentifier: reuseIdentifier) as? AccountTableViewCell
         if cell == nil {
-            cell = AccountTableViewCell.init(style: .Default, reuseIdentifier: reuseIdentifier)
+            cell = AccountTableViewCell.init(style: .default, reuseIdentifier: reuseIdentifier)
         }
-        cell?.accessoryType = .DisclosureIndicator
-        cell?.titleImageView.hidden = false
-        cell?.titleLabel.hidden = false
-        cell?.rightInfoLabel.hidden = true
-        cell?.roundNumberLabel.hidden = true
-        cell?.switchButton.hidden = true
-        cell?.logoutLabel.hidden = true
+        cell?.accessoryType = .disclosureIndicator
+        cell?.titleImageView.isHidden = false
+        cell?.titleLabel.isHidden = false
+        cell?.rightInfoLabel.isHidden = true
+        cell?.roundNumberLabel.isHidden = true
+        cell?.switchButton.isHidden = true
+        cell?.logoutLabel.isHidden = true
         return cell!
     }
 

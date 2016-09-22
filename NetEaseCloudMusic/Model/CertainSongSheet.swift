@@ -86,26 +86,26 @@ import Foundation
 
 class CertainSongSheet : NSObject, NSCoding{
     
-    class func getFilePath(id: Int) -> NSURL? {
-        if let dir = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .AllDomainsMask, true).first {
-            let path = NSURL(fileURLWithPath: dir).URLByAppendingPathComponent("CertainSongSheet+\(id)")
+    class func getFilePath(_ id: Int) -> URL? {
+        if let dir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .allDomainsMask, true).first {
+            let path = URL(fileURLWithPath: dir).appendingPathComponent("CertainSongSheet+\(id)")
             return path;
         }
         return nil
     }
     
     
-    class func loadSongSheetData(playListID: String, completion:(data: CertainSongSheet?, error: NSError?) -> Void) {
-        if NSUserDefaults.standardUserDefaults().boolForKey("CertainSongSheetCache+\(playListID)") {
-            let date = NSUserDefaults.standardUserDefaults().objectForKey("CertainSongSheetTime+\(playListID)") as! NSDate
-            let dateDay = NSCalendar.currentCalendar().component(.Day, fromDate: date)
+    class func loadSongSheetData(_ playListID: String, completion:@escaping (_ data: CertainSongSheet?, _ error: NSError?) -> Void) {
+        if UserDefaults.standard.bool(forKey: "CertainSongSheetCache+\(playListID)") {
+            let date = UserDefaults.standard.object(forKey: "CertainSongSheetTime+\(playListID)") as! Date
+            let dateDay = (Calendar.current as NSCalendar).component(.day, from: date)
             
-            let currentDate = NSDate()
-            let currentDay = NSCalendar.currentCalendar().component(.Day, fromDate: currentDate)
+            let currentDate = Date()
+            let currentDay = (Calendar.current as NSCalendar).component(.day, from: currentDate)
             
             if dateDay == currentDay {
-                let data = try! NSString(contentsOfURL: getFilePath(Int(playListID)!)!, encoding: NSUTF8StringEncoding)
-                completion(data: transfer(data as String), error: nil)
+                let data = try! NSString(contentsOf: getFilePath(Int(playListID)!)!, encoding: String.Encoding.utf8.rawValue)
+                completion(transfer(data as String), nil)
                 return
             }
             
@@ -118,12 +118,12 @@ class CertainSongSheet : NSObject, NSCoding{
             } else {
                 if let nndata = data {
                     if let tranData = transfer(nndata) {
-                        completion(data: tranData, error: nil)
-                        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "CertainSongSheetCache+\(tranData.id)" )
-                        NSUserDefaults.standardUserDefaults().setObject(NSDate(), forKey: "CertainSongSheetTime+\(tranData.id)")
-                        NSUserDefaults.standardUserDefaults().synchronize()
+                        completion(tranData, nil)
+                        UserDefaults.standard.set(true, forKey: "CertainSongSheetCache+\(tranData.id)" )
+                        UserDefaults.standard.set(Date(), forKey: "CertainSongSheetTime+\(tranData.id)")
+                        UserDefaults.standard.synchronize()
                         do {
-                            try nndata.writeToURL(getFilePath(tranData.id)!, atomically: false, encoding: NSUTF8StringEncoding)
+                            try nndata.write(to: getFilePath(tranData.id)!, atomically: false, encoding: String.Encoding.utf8)
                         } catch let error as NSError {
                             print(error)
                         }
@@ -133,10 +133,10 @@ class CertainSongSheet : NSObject, NSCoding{
         }
     }
     
-    class func transfer(data: String?) -> CertainSongSheet? {
+    class func transfer(_ data: String?) -> CertainSongSheet? {
         var certainSongSheet:CertainSongSheet?
         do {
-            let dict = try NSJSONSerialization.JSONObjectWithData((data?.dataUsingEncoding(NSUTF8StringEncoding))!, options: []) as? [String:AnyObject]
+            let dict = try JSONSerialization.jsonObject(with: (data?.data(using: String.Encoding.utf8))!, options: []) as? [String:AnyObject]
 //            let result = dict!["result"] as! Dictionary<String, AnyObject>
 //            let tracks = result["tracks"] as! Array<Dictionary<String, AnyObject>>
 //            certainSongSheet.tracks = tracks
@@ -189,7 +189,7 @@ class CertainSongSheet : NSObject, NSCoding{
 //        if let data = dictionary["artists"] {
 //            artists = data
 //        }
-        artists = dictionary["artists"]
+        artists = dictionary["artists"] as? AnyObject
         cloudTrackCount = dictionary["cloudTrackCount"] as? Int
         commentCount = dictionary["commentCount"] as? Int
         commentThreadId = dictionary["commentThreadId"] as? String
@@ -232,7 +232,7 @@ class CertainSongSheet : NSObject, NSCoding{
      */
     func toDictionary() -> NSDictionary
     {
-        var dictionary = NSMutableDictionary()
+        let dictionary = NSMutableDictionary()
         if adType != nil{
             dictionary["adType"] = adType
         }
@@ -333,35 +333,35 @@ class CertainSongSheet : NSObject, NSCoding{
      */
     @objc required init(coder aDecoder: NSCoder)
     {
-        adType = aDecoder.decodeObjectForKey("adType") as? Int
-        artists = aDecoder.decodeObjectForKey("artists")
-        cloudTrackCount = aDecoder.decodeObjectForKey("cloudTrackCount") as? Int
-        commentCount = aDecoder.decodeObjectForKey("commentCount") as? Int
-        commentThreadId = aDecoder.decodeObjectForKey("commentThreadId") as? String
-        coverImgId = aDecoder.decodeObjectForKey("coverImgId") as? Int
-        coverImgUrl = aDecoder.decodeObjectForKey("coverImgUrl") as? String
-        createTime = aDecoder.decodeObjectForKey("createTime") as? Int
-        creator = aDecoder.decodeObjectForKey("creator") as? Creator
-        descriptionField = aDecoder.decodeObjectForKey("description") as? String
-        highQuality = aDecoder.decodeObjectForKey("highQuality") as? Bool
-        id = aDecoder.decodeObjectForKey("id") as? Int
-        name = aDecoder.decodeObjectForKey("name") as? String
-        newImported = aDecoder.decodeObjectForKey("newImported") as? Bool
-        playCount = aDecoder.decodeObjectForKey("playCount") as? Int
-        shareCount = aDecoder.decodeObjectForKey("shareCount") as? Int
-        specialType = aDecoder.decodeObjectForKey("specialType") as? Int
-        status = aDecoder.decodeObjectForKey("status") as? Int
-        subscribed = aDecoder.decodeObjectForKey("subscribed") as? Bool
-        subscribedCount = aDecoder.decodeObjectForKey("subscribedCount") as? Int
-        subscribers = aDecoder.decodeObjectForKey("subscribers") as? [AnyObject]
-        tags = aDecoder.decodeObjectForKey("tags") as? [String]
-        totalDuration = aDecoder.decodeObjectForKey("totalDuration") as? Int
-        trackCount = aDecoder.decodeObjectForKey("trackCount") as? Int
-        trackNumberUpdateTime = aDecoder.decodeObjectForKey("trackNumberUpdateTime") as? Int
-        trackUpdateTime = aDecoder.decodeObjectForKey("trackUpdateTime") as? Int
-        tracks = aDecoder.decodeObjectForKey("tracks") as? [Track]
-        updateTime = aDecoder.decodeObjectForKey("updateTime") as? Int
-        userId = aDecoder.decodeObjectForKey("userId") as? Int
+        adType = aDecoder.decodeObject(forKey: "adType") as? Int
+        artists = aDecoder.decodeObject(forKey: "artists") as AnyObject?
+        cloudTrackCount = aDecoder.decodeObject(forKey: "cloudTrackCount") as? Int
+        commentCount = aDecoder.decodeObject(forKey: "commentCount") as? Int
+        commentThreadId = aDecoder.decodeObject(forKey: "commentThreadId") as? String
+        coverImgId = aDecoder.decodeObject(forKey: "coverImgId") as? Int
+        coverImgUrl = aDecoder.decodeObject(forKey: "coverImgUrl") as? String
+        createTime = aDecoder.decodeObject(forKey: "createTime") as? Int
+        creator = aDecoder.decodeObject(forKey: "creator") as? Creator
+        descriptionField = aDecoder.decodeObject(forKey: "description") as? String
+        highQuality = aDecoder.decodeObject(forKey: "highQuality") as? Bool
+        id = aDecoder.decodeObject(forKey: "id") as? Int
+        name = aDecoder.decodeObject(forKey: "name") as? String
+        newImported = aDecoder.decodeObject(forKey: "newImported") as? Bool
+        playCount = aDecoder.decodeObject(forKey: "playCount") as? Int
+        shareCount = aDecoder.decodeObject(forKey: "shareCount") as? Int
+        specialType = aDecoder.decodeObject(forKey: "specialType") as? Int
+        status = aDecoder.decodeObject(forKey: "status") as? Int
+        subscribed = aDecoder.decodeObject(forKey: "subscribed") as? Bool
+        subscribedCount = aDecoder.decodeObject(forKey: "subscribedCount") as? Int
+        subscribers = aDecoder.decodeObject(forKey: "subscribers") as? [AnyObject]
+        tags = aDecoder.decodeObject(forKey: "tags") as? [String]
+        totalDuration = aDecoder.decodeObject(forKey: "totalDuration") as? Int
+        trackCount = aDecoder.decodeObject(forKey: "trackCount") as? Int
+        trackNumberUpdateTime = aDecoder.decodeObject(forKey: "trackNumberUpdateTime") as? Int
+        trackUpdateTime = aDecoder.decodeObject(forKey: "trackUpdateTime") as? Int
+        tracks = aDecoder.decodeObject(forKey: "tracks") as? [Track]
+        updateTime = aDecoder.decodeObject(forKey: "updateTime") as? Int
+        userId = aDecoder.decodeObject(forKey: "userId") as? Int
         
     }
     
@@ -369,94 +369,94 @@ class CertainSongSheet : NSObject, NSCoding{
      * NSCoding required method.
      * Encodes mode properties into the decoder
      */
-    @objc func encodeWithCoder(aCoder: NSCoder)
+    @objc func encode(with aCoder: NSCoder)
     {
         if adType != nil{
-            aCoder.encodeObject(adType, forKey: "adType")
+            aCoder.encode(adType, forKey: "adType")
         }
         if artists != nil{
-            aCoder.encodeObject(artists, forKey: "artists")
+            aCoder.encode(artists, forKey: "artists")
         }
         if cloudTrackCount != nil{
-            aCoder.encodeObject(cloudTrackCount, forKey: "cloudTrackCount")
+            aCoder.encode(cloudTrackCount, forKey: "cloudTrackCount")
         }
         if commentCount != nil{
-            aCoder.encodeObject(commentCount, forKey: "commentCount")
+            aCoder.encode(commentCount, forKey: "commentCount")
         }
         if commentThreadId != nil{
-            aCoder.encodeObject(commentThreadId, forKey: "commentThreadId")
+            aCoder.encode(commentThreadId, forKey: "commentThreadId")
         }
         if coverImgId != nil{
-            aCoder.encodeObject(coverImgId, forKey: "coverImgId")
+            aCoder.encode(coverImgId, forKey: "coverImgId")
         }
         if coverImgUrl != nil{
-            aCoder.encodeObject(coverImgUrl, forKey: "coverImgUrl")
+            aCoder.encode(coverImgUrl, forKey: "coverImgUrl")
         }
         if createTime != nil{
-            aCoder.encodeObject(createTime, forKey: "createTime")
+            aCoder.encode(createTime, forKey: "createTime")
         }
         if creator != nil{
-            aCoder.encodeObject(creator, forKey: "creator")
+            aCoder.encode(creator, forKey: "creator")
         }
         if descriptionField != nil{
-            aCoder.encodeObject(descriptionField, forKey: "description")
+            aCoder.encode(descriptionField, forKey: "description")
         }
         if highQuality != nil{
-            aCoder.encodeObject(highQuality, forKey: "highQuality")
+            aCoder.encode(highQuality, forKey: "highQuality")
         }
         if id != nil{
-            aCoder.encodeObject(id, forKey: "id")
+            aCoder.encode(id, forKey: "id")
         }
         if name != nil{
-            aCoder.encodeObject(name, forKey: "name")
+            aCoder.encode(name, forKey: "name")
         }
         if newImported != nil{
-            aCoder.encodeObject(newImported, forKey: "newImported")
+            aCoder.encode(newImported, forKey: "newImported")
         }
         if playCount != nil{
-            aCoder.encodeObject(playCount, forKey: "playCount")
+            aCoder.encode(playCount, forKey: "playCount")
         }
         if shareCount != nil{
-            aCoder.encodeObject(shareCount, forKey: "shareCount")
+            aCoder.encode(shareCount, forKey: "shareCount")
         }
         if specialType != nil{
-            aCoder.encodeObject(specialType, forKey: "specialType")
+            aCoder.encode(specialType, forKey: "specialType")
         }
         if status != nil{
-            aCoder.encodeObject(status, forKey: "status")
+            aCoder.encode(status, forKey: "status")
         }
         if subscribed != nil{
-            aCoder.encodeObject(subscribed, forKey: "subscribed")
+            aCoder.encode(subscribed, forKey: "subscribed")
         }
         if subscribedCount != nil{
-            aCoder.encodeObject(subscribedCount, forKey: "subscribedCount")
+            aCoder.encode(subscribedCount, forKey: "subscribedCount")
         }
         if subscribers != nil{
-            aCoder.encodeObject(subscribers, forKey: "subscribers")
+            aCoder.encode(subscribers, forKey: "subscribers")
         }
         if tags != nil{
-            aCoder.encodeObject(tags, forKey: "tags")
+            aCoder.encode(tags, forKey: "tags")
         }
         if totalDuration != nil{
-            aCoder.encodeObject(totalDuration, forKey: "totalDuration")
+            aCoder.encode(totalDuration, forKey: "totalDuration")
         }
         if trackCount != nil{
-            aCoder.encodeObject(trackCount, forKey: "trackCount")
+            aCoder.encode(trackCount, forKey: "trackCount")
         }
         if trackNumberUpdateTime != nil{
-            aCoder.encodeObject(trackNumberUpdateTime, forKey: "trackNumberUpdateTime")
+            aCoder.encode(trackNumberUpdateTime, forKey: "trackNumberUpdateTime")
         }
         if trackUpdateTime != nil{
-            aCoder.encodeObject(trackUpdateTime, forKey: "trackUpdateTime")
+            aCoder.encode(trackUpdateTime, forKey: "trackUpdateTime")
         }
         if tracks != nil{
-            aCoder.encodeObject(tracks, forKey: "tracks")
+            aCoder.encode(tracks, forKey: "tracks")
         }
         if updateTime != nil{
-            aCoder.encodeObject(updateTime, forKey: "updateTime")
+            aCoder.encode(updateTime, forKey: "updateTime")
         }
         if userId != nil{
-            aCoder.encodeObject(userId, forKey: "userId")
+            aCoder.encode(userId, forKey: "userId")
         }
         
     }
@@ -526,14 +526,14 @@ class Track : NSObject, NSCoding{
                 artists.append(value)
             }
         }
-        audition = dictionary["audition"]
+        audition = dictionary["audition"] as? AnyObject
         if let bMusicData = dictionary["bMusic"] as? NSDictionary{
             bMusic = BMusic(fromDictionary: bMusicData)
         }
         commentThreadId = dictionary["commentThreadId"] as? String
         copyFrom = dictionary["copyFrom"] as? String
         copyrightId = dictionary["copyrightId"] as? Int
-        crbt = dictionary["crbt"]
+        crbt = dictionary["crbt"] as? AnyObject
         dayPlays = dictionary["dayPlays"] as? Int
         disc = dictionary["disc"] as? String
         duration = dictionary["duration"] as? Int
@@ -558,10 +558,10 @@ class Track : NSObject, NSCoding{
         popularity = dictionary["popularity"] as? Float
         position = dictionary["position"] as? Int
         ringtone = dictionary["ringtone"] as? String
-        rtUrl = dictionary["rtUrl"]
-        rtUrls = dictionary["rtUrls"]
+        rtUrl = dictionary["rtUrl"] as? AnyObject
+        rtUrls = dictionary["rtUrls"] as? AnyObject
         rtype = dictionary["rtype"] as? Int
-        rurl = dictionary["rurl"]
+        rurl = dictionary["rurl"] as? AnyObject
         score = dictionary["score"] as? Int
         starred = dictionary["starred"] as? Bool
         starredNum = dictionary["starredNum"] as? Int
@@ -573,7 +573,7 @@ class Track : NSObject, NSCoding{
      */
     func toDictionary() -> NSDictionary
     {
-        var dictionary = NSMutableDictionary()
+        let dictionary = NSMutableDictionary()
         if album != nil{
             dictionary["album"] = album.toDictionary()
         }
@@ -692,41 +692,41 @@ class Track : NSObject, NSCoding{
      */
     @objc required init(coder aDecoder: NSCoder)
     {
-        album = aDecoder.decodeObjectForKey("album") as? Album
-        alias = aDecoder.decodeObjectForKey("alias") as? [AnyObject]
-        artists = aDecoder.decodeObjectForKey("artists") as? [Artist]
-        audition = aDecoder.decodeObjectForKey("audition")
-        bMusic = aDecoder.decodeObjectForKey("bMusic") as? BMusic
-        commentThreadId = aDecoder.decodeObjectForKey("commentThreadId") as? String
-        copyFrom = aDecoder.decodeObjectForKey("copyFrom") as? String
-        copyrightId = aDecoder.decodeObjectForKey("copyrightId") as? Int
-        crbt = aDecoder.decodeObjectForKey("crbt")
-        dayPlays = aDecoder.decodeObjectForKey("dayPlays") as? Int
-        disc = aDecoder.decodeObjectForKey("disc") as? String
-        duration = aDecoder.decodeObjectForKey("duration") as? Int
-        fee = aDecoder.decodeObjectForKey("fee") as? Int
-        ftype = aDecoder.decodeObjectForKey("ftype") as? Int
-        hMusic = aDecoder.decodeObjectForKey("hMusic") as? BMusic
-        hearTime = aDecoder.decodeObjectForKey("hearTime") as? Int
-        id = aDecoder.decodeObjectForKey("id") as? Int
-        lMusic = aDecoder.decodeObjectForKey("lMusic") as? BMusic
-        mMusic = aDecoder.decodeObjectForKey("mMusic") as? BMusic
-        mp3Url = aDecoder.decodeObjectForKey("mp3Url") as? String
-        mvid = aDecoder.decodeObjectForKey("mvid") as? Int
-        name = aDecoder.decodeObjectForKey("name") as? String
-        no = aDecoder.decodeObjectForKey("no") as? Int
-        playedNum = aDecoder.decodeObjectForKey("playedNum") as? Int
-        popularity = aDecoder.decodeObjectForKey("popularity") as? Float
-        position = aDecoder.decodeObjectForKey("position") as? Int
-        ringtone = aDecoder.decodeObjectForKey("ringtone") as? String
-        rtUrl = aDecoder.decodeObjectForKey("rtUrl")
-        rtUrls = aDecoder.decodeObjectForKey("rtUrls")
-        rtype = aDecoder.decodeObjectForKey("rtype") as? Int
-        rurl = aDecoder.decodeObjectForKey("rurl")
-        score = aDecoder.decodeObjectForKey("score") as? Int
-        starred = aDecoder.decodeObjectForKey("starred") as? Bool
-        starredNum = aDecoder.decodeObjectForKey("starredNum") as? Int
-        status = aDecoder.decodeObjectForKey("status") as? Int
+        album = aDecoder.decodeObject(forKey: "album") as? Album
+        alias = aDecoder.decodeObject(forKey: "alias") as? [AnyObject]
+        artists = aDecoder.decodeObject(forKey: "artists") as? [Artist]
+        audition = aDecoder.decodeObject(forKey: "audition") as AnyObject?
+        bMusic = aDecoder.decodeObject(forKey: "bMusic") as? BMusic
+        commentThreadId = aDecoder.decodeObject(forKey: "commentThreadId") as? String
+        copyFrom = aDecoder.decodeObject(forKey: "copyFrom") as? String
+        copyrightId = aDecoder.decodeObject(forKey: "copyrightId") as? Int
+        crbt = aDecoder.decodeObject(forKey: "crbt") as AnyObject?
+        dayPlays = aDecoder.decodeObject(forKey: "dayPlays") as? Int
+        disc = aDecoder.decodeObject(forKey: "disc") as? String
+        duration = aDecoder.decodeObject(forKey: "duration") as? Int
+        fee = aDecoder.decodeObject(forKey: "fee") as? Int
+        ftype = aDecoder.decodeObject(forKey: "ftype") as? Int
+        hMusic = aDecoder.decodeObject(forKey: "hMusic") as? BMusic
+        hearTime = aDecoder.decodeObject(forKey: "hearTime") as? Int
+        id = aDecoder.decodeObject(forKey: "id") as? Int
+        lMusic = aDecoder.decodeObject(forKey: "lMusic") as? BMusic
+        mMusic = aDecoder.decodeObject(forKey: "mMusic") as? BMusic
+        mp3Url = aDecoder.decodeObject(forKey: "mp3Url") as? String
+        mvid = aDecoder.decodeObject(forKey: "mvid") as? Int
+        name = aDecoder.decodeObject(forKey: "name") as? String
+        no = aDecoder.decodeObject(forKey: "no") as? Int
+        playedNum = aDecoder.decodeObject(forKey: "playedNum") as? Int
+        popularity = aDecoder.decodeObject(forKey: "popularity") as? Float
+        position = aDecoder.decodeObject(forKey: "position") as? Int
+        ringtone = aDecoder.decodeObject(forKey: "ringtone") as? String
+        rtUrl = aDecoder.decodeObject(forKey: "rtUrl") as AnyObject?
+        rtUrls = aDecoder.decodeObject(forKey: "rtUrls") as AnyObject?
+        rtype = aDecoder.decodeObject(forKey: "rtype") as? Int
+        rurl = aDecoder.decodeObject(forKey: "rurl") as AnyObject?
+        score = aDecoder.decodeObject(forKey: "score") as? Int
+        starred = aDecoder.decodeObject(forKey: "starred") as? Bool
+        starredNum = aDecoder.decodeObject(forKey: "starredNum") as? Int
+        status = aDecoder.decodeObject(forKey: "status") as? Int
         
     }
     
@@ -734,112 +734,112 @@ class Track : NSObject, NSCoding{
      * NSCoding required method.
      * Encodes mode properties into the decoder
      */
-    @objc func encodeWithCoder(aCoder: NSCoder)
+    @objc func encode(with aCoder: NSCoder)
     {
         if album != nil{
-            aCoder.encodeObject(album, forKey: "album")
+            aCoder.encode(album, forKey: "album")
         }
         if alias != nil{
-            aCoder.encodeObject(alias, forKey: "alias")
+            aCoder.encode(alias, forKey: "alias")
         }
         if artists != nil{
-            aCoder.encodeObject(artists, forKey: "artists")
+            aCoder.encode(artists, forKey: "artists")
         }
         if audition != nil{
-            aCoder.encodeObject(audition, forKey: "audition")
+            aCoder.encode(audition, forKey: "audition")
         }
         if bMusic != nil{
-            aCoder.encodeObject(bMusic, forKey: "bMusic")
+            aCoder.encode(bMusic, forKey: "bMusic")
         }
         if commentThreadId != nil{
-            aCoder.encodeObject(commentThreadId, forKey: "commentThreadId")
+            aCoder.encode(commentThreadId, forKey: "commentThreadId")
         }
         if copyFrom != nil{
-            aCoder.encodeObject(copyFrom, forKey: "copyFrom")
+            aCoder.encode(copyFrom, forKey: "copyFrom")
         }
         if copyrightId != nil{
-            aCoder.encodeObject(copyrightId, forKey: "copyrightId")
+            aCoder.encode(copyrightId, forKey: "copyrightId")
         }
         if crbt != nil{
-            aCoder.encodeObject(crbt, forKey: "crbt")
+            aCoder.encode(crbt, forKey: "crbt")
         }
         if dayPlays != nil{
-            aCoder.encodeObject(dayPlays, forKey: "dayPlays")
+            aCoder.encode(dayPlays, forKey: "dayPlays")
         }
         if disc != nil{
-            aCoder.encodeObject(disc, forKey: "disc")
+            aCoder.encode(disc, forKey: "disc")
         }
         if duration != nil{
-            aCoder.encodeObject(duration, forKey: "duration")
+            aCoder.encode(duration, forKey: "duration")
         }
         if fee != nil{
-            aCoder.encodeObject(fee, forKey: "fee")
+            aCoder.encode(fee, forKey: "fee")
         }
         if ftype != nil{
-            aCoder.encodeObject(ftype, forKey: "ftype")
+            aCoder.encode(ftype, forKey: "ftype")
         }
         if hMusic != nil{
-            aCoder.encodeObject(hMusic, forKey: "hMusic")
+            aCoder.encode(hMusic, forKey: "hMusic")
         }
         if hearTime != nil{
-            aCoder.encodeObject(hearTime, forKey: "hearTime")
+            aCoder.encode(hearTime, forKey: "hearTime")
         }
         if id != nil{
-            aCoder.encodeObject(id, forKey: "id")
+            aCoder.encode(id, forKey: "id")
         }
         if lMusic != nil{
-            aCoder.encodeObject(lMusic, forKey: "lMusic")
+            aCoder.encode(lMusic, forKey: "lMusic")
         }
         if mMusic != nil{
-            aCoder.encodeObject(mMusic, forKey: "mMusic")
+            aCoder.encode(mMusic, forKey: "mMusic")
         }
         if mp3Url != nil{
-            aCoder.encodeObject(mp3Url, forKey: "mp3Url")
+            aCoder.encode(mp3Url, forKey: "mp3Url")
         }
         if mvid != nil{
-            aCoder.encodeObject(mvid, forKey: "mvid")
+            aCoder.encode(mvid, forKey: "mvid")
         }
         if name != nil{
-            aCoder.encodeObject(name, forKey: "name")
+            aCoder.encode(name, forKey: "name")
         }
         if no != nil{
-            aCoder.encodeObject(no, forKey: "no")
+            aCoder.encode(no, forKey: "no")
         }
         if playedNum != nil{
-            aCoder.encodeObject(playedNum, forKey: "playedNum")
+            aCoder.encode(playedNum, forKey: "playedNum")
         }
         if popularity != nil{
-            aCoder.encodeObject(popularity, forKey: "popularity")
+            aCoder.encode(popularity, forKey: "popularity")
         }
         if position != nil{
-            aCoder.encodeObject(position, forKey: "position")
+            aCoder.encode(position, forKey: "position")
         }
         if ringtone != nil{
-            aCoder.encodeObject(ringtone, forKey: "ringtone")
+            aCoder.encode(ringtone, forKey: "ringtone")
         }
         if rtUrl != nil{
-            aCoder.encodeObject(rtUrl, forKey: "rtUrl")
+            aCoder.encode(rtUrl, forKey: "rtUrl")
         }
         if rtUrls != nil{
-            aCoder.encodeObject(rtUrls, forKey: "rtUrls")
+            aCoder.encode(rtUrls, forKey: "rtUrls")
         }
         if rtype != nil{
-            aCoder.encodeObject(rtype, forKey: "rtype")
+            aCoder.encode(rtype, forKey: "rtype")
         }
         if rurl != nil{
-            aCoder.encodeObject(rurl, forKey: "rurl")
+            aCoder.encode(rurl, forKey: "rurl")
         }
         if score != nil{
-            aCoder.encodeObject(score, forKey: "score")
+            aCoder.encode(score, forKey: "score")
         }
         if starred != nil{
-            aCoder.encodeObject(starred, forKey: "starred")
+            aCoder.encode(starred, forKey: "starred")
         }
         if starredNum != nil{
-            aCoder.encodeObject(starredNum, forKey: "starredNum")
+            aCoder.encode(starredNum, forKey: "starredNum")
         }
         if status != nil{
-            aCoder.encodeObject(status, forKey: "status")
+            aCoder.encode(status, forKey: "status")
         }
         
     }
@@ -888,7 +888,7 @@ class BMusic : NSObject, NSCoding{
      */
     func toDictionary() -> NSDictionary
     {
-        var dictionary = NSMutableDictionary()
+        let dictionary = NSMutableDictionary()
         if bitrate != nil{
             dictionary["bitrate"] = bitrate
         }
@@ -925,15 +925,15 @@ class BMusic : NSObject, NSCoding{
      */
     @objc required init(coder aDecoder: NSCoder)
     {
-        bitrate = aDecoder.decodeObjectForKey("bitrate") as? Int
-        dfsId = aDecoder.decodeObjectForKey("dfsId") as? Int
-        mextension = aDecoder.decodeObjectForKey("mextension") as? String
-        id = aDecoder.decodeObjectForKey("id") as? Int
-        name = aDecoder.decodeObjectForKey("name") as? String
-        playTime = aDecoder.decodeObjectForKey("playTime") as? Int
-        size = aDecoder.decodeObjectForKey("size") as? Int
-        sr = aDecoder.decodeObjectForKey("sr") as? Int
-        volumeDelta = aDecoder.decodeObjectForKey("volumeDelta") as? Float
+        bitrate = aDecoder.decodeObject(forKey: "bitrate") as? Int
+        dfsId = aDecoder.decodeObject(forKey: "dfsId") as? Int
+        mextension = aDecoder.decodeObject(forKey: "mextension") as? String
+        id = aDecoder.decodeObject(forKey: "id") as? Int
+        name = aDecoder.decodeObject(forKey: "name") as? String
+        playTime = aDecoder.decodeObject(forKey: "playTime") as? Int
+        size = aDecoder.decodeObject(forKey: "size") as? Int
+        sr = aDecoder.decodeObject(forKey: "sr") as? Int
+        volumeDelta = aDecoder.decodeObject(forKey: "volumeDelta") as? Float
         
     }
     
@@ -941,34 +941,34 @@ class BMusic : NSObject, NSCoding{
      * NSCoding required method.
      * Encodes mode properties into the decoder
      */
-    @objc func encodeWithCoder(aCoder: NSCoder)
+    @objc func encode(with aCoder: NSCoder)
     {
         if bitrate != nil{
-            aCoder.encodeObject(bitrate, forKey: "bitrate")
+            aCoder.encode(bitrate, forKey: "bitrate")
         }
         if dfsId != nil{
-            aCoder.encodeObject(dfsId, forKey: "dfsId")
+            aCoder.encode(dfsId, forKey: "dfsId")
         }
         if mextension != nil{
-            aCoder.encodeObject(mextension, forKey: "mextension")
+            aCoder.encode(mextension, forKey: "mextension")
         }
         if id != nil{
-            aCoder.encodeObject(id, forKey: "id")
+            aCoder.encode(id, forKey: "id")
         }
         if name != nil{
-            aCoder.encodeObject(name, forKey: "name")
+            aCoder.encode(name, forKey: "name")
         }
         if playTime != nil{
-            aCoder.encodeObject(playTime, forKey: "playTime")
+            aCoder.encode(playTime, forKey: "playTime")
         }
         if size != nil{
-            aCoder.encodeObject(size, forKey: "size")
+            aCoder.encode(size, forKey: "size")
         }
         if sr != nil{
-            aCoder.encodeObject(sr, forKey: "sr")
+            aCoder.encode(sr, forKey: "sr")
         }
         if volumeDelta != nil{
-            aCoder.encodeObject(volumeDelta, forKey: "volumeDelta")
+            aCoder.encode(volumeDelta, forKey: "volumeDelta")
         }
         
     }
@@ -1053,7 +1053,7 @@ class Album : NSObject, NSCoding{
      */
     func toDictionary() -> NSDictionary
     {
-        var dictionary = NSMutableDictionary()
+        let dictionary = NSMutableDictionary()
         if alias != nil{
             dictionary["alias"] = alias
         }
@@ -1136,29 +1136,29 @@ class Album : NSObject, NSCoding{
      */
     @objc required init(coder aDecoder: NSCoder)
     {
-        alias = aDecoder.decodeObjectForKey("alias") as? [AnyObject]
-        artist = aDecoder.decodeObjectForKey("artist") as? Artist
-        artists = aDecoder.decodeObjectForKey("artists") as? [Artist]
-        blurPicUrl = aDecoder.decodeObjectForKey("blurPicUrl") as? String
-        briefDesc = aDecoder.decodeObjectForKey("briefDesc") as? String
-        commentThreadId = aDecoder.decodeObjectForKey("commentThreadId") as? String
-        company = aDecoder.decodeObjectForKey("company") as? String
-        companyId = aDecoder.decodeObjectForKey("companyId") as? Int
-        copyrightId = aDecoder.decodeObjectForKey("copyrightId") as? Int
-        descriptionField = aDecoder.decodeObjectForKey("description") as? String
-        id = aDecoder.decodeObjectForKey("id") as? Int
-        name = aDecoder.decodeObjectForKey("name") as? String
-        onSale = aDecoder.decodeObjectForKey("onSale") as? Bool
-        paid = aDecoder.decodeObjectForKey("paid") as? Bool
-        pic = aDecoder.decodeObjectForKey("pic") as? Int
-        picId = aDecoder.decodeObjectForKey("picId") as? Int
-        picUrl = aDecoder.decodeObjectForKey("picUrl") as? String
-        publishTime = aDecoder.decodeObjectForKey("publishTime") as? Int
-        size = aDecoder.decodeObjectForKey("size") as? Int
-        songs = aDecoder.decodeObjectForKey("songs") as? [AnyObject]
-        status = aDecoder.decodeObjectForKey("status") as? Int
-        tags = aDecoder.decodeObjectForKey("tags") as? String
-        type = aDecoder.decodeObjectForKey("type") as? String
+        alias = aDecoder.decodeObject(forKey: "alias") as? [AnyObject]
+        artist = aDecoder.decodeObject(forKey: "artist") as? Artist
+        artists = aDecoder.decodeObject(forKey: "artists") as? [Artist]
+        blurPicUrl = aDecoder.decodeObject(forKey: "blurPicUrl") as? String
+        briefDesc = aDecoder.decodeObject(forKey: "briefDesc") as? String
+        commentThreadId = aDecoder.decodeObject(forKey: "commentThreadId") as? String
+        company = aDecoder.decodeObject(forKey: "company") as? String
+        companyId = aDecoder.decodeObject(forKey: "companyId") as? Int
+        copyrightId = aDecoder.decodeObject(forKey: "copyrightId") as? Int
+        descriptionField = aDecoder.decodeObject(forKey: "description") as? String
+        id = aDecoder.decodeObject(forKey: "id") as? Int
+        name = aDecoder.decodeObject(forKey: "name") as? String
+        onSale = aDecoder.decodeObject(forKey: "onSale") as? Bool
+        paid = aDecoder.decodeObject(forKey: "paid") as? Bool
+        pic = aDecoder.decodeObject(forKey: "pic") as? Int
+        picId = aDecoder.decodeObject(forKey: "picId") as? Int
+        picUrl = aDecoder.decodeObject(forKey: "picUrl") as? String
+        publishTime = aDecoder.decodeObject(forKey: "publishTime") as? Int
+        size = aDecoder.decodeObject(forKey: "size") as? Int
+        songs = aDecoder.decodeObject(forKey: "songs") as? [AnyObject]
+        status = aDecoder.decodeObject(forKey: "status") as? Int
+        tags = aDecoder.decodeObject(forKey: "tags") as? String
+        type = aDecoder.decodeObject(forKey: "type") as? String
         
     }
     
@@ -1166,76 +1166,76 @@ class Album : NSObject, NSCoding{
      * NSCoding required method.
      * Encodes mode properties into the decoder
      */
-    @objc func encodeWithCoder(aCoder: NSCoder)
+    @objc func encode(with aCoder: NSCoder)
     {
         if alias != nil{
-            aCoder.encodeObject(alias, forKey: "alias")
+            aCoder.encode(alias, forKey: "alias")
         }
         if artist != nil{
-            aCoder.encodeObject(artist, forKey: "artist")
+            aCoder.encode(artist, forKey: "artist")
         }
         if artists != nil{
-            aCoder.encodeObject(artists, forKey: "artists")
+            aCoder.encode(artists, forKey: "artists")
         }
         if blurPicUrl != nil{
-            aCoder.encodeObject(blurPicUrl, forKey: "blurPicUrl")
+            aCoder.encode(blurPicUrl, forKey: "blurPicUrl")
         }
         if briefDesc != nil{
-            aCoder.encodeObject(briefDesc, forKey: "briefDesc")
+            aCoder.encode(briefDesc, forKey: "briefDesc")
         }
         if commentThreadId != nil{
-            aCoder.encodeObject(commentThreadId, forKey: "commentThreadId")
+            aCoder.encode(commentThreadId, forKey: "commentThreadId")
         }
         if company != nil{
-            aCoder.encodeObject(company, forKey: "company")
+            aCoder.encode(company, forKey: "company")
         }
         if companyId != nil{
-            aCoder.encodeObject(companyId, forKey: "companyId")
+            aCoder.encode(companyId, forKey: "companyId")
         }
         if copyrightId != nil{
-            aCoder.encodeObject(copyrightId, forKey: "copyrightId")
+            aCoder.encode(copyrightId, forKey: "copyrightId")
         }
         if descriptionField != nil{
-            aCoder.encodeObject(descriptionField, forKey: "description")
+            aCoder.encode(descriptionField, forKey: "description")
         }
         if id != nil{
-            aCoder.encodeObject(id, forKey: "id")
+            aCoder.encode(id, forKey: "id")
         }
         if name != nil{
-            aCoder.encodeObject(name, forKey: "name")
+            aCoder.encode(name, forKey: "name")
         }
         if onSale != nil{
-            aCoder.encodeObject(onSale, forKey: "onSale")
+            aCoder.encode(onSale, forKey: "onSale")
         }
         if paid != nil{
-            aCoder.encodeObject(paid, forKey: "paid")
+            aCoder.encode(paid, forKey: "paid")
         }
         if pic != nil{
-            aCoder.encodeObject(pic, forKey: "pic")
+            aCoder.encode(pic, forKey: "pic")
         }
         if picId != nil{
-            aCoder.encodeObject(picId, forKey: "picId")
+            aCoder.encode(picId, forKey: "picId")
         }
         if picUrl != nil{
-            aCoder.encodeObject(picUrl, forKey: "picUrl")
+            aCoder.encode(picUrl, forKey: "picUrl")
         }
         if publishTime != nil{
-            aCoder.encodeObject(publishTime, forKey: "publishTime")
+            aCoder.encode(publishTime, forKey: "publishTime")
         }
         if size != nil{
-            aCoder.encodeObject(size, forKey: "size")
+            aCoder.encode(size, forKey: "size")
         }
         if songs != nil{
-            aCoder.encodeObject(songs, forKey: "songs")
+            aCoder.encode(songs, forKey: "songs")
         }
         if status != nil{
-            aCoder.encodeObject(status, forKey: "status")
+            aCoder.encode(status, forKey: "status")
         }
         if tags != nil{
-            aCoder.encodeObject(tags, forKey: "tags")
+            aCoder.encode(tags, forKey: "tags")
         }
         if type != nil{
-            aCoder.encodeObject(type, forKey: "type")
+            aCoder.encode(type, forKey: "type")
         }
         
     }
@@ -1288,7 +1288,7 @@ class Artist : NSObject, NSCoding{
      */
     func toDictionary() -> NSDictionary
     {
-        var dictionary = NSMutableDictionary()
+        let dictionary = NSMutableDictionary()
         if albumSize != nil{
             dictionary["albumSize"] = albumSize
         }
@@ -1331,17 +1331,17 @@ class Artist : NSObject, NSCoding{
      */
     @objc required init(coder aDecoder: NSCoder)
     {
-        albumSize = aDecoder.decodeObjectForKey("albumSize") as? Int
-        alias = aDecoder.decodeObjectForKey("alias") as? [AnyObject]
-        briefDesc = aDecoder.decodeObjectForKey("briefDesc") as? String
-        id = aDecoder.decodeObjectForKey("id") as? Int
-        img1v1Id = aDecoder.decodeObjectForKey("img1v1Id") as? Int
-        img1v1Url = aDecoder.decodeObjectForKey("img1v1Url") as? String
-        musicSize = aDecoder.decodeObjectForKey("musicSize") as? Int
-        name = aDecoder.decodeObjectForKey("name") as? String
-        picId = aDecoder.decodeObjectForKey("picId") as? Int
-        picUrl = aDecoder.decodeObjectForKey("picUrl") as? String
-        trans = aDecoder.decodeObjectForKey("trans") as? String
+        albumSize = aDecoder.decodeObject(forKey: "albumSize") as? Int
+        alias = aDecoder.decodeObject(forKey: "alias") as? [AnyObject]
+        briefDesc = aDecoder.decodeObject(forKey: "briefDesc") as? String
+        id = aDecoder.decodeObject(forKey: "id") as? Int
+        img1v1Id = aDecoder.decodeObject(forKey: "img1v1Id") as? Int
+        img1v1Url = aDecoder.decodeObject(forKey: "img1v1Url") as? String
+        musicSize = aDecoder.decodeObject(forKey: "musicSize") as? Int
+        name = aDecoder.decodeObject(forKey: "name") as? String
+        picId = aDecoder.decodeObject(forKey: "picId") as? Int
+        picUrl = aDecoder.decodeObject(forKey: "picUrl") as? String
+        trans = aDecoder.decodeObject(forKey: "trans") as? String
         
     }
     
@@ -1349,40 +1349,40 @@ class Artist : NSObject, NSCoding{
      * NSCoding required method.
      * Encodes mode properties into the decoder
      */
-    @objc func encodeWithCoder(aCoder: NSCoder)
+    @objc func encode(with aCoder: NSCoder)
     {
         if albumSize != nil{
-            aCoder.encodeObject(albumSize, forKey: "albumSize")
+            aCoder.encode(albumSize, forKey: "albumSize")
         }
         if alias != nil{
-            aCoder.encodeObject(alias, forKey: "alias")
+            aCoder.encode(alias, forKey: "alias")
         }
         if briefDesc != nil{
-            aCoder.encodeObject(briefDesc, forKey: "briefDesc")
+            aCoder.encode(briefDesc, forKey: "briefDesc")
         }
         if id != nil{
-            aCoder.encodeObject(id, forKey: "id")
+            aCoder.encode(id, forKey: "id")
         }
         if img1v1Id != nil{
-            aCoder.encodeObject(img1v1Id, forKey: "img1v1Id")
+            aCoder.encode(img1v1Id, forKey: "img1v1Id")
         }
         if img1v1Url != nil{
-            aCoder.encodeObject(img1v1Url, forKey: "img1v1Url")
+            aCoder.encode(img1v1Url, forKey: "img1v1Url")
         }
         if musicSize != nil{
-            aCoder.encodeObject(musicSize, forKey: "musicSize")
+            aCoder.encode(musicSize, forKey: "musicSize")
         }
         if name != nil{
-            aCoder.encodeObject(name, forKey: "name")
+            aCoder.encode(name, forKey: "name")
         }
         if picId != nil{
-            aCoder.encodeObject(picId, forKey: "picId")
+            aCoder.encode(picId, forKey: "picId")
         }
         if picUrl != nil{
-            aCoder.encodeObject(picUrl, forKey: "picUrl")
+            aCoder.encode(picUrl, forKey: "picUrl")
         }
         if trans != nil{
-            aCoder.encodeObject(trans, forKey: "trans")
+            aCoder.encode(trans, forKey: "trans")
         }
         
     }
@@ -1450,7 +1450,7 @@ class Creator : NSObject, NSCoding{
         mutual = dictionary["mutual"] as? Bool
         nickname = dictionary["nickname"] as? String
         province = dictionary["province"] as? Int
-        remarkName = dictionary["remarkName"]
+        remarkName = dictionary["remarkName"] as? AnyObject
         signature = dictionary["signature"] as? String
         userId = dictionary["userId"] as? Int
         userType = dictionary["userType"] as? Int
@@ -1462,7 +1462,7 @@ class Creator : NSObject, NSCoding{
      */
     func toDictionary() -> NSDictionary
     {
-        var dictionary = NSMutableDictionary()
+        let dictionary = NSMutableDictionary()
         if accountStatus != nil{
             dictionary["accountStatus"] = accountStatus
         }
@@ -1544,30 +1544,30 @@ class Creator : NSObject, NSCoding{
      */
     @objc required init(coder aDecoder: NSCoder)
     {
-        accountStatus = aDecoder.decodeObjectForKey("accountStatus") as? Int
-        authStatus = aDecoder.decodeObjectForKey("authStatus") as? Int
-        authority = aDecoder.decodeObjectForKey("authority") as? Int
-        avatarImgId = aDecoder.decodeObjectForKey("avatarImgId") as? Int
-        avatarUrl = aDecoder.decodeObjectForKey("avatarUrl") as? String
-        backgroundImgId = aDecoder.decodeObjectForKey("backgroundImgId") as? Int
-        backgroundUrl = aDecoder.decodeObjectForKey("backgroundUrl") as? String
-        birthday = aDecoder.decodeObjectForKey("birthday") as? Int
-        city = aDecoder.decodeObjectForKey("city") as? Int
-        defaultAvatar = aDecoder.decodeObjectForKey("defaultAvatar") as? Bool
-        descriptionField = aDecoder.decodeObjectForKey("description") as? String
-        detailDescription = aDecoder.decodeObjectForKey("detailDescription") as? String
-        djStatus = aDecoder.decodeObjectForKey("djStatus") as? Int
-        expertTags = aDecoder.decodeObjectForKey("expertTags") as? [String]
-        followed = aDecoder.decodeObjectForKey("followed") as? Bool
-        gender = aDecoder.decodeObjectForKey("gender") as? Int
-        mutual = aDecoder.decodeObjectForKey("mutual") as? Bool
-        nickname = aDecoder.decodeObjectForKey("nickname") as? String
-        province = aDecoder.decodeObjectForKey("province") as? Int
-        remarkName = aDecoder.decodeObjectForKey("remarkName")
-        signature = aDecoder.decodeObjectForKey("signature") as? String
-        userId = aDecoder.decodeObjectForKey("userId") as? Int
-        userType = aDecoder.decodeObjectForKey("userType") as? Int
-        vipType = aDecoder.decodeObjectForKey("vipType") as? Int
+        accountStatus = aDecoder.decodeObject(forKey: "accountStatus") as? Int
+        authStatus = aDecoder.decodeObject(forKey: "authStatus") as? Int
+        authority = aDecoder.decodeObject(forKey: "authority") as? Int
+        avatarImgId = aDecoder.decodeObject(forKey: "avatarImgId") as? Int
+        avatarUrl = aDecoder.decodeObject(forKey: "avatarUrl") as? String
+        backgroundImgId = aDecoder.decodeObject(forKey: "backgroundImgId") as? Int
+        backgroundUrl = aDecoder.decodeObject(forKey: "backgroundUrl") as? String
+        birthday = aDecoder.decodeObject(forKey: "birthday") as? Int
+        city = aDecoder.decodeObject(forKey: "city") as? Int
+        defaultAvatar = aDecoder.decodeObject(forKey: "defaultAvatar") as? Bool
+        descriptionField = aDecoder.decodeObject(forKey: "description") as? String
+        detailDescription = aDecoder.decodeObject(forKey: "detailDescription") as? String
+        djStatus = aDecoder.decodeObject(forKey: "djStatus") as? Int
+        expertTags = aDecoder.decodeObject(forKey: "expertTags") as? [String]
+        followed = aDecoder.decodeObject(forKey: "followed") as? Bool
+        gender = aDecoder.decodeObject(forKey: "gender") as? Int
+        mutual = aDecoder.decodeObject(forKey: "mutual") as? Bool
+        nickname = aDecoder.decodeObject(forKey: "nickname") as? String
+        province = aDecoder.decodeObject(forKey: "province") as? Int
+        remarkName = aDecoder.decodeObject(forKey: "remarkName") as AnyObject?
+        signature = aDecoder.decodeObject(forKey: "signature") as? String
+        userId = aDecoder.decodeObject(forKey: "userId") as? Int
+        userType = aDecoder.decodeObject(forKey: "userType") as? Int
+        vipType = aDecoder.decodeObject(forKey: "vipType") as? Int
         
     }
     
@@ -1575,79 +1575,79 @@ class Creator : NSObject, NSCoding{
      * NSCoding required method.
      * Encodes mode properties into the decoder
      */
-    @objc func encodeWithCoder(aCoder: NSCoder)
+    @objc func encode(with aCoder: NSCoder)
     {
         if accountStatus != nil{
-            aCoder.encodeObject(accountStatus, forKey: "accountStatus")
+            aCoder.encode(accountStatus, forKey: "accountStatus")
         }
         if authStatus != nil{
-            aCoder.encodeObject(authStatus, forKey: "authStatus")
+            aCoder.encode(authStatus, forKey: "authStatus")
         }
         if authority != nil{
-            aCoder.encodeObject(authority, forKey: "authority")
+            aCoder.encode(authority, forKey: "authority")
         }
         if avatarImgId != nil{
-            aCoder.encodeObject(avatarImgId, forKey: "avatarImgId")
+            aCoder.encode(avatarImgId, forKey: "avatarImgId")
         }
         if avatarUrl != nil{
-            aCoder.encodeObject(avatarUrl, forKey: "avatarUrl")
+            aCoder.encode(avatarUrl, forKey: "avatarUrl")
         }
         if backgroundImgId != nil{
-            aCoder.encodeObject(backgroundImgId, forKey: "backgroundImgId")
+            aCoder.encode(backgroundImgId, forKey: "backgroundImgId")
         }
         if backgroundUrl != nil{
-            aCoder.encodeObject(backgroundUrl, forKey: "backgroundUrl")
+            aCoder.encode(backgroundUrl, forKey: "backgroundUrl")
         }
         if birthday != nil{
-            aCoder.encodeObject(birthday, forKey: "birthday")
+            aCoder.encode(birthday, forKey: "birthday")
         }
         if city != nil{
-            aCoder.encodeObject(city, forKey: "city")
+            aCoder.encode(city, forKey: "city")
         }
         if defaultAvatar != nil{
-            aCoder.encodeObject(defaultAvatar, forKey: "defaultAvatar")
+            aCoder.encode(defaultAvatar, forKey: "defaultAvatar")
         }
         if descriptionField != nil{
-            aCoder.encodeObject(descriptionField, forKey: "description")
+            aCoder.encode(descriptionField, forKey: "description")
         }
         if detailDescription != nil{
-            aCoder.encodeObject(detailDescription, forKey: "detailDescription")
+            aCoder.encode(detailDescription, forKey: "detailDescription")
         }
         if djStatus != nil{
-            aCoder.encodeObject(djStatus, forKey: "djStatus")
+            aCoder.encode(djStatus, forKey: "djStatus")
         }
         if expertTags != nil{
-            aCoder.encodeObject(expertTags, forKey: "expertTags")
+            aCoder.encode(expertTags, forKey: "expertTags")
         }
         if followed != nil{
-            aCoder.encodeObject(followed, forKey: "followed")
+            aCoder.encode(followed, forKey: "followed")
         }
         if gender != nil{
-            aCoder.encodeObject(gender, forKey: "gender")
+            aCoder.encode(gender, forKey: "gender")
         }
         if mutual != nil{
-            aCoder.encodeObject(mutual, forKey: "mutual")
+            aCoder.encode(mutual, forKey: "mutual")
         }
         if nickname != nil{
-            aCoder.encodeObject(nickname, forKey: "nickname")
+            aCoder.encode(nickname, forKey: "nickname")
         }
         if province != nil{
-            aCoder.encodeObject(province, forKey: "province")
+            aCoder.encode(province, forKey: "province")
         }
         if remarkName != nil{
-            aCoder.encodeObject(remarkName, forKey: "remarkName")
+            aCoder.encode(remarkName, forKey: "remarkName")
         }
         if signature != nil{
-            aCoder.encodeObject(signature, forKey: "signature")
+            aCoder.encode(signature, forKey: "signature")
         }
         if userId != nil{
-            aCoder.encodeObject(userId, forKey: "userId")
+            aCoder.encode(userId, forKey: "userId")
         }
         if userType != nil{
-            aCoder.encodeObject(userType, forKey: "userType")
+            aCoder.encode(userType, forKey: "userType")
         }
         if vipType != nil{
-            aCoder.encodeObject(vipType, forKey: "vipType")
+            aCoder.encode(vipType, forKey: "vipType")
         }
         
     }

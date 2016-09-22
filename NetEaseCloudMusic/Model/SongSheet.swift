@@ -15,25 +15,25 @@ class SongSheet: NSObject {
     var nickname = ""
     var playListID = ""
     
-    class func getFilePath() -> NSURL? {
-        if let dir = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .AllDomainsMask, true).first {
-            let path = NSURL(fileURLWithPath: dir).URLByAppendingPathComponent("SongSheet")
+    class func getFilePath() -> URL? {
+        if let dir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .allDomainsMask, true).first {
+            let path = URL(fileURLWithPath: dir).appendingPathComponent("SongSheet")
             return path;
         }
         return nil
     }
     
-    class func loadSongSheetData(completion:(data: [SongSheet]?, error: NSError?) -> Void) {
-        if NSUserDefaults.standardUserDefaults().boolForKey("SongSheetCache") {
-            let date = NSUserDefaults.standardUserDefaults().objectForKey("SongSheetCacheTime") as! NSDate
-            let dateDay = NSCalendar.currentCalendar().component(.Day, fromDate: date)
+    class func loadSongSheetData(_ completion:@escaping (_ data: [SongSheet]?, _ error: NSError?) -> Void) {
+        if UserDefaults.standard.bool(forKey: "SongSheetCache") {
+            let date = UserDefaults.standard.object(forKey: "SongSheetCacheTime") as! Date
+            let dateDay = (Calendar.current as NSCalendar).component(.day, from: date)
             
-            let currentDate = NSDate()
-            let currentDay = NSCalendar.currentCalendar().component(.Day, fromDate: currentDate)
+            let currentDate = Date()
+            let currentDay = (Calendar.current as NSCalendar).component(.day, from: currentDate)
             
             if dateDay == currentDay {
-                let data = try! NSString(contentsOfURL: getFilePath()!, encoding: NSUTF8StringEncoding)
-                completion(data: transfer(data as String), error: nil)
+                let data = try! NSString(contentsOf: getFilePath()!, encoding: String.Encoding.utf8.rawValue)
+                completion(transfer(data as String), nil)
                 return
             }
             
@@ -47,13 +47,13 @@ class SongSheet: NSObject {
                 do {
                     if data != nil {
                         do {
-                            try data?.writeToURL(getFilePath()!, atomically: false, encoding: NSUTF8StringEncoding)
+                            try data?.write(to: getFilePath()!, atomically: false, encoding: String.Encoding.utf8)
                         }
-                        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "SongSheetCache")
-                        NSUserDefaults.standardUserDefaults().setObject(NSDate(), forKey: "SongSheetCacheTime")
-                        NSUserDefaults.standardUserDefaults().synchronize()
+                        UserDefaults.standard.set(true, forKey: "SongSheetCache")
+                        UserDefaults.standard.set(Date(), forKey: "SongSheetCacheTime")
+                        UserDefaults.standard.synchronize()
                         let songSheets = transfer(data)
-                        completion(data: songSheets, error: nil)
+                        completion(songSheets, nil)
                     }
                 } catch let error as NSError {
                     print(error)
@@ -62,9 +62,9 @@ class SongSheet: NSObject {
         }
     }
     
-    class func transfer(data: String?) -> Array<SongSheet>? {
+    class func transfer(_ data: String?) -> Array<SongSheet>? {
         
-        let dict = try! NSJSONSerialization.JSONObjectWithData((data?.dataUsingEncoding(NSUTF8StringEncoding))!, options: []) as? [String:AnyObject]
+        let dict = try! JSONSerialization.jsonObject(with: (data?.data(using: String.Encoding.utf8))!, options: []) as? [String:AnyObject]
         let playLists = dict!["playlists"] as! Array< Dictionary<String, AnyObject> >
         var songSheets = [SongSheet]()
         for item in playLists {

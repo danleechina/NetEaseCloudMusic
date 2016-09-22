@@ -20,7 +20,7 @@ class AccountViewController: BaseViewController {
         didSet {
             tableView.delegate = self
             tableView.dataSource = self
-            tableView.backgroundColor = UIColor.clearColor()
+            tableView.backgroundColor = UIColor.clear
             tableView.showsVerticalScrollIndicator = false
             //avoid line separate happened everywhere
             tableView.tableFooterView = UIView()
@@ -45,7 +45,7 @@ class AccountViewController: BaseViewController {
     
     @IBOutlet weak var checkInButton: UIButton! {
         didSet {
-            checkInButton.layer.borderColor = FixedValue.mainRedColor.CGColor
+            checkInButton.layer.borderColor = FixedValue.mainRedColor.cgColor
             checkInButton.layer.borderWidth = 1.5
             checkInButton.layer.cornerRadius = 3
             checkInButton.contentEdgeInsets = UIEdgeInsetsMake(5, 10, 5, 10)
@@ -79,19 +79,19 @@ class AccountViewController: BaseViewController {
     
     
     
-    private var titleArray = [["我的消息"],
+    fileprivate var titleArray = [["我的消息"],
                               ["付费音乐包" , "积分商城" , "在线听歌免流量"],
                               ["设置" , "主题换肤" , "夜间模式" , "定时关闭" , "音乐闹钟" , "驾驶模式"],
                               ["分享网易云音乐", "关于"],
                               ["退出登录"]]
     
-    private var imageNameArray = [["first"],
+    fileprivate var imageNameArray = [["first"],
                                   ["second", "first", "second"],
                                   ["first", "second", "first", "second", "first", "second"],
                                   ["first", "second"],
                                   ["first"]]
     
-    private var actionArray:[[UIViewController.Type]] = [[MyMessageViewController.self,],
+    fileprivate var actionArray:[[UIViewController.Type]] = [[MyMessageViewController.self,],
                                            [PaidMusicViewController.self, PointMallViewController.self, OnlineFreePlayViewController.self,],
                                            [SettingViewController.self, ThemeSkinViewController.self, UIViewController.self, CountDownViewController.self, MusicAlarmViewController.self, DrivingModeViewController.self,],
                                            [UIViewController.self, AboutViewController.self,],
@@ -115,59 +115,59 @@ class AccountViewController: BaseViewController {
 }
 
 extension AccountViewController:UITableViewDelegate, UITableViewDataSource {
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = AccountTableViewCell.cellFor(tableView)
         
-        cell.titleText = titleArray[indexPath.section][indexPath.row]
-        cell.titleImage = UIImage.init(named: imageNameArray[indexPath.section][indexPath.row])
+        cell.titleText = titleArray[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row]
+        cell.titleImage = UIImage.init(named: imageNameArray[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row])
         
-        if indexPath.section == 0 {
+        if (indexPath as NSIndexPath).section == 0 {
             cell.number = 99
-        } else if indexPath.section == 1 && indexPath.row == 1 {
+        } else if (indexPath as NSIndexPath).section == 1 && (indexPath as NSIndexPath).row == 1 {
             cell.rightInfoText = "3积分"
-        } else if indexPath.section == 2 && indexPath.row == 1 {
+        } else if (indexPath as NSIndexPath).section == 2 && (indexPath as NSIndexPath).row == 1 {
             cell.rightInfoText = "官方红"
-        } else if indexPath.section == 2 && indexPath.row == 2 {
+        } else if (indexPath as NSIndexPath).section == 2 && (indexPath as NSIndexPath).row == 2 {
             cell.isOn = true
-        } else if indexPath.section == 4 && indexPath.row == 0 {
+        } else if (indexPath as NSIndexPath).section == 4 && (indexPath as NSIndexPath).row == 0 {
             cell.isLogin = true
-            cell.accessoryType = .None
+            cell.accessoryType = .none
         }
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        let vc = actionArray[indexPath.section][indexPath.row].init()
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let vc = actionArray[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row].init()
         if vc.superclass == BaseViewController.self {
             self.navigationController?.pushViewController(vc, animated: true)
         } else {
-            if indexPath.section == 2 && indexPath.row == 2 {
+            if (indexPath as NSIndexPath).section == 2 && (indexPath as NSIndexPath).row == 2 {
                 changeDayMode()
-            } else if indexPath.section == 3 && indexPath.row == 0 {
+            } else if (indexPath as NSIndexPath).section == 3 && (indexPath as NSIndexPath).row == 0 {
                 shareTheApp()
-            } else if indexPath.section == 4 && indexPath.row == 0 {
+            } else if (indexPath as NSIndexPath).section == 4 && (indexPath as NSIndexPath).row == 0 {
                 logout()
             }
         }
     }
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 10
     }
     
-    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         if section == 4 {
             return 10
         }
         return 0
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return titleArray[section].count
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return titleArray.count
     }
     

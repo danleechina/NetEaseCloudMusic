@@ -12,25 +12,25 @@ import SnapKit
 class BaseNavigationBar: UIView {
     var titleView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.clearColor()
+        view.backgroundColor = UIColor.clear
         return view
     }()
     
     var leftButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = UIColor.clearColor()
+        button.backgroundColor = UIColor.clear
         return button
     }()
     
     var rightButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = UIColor.clearColor()
+        button.backgroundColor = UIColor.clear
         return button
     }()
     
     var lineView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.2)
+        view.backgroundColor = UIColor.white.withAlphaComponent(0.2)
         return view
     }()
     

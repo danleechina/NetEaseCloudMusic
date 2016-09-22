@@ -10,45 +10,45 @@ import UIKit
 import AVFoundation
 
 enum PlayMode: Int {
-    case Repeat = 1
-    case Order = 2
-    case Cycle = 3
-    case Shuffle = 4
+    case `repeat` = 1
+    case order = 2
+    case cycle = 3
+    case shuffle = 4
     
     mutating func next() {
         switch self {
-        case .Repeat:
-            self = .Order
-        case .Order:
-            self = .Cycle
-        case .Cycle:
-            self = .Shuffle
-        case .Shuffle:
-            self = .Repeat
+        case .repeat:
+            self = .order
+        case .order:
+            self = .cycle
+        case .cycle:
+            self = .shuffle
+        case .shuffle:
+            self = .repeat
         }
     }
 }
 
 protocol PlaySongServiceDelegate: class {
-    func updateProgress(currentTime: Float64, durationTime: Float64)
+    func updateProgress(_ currentTime: Float64, durationTime: Float64)
     func didChangeSong()
 }
 
 
 class PlaySongService: NSObject {
     static let sharedInstance = PlaySongService()
-    private override init() {}
+    fileprivate override init() {}
     
     weak var delegate: PlaySongServiceDelegate?
     
-    var playMode = PlayMode.Order
+    var playMode = PlayMode.order
     var playLists: CertainSongSheet?
     
     var currentPlaySong: Int = 0
-    private var songPlayer: AVPlayer?
-    private var out_context = 0
-    private var playTimeObserver: AnyObject?
-    private var netease = NetworkMusicApi.shareInstance
+    fileprivate var songPlayer: AVPlayer?
+    fileprivate var out_context = 0
+    fileprivate var playTimeObserver: AnyObject?
+    fileprivate var netease = NetworkMusicApi.shareInstance
     
     // play next song
     func playNext() {
@@ -67,7 +67,7 @@ class PlaySongService: NSObject {
     }
     
     // play index'th song
-    func playCertainSong(index: Int) {
+    func playCertainSong(_ index: Int) {
         if index == currentPlaySong {
             startPlay()
             return
@@ -84,16 +84,16 @@ class PlaySongService: NSObject {
     }
     
     // play a song at a certain time point
-    func playStartPoint(percent: Float) {
+    func playStartPoint(_ percent: Float) {
         let timeScale = self.songPlayer?.currentItem?.asset.duration.timescale
         let targetTime = CMTimeMakeWithSeconds(Float64(percent) * CMTimeGetSeconds((self.songPlayer?.currentItem?.duration)!), timeScale!)
-        songPlayer?.seekToTime(targetTime)
+        songPlayer?.seek(to: targetTime)
     }
     
-    func playStartTime(timeValue: Float64) {
+    func playStartTime(_ timeValue: Float64) {
         let timeScale = self.songPlayer?.currentItem?.asset.duration.timescale
         let targetTime = CMTimeMakeWithSeconds(timeValue, timeScale!)
-        songPlayer?.seekToTime(targetTime)
+        songPlayer?.seek(to: targetTime)
     }
     
     func startPlay() {
@@ -107,38 +107,38 @@ class PlaySongService: NSObject {
         }
     }
     
-    private func playIt(urlString: String) -> Void {
+    fileprivate func playIt(_ urlString: String) -> Void {
         print("songurl=" + urlString)
-        let player = AVPlayer.init(URL: NSURL.init(string: urlString)!)
-        player.addObserver(self, forKeyPath: "status", options: NSKeyValueObservingOptions.New, context: &out_context)
+        let player = AVPlayer.init(url: URL.init(string: urlString)!)
+        player.addObserver(self, forKeyPath: "status", options: NSKeyValueObservingOptions.new, context: &out_context)
         
         if let songplayer = songPlayer {
             songplayer.removeObserver(self, forKeyPath: "status")
             // songPlayer can only be assign here
-            NSNotificationCenter.defaultCenter().removeObserver(self, name: AVPlayerItemDidPlayToEndTimeNotification, object: nil)
+            NotificationCenter.default.removeObserver(self, name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
             if playTimeObserver != nil {
                 songplayer.removeTimeObserver(playTimeObserver!)
                 playTimeObserver = nil
             }
         }
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(playerItemDidReachEnd(_:)), name: AVPlayerItemDidPlayToEndTimeNotification, object: player.currentItem)
+        NotificationCenter.default.addObserver(self, selector: #selector(playerItemDidReachEnd(_:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: player.currentItem)
         
         songPlayer = player
-        playTimeObserver = songPlayer?.addPeriodicTimeObserverForInterval(CMTimeMake(1, 1), queue: dispatch_get_main_queue(), usingBlock: { [unowned self] (time) in
+        playTimeObserver = songPlayer?.addPeriodicTimeObserver(forInterval: CMTimeMake(1, 1), queue: DispatchQueue.main, using: { [unowned self] (time) in
             let currentTime = CMTimeGetSeconds(time)
             let totalTime = CMTimeGetSeconds((self.songPlayer?.currentItem?.duration)!)
             self.delegate?.updateProgress(currentTime, durationTime: totalTime)
-        })
+        }) as AnyObject?
     }
     
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) -> Void {
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) -> Void {
         if context == &out_context {
             if let player = songPlayer {
                 switch player.status {
-                    case .Unknown:
+                    case .unknown:
                         print("status=unknown")
                         break
-                    case .ReadyToPlay:
+                    case .readyToPlay:
                         print("status=ReadyToPlay")
 //                        if player.currentItem?.duration.value <= 0 {
 //                            print("can not play this song")
@@ -146,7 +146,7 @@ class PlaySongService: NSObject {
 //                        }
                         player.play()
                         break
-                    case .Failed:
+                    case .failed:
                         print("status=Failed")
                         break
                 }
@@ -155,10 +155,10 @@ class PlaySongService: NSObject {
         }
     }
     
-    func playerItemDidReachEnd(notification: NSNotification) -> Void {
+    func playerItemDidReachEnd(_ notification: Notification) -> Void {
         print("playerItemDidReachEnd")
         if let playlists = playLists {
-            if currentPlaySong == playlists.tracks.count && playMode == PlayMode.Order {
+            if currentPlaySong == playlists.tracks.count && playMode == PlayMode.order {
                 return
             }
             playNext()
@@ -171,14 +171,14 @@ class PlaySongService: NSObject {
         if let playlists = playLists {
             nextIndex = currentPlaySong + 1
             if nextIndex == playlists.tracks.count {
-                if playMode == .Order {
+                if playMode == .order {
                     return nil
                 } else {
                     nextIndex = 0
                 }
             }
-            if playMode == .Shuffle {
-                nextIndex = random() % (playlists.tracks.count)
+            if playMode == .shuffle {
+                nextIndex = Int(arc4random()) % (playlists.tracks.count)
             }
         } else {
             return nil
@@ -193,8 +193,8 @@ class PlaySongService: NSObject {
             if prevIndex < 0 {
                 prevIndex = (playlists.tracks.count) - 1
             }
-            if playMode == .Shuffle {
-                prevIndex = random() % (playlists.tracks.count)
+            if playMode == .shuffle {
+                prevIndex = Int(arc4random()) % (playlists.tracks.count)
             }
         } else {
             return nil
@@ -202,7 +202,7 @@ class PlaySongService: NSObject {
         return getSongInfoWithIndex(prevIndex)
     }
     
-    func getCertainSongInfo(index: Int) -> SongInfo? {
+    func getCertainSongInfo(_ index: Int) -> SongInfo? {
         var certainIndex = index
         if let playlists = playLists {
             if certainIndex >= 0 && certainIndex < playlists.tracks.count {
@@ -222,7 +222,7 @@ class PlaySongService: NSObject {
         return getSongInfoWithIndex(currentPlaySong)
     }
     
-    func getSongInfoWithIndex(index: Int) -> SongInfo? {
+    func getSongInfoWithIndex(_ index: Int) -> SongInfo? {
         let songInfo = SongInfo()
         songInfo.picUrl = (playLists?.tracks[index].album.picUrl)!
         songInfo.blurPicUrl = (playLists?.tracks[index].album.blurPicUrl)!
@@ -235,9 +235,9 @@ class PlaySongService: NSObject {
         return songInfo
     }
     
-    func getSongLyric(complete: (songLyric: SongLyric?) -> Void) {
+    func getSongLyric(_ complete: @escaping (_ songLyric: SongLyric?) -> Void) {
         netease.songLyricWithSongID((getCurrentSongInfo()?.songID)!, complete: { (data, error) in
-            complete(songLyric: SongLyric.getSongLyricFromRawData(data))
+            complete(SongLyric.getSongLyricFromRawData(data))
         })
     }
     

@@ -19,21 +19,21 @@ class LyricTableView: UITableView {
     
     var songLyric: SongLyric? {
         didSet {
-            dispatch_async(dispatch_get_main_queue()) {
-                self.lyricStateLabel?.hidden = !((self.songLyric == nil) && !self.hidden)
+            DispatchQueue.main.async {
+                self.lyricStateLabel?.isHidden = !((self.songLyric == nil) && !self.isHidden)
                 self.reloadData()
-                if self.numberOfRowsInSection(0) <= 0 {
+                if self.numberOfRows(inSection: 0) <= 0 {
                     return
                 }
-                let indexPath = NSIndexPath.init(forRow: 0, inSection: 0)
-                self.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Middle, animated: true)
+                let indexPath = IndexPath.init(row: 0, section: 0)
+                self.scrollToRow(at: indexPath, at: .middle, animated: true)
             }
         }
     }
-    func changeLyricPoint(isHidden: Bool) {
-        lyricTimeLabel?.hidden = isHidden
-        lyricTimeImageView?.hidden = isHidden
-        lineView?.hidden = isHidden
+    func changeLyricPoint(_ isHidden: Bool) {
+        lyricTimeLabel?.isHidden = isHidden
+        lyricTimeImageView?.isHidden = isHidden
+        lineView?.isHidden = isHidden
     }
     
     func lyricTimeButtonTap() {
@@ -41,17 +41,17 @@ class LyricTableView: UITableView {
     
     func getMiddleRow() -> Int {
         var ans = 0
-        let currentMidY = CGRectGetMinY(self.bounds) + self.tableHeaderView!.bounds.size.height
+        let currentMidY = self.bounds.minY + self.tableHeaderView!.bounds.size.height
         if self.visibleCells.count > 0 {
-            for (idx, cell) in self.visibleCells.enumerate().reverse() {
-                let cellY = CGRectGetMinY(cell.frame)
+            for (idx, cell) in self.visibleCells.enumerated().reversed() {
+                let cellY = cell.frame.minY
                 ans = idx
                 if cellY < currentMidY {
                     break
                 }
             }
-            let indexPath = self.indexPathForCell(self.visibleCells[ans])
-            ans = indexPath!.row
+            let indexPath = self.indexPath(for: self.visibleCells[ans])
+            ans = (indexPath! as NSIndexPath).row
         }
         return ans
     }
@@ -62,74 +62,74 @@ class LyricTableView: UITableView {
 }
 
 extension LyricTableView: UITableViewDataSource, UITableViewDelegate {
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("LyricCell")
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCell(withIdentifier: "LyricCell")
         if cell == nil {
-            cell = UITableViewCell.init(style: .Default, reuseIdentifier: "LyricCell")
-            cell?.backgroundColor = UIColor.clearColor()
-            cell?.textLabel?.textAlignment = .Center
+            cell = UITableViewCell.init(style: .default, reuseIdentifier: "LyricCell")
+            cell?.backgroundColor = UIColor.clear
+            cell?.textLabel?.textAlignment = .center
             cell?.textLabel?.numberOfLines = 0
         }
-        cell?.textLabel?.textColor = UIColor.lightGrayColor()
-        cell?.textLabel?.text = songLyric?.lyricArray[indexPath.row]
+        cell?.textLabel?.textColor = UIColor.lightGray
+        cell?.textLabel?.text = songLyric?.lyricArray[(indexPath as NSIndexPath).row]
         return cell!
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let count = songLyric?.lyricArray.count {
             return count
         }
         return 0
     }
     
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        if let indexPath = self.indexPathForRowAtPoint(CGPointMake(0, CGRectGetMinY(self.bounds) + self.tableHeaderView!.bounds.height)) {
-            self.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Middle, animated: true)
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if let indexPath = self.indexPathForRow(at: CGPoint(x: 0, y: self.bounds.minY + self.tableHeaderView!.bounds.height)) {
+            self.scrollToRow(at: indexPath, at: .middle, animated: true)
         } else {
             if scrollView.contentOffset.y > 0 {
-                if self.numberOfRowsInSection(0) == 0 {
+                if self.numberOfRows(inSection: 0) == 0 {
                     return
                 }
-                let indexPath = NSIndexPath.init(forRow: self.numberOfRowsInSection(0) - 1, inSection: 0)
-                self.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Middle, animated: true)
+                let indexPath = IndexPath.init(row: self.numberOfRows(inSection: 0) - 1, section: 0)
+                self.scrollToRow(at: indexPath, at: .middle, animated: true)
             }
         }
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(2.5 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
-            if self.hidden || !self.dragging || !self.isUserDragging {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(2.5 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: {
+            if self.isHidden || !self.isDragging || !self.isUserDragging {
                 self.changeLyricPoint(true)
             }
         })
     }
     
-    func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView) {
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
 
     }
     
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if let lyric = self.songLyric {
             let ans = getMiddleRow()
             lyricTimeLabel?.text = SongLyric.getFormatTimeStringFromNumValue(lyric.lyricTimeArray[ans])
         }
     }
     
-    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if !decelerate {
-            if let indexPath = self.indexPathForRowAtPoint(CGPointMake(0, CGRectGetMinY(self.bounds) + self.tableHeaderView!.bounds.size.height)) {
-                self.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Middle, animated: true)
+            if let indexPath = self.indexPathForRow(at: CGPoint(x: 0, y: self.bounds.minY + self.tableHeaderView!.bounds.size.height)) {
+                self.scrollToRow(at: indexPath, at: .middle, animated: true)
             }
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(2.5 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
-                if self.hidden || !self.dragging || !self.isUserDragging{
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(2.5 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: {
+                if self.isHidden || !self.isDragging || !self.isUserDragging{
                     self.changeLyricPoint(true)
                 }
             })
         }
     }
     
-    func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         self.isUserDragging = false
     }
     
-    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         self.isUserDragging = true
         changeLyricPoint(false)
     }

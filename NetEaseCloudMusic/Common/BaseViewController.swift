@@ -11,12 +11,12 @@ import UIKit
 class BaseViewController: UIViewController {
     var needProgramInsertNavigationBar = true
     let navigationBar: BaseNavigationBar = {
-        let bar = BaseNavigationBar.init(frame: CGRectMake(0, 20, UIScreen.mainScreen().bounds.size.width, 44))
-        bar.backgroundColor = UIColor.clearColor()
+        let bar = BaseNavigationBar.init(frame: CGRect(x: 0, y: 20, width: UIScreen.main.bounds.size.width, height: 44))
+        bar.backgroundColor = UIColor.clear
         return bar
     }()
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
@@ -26,7 +26,7 @@ class BaseViewController: UIViewController {
     }
     
     func tapBackButton() {
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     func goPlaySongVC() {

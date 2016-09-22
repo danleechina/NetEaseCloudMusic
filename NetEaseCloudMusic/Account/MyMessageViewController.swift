@@ -10,66 +10,66 @@ import UIKit
 
 class MyMessageViewController: BaseViewController {
 
-    private lazy var segementView:HasInfoSegmentedControl = {
-       let segement = HasInfoSegmentedControl.init(frame: CGRectZero, numbers: [0, 100, 0, 0], items: ["@我的", "私信", "评论", "通知"])
-        segement.addTarget(self, action: #selector(segeementTouched), forControlEvents: .ValueChanged)
+    fileprivate lazy var segementView:HasInfoSegmentedControl = {
+       let segement = HasInfoSegmentedControl.init(frame: CGRect.zero, numbers: [0, 100, 0, 0], items: ["@我的", "私信", "评论", "通知"])
+        segement.addTarget(self, action: #selector(segeementTouched), for: .valueChanged)
         return segement
     }()
     
     //at我的
-    private lazy var atMineListTableView:AtMineListTableView = {
+    fileprivate lazy var atMineListTableView:AtMineListTableView = {
        let tableView = AtMineListTableView()
 //        tableView.delegate = self
 //        tableView.dataSource = self
-        tableView.hidden = true
-        tableView.backgroundColor = UIColor.clearColor()
+        tableView.isHidden = true
+        tableView.backgroundColor = UIColor.clear
         tableView.tableFooterView = UIView()
         return tableView
     }()
     
     //私信
-    private lazy var privateMessageListTableView:PrivateMessageListTableView = {
+    fileprivate lazy var privateMessageListTableView:PrivateMessageListTableView = {
         let tableView = PrivateMessageListTableView()
         tableView.delegate = self.privateMessageListDAD
         tableView.dataSource = self.privateMessageListDAD
-        tableView.hidden = true
-        tableView.backgroundColor = UIColor.clearColor()
+        tableView.isHidden = true
+        tableView.backgroundColor = UIColor.clear
         tableView.tableFooterView = UIView()
         return tableView
     }()
     
-    private lazy var privateMessageListDAD:PrivateMessageListDAD = {
+    fileprivate lazy var privateMessageListDAD:PrivateMessageListDAD = {
        let dad = PrivateMessageListDAD()
         return dad
     }()
     
     //评论
-    private lazy var commentListTableView:CommentListTableView = {
+    fileprivate lazy var commentListTableView:CommentListTableView = {
         let tableView = CommentListTableView()
         tableView.delegate = self.commentListDAD
         tableView.dataSource = self.commentListDAD
-        tableView.hidden = true
-        tableView.backgroundColor = UIColor.clearColor()
+        tableView.isHidden = true
+        tableView.backgroundColor = UIColor.clear
         tableView.tableFooterView = UIView()
-        tableView.registerNib(UINib.init(nibName: "CommentCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "CommentCell")
+        tableView.register(UINib.init(nibName: "CommentCell", bundle: Bundle.main), forCellReuseIdentifier: "CommentCell")
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 110
         tableView.allowsSelection = false
         return tableView
     }()
     
-    private lazy var commentListDAD:CommentListDAD = {
+    fileprivate lazy var commentListDAD:CommentListDAD = {
         let dad = CommentListDAD()
         return dad
     }()
     
     //通知
-    private lazy var notificationListTableView:NotificationListTableView = {
+    fileprivate lazy var notificationListTableView:NotificationListTableView = {
         let tableView = NotificationListTableView()
 //        tableView.delegate = self
 //        tableView.dataSource = self
-        tableView.hidden = true
-        tableView.backgroundColor = UIColor.clearColor()
+        tableView.isHidden = true
+        tableView.backgroundColor = UIColor.clear
         tableView.tableFooterView = UIView()
         return tableView
     }()
@@ -77,7 +77,7 @@ class MyMessageViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "我的消息"
-        self.view.backgroundColor = UIColor.whiteColor()
+        self.view.backgroundColor = UIColor.white
         self.view.addSubview(segementView)
         self.view.addSubview(atMineListTableView)
         self.view.addSubview(privateMessageListTableView)
@@ -85,7 +85,7 @@ class MyMessageViewController: BaseViewController {
         self.view.addSubview(notificationListTableView)
         
 //        segementView.selectedSegmentIndex = 1
-        privateMessageListTableView.hidden = false
+        privateMessageListTableView.isHidden = false
     }
     
     override func viewWillLayoutSubviews() {
@@ -127,31 +127,31 @@ class MyMessageViewController: BaseViewController {
         }
     }
     
-    func segeementTouched(sender: HasInfoSegmentedControl) -> Void {
+    func segeementTouched(_ sender: HasInfoSegmentedControl) -> Void {
         print(sender.currentSelectedIndex)
         if sender.currentSelectedIndex == 0 {
-            atMineListTableView.hidden = false
-            privateMessageListTableView.hidden = true
-            commentListTableView.hidden = true
-            notificationListTableView.hidden = true
+            atMineListTableView.isHidden = false
+            privateMessageListTableView.isHidden = true
+            commentListTableView.isHidden = true
+            notificationListTableView.isHidden = true
         } else if sender.currentSelectedIndex == 1 {
             
-            atMineListTableView.hidden = true
-            privateMessageListTableView.hidden = false
-            commentListTableView.hidden = true
-            notificationListTableView.hidden = true
+            atMineListTableView.isHidden = true
+            privateMessageListTableView.isHidden = false
+            commentListTableView.isHidden = true
+            notificationListTableView.isHidden = true
         } else if sender.currentSelectedIndex == 2 {
             
-            atMineListTableView.hidden = true
-            privateMessageListTableView.hidden = true
-            commentListTableView.hidden = false
-            notificationListTableView.hidden = true
+            atMineListTableView.isHidden = true
+            privateMessageListTableView.isHidden = true
+            commentListTableView.isHidden = false
+            notificationListTableView.isHidden = true
         } else if sender.currentSelectedIndex == 3 {
             
-            atMineListTableView.hidden = true
-            privateMessageListTableView.hidden = true
-            commentListTableView.hidden = true
-            notificationListTableView.hidden = false
+            atMineListTableView.isHidden = true
+            privateMessageListTableView.isHidden = true
+            commentListTableView.isHidden = true
+            notificationListTableView.isHidden = false
         }
     }
 

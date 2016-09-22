@@ -40,19 +40,19 @@ class HeadIconView: UIView {
     
     
 
-    private lazy var imageView: UIImageView = {
+    fileprivate lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         return imageView
     }()
     
     
-    private lazy var roundNumberLabel: RoundNumberLabel = {
+    fileprivate lazy var roundNumberLabel: RoundNumberLabel = {
        let label = RoundNumberLabel()
         return label
     }()
     
     
-    private lazy var rankRoundLabel: RankRoundLabel = {
+    fileprivate lazy var rankRoundLabel: RankRoundLabel = {
         let label = RankRoundLabel()
         return label
     }()

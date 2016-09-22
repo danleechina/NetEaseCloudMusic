@@ -41,13 +41,13 @@ class SongLyric: NSObject {
     }()
     
     
-    class func getSongLyricFromRawData(data: String?) -> SongLyric? {
+    class func getSongLyricFromRawData(_ data: String?) -> SongLyric? {
         let lyric = SongLyric()
         
         do {
             if data != nil {
                 
-                let dict = try NSJSONSerialization.JSONObjectWithData((data?.dataUsingEncoding(NSUTF8StringEncoding))!, options: []) as? [String:AnyObject]
+                let dict = try JSONSerialization.jsonObject(with: (data?.data(using: String.Encoding.utf8))!, options: []) as? [String:AnyObject]
                 if ((dict!["uncollected"]?.boolValue) != nil)  {
                     return nil
                 }
@@ -93,41 +93,44 @@ class SongLyric: NSObject {
         return (retTime, retLyric)
     }
     
-    func seperateFormatData(str: String) -> (Array<String>, Array<String>) {
+    func seperateFormatData(_ str: String) -> (Array<String>, Array<String>) {
         var retTime = Array<String>()
         var retLyric = Array<String>()
         
         var startIndex = str.startIndex
         
-        let resultStart = str.rangeOfString("[", options: .LiteralSearch, range: Range(startIndex ..< str.endIndex), locale: nil)
+        let resultStart = str.range(of: "[", options: .literal, range: Range(startIndex ..< str.endIndex), locale: nil)
         if resultStart == nil {
             retLyric.append(str)
             retTime.append("00:00.000")
             return (retTime, retLyric)
         }
         while startIndex != str.endIndex {
-            let resultStart = str.rangeOfString("[", options: .LiteralSearch, range: Range(startIndex ..< str.endIndex), locale: nil)
-            let resultEnd = str.rangeOfString("]", options: .LiteralSearch, range: Range(startIndex ..< str.endIndex), locale: nil)
-            let timeStr = str.substringWithRange(Range((resultStart?.startIndex.advancedBy(1))! ..< (resultEnd?.startIndex)!))
+            let resultStart = str.range(of: "[", options: .literal, range: Range(startIndex ..< str.endIndex), locale: nil)
+            let resultEnd = str.range(of: "]", options: .literal, range: Range(startIndex ..< str.endIndex), locale: nil)
+            let timeStr = str.substring(with: Range((str.index((resultStart?.lowerBound)!, offsetBy: 1)) ..< (resultEnd?.lowerBound)!))
             
-            let lyricResultStart = resultEnd?.startIndex.advancedBy(1)
-            var lyricResultEnd = str.rangeOfString("[", options: .LiteralSearch, range: Range((resultEnd?.startIndex)! ..< str.endIndex), locale: nil)?.startIndex.advancedBy(-1)
-            if lyricResultEnd == nil {
-                lyricResultEnd = str.endIndex.advancedBy(-1)
+            let lyricResultStart = str.characters.index((resultEnd?.lowerBound)!, offsetBy: 1)
+            let range = (str.range(of: "[", options: .literal, range: Range((resultEnd?.lowerBound)! ..< str.endIndex), locale: nil)?.lowerBound)
+            var lyricResultEnd:String.Index?
+            if let nrange = range {
+                lyricResultEnd = str.index(nrange, offsetBy: -1)
+            } else {
+                lyricResultEnd = str.characters.index(str.endIndex, offsetBy: -1)
             }
             var lyricStr = ""
-            if lyricResultStart! < lyricResultEnd! {
-                lyricStr = str.substringWithRange(Range(lyricResultStart! ..< lyricResultEnd!))
+            if lyricResultStart < lyricResultEnd! {
+                lyricStr = str.substring(with: Range(lyricResultStart ..< lyricResultEnd!))
             }
             
             retTime.append(timeStr)
             retLyric.append(lyricStr)
-            startIndex = (lyricResultEnd?.advancedBy(1))!
+            startIndex = str.characters.index(lyricResultEnd!, offsetBy: 1)
         }
         return (retTime, retLyric)
     }
     
-    func getNumValueFromFormatTimeStringArray(strArray: Array<String>) -> Array<Float64> {
+    func getNumValueFromFormatTimeStringArray(_ strArray: Array<String>) -> Array<Float64> {
         var ret = Array<Float64>()
         for str in strArray {
             ret.append(SongLyric.getNumValueFromFormatTimeString(str))
@@ -135,11 +138,11 @@ class SongLyric: NSObject {
         return ret
     }
     
-    class func getNumValueFromFormatTimeString(str: String) -> Float64 {
+    class func getNumValueFromFormatTimeString(_ str: String) -> Float64 {
         let startIndex = str.startIndex
-        let endIndex = str.endIndex.advancedBy(-1, limit: startIndex)
-        let minStr = str.substringToIndex(startIndex.advancedBy(2, limit: endIndex))
-        let secStr = str.substringFromIndex(startIndex.advancedBy(3, limit: endIndex))
+        let endIndex = str.characters.index(str.endIndex, offsetBy: -1, limitedBy: startIndex)
+        let minStr = str.substring(to: str.index(startIndex, offsetBy: 2, limitedBy: endIndex!)!)
+        let secStr = str.substring(from: str.index(startIndex, offsetBy: 3, limitedBy: endIndex!)!)
         if let minValue = Float64(minStr), let secValue = Float64(secStr){
             return minValue * 60 + secValue
         }
@@ -147,7 +150,7 @@ class SongLyric: NSObject {
     }
     
     
-    class func getFormatTimeStringFromNumValue(val: Float64) -> String {
+    class func getFormatTimeStringFromNumValue(_ val: Float64) -> String {
         if val.isNaN {
             return "00:00"
         }

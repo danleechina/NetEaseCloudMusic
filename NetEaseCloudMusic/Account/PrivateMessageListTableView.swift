@@ -16,18 +16,18 @@ class PrivateMessageListDAD: NSObject, UITableViewDelegate, UITableViewDataSourc
     var models:Array<PrivateMessageModel> = [PrivateMessageModel]()
     
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = PrivateMessageCell.cellFor(tableView)
         cell.model = PrivateMessageModel.dictToModel(nil)
         return cell
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 //        return models.count
         return 20
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
     }
     
@@ -44,34 +44,34 @@ class PrivateMessageCell: BaseTableViewCell {
     }
     
     
-    private lazy var headIconView:HeadIconView = {
-        let headIconView = HeadIconView.init(frame: CGRectZero, headImageName: "second", number: 1, rank: "V")
+    fileprivate lazy var headIconView:HeadIconView = {
+        let headIconView = HeadIconView.init(frame: CGRect.zero, headImageName: "second", number: 1, rank: "V")
         return headIconView
     }()
     
-    private lazy var nickNameLabel:UILabel = {
+    fileprivate lazy var nickNameLabel:UILabel = {
         let label = UILabel()
-        label.textColor = UIColor.blackColor()
+        label.textColor = UIColor.black
         return label
     }()
     
-    private lazy var messageLabel:UILabel = {
+    fileprivate lazy var messageLabel:UILabel = {
         let label = UILabel()
-        label.textColor = UIColor.grayColor()
+        label.textColor = UIColor.gray
         return label
     }()
     
-    private lazy var timeLabel:UILabel = {
+    fileprivate lazy var timeLabel:UILabel = {
         let label = UILabel()
-        label.textColor = UIColor.grayColor()
+        label.textColor = UIColor.gray
         return label
     }()
     
     
-    static func cellFor(table: UITableView) -> PrivateMessageCell {
-        var cell = table.dequeueReusableCellWithIdentifier(reuseIdentifier) as? PrivateMessageCell
+    static func cellFor(_ table: UITableView) -> PrivateMessageCell {
+        var cell = table.dequeueReusableCell(withIdentifier: reuseIdentifier) as? PrivateMessageCell
         if cell == nil {
-            cell = PrivateMessageCell.init(style: .Default, reuseIdentifier: reuseIdentifier)
+            cell = PrivateMessageCell.init(style: .default, reuseIdentifier: reuseIdentifier)
         }
         return cell!
     }
@@ -83,9 +83,9 @@ class PrivateMessageCell: BaseTableViewCell {
         messageLabel.text = model.message
         model.rankStr = "V"
         //TODO: 日期处理
-        let dateformatter = NSDateFormatter()
+        let dateformatter = DateFormatter()
         dateformatter.dateFormat = "mm dd"
-        timeLabel.text = dateformatter .stringFromDate(model.time)
+        timeLabel.text = dateformatter .string(from: model.time)
     }
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -139,10 +139,10 @@ class PrivateMessageModel: NSObject {
     var message = ""
     var number = 0
     var rankStr = "V"
-    var time = NSDate()
+    var time = Date()
     
     
-    static func dictToModel(dict: Dictionary<String, String>?) -> PrivateMessageModel {
+    static func dictToModel(_ dict: Dictionary<String, String>?) -> PrivateMessageModel {
         let model = PrivateMessageModel()
         if dict == nil {
             model.iconName = "first"
@@ -150,7 +150,7 @@ class PrivateMessageModel: NSObject {
             model.message = "hello from me"
             model.number = 2
             model.rankStr = "V"
-            model.time = NSDate()
+            model.time = Date()
         } else {
             //TODO：数据处理
         }

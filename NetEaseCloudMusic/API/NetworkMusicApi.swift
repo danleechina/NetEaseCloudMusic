@@ -10,14 +10,14 @@ import Foundation
 
 class NetworkMusicApi: NSObject {
     static let shareInstance = NetworkMusicApi()
-    private override init() {}
+    fileprivate override init() {}
     
-    let defaultSession = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
-    var dataTask: NSURLSessionDataTask? = nil
-    func doHttpRequest(method: String, url: String, data: Dictionary<String, String>?, complete: (data: String?, error: NSError?) -> Void) -> Void {
+    let defaultSession = URLSession(configuration: URLSessionConfiguration.default)
+    var dataTask: URLSessionDataTask? = nil
+    func doHttpRequest(_ method: String, url: String, data: Dictionary<String, String>?, complete: @escaping (_ data: String?, _ error: NSError?) -> Void) -> Void {
         //
         let request = NSMutableURLRequest.init()
-        request.URL = NSURL.init(string: url)
+        request.url = URL.init(string: url)
         request.setValue("*/*", forHTTPHeaderField: "Accept")
         request.setValue("gzip,deflate,sdch", forHTTPHeaderField: "Accept-Encoding")
         request.setValue("zh-CN,zh;q=0.8,gl;q=0.6,zh-TW;q=0.4", forHTTPHeaderField: "Accept-Language")
@@ -27,7 +27,7 @@ class NetworkMusicApi: NSObject {
         request.setValue("http://music.163.com/search/", forHTTPHeaderField: "Referer")
         request.setValue("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.152 Safari/537.36", forHTTPHeaderField: "User-Agent")
         request.timeoutInterval = 10
-        request.HTTPMethod = method
+        request.httpMethod = method
 
         if method == "POST" {
 //            let newdata = "username=349604757@qq.com&password=1d44443dc866fc6a79bda75a89807354&rememberLogin=true"
@@ -35,18 +35,18 @@ class NetworkMusicApi: NSObject {
 //            let length = newdata.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)
 //            request.HTTPBody = nnd
 //            request.setValue("\(length)", forHTTPHeaderField: "Content-Length")
-            dataTask = defaultSession.dataTaskWithRequest(request, completionHandler: { (data, response, error) in
+            dataTask = defaultSession.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) in
             })
         } else if method == "GET" {
-            dataTask = defaultSession.dataTaskWithRequest(request, completionHandler: { (data, response, error) in
+            dataTask = defaultSession.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) in
                 if let err = error {
-                    complete(data: nil, error: err)
-                } else if let httpResponse = response as? NSHTTPURLResponse {
+                    complete(nil, err as NSError?)
+                } else if let httpResponse = response as? HTTPURLResponse {
                     if httpResponse.statusCode == 200 {
-                        let decodedString = NSString(data: data!, encoding: NSUTF8StringEncoding)
-                        complete(data: decodedString as? String, error: nil)
+                        let decodedString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+                        complete(decodedString as? String, nil)
                     } else {
-                        complete(data: nil, error: nil)
+                        complete(nil, nil)
                     }
                 }
             })
@@ -56,7 +56,7 @@ class NetworkMusicApi: NSObject {
     
     
     // 登录
-    func login(userName: String, password: String) -> Void {
+    func login(_ userName: String, password: String) -> Void {
         // http://music.163.com/api/login/
 //        let md5Password = md5(string: password)
 //        let urlStr = "http://music.163.com/api/login/"
@@ -83,18 +83,18 @@ class NetworkMusicApi: NSObject {
     
     
     // 歌单（网友精选碟） hot||new http://music.163.com/#/discover/playlist/
-    func top_playlists(complete: (data: String?, error: NSError?) -> Void) -> Void {
+    func top_playlists(_ complete: @escaping (_ data: String?, _ error: NSError?) -> Void) -> Void {
         // action = 'http://music.163.com/api/playlist/list?cat=' + category + '&order=' + order + '&offset=' + str(offset) + '&total=' + ('true' if offset else 'false') + '&limit=' + str(limit)
         let action = "http://music.163.com/api/playlist/list?cat=全部&order=hot&offset=0&total=false&limit=50"
-        let escapedAddress = action.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
+        let escapedAddress = action.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
         doHttpRequest("GET", url: escapedAddress!, data: nil, complete: complete)
     }
     
     
     // 歌单详情
-    func playlist_detail(playListID: String, complete: (data: String?, error: NSError?) -> Void) -> Void {
+    func playlist_detail(_ playListID: String, complete: @escaping (_ data: String?, _ error: NSError?) -> Void) -> Void {
         let action = "http://music.163.com/api/playlist/detail?id=" + playListID
-        let escapedAddress = action.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
+        let escapedAddress = action.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
         doHttpRequest("GET", url: escapedAddress!, data: nil, complete: complete)
         
     }
@@ -153,17 +153,17 @@ class NetworkMusicApi: NSObject {
     }
     
     // 根据歌曲ID获取歌词
-    func songLyricWithSongID(songId: Int, complete: (data: String?, error: NSError?) -> Void) -> Void {
+    func songLyricWithSongID(_ songId: Int, complete: @escaping (_ data: String?, _ error: NSError?) -> Void) -> Void {
         
         let action = "http://music.163.com/api/song/lyric?os=osx&id=\(songId)&lv=-1&kv=-1&tv=-1"
         doHttpRequest("GET", url: action, data: nil, complete: complete)
 
     }
     
-    func md5(string string: String) -> String {
-        var digest = [UInt8](count: Int(CC_MD5_DIGEST_LENGTH), repeatedValue: 0)
-        if let data = string.dataUsingEncoding(NSUTF8StringEncoding) {
-            CC_MD5(data.bytes, CC_LONG(data.length), &digest)
+    func md5(string: String) -> String {
+        var digest = [UInt8](repeating: 0, count: Int(CC_MD5_DIGEST_LENGTH))
+        if let data = string.data(using: String.Encoding.utf8) {
+            CC_MD5((data as NSData).bytes, CC_LONG(data.count), &digest)
         }
         
         var digestHex = ""

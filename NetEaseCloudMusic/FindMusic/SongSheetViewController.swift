@@ -10,28 +10,28 @@ import UIKit
 import SDWebImage
 
 class SongSheetViewController: BaseViewController {
-    private var collectData = [SongSheet]() {
+    fileprivate var collectData = [SongSheet]() {
         didSet {
             collectionView.reloadData()
         }
     }
-    private lazy var collectionView: UICollectionView = {
+    fileprivate lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView.init(frame: self.view.bounds, collectionViewLayout: self.collectionViewFlowLayout)
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.backgroundColor = UIColor.clearColor()
+        collectionView.backgroundColor = UIColor.clear
         let contentInsetValue: CGFloat = 10
         collectionView.contentInset = UIEdgeInsetsMake(contentInsetValue, contentInsetValue, contentInsetValue, contentInsetValue)
-        collectionView.registerClass(SongSheetCollectionViewCell.self, forCellWithReuseIdentifier:SongSheetCollectionViewCell.identifier)
-        collectionView.registerClass(UICollectionReusableView.self, forSupplementaryViewOfKind:UICollectionElementKindSectionHeader, withReuseIdentifier:SongSheetCollectionViewCell.identifier)
+        collectionView.register(SongSheetCollectionViewCell.self, forCellWithReuseIdentifier:SongSheetCollectionViewCell.identifier)
+        collectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind:UICollectionElementKindSectionHeader, withReuseIdentifier:SongSheetCollectionViewCell.identifier)
         return collectionView
     }()
     
-    private lazy var collectionViewFlowLayout: UICollectionViewFlowLayout = {
+    fileprivate lazy var collectionViewFlowLayout: UICollectionViewFlowLayout = {
        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .Vertical
-        layout.headerReferenceSize = CGSizeMake(CGRectGetWidth(self.view.frame), 100)
-        layout.itemSize = CGSizeMake(145, 170)
+        layout.scrollDirection = .vertical
+        layout.headerReferenceSize = CGSize(width: self.view.frame.width, height: 100)
+        layout.itemSize = CGSize(width: 145, height: 170)
         layout.minimumLineSpacing = 2
         layout.sectionInset = UIEdgeInsetsMake(2, 0, 5, 0)
         return layout
@@ -39,7 +39,7 @@ class SongSheetViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.whiteColor()
+        view.backgroundColor = UIColor.white
         view.addSubview(self.collectionView)
         
         SongSheet.loadSongSheetData { (data, error) in
@@ -55,27 +55,27 @@ class SongSheetViewController: BaseViewController {
 extension SongSheetViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     // MARK: - DataSource
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return collectData.count
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(SongSheetCollectionViewCell.identifier, forIndexPath: indexPath) as! SongSheetCollectionViewCell
-        cell.modelData = collectData[indexPath.row]
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SongSheetCollectionViewCell.identifier, for: indexPath) as! SongSheetCollectionViewCell
+        cell.modelData = collectData[(indexPath as NSIndexPath).row]
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-        let view = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: SongSheetCollectionViewCell.identifier, forIndexPath: indexPath)
-        view.backgroundColor = UIColor.lightGrayColor()
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SongSheetCollectionViewCell.identifier, for: indexPath)
+        view.backgroundColor = UIColor.lightGray
         return view
     }
     
     // MARK: - Delegate
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = CertainSongSheetViewController()
-        vc.playListID = self.collectData[indexPath.row].playListID
+        vc.playListID = self.collectData[(indexPath as NSIndexPath).row].playListID
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -93,7 +93,7 @@ class SongSheetCollectionViewCell: UICollectionViewCell {
                 titleLabel.text = modelData!.name
                 imageContentView.authorLabel.text = modelData!.nickname
                 imageContentView.subscribeLabel.text = "\(modelData!.subscribedCount)"
-                imageContentView.imageView.sd_setImageWithURL(NSURL.init(string: self.modelData!.coverImgUrl)!)
+                imageContentView.imageView.sd_setImage(with: URL.init(string: self.modelData!.coverImgUrl)!)
             } else {
                 imageContentView.authorLabel.text = nil
                 imageContentView.subscribeLabel.text = nil
@@ -102,17 +102,17 @@ class SongSheetCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    private lazy var titleLabel: UILabel = {
+    fileprivate lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.preferredMaxLayoutWidth = 145
         label.text = "this is title"
-        label.textAlignment = .Center
-        label.font = UIFont.systemFontOfSize(13)
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 13)
         label.numberOfLines = 0
         return label
     }()
     
-    private lazy var imageContentView: CertainSongSheetHeadImage = {
+    fileprivate lazy var imageContentView: CertainSongSheetHeadImage = {
         let view = CertainSongSheetHeadImage()
         return view
     }()
@@ -123,7 +123,7 @@ class SongSheetCollectionViewCell: UICollectionViewCell {
         
         addSubview(titleLabel)
         addSubview(imageContentView)
-        imageContentView.backgroundColor = UIColor.lightGrayColor()
+        imageContentView.backgroundColor = UIColor.lightGray
         
     }
     
@@ -162,8 +162,8 @@ class CertainSongSheetHeadImage: UIView {
     lazy var authorLabel: UILabel = {
         let label = UILabel()
         label.text = "Dan Lee"
-        label.font = UIFont.systemFontOfSize(12)
-        label.textColor = UIColor.whiteColor()
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.textColor = UIColor.white
         return label
     }()
     
@@ -175,8 +175,8 @@ class CertainSongSheetHeadImage: UIView {
     lazy var subscribeLabel: UILabel = {
         let label = UILabel()
         label.text = "1234567"
-        label.font = UIFont.systemFontOfSize(12)
-        label.textColor = UIColor.whiteColor()
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.textColor = UIColor.white
         return label
     }()
     
@@ -188,13 +188,13 @@ class CertainSongSheetHeadImage: UIView {
     
     lazy var topMaskView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.3)
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.3)
         return view
     }()
     
     lazy var bottomMaskView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.3)
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.3)
         return view
     }()
     

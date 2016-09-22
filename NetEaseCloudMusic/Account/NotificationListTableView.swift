@@ -18,10 +18,10 @@ class NotificationListTableView: BaseTableView {
 class NotificationCell: BaseTableViewCell {
     
     static let reuseIdentifier = "NotificationCell"
-    static func cellFor(table: UITableView) -> NotificationCell {
-        var cell = table.dequeueReusableCellWithIdentifier(reuseIdentifier) as? NotificationCell
+    static func cellFor(_ table: UITableView) -> NotificationCell {
+        var cell = table.dequeueReusableCell(withIdentifier: reuseIdentifier) as? NotificationCell
         if cell == nil {
-            cell = NotificationCell.init(style: .Default, reuseIdentifier: reuseIdentifier)
+            cell = NotificationCell.init(style: .default, reuseIdentifier: reuseIdentifier)
         }
         return cell!
     }

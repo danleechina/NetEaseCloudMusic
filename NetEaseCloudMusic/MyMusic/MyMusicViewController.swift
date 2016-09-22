@@ -12,7 +12,7 @@ class MyMusicViewController: BaseViewController {
     var mySongSheet: [[MyMusicModel]] = [[MyMusicModel]]()
     
     
-    private lazy var tableView:UITableView = {
+    fileprivate lazy var tableView:UITableView = {
        let tableView = UITableView()
         tableView.delegate = self
         tableView.dataSource = self
@@ -28,24 +28,24 @@ class MyMusicViewController: BaseViewController {
 
 
 extension MyMusicViewController:UITableViewDelegate, UITableViewDataSource {
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return UITableViewCell()
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return mySongSheet[section].count
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return mySongSheet.count
     }
     
 
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 10
     }
     
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let label = UILabel()
         if section == 1 {
             label.text = "我创建的歌单(\(mySongSheet[0].count))"
@@ -69,7 +69,7 @@ class MyMusicModel: NSObject {
     var downloadedSongs: String?
     var authorID: String?
     
-    class func dictToModel(data: Dictionary<String, String>?) -> MyMusicModel {
+    class func dictToModel(_ data: Dictionary<String, String>?) -> MyMusicModel {
         let model = MyMusicModel()
         if let dict = data {
             model.titleImage = UIImage.init(named: dict["titleImage"] ?? "first")
