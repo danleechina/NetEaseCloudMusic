@@ -166,30 +166,30 @@ class AccountTableViewCell: BaseTableViewCell {
         roundNumberLabel.sizeToFit()
         rightInfoLabel.sizeToFit()
         
-        titleImageView.snp_makeConstraints { (make) in
-            make.left.equalTo(self.snp_left).offset(10)
-            make.centerY.equalTo(self.snp_centerY)
+        titleImageView.snp.makeConstraints { (make) in
+            make.left.equalTo(self.snp.left).offset(10)
+            make.centerY.equalTo(self.snp.centerY)
         }
         
-        titleLabel.snp_makeConstraints { (make) in
-            make.left.equalTo(titleImageView.snp_right).offset(10)
-            make.centerY.equalTo(self.snp_centerY)
+        titleLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(titleImageView.snp.right).offset(10)
+            make.centerY.equalTo(self.snp.centerY)
         }
         
-        roundNumberLabel.snp_makeConstraints { (make) in
-            make.right.equalTo(self.contentView.snp_right).offset(-5)
-            make.centerY.equalTo(self.snp_centerY)
+        roundNumberLabel.snp.makeConstraints { (make) in
+            make.right.equalTo(self.contentView.snp.right).offset(-5)
+            make.centerY.equalTo(self.snp.centerY)
         }
         
-        rightInfoLabel.snp_makeConstraints { (make) in
-            make.right.equalTo(self.contentView.snp_right).offset(-5)
-            make.centerY.equalTo(self.snp_centerY)
+        rightInfoLabel.snp.makeConstraints { (make) in
+            make.right.equalTo(self.contentView.snp.right).offset(-5)
+            make.centerY.equalTo(self.snp.centerY)
         }
         
-        logoutLabel.snp_makeConstraints { (make) in
-            make.center.equalTo(self.snp_center)
-            make.width.equalTo(self.snp_width)
-            make.height.equalTo(self.snp_height)
+        logoutLabel.snp.makeConstraints { (make) in
+            make.center.equalTo(self.snp.center)
+            make.width.equalTo(self.snp.width)
+            make.height.equalTo(self.snp.height)
         }
     }
     

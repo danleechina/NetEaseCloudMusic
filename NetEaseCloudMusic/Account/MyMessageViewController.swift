@@ -91,39 +91,39 @@ class MyMessageViewController: BaseViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
-        segementView.snp_makeConstraints { (make) in
-            make.left.equalTo(self.view.snp_left).offset(FixedValue.defaultMargin)
-            make.right.equalTo(self.view.snp_right).offset(-FixedValue.defaultMargin)
+        segementView.snp.makeConstraints { (make) in
+            make.left.equalTo(self.view.snp.left).offset(FixedValue.defaultMargin)
+            make.right.equalTo(self.view.snp.right).offset(-FixedValue.defaultMargin)
             make.height.equalTo(FixedValue.segementHeight)
-            make.top.equalTo(self.view.snp_top).offset(64.0 + FixedValue.defaultMargin)
+            make.top.equalTo(self.view.snp.top).offset(64.0 + FixedValue.defaultMargin)
         }
         
-        atMineListTableView.snp_makeConstraints { (make) in
-            make.left.equalTo(self.view.snp_left)
-            make.right.equalTo(self.view.snp_right)
-            make.top.equalTo(segementView.snp_bottom).offset(FixedValue.defaultMargin * 2)
-            make.bottom.equalTo(self.view.snp_bottom).offset(-44)
+        atMineListTableView.snp.makeConstraints { (make) in
+            make.left.equalTo(self.view.snp.left)
+            make.right.equalTo(self.view.snp.right)
+            make.top.equalTo(segementView.snp.bottom).offset(FixedValue.defaultMargin * 2)
+            make.bottom.equalTo(self.view.snp.bottom).offset(-44)
         }
         
-        privateMessageListTableView.snp_makeConstraints { (make) in
-            make.left.equalTo(self.view.snp_left)
-            make.right.equalTo(self.view.snp_right)
-            make.top.equalTo(segementView.snp_bottom).offset(FixedValue.defaultMargin * 2)
-            make.bottom.equalTo(self.view.snp_bottom).offset(-44)
+        privateMessageListTableView.snp.makeConstraints { (make) in
+            make.left.equalTo(self.view.snp.left)
+            make.right.equalTo(self.view.snp.right)
+            make.top.equalTo(segementView.snp.bottom).offset(FixedValue.defaultMargin * 2)
+            make.bottom.equalTo(self.view.snp.bottom).offset(-44)
         }
         
-        commentListTableView.snp_makeConstraints { (make) in
-            make.left.equalTo(self.view.snp_left)
-            make.right.equalTo(self.view.snp_right)
-            make.top.equalTo(segementView.snp_bottom).offset(FixedValue.defaultMargin * 2)
-            make.bottom.equalTo(self.view.snp_bottom).offset(-44)
+        commentListTableView.snp.makeConstraints { (make) in
+            make.left.equalTo(self.view.snp.left)
+            make.right.equalTo(self.view.snp.right)
+            make.top.equalTo(segementView.snp.bottom).offset(FixedValue.defaultMargin * 2)
+            make.bottom.equalTo(self.view.snp.bottom).offset(-44)
         }
         
-        notificationListTableView.snp_makeConstraints { (make) in
-            make.left.equalTo(self.view.snp_left)
-            make.right.equalTo(self.view.snp_right)
-            make.top.equalTo(segementView.snp_bottom).offset(FixedValue.defaultMargin * 2)
-            make.bottom.equalTo(self.view.snp_bottom).offset(-44)
+        notificationListTableView.snp.makeConstraints { (make) in
+            make.left.equalTo(self.view.snp.left)
+            make.right.equalTo(self.view.snp.right)
+            make.top.equalTo(segementView.snp.bottom).offset(FixedValue.defaultMargin * 2)
+            make.bottom.equalTo(self.view.snp.bottom).offset(-44)
         }
     }
     

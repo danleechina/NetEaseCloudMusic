@@ -135,12 +135,12 @@ class SongSheetCollectionViewCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        titleLabel.snp_makeConstraints { (make) in
-            make.top.equalTo(imageContentView.snp_bottom)
-            make.centerX.equalTo(imageContentView.snp_centerX)
+        titleLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(imageContentView.snp.bottom)
+            make.centerX.equalTo(imageContentView.snp.centerX)
         }
         
-        imageContentView.snp_makeConstraints { (make) in
+        imageContentView.snp.makeConstraints { (make) in
             make.edges.equalTo(self).inset(UIEdgeInsetsMake(0, 0, 40, 0))
         }
     }
@@ -217,46 +217,46 @@ class CertainSongSheetHeadImage: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        imageView.snp_makeConstraints { (make) in
+        imageView.snp.makeConstraints { (make) in
             make.edges.equalTo(self).inset(UIEdgeInsetsMake(0, 0, 0, 0))
         }
         
-        starImageView.snp_makeConstraints { (make) in
-            make.left.equalTo(imageView.snp_left).offset(5)
-            make.centerY.equalTo(self.bottomMaskView.snp_centerY)
+        starImageView.snp.makeConstraints { (make) in
+            make.left.equalTo(imageView.snp.left).offset(5)
+            make.centerY.equalTo(self.bottomMaskView.snp.centerY)
             make.height.equalTo(15)
             make.width.equalTo(15)
         }
         
-        authorLabel.snp_makeConstraints { (make) in
-            make.left.equalTo(starImageView.snp_right).offset(5)
-            make.centerY.equalTo(self.bottomMaskView.snp_centerY)
+        authorLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(starImageView.snp.right).offset(5)
+            make.centerY.equalTo(self.bottomMaskView.snp.centerY)
         }
         
-        subscribeLabel.snp_makeConstraints { (make) in
-            make.right.equalTo(imageView.snp_right)
-            make.top.equalTo(imageView.snp_top)
+        subscribeLabel.snp.makeConstraints { (make) in
+            make.right.equalTo(imageView.snp.right)
+            make.top.equalTo(imageView.snp.top)
         }
         
-        infoImageView.snp_makeConstraints { (make) in
-            make.right.equalTo(self.snp_right)
-            make.centerY.equalTo(self.bottomMaskView.snp_centerY)
+        infoImageView.snp.makeConstraints { (make) in
+            make.right.equalTo(self.snp.right)
+            make.centerY.equalTo(self.bottomMaskView.snp.centerY)
             make.height.equalTo(20)
             make.width.equalTo(20)
         }
         
-        bottomMaskView.snp_makeConstraints { (make) in
-            make.bottom.equalTo(self.snp_bottom)
-            make.width.equalTo(self.snp_width)
+        bottomMaskView.snp.makeConstraints { (make) in
+            make.bottom.equalTo(self.snp.bottom)
+            make.width.equalTo(self.snp.width)
             make.height.equalTo(25)
-            make.left.equalTo(self.snp_left)
+            make.left.equalTo(self.snp.left)
         }
         
-        topMaskView.snp_makeConstraints { (make) in
-            make.top.equalTo(self.snp_top)
-            make.width.equalTo(self.snp_width)
+        topMaskView.snp.makeConstraints { (make) in
+            make.top.equalTo(self.snp.top)
+            make.width.equalTo(self.snp.width)
             make.height.equalTo(30)
-            make.left.equalTo(self.snp_left)
+            make.left.equalTo(self.snp.left)
         }
     }
     

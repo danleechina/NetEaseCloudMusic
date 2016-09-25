@@ -46,32 +46,32 @@ class BaseNavigationBar: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        titleView.snp_makeConstraints { (make) in
+        titleView.snp.makeConstraints { (make) in
             make.height.equalTo(44)
             make.width.equalTo(150)
-            make.centerX.equalTo(self.snp_centerX)
-            make.centerY.equalTo(self.snp_centerY)
+            make.centerX.equalTo(self.snp.centerX)
+            make.centerY.equalTo(self.snp.centerY)
         }
         
-        leftButton.snp_makeConstraints { (make) in
-            make.left.equalTo(self.snp_left)
-            make.centerY.equalTo(self.snp_centerY)
+        leftButton.snp.makeConstraints { (make) in
+            make.left.equalTo(self.snp.left)
+            make.centerY.equalTo(self.snp.centerY)
             make.width.equalTo(44)
             make.height.equalTo(44)
         }
         
-        rightButton.snp_makeConstraints { (make) in
-            make.right.equalTo(self.snp_right)
-            make.centerY.equalTo(self.snp_centerY)
+        rightButton.snp.makeConstraints { (make) in
+            make.right.equalTo(self.snp.right)
+            make.centerY.equalTo(self.snp.centerY)
             make.width.equalTo(44)
             make.height.equalTo(44)
         }
         
-        lineView.snp_makeConstraints { (make) in
+        lineView.snp.makeConstraints { (make) in
             make.height.equalTo(1)
-            make.width.equalTo(self.snp_width)
-            make.left.equalTo(self.snp_left)
-            make.bottom.equalTo(self.snp_bottom)
+            make.width.equalTo(self.snp.width)
+            make.left.equalTo(self.snp.left)
+            make.bottom.equalTo(self.snp.bottom)
         }
     }
     

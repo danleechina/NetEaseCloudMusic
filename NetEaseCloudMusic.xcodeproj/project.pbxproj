@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		11EDA0711EB09D90F97A2256 /* Pods_NetEaseCloudMusic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C56330457B099963557BB91 /* Pods_NetEaseCloudMusic.framework */; };
 		818E3B141D88272100F29A16 /* BaseNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818E3B131D88272100F29A16 /* BaseNavigationBar.swift */; };
 		A02A3EE41D40FBD100A3956F /* MarqueeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02A3EE31D40FBD100A3956F /* MarqueeLabel.swift */; };
 		A02A3EE71D435D1400A3956F /* PlaySongService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02A3EE61D435D1300A3956F /* PlaySongService.swift */; };
@@ -72,7 +73,6 @@
 		DEC8F3111D23E0B700C30661 /* NetworkMusicApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC8F3101D23E0B700C30661 /* NetworkMusicApi.swift */; };
 		DED58E111D5C8C8600ED8A74 /* SongLyric.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED58E101D5C8C8600ED8A74 /* SongLyric.swift */; };
 		DED58E131D5C8D0900ED8A74 /* SongInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED58E121D5C8D0900ED8A74 /* SongInfo.swift */; };
-		EB11B0F7C0EE28112D75A367 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D42FA2A00EA9169F711A1E81 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,13 +94,14 @@
 
 /* Begin PBXFileReference section */
 		818E3B131D88272100F29A16 /* BaseNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseNavigationBar.swift; path = Common/BaseNavigationBar.swift; sourceTree = "<group>"; };
+		9C56330457B099963557BB91 /* Pods_NetEaseCloudMusic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NetEaseCloudMusic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D37C55C33307B8BB25C6101 /* Pods-NetEaseCloudMusic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetEaseCloudMusic.release.xcconfig"; path = "Pods/Target Support Files/Pods-NetEaseCloudMusic/Pods-NetEaseCloudMusic.release.xcconfig"; sourceTree = "<group>"; };
+		9ED771ECC800447B885BD6F1 /* Pods-NetEaseCloudMusic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetEaseCloudMusic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NetEaseCloudMusic/Pods-NetEaseCloudMusic.debug.xcconfig"; sourceTree = "<group>"; };
 		A02A3EE31D40FBD100A3956F /* MarqueeLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarqueeLabel.swift; path = Vendor/MarqueeLabel.swift; sourceTree = "<group>"; };
 		A02A3EE61D435D1300A3956F /* PlaySongService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaySongService.swift; path = Service/PlaySongService.swift; sourceTree = "<group>"; };
 		A02A3EE91D44BF6600A3956F /* SwipeDiscScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwipeDiscScrollView.swift; path = MyMusic/SwipeDiscScrollView.swift; sourceTree = "<group>"; };
 		A092DD301D83CF36008DA27B /* LyricTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LyricTableView.swift; path = MyMusic/LyricTableView.swift; sourceTree = "<group>"; };
 		A0BE95BE1D157ABB009A84F0 /* HeadIconView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeadIconView.swift; path = Common/HeadIconView.swift; sourceTree = "<group>"; };
-		C2FE4E75AA0B108BB1B196B5 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		C681789F70D8D427BB9A1604 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D42FA2A00EA9169F711A1E81 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE13AB101D3511D0004BA90C /* SongSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SongSheet.swift; path = Model/SongSheet.swift; sourceTree = "<group>"; };
 		DE13AB1A1D378CD9004BA90C /* CertainSongSheetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CertainSongSheetViewController.swift; path = FindMusic/CertainSongSheetViewController.swift; sourceTree = "<group>"; };
@@ -175,7 +176,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB11B0F7C0EE28112D75A367 /* Pods.framework in Frameworks */,
+				11EDA0711EB09D90F97A2256 /* Pods_NetEaseCloudMusic.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,15 +197,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2BF63923C7212F1DBCF7D30B /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				C681789F70D8D427BB9A1604 /* Pods.debug.xcconfig */,
-				C2FE4E75AA0B108BB1B196B5 /* Pods.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		A02A3EE51D40FBDD00A3956F /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
@@ -247,8 +239,8 @@
 				DE26548E1D101A860083F742 /* NetEaseCloudMusicTests */,
 				DE2654991D101A860083F742 /* NetEaseCloudMusicUITests */,
 				DE2654761D101A860083F742 /* Products */,
-				2BF63923C7212F1DBCF7D30B /* Pods */,
 				DFA7455DED046E4D37EE8D4B /* Frameworks */,
+				DE7D6E4EFBB2FFE04117E8CB /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -462,6 +454,15 @@
 			name = MyMessage;
 			sourceTree = "<group>";
 		};
+		DE7D6E4EFBB2FFE04117E8CB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9ED771ECC800447B885BD6F1 /* Pods-NetEaseCloudMusic.debug.xcconfig */,
+				9D37C55C33307B8BB25C6101 /* Pods-NetEaseCloudMusic.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		DEC8F3121D23E0BC00C30661 /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -474,6 +475,7 @@
 			isa = PBXGroup;
 			children = (
 				D42FA2A00EA9169F711A1E81 /* Pods.framework */,
+				9C56330457B099963557BB91 /* Pods_NetEaseCloudMusic.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -485,12 +487,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DE26549F1D101A860083F742 /* Build configuration list for PBXNativeTarget "NetEaseCloudMusic" */;
 			buildPhases = (
-				39616E5D14E70B703CD8A92A /* Check Pods Manifest.lock */,
+				EF6A1AA8D509B5449C2C1CC4 /* [CP] Check Pods Manifest.lock */,
 				DE2654711D101A860083F742 /* Sources */,
 				DE2654721D101A860083F742 /* Frameworks */,
 				DE2654731D101A860083F742 /* Resources */,
-				7723313C856F8013CCCDB762 /* Embed Pods Frameworks */,
-				21AC9F49F70667ECF863948E /* Copy Pods Resources */,
+				B90FB96F7CCA3B59DA14E76B /* [CP] Embed Pods Frameworks */,
+				5B7EA6DEF1A68740260944DA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -616,49 +618,49 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		21AC9F49F70667ECF863948E /* Copy Pods Resources */ = {
+		5B7EA6DEF1A68740260944DA /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NetEaseCloudMusic/Pods-NetEaseCloudMusic-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		39616E5D14E70B703CD8A92A /* Check Pods Manifest.lock */ = {
+		B90FB96F7CCA3B59DA14E76B /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NetEaseCloudMusic/Pods-NetEaseCloudMusic-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7723313C856F8013CCCDB762 /* Embed Pods Frameworks */ = {
+		EF6A1AA8D509B5449C2C1CC4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -865,7 +867,7 @@
 		};
 		DE2654A01D101A860083F742 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C681789F70D8D427BB9A1604 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 9ED771ECC800447B885BD6F1 /* Pods-NetEaseCloudMusic.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -884,7 +886,7 @@
 		};
 		DE2654A11D101A860083F742 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C2FE4E75AA0B108BB1B196B5 /* Pods.release.xcconfig */;
+			baseConfigurationReference = 9D37C55C33307B8BB25C6101 /* Pods-NetEaseCloudMusic.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

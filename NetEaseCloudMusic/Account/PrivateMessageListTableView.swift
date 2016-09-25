@@ -103,27 +103,27 @@ class PrivateMessageCell: BaseTableViewCell {
         nickNameLabel.sizeToFit()
         timeLabel.sizeToFit()
         
-        headIconView.snp_makeConstraints { (make) in
-            make.centerY.equalTo(self.snp_centerY)
-            make.left.equalTo(self.snp_left).offset(FixedValue.defaultMargin)
+        headIconView.snp.makeConstraints { (make) in
+            make.centerY.equalTo(self.snp.centerY)
+            make.left.equalTo(self.snp.left).offset(FixedValue.defaultMargin)
             make.width.equalTo(50)
             make.height.equalTo(50)
         }
         
-        nickNameLabel.snp_makeConstraints { (make) in
-            make.bottom.equalTo(self.snp_centerY)
-            make.left.equalTo(headIconView.snp_right).offset(FixedValue.defaultMargin)
+        nickNameLabel.snp.makeConstraints { (make) in
+            make.bottom.equalTo(self.snp.centerY)
+            make.left.equalTo(headIconView.snp.right).offset(FixedValue.defaultMargin)
         }
         
-        messageLabel.snp_makeConstraints { (make) in
-            make.top.equalTo(self.snp_centerY)
-            make.left.equalTo(headIconView.snp_right).offset(FixedValue.defaultMargin)
-            make.right.equalTo(self.snp_right)
+        messageLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(self.snp.centerY)
+            make.left.equalTo(headIconView.snp.right).offset(FixedValue.defaultMargin)
+            make.right.equalTo(self.snp.right)
         }
         
-        timeLabel.snp_makeConstraints { (make) in
-            make.right.equalTo(self.snp_right).offset(-FixedValue.defaultMargin)
-            make.centerY.equalTo(nickNameLabel.snp_centerY)
+        timeLabel.snp.makeConstraints { (make) in
+            make.right.equalTo(self.snp.right).offset(-FixedValue.defaultMargin)
+            make.centerY.equalTo(nickNameLabel.snp.centerY)
         }
     }
     

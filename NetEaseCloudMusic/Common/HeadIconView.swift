@@ -69,18 +69,18 @@ class HeadIconView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        imageView.snp_makeConstraints { (make) in
-            make.center.equalTo(self.snp_center)
+        imageView.snp.makeConstraints { (make) in
+            make.center.equalTo(self.snp.center)
         }
         
-        roundNumberLabel.snp_makeConstraints { (make) in
-            make.right.equalTo(imageView.snp_right)
-            make.top.equalTo(imageView.snp_top)
+        roundNumberLabel.snp.makeConstraints { (make) in
+            make.right.equalTo(imageView.snp.right)
+            make.top.equalTo(imageView.snp.top)
         }
         
-        rankRoundLabel.snp_makeConstraints { (make) in
-            make.right.equalTo(imageView.snp_right).offset(-FixedValue.defaultMargin)
-            make.bottom.equalTo(imageView.snp_bottom)
+        rankRoundLabel.snp.makeConstraints { (make) in
+            make.right.equalTo(imageView.snp.right).offset(-FixedValue.defaultMargin)
+            make.bottom.equalTo(imageView.snp.bottom)
         }
         
     }

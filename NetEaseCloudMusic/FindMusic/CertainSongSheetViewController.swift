@@ -255,45 +255,45 @@ class CertainSongSheetCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        orderLabel.snp_makeConstraints { (make) in
-            make.left.equalTo(self.snp_left)
+        orderLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(self.snp.left)
             make.width.equalTo(44)
-            make.centerY.equalTo(self.snp_centerY)
+            make.centerY.equalTo(self.snp.centerY)
         }
         
-        isPlayingImageView.snp_makeConstraints { (make) in
+        isPlayingImageView.snp.makeConstraints { (make) in
             make.width.equalTo(20)
             make.height.equalTo(20)
-            make.centerY.equalTo(self.snp_centerY)
-            make.centerX.equalTo(self.snp_left).offset(22)
+            make.centerY.equalTo(self.snp.centerY)
+            make.centerX.equalTo(self.snp.left).offset(22)
         }
         
-        titleLabel.snp_makeConstraints { (make) in
-            make.left.equalTo(orderLabel.snp_right)
-            make.right.equalTo(mvButton.snp_left)
-            make.top.equalTo(self.snp_top)
-            make.bottom.equalTo(self.snp_centerY)
+        titleLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(orderLabel.snp.right)
+            make.right.equalTo(mvButton.snp.left)
+            make.top.equalTo(self.snp.top)
+            make.bottom.equalTo(self.snp.centerY)
         }
         
-        detailLabel.snp_makeConstraints { (make) in
-            make.top.equalTo(self.snp_centerY)
-            make.left.equalTo(titleLabel.snp_left)
-            make.right.equalTo(titleLabel.snp_right)
-            make.bottom.equalTo(self.snp_bottom)
+        detailLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(self.snp.centerY)
+            make.left.equalTo(titleLabel.snp.left)
+            make.right.equalTo(titleLabel.snp.right)
+            make.bottom.equalTo(self.snp.bottom)
         }
         
-        mvButton.snp_makeConstraints { (make) in
+        mvButton.snp.makeConstraints { (make) in
             make.width.equalTo(44)
             make.height.equalTo(44)
-            make.right.equalTo(moreButton.snp_left)
-            make.centerY.equalTo(self.snp_centerY)
+            make.right.equalTo(moreButton.snp.left)
+            make.centerY.equalTo(self.snp.centerY)
         }
         
-        moreButton.snp_makeConstraints { (make) in
+        moreButton.snp.makeConstraints { (make) in
             make.width.equalTo(30)
             make.height.equalTo(30)
-            make.right.equalTo(self.snp_right).offset(-10)
-            make.centerY.equalTo(self.snp_centerY)
+            make.right.equalTo(self.snp.right).offset(-10)
+            make.centerY.equalTo(self.snp.centerY)
         }
     }
     
@@ -390,32 +390,32 @@ class CertainSongSheetTableViewHeadView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        headImageView.snp_makeConstraints { (make) in
-            make.top.equalTo(self.snp_top).offset(5)
-            make.left.equalTo(self.snp_left).offset(5)
+        headImageView.snp.makeConstraints { (make) in
+            make.top.equalTo(self.snp.top).offset(5)
+            make.left.equalTo(self.snp.left).offset(5)
             make.width.equalTo(120)
             make.height.equalTo(120)
         }
         
-        titleLabel.snp_makeConstraints { (make) in
-            make.top.equalTo(self.headImageView.snp_top)
-            make.left.equalTo(self.headImageView.snp_right).offset(10)
-            make.right.equalTo(self.snp_right).offset(-5)
-            make.bottom.equalTo(self.headImageView.snp_centerY).offset(-5)
+        titleLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(self.headImageView.snp.top)
+            make.left.equalTo(self.headImageView.snp.right).offset(10)
+            make.right.equalTo(self.snp.right).offset(-5)
+            make.bottom.equalTo(self.headImageView.snp.centerY).offset(-5)
         }
         
-        authorLabel.snp_makeConstraints { (make) in
-            make.top.equalTo(self.headImageView.snp_centerY)
-            make.left.equalTo(self.titleLabel.snp_left)
-            make.right.equalTo(self.titleLabel.snp_right)
-            make.bottom.equalTo(self.headImageView.snp_bottom)
+        authorLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(self.headImageView.snp.centerY)
+            make.left.equalTo(self.titleLabel.snp.left)
+            make.right.equalTo(self.titleLabel.snp.right)
+            make.bottom.equalTo(self.headImageView.snp.bottom)
         }
         
-        bottomControlsStackView.snp_makeConstraints { (make) in
-            make.left.equalTo(self.headImageView.snp_left)
-            make.right.equalTo(self.titleLabel.snp_right)
-            make.top.equalTo(self.headImageView.snp_bottom).offset(10)
-            make.bottom.equalTo(self.snp_bottom)
+        bottomControlsStackView.snp.makeConstraints { (make) in
+            make.left.equalTo(self.headImageView.snp.left)
+            make.right.equalTo(self.titleLabel.snp.right)
+            make.top.equalTo(self.headImageView.snp.bottom).offset(10)
+            make.bottom.equalTo(self.snp.bottom)
         }
         
     }
@@ -462,16 +462,16 @@ class CertainSongSheetSection: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        leftButton.snp_makeConstraints { (make) in
-            make.left.equalTo(self.snp_left)
-            make.centerY.equalTo(self.snp_centerY)
+        leftButton.snp.makeConstraints { (make) in
+            make.left.equalTo(self.snp.left)
+            make.centerY.equalTo(self.snp.centerY)
             make.height.equalTo(40)
-            make.right.equalTo(rightButton.snp_left)
+            make.right.equalTo(rightButton.snp.left)
         }
         
-        rightButton.snp_makeConstraints { (make) in
-            make.right.equalTo(self.snp_right).offset(-5)
-            make.centerY.equalTo(self.snp_centerY)
+        rightButton.snp.makeConstraints { (make) in
+            make.right.equalTo(self.snp.right).offset(-5)
+            make.centerY.equalTo(self.snp.centerY)
             make.width.equalTo(44)
             make.height.equalTo(44)
         }
