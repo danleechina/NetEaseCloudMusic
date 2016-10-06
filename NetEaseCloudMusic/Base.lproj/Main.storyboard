@@ -6,27 +6,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--faxian-->
-        <scene sceneID="hNz-n2-bh7">
-            <objects>
-                <viewController id="9pv-A4-QxB" customClass="SongSheetViewController" customModule="NetEaseCloudMusic" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Ia1-K6-d13"/>
-                        <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="faxian" id="K1F-mO-0oi">
-                        <barButtonItem key="backBarButtonItem" title=" " id="5Xg-aU-dgJ"/>
-                    </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-502" y="2265"/>
-        </scene>
         <!--我的音乐-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
@@ -67,7 +46,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="176" y="2265"/>
+            <point key="canvasLocation" x="345" y="2265"/>
         </scene>
         <!--Friend View Controller-->
         <scene sceneID="Z5h-4P-9FK">
@@ -110,7 +89,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HAd-u3-czf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="872" y="2281"/>
+            <point key="canvasLocation" x="1247" y="2265"/>
         </scene>
         <!--账号-->
         <scene sceneID="CEC-Pe-fG6">
@@ -217,8 +196,7 @@
                                                 <constraint firstAttribute="height" constant="50" id="ECb-IT-qMz"/>
                                             </constraints>
                                         </stackView>
-                                        <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="dlw-kX-PgR">
-                                            <frame key="frameInset" minX="80" minY="19" width="81" height="41"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="dlw-kX-PgR">
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ampiredan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zM7-VY-4fi">
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -271,8 +249,8 @@
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
-                                            <exclude reference="I4m-Km-MVV"/>
                                             <exclude reference="0Mo-xf-hwZ"/>
+                                            <exclude reference="I4m-Km-MVV"/>
                                         </mask>
                                     </variation>
                                 </view>
@@ -319,7 +297,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p7O-jo-FbD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1588" y="2281"/>
+            <point key="canvasLocation" x="2186" y="2265"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -332,7 +310,7 @@
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="I4k-na-bGR" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
+                        <segue destination="Y6p-DP-pLb" kind="relationship" relationship="viewControllers" id="rRd-Db-lrl"/>
                         <segue destination="PdE-We-cGJ" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="l7y-hd-g4C" kind="relationship" relationship="viewControllers" id="uhY-ij-cXt"/>
                         <segue destination="7OO-eN-7Cc" kind="relationship" relationship="viewControllers" id="Rbm-w6-bgD"/>
@@ -340,26 +318,17 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="480" y="594"/>
+            <point key="canvasLocation" x="758" y="626"/>
         </scene>
-        <!--发现音乐-->
-        <scene sceneID="q69-CC-Aa4">
+        <!--Find Music View Controller-->
+        <scene sceneID="ZsJ-dT-aMY">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="I4k-na-bGR" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="发现音乐" image="cm2_btm_icn_discovery" id="acW-dT-cKf"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8TF-Zk-3ob">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="rootViewController" id="FNR-E8-wZv"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="goz-Fj-icD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="5nn-Kj-92F" customClass="FindMusicViewController" customModule="NetEaseCloudMusic" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="dI5-NC-lcP"/>
+                </pageViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LDK-fN-FXd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-502" y="1485"/>
+            <point key="canvasLocation" x="-591" y="2265"/>
         </scene>
         <!--我的音乐-->
         <scene sceneID="dfO-oZ-NnS">
@@ -378,7 +347,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="245-tL-N9C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="176" y="1485"/>
+            <point key="canvasLocation" x="345" y="1483"/>
         </scene>
         <!--朋友-->
         <scene sceneID="iow-Od-Tvm">
@@ -397,7 +366,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8bK-WQ-ahD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="872" y="1492"/>
+            <point key="canvasLocation" x="1247" y="1483"/>
         </scene>
         <!--账号-->
         <scene sceneID="2n8-r8-2BV">
@@ -416,7 +385,26 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7eZ-zz-XkA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1574" y="1492"/>
+            <point key="canvasLocation" x="2188" y="1483"/>
+        </scene>
+        <!--发现音乐-->
+        <scene sceneID="ahV-6I-5gJ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Y6p-DP-pLb" customClass="RKSwipeBetweenViewControllers" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="发现音乐" image="cm2_btm_icn_discovery" id="Q25-r4-iJh"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="MgV-Ff-7vW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="5nn-Kj-92F" kind="relationship" relationship="rootViewController" id="h7U-Sw-TbI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cxf-YS-QwG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-590.625" y="1483.0985915492959"/>
         </scene>
     </scenes>
     <resources>

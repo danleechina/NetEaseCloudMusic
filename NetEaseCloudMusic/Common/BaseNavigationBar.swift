@@ -48,7 +48,7 @@ class BaseNavigationBar: UIView {
         
         titleView.snp.makeConstraints { (make) in
             make.height.equalTo(44)
-            make.width.equalTo(150)
+            make.width.equalTo(self.bounds.width - 110)
             make.centerX.equalTo(self.snp.centerX)
             make.centerY.equalTo(self.snp.centerY)
         }
