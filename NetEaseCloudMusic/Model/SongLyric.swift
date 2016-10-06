@@ -142,7 +142,11 @@ class SongLyric: NSObject {
         let startIndex = str.startIndex
         let endIndex = str.characters.index(str.endIndex, offsetBy: -1, limitedBy: startIndex)
         let minStr = str.substring(to: str.index(startIndex, offsetBy: 2, limitedBy: endIndex!)!)
-        let secStr = str.substring(from: str.index(startIndex, offsetBy: 3, limitedBy: endIndex!)!)
+        let secFrom = str.index(startIndex, offsetBy: 3, limitedBy: endIndex!)
+        if secFrom == nil {
+            return 0
+        }
+        let secStr = str.substring(from: secFrom!)
         if let minValue = Float64(minStr), let secValue = Float64(secStr){
             return minValue * 60 + secValue
         }

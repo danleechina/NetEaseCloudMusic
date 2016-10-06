@@ -301,6 +301,7 @@
 			children = (
 				DE2654AA1D101D440083F742 /* FindMusicViewController.swift */,
 				DE2654C01D10249D0083F742 /* SoundHoundViewController.swift */,
+				DE13AB1A1D378CD9004BA90C /* CertainSongSheetViewController.swift */,
 				DE2654E21D1028C60083F742 /* ContentVC */,
 			);
 			name = FindMusic;
@@ -350,7 +351,6 @@
 			children = (
 				DE2654B81D1022F10083F742 /* RecommendViewController.swift */,
 				DE2654BA1D10232C0083F742 /* SongSheetViewController.swift */,
-				DE13AB1A1D378CD9004BA90C /* CertainSongSheetViewController.swift */,
 				DE2654BC1D10236F0083F742 /* RadioViewController.swift */,
 				DE2654BE1D1023990083F742 /* RankListViewController.swift */,
 			);

@@ -108,6 +108,9 @@ extension LyricTableView: UITableViewDataSource, UITableViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if let lyric = self.songLyric {
             let ans = getMiddleRow()
+            if ans >= lyric.lyricTimeArray.count {
+                return;
+            }
             lyricTimeLabel?.text = SongLyric.getFormatTimeStringFromNumValue(lyric.lyricTimeArray[ans])
         }
     }
