@@ -4,10 +4,8 @@ use_frameworks!
 
 target 'NetEaseCloudMusic' do
 	pod 'SnapKit', '~> 3.0'
-	pod 'YYKit'
 	pod 'SDWebImage', '~>3.8'
-	pod 'Reveal-iOS-SDK', :configurations => ['Debug']
-	pod 'MLeaksFinder'
 	pod 'FDFullscreenPopGesture', '1.1'
 	pod 'KMNavigationBarTransition'
+    pod 'CryptoSwift', :git => "https://github.com/krzyzanowskim/CryptoSwift", :branch => "master"
 end

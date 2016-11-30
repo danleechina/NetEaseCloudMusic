@@ -8,6 +8,35 @@
 
 /* Begin PBXBuildFile section */
 		11EDA0711EB09D90F97A2256 /* Pods_NetEaseCloudMusic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C56330457B099963557BB91 /* Pods_NetEaseCloudMusic.framework */; };
+		371F85241DEEBE6E00DA6C75 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371F85231DEEBE6E00DA6C75 /* String+Extension.swift */; };
+		371F85281DEEBF5E00DA6C75 /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371F85271DEEBF5E00DA6C75 /* Int+Extension.swift */; };
+		371F852C1DEEC38F00DA6C75 /* Data+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371F852B1DEEC38F00DA6C75 /* Data+Extension.swift */; };
+		37D0F7851DEEEBB80046C9B6 /* BigDigit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D0F7711DEEEBB80046C9B6 /* BigDigit.swift */; };
+		37D0F7861DEEEBB80046C9B6 /* BigInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D0F7721DEEEBB80046C9B6 /* BigInt.swift */; };
+		37D0F7871DEEEBB80046C9B6 /* BigUInt Addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D0F7731DEEEBB80046C9B6 /* BigUInt Addition.swift */; };
+		37D0F7881DEEEBB80046C9B6 /* BigUInt Bitwise Ops.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D0F7741DEEEBB80046C9B6 /* BigUInt Bitwise Ops.swift */; };
+		37D0F7891DEEEBB80046C9B6 /* BigUInt Comparison.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D0F7751DEEEBB80046C9B6 /* BigUInt Comparison.swift */; };
+		37D0F78A1DEEEBB80046C9B6 /* BigUInt Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D0F7761DEEEBB80046C9B6 /* BigUInt Data.swift */; };
+		37D0F78B1DEEEBB80046C9B6 /* BigUInt Division.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D0F7771DEEEBB80046C9B6 /* BigUInt Division.swift */; };
+		37D0F78C1DEEEBB80046C9B6 /* BigUInt Exponentiation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D0F7781DEEEBB80046C9B6 /* BigUInt Exponentiation.swift */; };
+		37D0F78D1DEEEBB80046C9B6 /* BigUInt GCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D0F7791DEEEBB80046C9B6 /* BigUInt GCD.swift */; };
+		37D0F78E1DEEEBB80046C9B6 /* BigUInt Hashing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D0F77A1DEEEBB80046C9B6 /* BigUInt Hashing.swift */; };
+		37D0F78F1DEEEBB80046C9B6 /* BigUInt Multiplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D0F77B1DEEEBB80046C9B6 /* BigUInt Multiplication.swift */; };
+		37D0F7901DEEEBB80046C9B6 /* BigUInt Prime Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D0F77C1DEEEBB80046C9B6 /* BigUInt Prime Test.swift */; };
+		37D0F7911DEEEBB80046C9B6 /* BigUInt Radix Conversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D0F77D1DEEEBB80046C9B6 /* BigUInt Radix Conversion.swift */; };
+		37D0F7921DEEEBB80046C9B6 /* BigUInt Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D0F77E1DEEEBB80046C9B6 /* BigUInt Random.swift */; };
+		37D0F7931DEEEBB80046C9B6 /* BigUInt Shifts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D0F77F1DEEEBB80046C9B6 /* BigUInt Shifts.swift */; };
+		37D0F7941DEEEBB80046C9B6 /* BigUInt Square Root.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D0F7801DEEEBB80046C9B6 /* BigUInt Square Root.swift */; };
+		37D0F7951DEEEBB80046C9B6 /* BigUInt Subtraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D0F7811DEEEBB80046C9B6 /* BigUInt Subtraction.swift */; };
+		37D0F7961DEEEBB80046C9B6 /* BigUInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D0F7821DEEEBB80046C9B6 /* BigUInt.swift */; };
+		37D0F7971DEEEBB80046C9B6 /* Bitwise Hacks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D0F7831DEEEBB80046C9B6 /* Bitwise Hacks.swift */; };
+		37D0F7981DEEEBB80046C9B6 /* ShiftOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D0F7841DEEEBB80046C9B6 /* ShiftOperations.swift */; };
+		37D0F79B1DEEEF280046C9B6 /* BinUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D0F79A1DEEEF280046C9B6 /* BinUtils.swift */; };
+		37D0F7A01DEEF35C0046C9B6 /* Primitive Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D0F79C1DEEF35C0046C9B6 /* Primitive Types.swift */; };
+		37D0F7A11DEEF35C0046C9B6 /* RandomUInt64.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D0F79D1DEEF35C0046C9B6 /* RandomUInt64.swift */; };
+		37D0F7A21DEEF35C0046C9B6 /* SipHashable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D0F79E1DEEF35C0046C9B6 /* SipHashable.swift */; };
+		37D0F7A31DEEF35C0046C9B6 /* SipHasher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D0F79F1DEEF35C0046C9B6 /* SipHasher.swift */; };
+		37D0F7A61DEEFA4F0046C9B6 /* Dictionary+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D0F7A51DEEFA4F0046C9B6 /* Dictionary+Extension.swift */; };
 		8118F9331DA63CD5005BAF7A /* RKSwipeBetweenViewControllers.m in Sources */ = {isa = PBXBuildFile; fileRef = 8118F9321DA63CD5005BAF7A /* RKSwipeBetweenViewControllers.m */; };
 		8172EF571DA673040042B6AE /* UIImage_Add.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8172EF561DA673040042B6AE /* UIImage_Add.swift */; };
 		818E3B141D88272100F29A16 /* BaseNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818E3B131D88272100F29A16 /* BaseNavigationBar.swift */; };
@@ -95,6 +124,35 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		371F85231DEEBE6E00DA6C75 /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+Extension.swift"; path = "Extension/Foundation/String+Extension.swift"; sourceTree = "<group>"; };
+		371F85271DEEBF5E00DA6C75 /* Int+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Int+Extension.swift"; path = "Extension/Foundation/Int+Extension.swift"; sourceTree = "<group>"; };
+		371F852B1DEEC38F00DA6C75 /* Data+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Data+Extension.swift"; path = "Extension/Foundation/Data+Extension.swift"; sourceTree = "<group>"; };
+		37D0F7711DEEEBB80046C9B6 /* BigDigit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BigDigit.swift; path = Vendor/BigUInt/BigDigit.swift; sourceTree = "<group>"; };
+		37D0F7721DEEEBB80046C9B6 /* BigInt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BigInt.swift; path = Vendor/BigUInt/BigInt.swift; sourceTree = "<group>"; };
+		37D0F7731DEEEBB80046C9B6 /* BigUInt Addition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "BigUInt Addition.swift"; path = "Vendor/BigUInt/BigUInt Addition.swift"; sourceTree = "<group>"; };
+		37D0F7741DEEEBB80046C9B6 /* BigUInt Bitwise Ops.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "BigUInt Bitwise Ops.swift"; path = "Vendor/BigUInt/BigUInt Bitwise Ops.swift"; sourceTree = "<group>"; };
+		37D0F7751DEEEBB80046C9B6 /* BigUInt Comparison.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "BigUInt Comparison.swift"; path = "Vendor/BigUInt/BigUInt Comparison.swift"; sourceTree = "<group>"; };
+		37D0F7761DEEEBB80046C9B6 /* BigUInt Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "BigUInt Data.swift"; path = "Vendor/BigUInt/BigUInt Data.swift"; sourceTree = "<group>"; };
+		37D0F7771DEEEBB80046C9B6 /* BigUInt Division.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "BigUInt Division.swift"; path = "Vendor/BigUInt/BigUInt Division.swift"; sourceTree = "<group>"; };
+		37D0F7781DEEEBB80046C9B6 /* BigUInt Exponentiation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "BigUInt Exponentiation.swift"; path = "Vendor/BigUInt/BigUInt Exponentiation.swift"; sourceTree = "<group>"; };
+		37D0F7791DEEEBB80046C9B6 /* BigUInt GCD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "BigUInt GCD.swift"; path = "Vendor/BigUInt/BigUInt GCD.swift"; sourceTree = "<group>"; };
+		37D0F77A1DEEEBB80046C9B6 /* BigUInt Hashing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "BigUInt Hashing.swift"; path = "Vendor/BigUInt/BigUInt Hashing.swift"; sourceTree = "<group>"; };
+		37D0F77B1DEEEBB80046C9B6 /* BigUInt Multiplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "BigUInt Multiplication.swift"; path = "Vendor/BigUInt/BigUInt Multiplication.swift"; sourceTree = "<group>"; };
+		37D0F77C1DEEEBB80046C9B6 /* BigUInt Prime Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "BigUInt Prime Test.swift"; path = "Vendor/BigUInt/BigUInt Prime Test.swift"; sourceTree = "<group>"; };
+		37D0F77D1DEEEBB80046C9B6 /* BigUInt Radix Conversion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "BigUInt Radix Conversion.swift"; path = "Vendor/BigUInt/BigUInt Radix Conversion.swift"; sourceTree = "<group>"; };
+		37D0F77E1DEEEBB80046C9B6 /* BigUInt Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "BigUInt Random.swift"; path = "Vendor/BigUInt/BigUInt Random.swift"; sourceTree = "<group>"; };
+		37D0F77F1DEEEBB80046C9B6 /* BigUInt Shifts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "BigUInt Shifts.swift"; path = "Vendor/BigUInt/BigUInt Shifts.swift"; sourceTree = "<group>"; };
+		37D0F7801DEEEBB80046C9B6 /* BigUInt Square Root.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "BigUInt Square Root.swift"; path = "Vendor/BigUInt/BigUInt Square Root.swift"; sourceTree = "<group>"; };
+		37D0F7811DEEEBB80046C9B6 /* BigUInt Subtraction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "BigUInt Subtraction.swift"; path = "Vendor/BigUInt/BigUInt Subtraction.swift"; sourceTree = "<group>"; };
+		37D0F7821DEEEBB80046C9B6 /* BigUInt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BigUInt.swift; path = Vendor/BigUInt/BigUInt.swift; sourceTree = "<group>"; };
+		37D0F7831DEEEBB80046C9B6 /* Bitwise Hacks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Bitwise Hacks.swift"; path = "Vendor/BigUInt/Bitwise Hacks.swift"; sourceTree = "<group>"; };
+		37D0F7841DEEEBB80046C9B6 /* ShiftOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShiftOperations.swift; path = Vendor/BigUInt/ShiftOperations.swift; sourceTree = "<group>"; };
+		37D0F79A1DEEEF280046C9B6 /* BinUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BinUtils.swift; path = Vendor/BinUtils.swift; sourceTree = "<group>"; };
+		37D0F79C1DEEF35C0046C9B6 /* Primitive Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Primitive Types.swift"; path = "Vendor/SipHash/Primitive Types.swift"; sourceTree = "<group>"; };
+		37D0F79D1DEEF35C0046C9B6 /* RandomUInt64.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RandomUInt64.swift; path = Vendor/SipHash/RandomUInt64.swift; sourceTree = "<group>"; };
+		37D0F79E1DEEF35C0046C9B6 /* SipHashable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SipHashable.swift; path = Vendor/SipHash/SipHashable.swift; sourceTree = "<group>"; };
+		37D0F79F1DEEF35C0046C9B6 /* SipHasher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SipHasher.swift; path = Vendor/SipHash/SipHasher.swift; sourceTree = "<group>"; };
+		37D0F7A51DEEFA4F0046C9B6 /* Dictionary+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Dictionary+Extension.swift"; path = "Extension/Foundation/Dictionary+Extension.swift"; sourceTree = "<group>"; };
 		8118F9311DA63CD5005BAF7A /* RKSwipeBetweenViewControllers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RKSwipeBetweenViewControllers.h; path = Vendor/RKSwipeBetweenViewControllers.h; sourceTree = "<group>"; };
 		8118F9321DA63CD5005BAF7A /* RKSwipeBetweenViewControllers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RKSwipeBetweenViewControllers.m; path = Vendor/RKSwipeBetweenViewControllers.m; sourceTree = "<group>"; };
 		8172EF561DA673040042B6AE /* UIImage_Add.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIImage_Add.swift; path = Util/UIImage_Add.swift; sourceTree = "<group>"; };
@@ -202,12 +260,72 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		371F85251DEEBE7400DA6C75 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				371F85261DEEBE9900DA6C75 /* Foundation */,
+			);
+			name = Extension;
+			sourceTree = "<group>";
+		};
+		371F85261DEEBE9900DA6C75 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				371F85231DEEBE6E00DA6C75 /* String+Extension.swift */,
+				371F85271DEEBF5E00DA6C75 /* Int+Extension.swift */,
+				371F852B1DEEC38F00DA6C75 /* Data+Extension.swift */,
+				37D0F7A51DEEFA4F0046C9B6 /* Dictionary+Extension.swift */,
+			);
+			name = Foundation;
+			sourceTree = "<group>";
+		};
+		37D0F7991DEEEBC40046C9B6 /* BigUInt */ = {
+			isa = PBXGroup;
+			children = (
+				37D0F7711DEEEBB80046C9B6 /* BigDigit.swift */,
+				37D0F7721DEEEBB80046C9B6 /* BigInt.swift */,
+				37D0F7731DEEEBB80046C9B6 /* BigUInt Addition.swift */,
+				37D0F7741DEEEBB80046C9B6 /* BigUInt Bitwise Ops.swift */,
+				37D0F7751DEEEBB80046C9B6 /* BigUInt Comparison.swift */,
+				37D0F7761DEEEBB80046C9B6 /* BigUInt Data.swift */,
+				37D0F7771DEEEBB80046C9B6 /* BigUInt Division.swift */,
+				37D0F7781DEEEBB80046C9B6 /* BigUInt Exponentiation.swift */,
+				37D0F7791DEEEBB80046C9B6 /* BigUInt GCD.swift */,
+				37D0F77A1DEEEBB80046C9B6 /* BigUInt Hashing.swift */,
+				37D0F77B1DEEEBB80046C9B6 /* BigUInt Multiplication.swift */,
+				37D0F77C1DEEEBB80046C9B6 /* BigUInt Prime Test.swift */,
+				37D0F77D1DEEEBB80046C9B6 /* BigUInt Radix Conversion.swift */,
+				37D0F77E1DEEEBB80046C9B6 /* BigUInt Random.swift */,
+				37D0F77F1DEEEBB80046C9B6 /* BigUInt Shifts.swift */,
+				37D0F7801DEEEBB80046C9B6 /* BigUInt Square Root.swift */,
+				37D0F7811DEEEBB80046C9B6 /* BigUInt Subtraction.swift */,
+				37D0F7821DEEEBB80046C9B6 /* BigUInt.swift */,
+				37D0F7831DEEEBB80046C9B6 /* Bitwise Hacks.swift */,
+				37D0F7841DEEEBB80046C9B6 /* ShiftOperations.swift */,
+			);
+			name = BigUInt;
+			sourceTree = "<group>";
+		};
+		37D0F7A41DEEF7960046C9B6 /* SipHash */ = {
+			isa = PBXGroup;
+			children = (
+				37D0F79C1DEEF35C0046C9B6 /* Primitive Types.swift */,
+				37D0F79D1DEEF35C0046C9B6 /* RandomUInt64.swift */,
+				37D0F79E1DEEF35C0046C9B6 /* SipHashable.swift */,
+				37D0F79F1DEEF35C0046C9B6 /* SipHasher.swift */,
+			);
+			name = SipHash;
+			sourceTree = "<group>";
+		};
 		A02A3EE51D40FBDD00A3956F /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				37D0F7A41DEEF7960046C9B6 /* SipHash */,
+				37D0F7991DEEEBC40046C9B6 /* BigUInt */,
 				8118F9311DA63CD5005BAF7A /* RKSwipeBetweenViewControllers.h */,
 				8118F9321DA63CD5005BAF7A /* RKSwipeBetweenViewControllers.m */,
 				A02A3EE31D40FBD100A3956F /* MarqueeLabel.swift */,
+				37D0F79A1DEEEF280046C9B6 /* BinUtils.swift */,
 			);
 			name = Vendor;
 			sourceTree = "<group>";
@@ -265,23 +383,24 @@
 		DE2654771D101A860083F742 /* NetEaseCloudMusic */ = {
 			isa = PBXGroup;
 			children = (
+				DE42A5A61D2D26FF002D3B60 /* NetEaseCloudMusic-Bridging-Header.h */,
 				DE2654861D101A860083F742 /* Info.plist */,
+				DE2654781D101A860083F742 /* AppDelegate.swift */,
 				DE2654811D101A860083F742 /* Assets.xcassets */,
 				DE2654831D101A860083F742 /* LaunchScreen.storyboard */,
 				DE26547E1D101A860083F742 /* Main.storyboard */,
-				DE2654781D101A860083F742 /* AppDelegate.swift */,
-				DE42A5A61D2D26FF002D3B60 /* NetEaseCloudMusic-Bridging-Header.h */,
-				DE19D2151D12DB03008A575C /* Util */,
-				DE4068551D12A3240067F0FE /* Common */,
-				DE13AB121D3511D5004BA90C /* Model */,
-				DE2654AC1D101D4B0083F742 /* FindMusic */,
-				DE2654AF1D101D7F0083F742 /* MyMusic */,
-				DE2654B21D101DAD0083F742 /* Friend */,
 				DE2654B51D101DD60083F742 /* Account */,
-				DE35EB831D30E68400485339 /* Resources */,
 				DEC8F3121D23E0BC00C30661 /* API */,
-				A02A3EE51D40FBDD00A3956F /* Vendor */,
+				DE4068551D12A3240067F0FE /* Common */,
+				371F85251DEEBE7400DA6C75 /* Extension */,
+				DE2654AC1D101D4B0083F742 /* FindMusic */,
+				DE2654B21D101DAD0083F742 /* Friend */,
+				DE13AB121D3511D5004BA90C /* Model */,
+				DE2654AF1D101D7F0083F742 /* MyMusic */,
+				DE35EB831D30E68400485339 /* Resources */,
 				A02A3EE81D4360B900A3956F /* Service */,
+				DE19D2151D12DB03008A575C /* Util */,
+				A02A3EE51D40FBDD00A3956F /* Vendor */,
 			);
 			path = NetEaseCloudMusic;
 			sourceTree = "<group>";
@@ -680,34 +799,54 @@
 			files = (
 				DE2654B11D101DA90083F742 /* FriendViewController.swift in Sources */,
 				DE2654CB1D1025E60083F742 /* FocusViewController.swift in Sources */,
+				37D0F7891DEEEBB80046C9B6 /* BigUInt Comparison.swift in Sources */,
 				DE2654DB1D1027CA0083F742 /* CountDownViewController.swift in Sources */,
+				37D0F78C1DEEEBB80046C9B6 /* BigUInt Exponentiation.swift in Sources */,
 				DE2654ED1D102A070083F742 /* MyMVViewController.swift in Sources */,
+				37D0F7851DEEEBB80046C9B6 /* BigDigit.swift in Sources */,
 				DE13AB1B1D378CD9004BA90C /* CertainSongSheetViewController.swift in Sources */,
+				37D0F7A11DEEF35C0046C9B6 /* RandomUInt64.swift in Sources */,
 				8172EF571DA673040042B6AE /* UIImage_Add.swift in Sources */,
 				A02A3EEA1D44BF6600A3956F /* SwipeDiscScrollView.swift in Sources */,
 				DE2654F21D102A9D0083F742 /* MyRadioViewController.swift in Sources */,
 				DE2474741D1AB83C00EBAA37 /* CommentCell.swift in Sources */,
+				37D0F7901DEEEBB80046C9B6 /* BigUInt Prime Test.swift in Sources */,
 				DE79E6FB1D1677C2006B9926 /* HasInfoSegmentedControl.swift in Sources */,
 				DED58E111D5C8C8600ED8A74 /* SongLyric.swift in Sources */,
+				37D0F7971DEEEBB80046C9B6 /* Bitwise Hacks.swift in Sources */,
 				DEAB13C21D1518D2001FD8E8 /* BaseViewController.swift in Sources */,
 				DE2654F81D103A8D0083F742 /* AccountTableViewCell.swift in Sources */,
+				37D0F78A1DEEEBB80046C9B6 /* BigUInt Data.swift in Sources */,
+				37D0F7A61DEEFA4F0046C9B6 /* Dictionary+Extension.swift in Sources */,
+				37D0F7961DEEEBB80046C9B6 /* BigUInt.swift in Sources */,
 				DE2654D11D1026B50083F742 /* PaidMusicViewController.swift in Sources */,
+				37D0F7871DEEEBB80046C9B6 /* BigUInt Addition.swift in Sources */,
 				DE2654C11D10249D0083F742 /* SoundHoundViewController.swift in Sources */,
 				DE2654DF1D1027FF0083F742 /* DrivingModeViewController.swift in Sources */,
 				DE2654B41D101DD30083F742 /* AccountViewController.swift in Sources */,
 				DE2654D71D1027540083F742 /* SettingViewController.swift in Sources */,
+				37D0F7951DEEEBB80046C9B6 /* BigUInt Subtraction.swift in Sources */,
+				37D0F78F1DEEEBB80046C9B6 /* BigUInt Multiplication.swift in Sources */,
 				DE2654BF1D1023990083F742 /* RankListViewController.swift in Sources */,
 				DED58E131D5C8D0900ED8A74 /* SongInfo.swift in Sources */,
+				37D0F78B1DEEEBB80046C9B6 /* BigUInt Division.swift in Sources */,
 				DE2654EB1D1029DE0083F742 /* MySingerViewController.swift in Sources */,
+				37D0F7A01DEEF35C0046C9B6 /* Primitive Types.swift in Sources */,
+				371F85241DEEBE6E00DA6C75 /* String+Extension.swift in Sources */,
 				DE2654CD1D1025F90083F742 /* NearByViewController.swift in Sources */,
 				8118F9331DA63CD5005BAF7A /* RKSwipeBetweenViewControllers.m in Sources */,
 				DE2654CF1D1026710083F742 /* MyMessageViewController.swift in Sources */,
+				37D0F7881DEEEBB80046C9B6 /* BigUInt Bitwise Ops.swift in Sources */,
+				37D0F7A31DEEF35C0046C9B6 /* SipHasher.swift in Sources */,
 				DE13AB201D37AAE1004BA90C /* PlaySongViewController.swift in Sources */,
 				DE13AB111D3511D0004BA90C /* SongSheet.swift in Sources */,
 				DE2654BD1D10236F0083F742 /* RadioViewController.swift in Sources */,
 				A092DD311D83CF36008DA27B /* LyricTableView.swift in Sources */,
 				DE4068541D12A3190067F0FE /* BaseTableViewCell.swift in Sources */,
+				371F852C1DEEC38F00DA6C75 /* Data+Extension.swift in Sources */,
+				37D0F7981DEEEBB80046C9B6 /* ShiftOperations.swift in Sources */,
 				DE79E6F01D167209006B9926 /* AtMineListTableView.swift in Sources */,
+				37D0F79B1DEEEF280046C9B6 /* BinUtils.swift in Sources */,
 				DE79E6F81D1672BE006B9926 /* NotificationListTableView.swift in Sources */,
 				DE2654BB1D10232C0083F742 /* SongSheetViewController.swift in Sources */,
 				DE2654C71D1025730083F742 /* MyMusicCloudBoxViewController.swift in Sources */,
@@ -719,21 +858,30 @@
 				DE2654D91D1027780083F742 /* ThemeSkinViewController.swift in Sources */,
 				DE2654C51D1025460083F742 /* AddSongSheetViewController.swift in Sources */,
 				DE2654D51D10271A0083F742 /* OnlineFreePlayViewController.swift in Sources */,
+				37D0F7861DEEEBB80046C9B6 /* BigInt.swift in Sources */,
+				37D0F78E1DEEEBB80046C9B6 /* BigUInt Hashing.swift in Sources */,
+				37D0F7A21DEEF35C0046C9B6 /* SipHashable.swift in Sources */,
 				DE79E6F21D167232006B9926 /* PrivateMessageListTableView.swift in Sources */,
 				DE2654E51D1029590083F742 /* DownLoadViewController.swift in Sources */,
 				DE2654791D101A860083F742 /* AppDelegate.swift in Sources */,
+				371F85281DEEBF5E00DA6C75 /* Int+Extension.swift in Sources */,
 				DE2654AE1D101D7A0083F742 /* MyMusicViewController.swift in Sources */,
 				A0BE95BF1D157ABB009A84F0 /* HeadIconView.swift in Sources */,
 				DE13AB1D1D379290004BA90C /* CertainSongSheet.swift in Sources */,
 				DE79E6EE1D163B35006B9926 /* RankRoundLabel.swift in Sources */,
+				37D0F7931DEEEBB80046C9B6 /* BigUInt Shifts.swift in Sources */,
 				DE4068571D12A4DA0067F0FE /* RoundNumberLabel.swift in Sources */,
+				37D0F78D1DEEEBB80046C9B6 /* BigUInt GCD.swift in Sources */,
 				DE2654AB1D101D440083F742 /* FindMusicViewController.swift in Sources */,
 				DE2654B91D1022F10083F742 /* RecommendViewController.swift in Sources */,
 				DE2654E81D10299F0083F742 /* RecentPlayedViewController.swift in Sources */,
+				37D0F7921DEEEBB80046C9B6 /* BigUInt Random.swift in Sources */,
 				DE2654DD1D1027E40083F742 /* MusicAlarmViewController.swift in Sources */,
 				DE2654E11D1028160083F742 /* AboutViewController.swift in Sources */,
 				DE2654D31D1026DA0083F742 /* PointMallViewController.swift in Sources */,
 				A02A3EE41D40FBD100A3956F /* MarqueeLabel.swift in Sources */,
+				37D0F7941DEEEBB80046C9B6 /* BigUInt Square Root.swift in Sources */,
+				37D0F7911DEEEBB80046C9B6 /* BigUInt Radix Conversion.swift in Sources */,
 				DE19D2141D12DAFC008A575C /* FixedValue.swift in Sources */,
 				DEC8F3111D23E0B700C30661 /* NetworkMusicApi.swift in Sources */,
 			);

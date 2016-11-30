@@ -7,10 +7,56 @@
 //
 
 import Foundation
+import CryptoSwift
 
 class NetworkMusicApi: NSObject {
     static let shareInstance = NetworkMusicApi()
     fileprivate override init() {}
+    
+    
+    let modulus = "00e0b509f6259df8642dbc35662901477df22677ec152b5ff68ace615bb7" +
+        "b725152b3ab17a876aea8a5aa76d2e417629ec4ee341f56135fccf695280" +
+        "104e0312ecbda92557c93870114af6c9d05c4f7f0c3685b7a46bee255932" +
+        "575cce10b424d813cfe4875d3e82047b97ddef52741d546b8e289dc6935b" +
+    "3ece0462db0a22b8e7"
+    let nonce = "0CoJUm6Qyw8W8jud"
+    let pubKey = "010001"
+    
+    func encrypted_request(text: String) -> Dictionary<String, String> {
+        let secKey = createSecretKey(size: 16)
+        let encText = aesEncrypt(text: aesEncrypt(text: text, secKey: nonce)!, secKey: secKey)
+        let encSecKey = rsaEncrypt(text: secKey, pubKey: pubKey, modulus: modulus)
+        return ["params": encText!, "encSecKey": encSecKey]
+    }
+    
+    func aesEncrypt(text: String, secKey: String) -> String? {
+        do {
+            let aes = try! AES(key: secKey, iv:"0102030405060708", blockMode: .CBC, padding: PKCS7())
+            let ciphertext = try aes.encrypt(text.utf8.map({$0}))
+            return String.init(data: Data.init(bytes: ciphertext).base64EncodedData(), encoding: .utf8)
+        } catch {
+            
+        }
+        return nil
+    }
+    
+    func rsaEncrypt(text: String, pubKey: String, modulus: String) -> String {
+        let revertText = String(text.characters.reversed())
+        let diStr = hexlify(revertText.data(using: .utf8)!)
+        let di = BigUInt(diStr, radix: 16)
+        let exponent = BigUInt(pubKey, radix: 16)
+        let modulus = BigUInt(modulus, radix: 16)
+        let ret = di!.power(exponent!, modulus: modulus!)
+        let res = String.init(ret, radix: 16, uppercase: false)
+        return res.zfill(minimunLength: 256)
+    }
+    
+    func createSecretKey(size: Int) -> String {
+        let str = (Data.generateRandomBytes(length: 16)?.hexEncodedString())!
+        let sstr = str.substring(to: str.index(str.startIndex, offsetBy: 16))
+        return sstr
+    }
+    
     
     let defaultSession = URLSession(configuration: URLSessionConfiguration.default)
     var dataTask: URLSessionDataTask? = nil
@@ -30,12 +76,19 @@ class NetworkMusicApi: NSObject {
         request.httpMethod = method
 
         if method == "POST" {
-//            let newdata = "username=349604757@qq.com&password=1d44443dc866fc6a79bda75a89807354&rememberLogin=true"
-//            let nnd = newdata.dataUsingEncoding(NSUTF8StringEncoding)
-//            let length = newdata.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)
-//            request.HTTPBody = nnd
-//            request.setValue("\(length)", forHTTPHeaderField: "Content-Length")
+            request.httpBody = Data.init(base64Encoded: (data?.json)!)
             dataTask = defaultSession.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) in
+                print(data)
+                if let err = error {
+                    complete(nil, err as NSError?)
+                } else if let httpResponse = response as? HTTPURLResponse {
+                    if httpResponse.statusCode == 200 {
+                        let decodedString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+                        complete(decodedString as? String, nil)
+                    } else {
+                        complete(nil, nil)
+                    }
+                }
             })
         } else if method == "GET" {
             dataTask = defaultSession.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) in
@@ -56,12 +109,11 @@ class NetworkMusicApi: NSObject {
     
     
     // 登录
-    func login(_ userName: String, password: String) -> Void {
+    func login(_ userName: String, password: String, _ complete: @escaping (_ data: String?, _ error: NSError?) -> Void) -> Void {
         // http://music.163.com/api/login/
-//        let md5Password = md5(string: password)
-//        let urlStr = "http://music.163.com/api/login/"
-//        let data = ["username":userName, "password":md5Password, "rememberLogin":"true"]
-//        doHttpRequest("POST", url: urlStr, data: data)
+        let urlStr = "https://music.163.com/weapi/login/"
+        let data = ["username":userName, "password":password, "rememberLogin":"true"]
+        doHttpRequest("POST", url: urlStr, data: encrypted_request(text: data.json), complete: complete)
     }
     
     //用户歌单
@@ -158,19 +210,5 @@ class NetworkMusicApi: NSObject {
         let action = "http://music.163.com/api/song/lyric?os=osx&id=\(songId)&lv=-1&kv=-1&tv=-1"
         doHttpRequest("GET", url: action, data: nil, complete: complete)
 
-    }
-    
-    func md5(string: String) -> String {
-        var digest = [UInt8](repeating: 0, count: Int(CC_MD5_DIGEST_LENGTH))
-        if let data = string.data(using: String.Encoding.utf8) {
-            CC_MD5((data as NSData).bytes, CC_LONG(data.count), &digest)
-        }
-        
-        var digestHex = ""
-        for index in 0..<Int(CC_MD5_DIGEST_LENGTH) {
-            digestHex += String(format: "%02x", digest[index])
-        }
-        
-        return digestHex
     }
 }

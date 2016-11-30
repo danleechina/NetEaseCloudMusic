@@ -7,17 +7,18 @@
 //
 
 import UIKit
-import AVFoundation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
+        let net = NetworkMusicApi.shareInstance
+        net.login("349604757@qq.com", password: "afsafsdfsd", { (data, error) in
+            print(data, error)
+            
+        })
         var backImage = UIImage.init(named: "cm2_icn_back")
         backImage = backImage?.resizableImage(withCapInsets: UIEdgeInsetsMake(0, backImage!.size.width - 1, 0, 0))
         let barbutton = UIBarButtonItem.appearance()
@@ -25,5 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         barbutton.setTitlePositionAdjustment(UIOffsetMake(0, -60), for: .default)
         return true
     }
+    
+    
+    
 }
 
