@@ -13,7 +13,6 @@ class NetworkMusicApi: NSObject {
     static let shareInstance = NetworkMusicApi()
     fileprivate override init() {}
     
-    
     let modulus = "00e0b509f6259df8642dbc35662901477df22677ec152b5ff68ace615bb7" +
         "b725152b3ab17a876aea8a5aa76d2e417629ec4ee341f56135fccf695280" +
         "104e0312ecbda92557c93870114af6c9d05c4f7f0c3685b7a46bee255932" +
@@ -22,16 +21,16 @@ class NetworkMusicApi: NSObject {
     let nonce = "0CoJUm6Qyw8W8jud"
     let pubKey = "010001"
     
-    func encrypted_request(text: String) -> Dictionary<String, String> {
+    func encrypted_request(text: String) -> String {
         let secKey = createSecretKey(size: 16)
         let encText = aesEncrypt(text: aesEncrypt(text: text, secKey: nonce)!, secKey: secKey)
         let encSecKey = rsaEncrypt(text: secKey, pubKey: pubKey, modulus: modulus)
-        return ["params": encText!, "encSecKey": encSecKey]
+        return "params=\(encText!)&encSecKey=\(encSecKey)"
     }
     
     func aesEncrypt(text: String, secKey: String) -> String? {
         do {
-            let aes = try! AES(key: secKey, iv:"0102030405060708", blockMode: .CBC, padding: PKCS7())
+            let aes = try! AES(key: Array(secKey.utf8), iv:Array("0102030405060708".utf8), blockMode: .CBC, padding: PKCS7())
             let ciphertext = try aes.encrypt(text.utf8.map({$0}))
             return String.init(data: Data.init(bytes: ciphertext).base64EncodedData(), encoding: .utf8)
         } catch {
@@ -60,7 +59,7 @@ class NetworkMusicApi: NSObject {
     
     let defaultSession = URLSession(configuration: URLSessionConfiguration.default)
     var dataTask: URLSessionDataTask? = nil
-    func doHttpRequest(_ method: String, url: String, data: Dictionary<String, String>?, complete: @escaping (_ data: String?, _ error: NSError?) -> Void) -> Void {
+    func doHttpRequest(_ method: String, url: String, data: String?, complete: @escaping (_ data: String?, _ error: NSError?) -> Void) -> Void {
         //
         let request = NSMutableURLRequest.init()
         request.url = URL.init(string: url)
@@ -74,11 +73,11 @@ class NetworkMusicApi: NSObject {
         request.setValue("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.152 Safari/537.36", forHTTPHeaderField: "User-Agent")
         request.timeoutInterval = 10
         request.httpMethod = method
-
+        
         if method == "POST" {
-            request.httpBody = Data.init(base64Encoded: (data?.json)!)
+            let perStr = data?.plusSymbolToPercent()
+            request.httpBody = perStr?.data(using: .utf8)
             dataTask = defaultSession.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) in
-                print(data)
                 if let err = error {
                     complete(nil, err as NSError?)
                 } else if let httpResponse = response as? HTTPURLResponse {
@@ -112,7 +111,9 @@ class NetworkMusicApi: NSObject {
     func login(_ userName: String, password: String, _ complete: @escaping (_ data: String?, _ error: NSError?) -> Void) -> Void {
         // http://music.163.com/api/login/
         let urlStr = "https://music.163.com/weapi/login/"
-        let data = ["username":userName, "password":password, "rememberLogin":"true"]
+        let passwordMD5 = password.md5()
+        let data = ["username":userName, "password":passwordMD5, "rememberLogin":"true"]
+//        doHttpRequest("POST", url: urlStr, data: encrypted_request(text: "{\"username\": \"349604757@qq.com\", \"rememberLogin\": \"true\", \"password\": \"\(passwordMD5)\"}"), complete: complete)
         doHttpRequest("POST", url: urlStr, data: encrypted_request(text: data.json), complete: complete)
     }
     
@@ -154,33 +155,33 @@ class NetworkMusicApi: NSObject {
     // 热门歌手 http://music.163.com/#/discover/artist/
     func top_artists() -> Void {
         //         action = 'http://music.163.com/api/artist/top?offset=' + str(offset) + '&total=false&limit=' + str(limit)
-
+        
     }
     
     // 热门单曲 http://music.163.com/#/discover/toplist 50
     func top_songlist() -> Void {
         //         action = 'http://music.163.com/discover/toplist'
-
+        
     }
     
     // 歌手单曲
     func artists() -> Void {
         //         action = 'http://music.163.com/api/artist/' + str(artist_id)
-
+        
     }
     
     
     // album id --> song id set
     func album() -> Void {
         //         action = 'http://music.163.com/api/album/' + str(album_id)
-
+        
     }
     
     
     // song ids --> song urls ( details )
     func songs_detail() -> Void {
         //         action = 'http://music.163.com/api/song/detail?ids=[' + (',').join(tmpids) + ']'
-
+        
     }
     
     
@@ -188,20 +189,20 @@ class NetworkMusicApi: NSObject {
     func song_detail() -> Void {
         //         action = "http://music.163.com/api/song/detail/?id=" + str(music_id) + "&ids=[" + str(music_id) + "]"
     }
-
+    
     
     // 今日最热（0）, 本周最热（10），历史最热（20），最新节目（30）
     func djchannels() -> Void {
         //         action = 'http://music.163.com/discover/djchannel?type=' + str(stype) + '&offset=' + str(offset) + '&limit=' + str(limit)
-
+        
     }
-
+    
     
     // DJchannel ( id, channel_name ) ids --> song urls ( details )
     // 将 channels 整理为 songs 类型
     func channel_detail() -> Void {
         //             action = 'http://music.163.com/api/dj/program/detail?id=' + str(channelids[i])
-
+        
     }
     
     // 根据歌曲ID获取歌词
@@ -209,6 +210,6 @@ class NetworkMusicApi: NSObject {
         
         let action = "http://music.163.com/api/song/lyric?os=osx&id=\(songId)&lv=-1&kv=-1&tv=-1"
         doHttpRequest("GET", url: action, data: nil, complete: complete)
-
+        
     }
 }

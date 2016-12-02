@@ -55,4 +55,8 @@ extension String {
         }
         return ret
     }
+    
+    func plusSymbolToPercent() -> String {
+        return self.replacingOccurrences(of: "+", with: "%2B")
+    }
 }
