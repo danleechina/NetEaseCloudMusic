@@ -34,6 +34,24 @@ class BaseNavigationBar: UIView {
         return view
     }()
     
+    var titleLabel: UILabel = {
+        let label = UILabel()
+        label.isHidden = true
+        return label
+    }()
+    
+    var titleString: String? {
+        didSet {
+            if let str = titleString {
+                titleLabel.isHidden = false
+                titleLabel.text = str
+                titleLabel.sizeToFit()
+            } else {
+                titleLabel.isHidden = true
+            }
+        }
+    }
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -41,6 +59,8 @@ class BaseNavigationBar: UIView {
         addSubview(leftButton)
         addSubview(rightButton)
         addSubview(lineView)
+        
+        titleView.addSubview(titleLabel)
     }
     
     override func layoutSubviews() {
@@ -51,6 +71,10 @@ class BaseNavigationBar: UIView {
             make.width.equalTo(self.bounds.width - 110)
             make.centerX.equalTo(self.snp.centerX)
             make.centerY.equalTo(self.snp.centerY)
+        }
+        
+        titleLabel.snp.makeConstraints { (make) in
+            make.center.equalTo(titleView.center)
         }
         
         leftButton.snp.makeConstraints { (make) in

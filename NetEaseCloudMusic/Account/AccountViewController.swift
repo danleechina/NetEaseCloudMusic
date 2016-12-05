@@ -99,6 +99,10 @@ class AccountViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.addSubview(self.navigationBar)
+        self.navigationBar.titleString = "账号"
+        self.navigationBar.backgroundColor = UIColor.white
+        self.navigationBar.lineView.backgroundColor = UIColor.gray.withAlphaComponent(0.5)
     }
     
     func changeDayMode() -> Void {
@@ -154,13 +158,6 @@ extension AccountViewController:UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 10
-    }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        if section == 4 {
-            return 10
-        }
-        return 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
