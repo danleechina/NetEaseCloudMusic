@@ -9,100 +9,107 @@
 import UIKit
 
 class AccountViewController: BaseViewController {
+    @IBOutlet weak var accountHeadView: UIView!
+    @IBOutlet var noAccountLabel: UILabel!
+    @IBOutlet var signinButton: UIButton!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var headImageView: UIImageView!
+    @IBOutlet weak var nickNameStackView: UIStackView!
+    @IBOutlet weak var checkInButton: UIButton!
+    @IBOutlet weak var activityStackView: UIStackView!
+    @IBOutlet weak var focusStackView: UIStackView!
+    @IBOutlet weak var fansStackView: UIStackView!
+    @IBOutlet weak var editStackView: UIStackView!
     
-    @IBOutlet weak var accountHeadView: UIView! {
+    func viewInit() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.backgroundColor = UIColor.clear
+        tableView.showsVerticalScrollIndicator = false
+        //avoid line separate happened everywhere
+        tableView.tableFooterView = UIView()
+        //avoid floating section
+        tableView.contentInset = UIEdgeInsetsMake(-10, 0, 0, 0)
+        
+        checkInButton.layer.borderColor = FixedValue.mainRedColor.cgColor
+        checkInButton.layer.borderWidth = 1.5
+        checkInButton.layer.cornerRadius = 3
+        checkInButton.contentEdgeInsets = UIEdgeInsetsMake(5, 10, 5, 10)
+        
+        for view in self.accountHeadView.subviews {
+            view.isHidden = !isSignedIn
+        }
+        
+        noAccountLabel.isHidden = isSignedIn
+        signinButton.isHidden = isSignedIn
+    }
+    
+    fileprivate var isSignedIn = false {
         didSet {
-            
+            tableView.reloadData()
         }
     }
     
-    @IBOutlet weak var tableView: UITableView! {
-        didSet {
-            tableView.delegate = self
-            tableView.dataSource = self
-            tableView.backgroundColor = UIColor.clear
-            tableView.showsVerticalScrollIndicator = false
-            //avoid line separate happened everywhere
-            tableView.tableFooterView = UIView()
-            //avoid floating section
-            tableView.contentInset = UIEdgeInsetsMake(-10, 0, 0, 0)
+    fileprivate var titleArray: Array< Array<String> > {
+        get {
+            if isSignedIn {
+                return [
+                    ["我的消息"],
+                    ["付费音乐包" , "积分商城" , "在线听歌免流量"],
+                    ["设置" , "主题换肤" , "夜间模式" , "定时关闭" , "音乐闹钟" , "驾驶模式"],
+                    ["分享网易云音乐", "关于"],
+                    ["退出登录"]
+                ]
+            } else {
+                return [
+                    ["我的消息"],
+                    ["付费音乐包" , "积分商城" , "在线听歌免流量"],
+                    ["设置" , "主题换肤" , "夜间模式" , "定时关闭" , "音乐闹钟" , "驾驶模式"],
+                    ["分享网易云音乐", "关于"],
+                ]
+            }
         }
     }
     
-    @IBOutlet weak var headImageView: UIImageView! {
-        didSet {
-            
+    fileprivate var imageNameArray: Array< Array<String> > {
+        get {
+            if isSignedIn {
+                return  [
+                    ["first"],
+                    ["second", "first", "second"],
+                    ["first", "second", "first", "second", "first", "second"],
+                    ["first", "second"],
+                    ["first"]
+                ]
+            } else {
+                return  [
+                    ["first"],
+                    ["second", "first", "second"],
+                    ["first", "second", "first", "second", "first", "second"],
+                    ["first", "second"],
+                    ["first"]
+                ]
+            }
         }
     }
     
-    @IBOutlet weak var nickNameStackView: UIStackView! {
-        didSet {
-            
-        }
-    }
-    
-    
-    
-    @IBOutlet weak var checkInButton: UIButton! {
-        didSet {
-            checkInButton.layer.borderColor = FixedValue.mainRedColor.cgColor
-            checkInButton.layer.borderWidth = 1.5
-            checkInButton.layer.cornerRadius = 3
-            checkInButton.contentEdgeInsets = UIEdgeInsetsMake(5, 10, 5, 10)
-        }
-    }
-    
-    @IBOutlet weak var activityStackView: UIStackView! {
-        didSet {
-            
-        }
-    }
-
-    @IBOutlet weak var focusStackView: UIStackView! {
-        didSet {
-            
-        }
-    }
-    
-    @IBOutlet weak var fansStackView: UIStackView! {
-        didSet {
-            
-        }
-    }
-    
-    @IBOutlet weak var editStackView: UIStackView! {
-        didSet {
-            
-        }
-    }
-    
-    
-    
-    
-    fileprivate var titleArray = [["我的消息"],
-                              ["付费音乐包" , "积分商城" , "在线听歌免流量"],
-                              ["设置" , "主题换肤" , "夜间模式" , "定时关闭" , "音乐闹钟" , "驾驶模式"],
-                              ["分享网易云音乐", "关于"],
-                              ["退出登录"]]
-    
-    fileprivate var imageNameArray = [["first"],
-                                  ["second", "first", "second"],
-                                  ["first", "second", "first", "second", "first", "second"],
-                                  ["first", "second"],
-                                  ["first"]]
-    
-    fileprivate var actionArray:[[UIViewController.Type]] = [[MyMessageViewController.self,],
-                                           [PaidMusicViewController.self, PointMallViewController.self, OnlineFreePlayViewController.self,],
-                                           [SettingViewController.self, ThemeSkinViewController.self, UIViewController.self, CountDownViewController.self, MusicAlarmViewController.self, DrivingModeViewController.self,],
-                                           [UIViewController.self, AboutViewController.self,],
-                                           [UIViewController.self,]]
+    fileprivate var actionArray:[[UIViewController.Type]] = [
+        [MyMessageViewController.self,],
+        [PaidMusicViewController.self, PointMallViewController.self, OnlineFreePlayViewController.self,],
+        [SettingViewController.self, ThemeSkinViewController.self, UIViewController.self, CountDownViewController.self, MusicAlarmViewController.self, DrivingModeViewController.self,],
+        [UIViewController.self, AboutViewController.self,],
+        [UIViewController.self,]
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.view.addSubview(self.navigationBar)
         self.navigationBar.titleString = "账号"
         self.navigationBar.backgroundColor = UIColor.white
         self.navigationBar.lineView.backgroundColor = UIColor.gray.withAlphaComponent(0.5)
+        
+        viewInit()
     }
     
     func changeDayMode() -> Void {
