@@ -55,11 +55,11 @@ class NetworkMusicApi: NSObject {
         let sstr = str.substring(to: str.index(str.startIndex, offsetBy: 16))
         return sstr
     }
-    
+    typealias CompletionBlock = (_ result: String?, _ error: NSError?) -> Void
     
     let defaultSession = URLSession(configuration: URLSessionConfiguration.default)
     var dataTask: URLSessionDataTask? = nil
-    func doHttpRequest(_ method: String, url: String, data: String?, complete: @escaping (_ data: String?, _ error: NSError?) -> Void) -> Void {
+    func doHttpRequest(_ method: String, url: String, data: String?, complete: @escaping CompletionBlock) {
         //
         let request = NSMutableURLRequest.init()
         request.url = URL.init(string: url)
@@ -108,35 +108,45 @@ class NetworkMusicApi: NSObject {
     
     
     // 登录
-    func login(_ userName: String, password: String, _ complete: @escaping (_ data: String?, _ error: NSError?) -> Void) -> Void {
+    func login(_ userName: String, password: String, _ complete: @escaping CompletionBlock) {
         // http://music.163.com/api/login/
         let urlStr = "https://music.163.com/weapi/login/"
         let passwordMD5 = password.md5()
         let data = ["username":userName, "password":passwordMD5, "rememberLogin":"true"]
-//        doHttpRequest("POST", url: urlStr, data: encrypted_request(text: "{\"username\": \"349604757@qq.com\", \"rememberLogin\": \"true\", \"password\": \"\(passwordMD5)\"}"), complete: complete)
         doHttpRequest("POST", url: urlStr, data: encrypted_request(text: data.json), complete: complete)
     }
     
+    // 获取动态
+    func getCurrentLoginUserActivity(_ complete: @escaping CompletionBlock) {
+        guard let loginData = DatabaseManager.shareInstance.getCurrentUserLoginData() else {
+            complete(nil, nil)
+            return
+        }
+        let usrStr = "http://music.163.com/weapi/event/get/\(loginData.userID!)"
+        let data = ["username":loginData.loginName, "password":loginData.loginPwd, "rememberLogin":"true"]
+        doHttpRequest("POST", url: usrStr, data: encrypted_request(text: data.json), complete: complete)
+    }
+    
     //用户歌单
-    func user_playlist() -> Void {
+    func user_playlist() {
         // http://music.163.com/api/search/get/web
     }
     
     // 搜索单曲(1)，歌手(100)，专辑(10)，歌单(1000)，用户(1002) *(type)*
-    func search() -> Void {
+    func search() {
         // http://music.163.com/api/search/get/web
     }
     
     
     // 新碟上架 http://music.163.com/#/discover/album/
-    func new_albums() -> Void {
+    func new_albums() {
         // action = 'http://music.163.com/api/album/new?area=ALL&offset=' + str(offset) + '&total=true&limit=' + str(limit)
         
     }
     
     
     // 歌单（网友精选碟） hot||new http://music.163.com/#/discover/playlist/
-    func top_playlists(_ complete: @escaping (_ data: String?, _ error: NSError?) -> Void) -> Void {
+    func top_playlists(_ complete: @escaping CompletionBlock) {
         // action = 'http://music.163.com/api/playlist/list?cat=' + category + '&order=' + order + '&offset=' + str(offset) + '&total=' + ('true' if offset else 'false') + '&limit=' + str(limit)
         let action = "http://music.163.com/api/playlist/list?cat=全部&order=hot&offset=0&total=false&limit=50"
         let escapedAddress = action.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
@@ -145,7 +155,7 @@ class NetworkMusicApi: NSObject {
     
     
     // 歌单详情
-    func playlist_detail(_ playListID: String, complete: @escaping (_ data: String?, _ error: NSError?) -> Void) -> Void {
+    func playlist_detail(_ playListID: String, complete: @escaping CompletionBlock) {
         let action = "http://music.163.com/api/playlist/detail?id=" + playListID
         let escapedAddress = action.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
         doHttpRequest("GET", url: escapedAddress!, data: nil, complete: complete)
@@ -153,46 +163,46 @@ class NetworkMusicApi: NSObject {
     }
     
     // 热门歌手 http://music.163.com/#/discover/artist/
-    func top_artists() -> Void {
+    func top_artists() {
         //         action = 'http://music.163.com/api/artist/top?offset=' + str(offset) + '&total=false&limit=' + str(limit)
         
     }
     
     // 热门单曲 http://music.163.com/#/discover/toplist 50
-    func top_songlist() -> Void {
+    func top_songlist() {
         //         action = 'http://music.163.com/discover/toplist'
         
     }
     
     // 歌手单曲
-    func artists() -> Void {
+    func artists() {
         //         action = 'http://music.163.com/api/artist/' + str(artist_id)
         
     }
     
     
     // album id --> song id set
-    func album() -> Void {
+    func album() {
         //         action = 'http://music.163.com/api/album/' + str(album_id)
         
     }
     
     
     // song ids --> song urls ( details )
-    func songs_detail() -> Void {
+    func songs_detail() {
         //         action = 'http://music.163.com/api/song/detail?ids=[' + (',').join(tmpids) + ']'
         
     }
     
     
     // song id --> song url ( details )
-    func song_detail() -> Void {
+    func song_detail() {
         //         action = "http://music.163.com/api/song/detail/?id=" + str(music_id) + "&ids=[" + str(music_id) + "]"
     }
     
     
     // 今日最热（0）, 本周最热（10），历史最热（20），最新节目（30）
-    func djchannels() -> Void {
+    func djchannels() {
         //         action = 'http://music.163.com/discover/djchannel?type=' + str(stype) + '&offset=' + str(offset) + '&limit=' + str(limit)
         
     }
@@ -200,13 +210,13 @@ class NetworkMusicApi: NSObject {
     
     // DJchannel ( id, channel_name ) ids --> song urls ( details )
     // 将 channels 整理为 songs 类型
-    func channel_detail() -> Void {
+    func channel_detail() {
         //             action = 'http://music.163.com/api/dj/program/detail?id=' + str(channelids[i])
         
     }
     
     // 根据歌曲ID获取歌词
-    func songLyricWithSongID(_ songId: Int, complete: @escaping (_ data: String?, _ error: NSError?) -> Void) -> Void {
+    func songLyricWithSongID(_ songId: Int, complete: @escaping CompletionBlock) {
         
         let action = "http://music.163.com/api/song/lyric?os=osx&id=\(songId)&lv=-1&kv=-1&tv=-1"
         doHttpRequest("GET", url: action, data: nil, complete: complete)

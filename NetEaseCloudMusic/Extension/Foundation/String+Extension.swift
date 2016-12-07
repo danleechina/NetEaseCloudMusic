@@ -10,7 +10,15 @@ import Foundation
 
 
 extension String {
-    
+    var jsonDict: Dictionary<String, Any>? {
+        do {
+            let dict = try JSONSerialization.jsonObject(with: (self.data(using: String.Encoding.utf8))!, options: []) as? [String:AnyObject]
+            return dict
+        } catch let error as NSError {
+            print(error)
+        }
+        return nil
+    }
     
     func md5() -> String {
         var digest = [UInt8](repeating: 0, count: Int(CC_MD5_DIGEST_LENGTH))
@@ -58,5 +66,17 @@ extension String {
     
     func plusSymbolToPercent() -> String {
         return self.replacingOccurrences(of: "+", with: "%2B")
+    }
+    
+    func isEmail() -> Bool {
+        return true
+    }
+    
+    func isPhone() -> Bool {
+        return true
+    }
+    
+    func trimSpace() -> String {
+        return self
     }
 }

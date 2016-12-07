@@ -28,11 +28,12 @@ class BaseViewController: UIViewController {
     func tapBackButton() {
         if let nvc = self.navigationController {
             if nvc.viewControllers.count > 0 {
-                nvc.popViewController(animated: true)
                 if nvc.viewControllers.count == 1 {
                     if !(nvc.parent != nil) {
                         nvc.dismiss(animated: true, completion: nil)
                     }
+                } else {
+                    nvc.popViewController(animated: true)
                 }
             } else {
                 if !(self.parent != nil) {

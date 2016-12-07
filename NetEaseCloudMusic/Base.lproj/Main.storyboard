@@ -401,7 +401,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="7lb-WV-chd" kind="show" id="2Ng-gD-qYM"/>
+                                    <segue destination="7lb-WV-chd" kind="show" identifier="LoginWithPhone" id="2Ng-gD-qYM"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U91-yc-NAP">
@@ -425,12 +425,12 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="7lb-WV-chd" kind="show" id="QAn-ke-d2h"/>
+                                    <segue destination="7lb-WV-chd" kind="show" identifier="Register" id="QAn-ke-d2h"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EDP-W3-Mri">
                                 <rect key="frame" x="66" y="529.5" width="80" height="1"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="0.50725064212328763" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="XO8-mY-SvT"/>
                                     <constraint firstAttribute="height" constant="1" id="yvM-cC-YIP"/>
@@ -444,7 +444,7 @@
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aa9-kw-wEE">
                                 <rect key="frame" x="230" y="529.5" width="80" height="1"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="0.5" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="naQ-UN-RpQ"/>
                                     <constraint firstAttribute="width" constant="80" id="ulu-ZI-Foc"/>
@@ -468,7 +468,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="微信" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wtr-0U-9JQ">
                                                 <rect key="frame" x="8.5" y="52" width="27" height="16"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -488,7 +488,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QQ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Sx-Sd-XCe">
                                                 <rect key="frame" x="12" y="52" width="20" height="16"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -508,7 +508,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新浪微博" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1AX-OT-WYF">
                                                 <rect key="frame" x="0.0" y="52" width="53.5" height="16"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -525,13 +525,13 @@
                                                 <state key="normal" image="cm2_login_btn_netease"/>
                                                 <state key="highlighted" image="cm2_login_btn_netease_prs"/>
                                                 <connections>
-                                                    <segue destination="7lb-WV-chd" kind="show" id="QA6-ec-tHj"/>
+                                                    <segue destination="7lb-WV-chd" kind="show" identifier="LoginWithNetEaseMail" id="QA6-ec-tHj"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="网易邮箱" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i9F-Gy-gG9">
                                                 <rect key="frame" x="0.0" y="52" width="53.5" height="16"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -564,6 +564,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="aEu-KI-8vj"/>
                     <connections>
+                        <outlet property="gradientLine2View" destination="aa9-kw-wEE" id="My6-JG-a1r"/>
+                        <outlet property="gradientLineView" destination="EDP-W3-Mri" id="4FN-Ys-sWv"/>
                         <outlet property="loginButton" destination="Nhm-sg-AQz" id="D5I-c2-5Yw"/>
                         <outlet property="neteaseMailButton" destination="TZA-5p-0s9" id="6fA-qv-jE1"/>
                         <outlet property="qqButton" destination="C1F-0b-TSa" id="e4b-64-bTp"/>
@@ -576,10 +578,10 @@
             </objects>
             <point key="canvasLocation" x="3760.8000000000002" y="2264.617691154423"/>
         </scene>
-        <!--Base View Controller-->
+        <!--Login Detail View Controller-->
         <scene sceneID="wRb-MG-0xR">
             <objects>
-                <viewController id="7lb-WV-chd" customClass="BaseViewController" customModule="NetEaseCloudMusic" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="7lb-WV-chd" customClass="LoginDetailViewController" customModule="NetEaseCloudMusic" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FrE-8y-bXv"/>
                         <viewControllerLayoutGuide type="bottom" id="4jZ-dd-0iH"/>
@@ -591,7 +593,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eni-V9-VXI">
                                 <rect key="frame" x="5" y="84" width="365" height="101"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MTm-DH-9pJ">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="MTm-DH-9pJ">
                                         <rect key="frame" x="0.0" y="0.0" width="365" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="8nS-AL-NOe"/>
@@ -603,26 +605,32 @@
                                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                 <real key="value" value="0.0"/>
                                             </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fVI-SL-3Sl">
                                         <rect key="frame" x="-0.5" y="50" width="365" height="1"/>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="0.49331121575342468" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="Rq1-av-Pbb"/>
                                         </constraints>
                                     </view>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Mu-jX-7yN">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="2Mu-jX-7yN">
                                         <rect key="frame" x="0.0" y="53" width="365" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="CEM-Xa-vFW"/>
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                 <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
@@ -645,7 +653,7 @@
                                         <real key="value" value="8"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="value" white="0.66666666666666663" alpha="0.5078125" colorSpace="calibratedWhite"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                         <real key="value" value="1"/>
@@ -691,7 +699,7 @@
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wzZ-z9-pTm">
                                         <rect key="frame" x="229.5" y="27" width="80" height="1"/>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="0.49387307363013699" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="MpI-8V-3kP"/>
                                             <constraint firstAttribute="width" constant="80" id="k3U-10-HiT"/>
@@ -699,7 +707,7 @@
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a1E-GY-0PY">
                                         <rect key="frame" x="65.5" y="27" width="80" height="1"/>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="0.5" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="Lad-W8-c9P"/>
                                             <constraint firstAttribute="width" constant="80" id="Vb5-v5-3oL"/>
@@ -723,7 +731,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="微信" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y4E-9I-QgG">
                                                         <rect key="frame" x="8.5" y="52" width="27" height="16"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                        <nil key="textColor"/>
+                                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -743,7 +751,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QQ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C7y-Lv-31f">
                                                         <rect key="frame" x="12" y="52" width="20" height="16"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                        <nil key="textColor"/>
+                                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -763,7 +771,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新浪微博" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eiN-bb-5iR">
                                                         <rect key="frame" x="0.0" y="52" width="53.5" height="16"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                        <nil key="textColor"/>
+                                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -783,7 +791,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="网易邮箱" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZPg-pR-aeP">
                                                         <rect key="frame" x="0.0" y="52" width="53.5" height="16"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                        <nil key="textColor"/>
+                                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -823,6 +831,14 @@
                             <constraint firstItem="eLQ-gP-YB3" firstAttribute="width" secondItem="BBE-wR-o8f" secondAttribute="width" id="uf7-rC-dgI"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="accountTextField" destination="MTm-DH-9pJ" id="5AF-iq-nYj"/>
+                        <outlet property="helpLabel" destination="HY9-W7-oUF" id="XeG-qM-7pQ"/>
+                        <outlet property="helpRegisterView" destination="eLQ-gP-YB3" id="OiO-bu-9rb"/>
+                        <outlet property="lineView" destination="PpS-Um-NOx" id="jGZ-Dt-Tf8"/>
+                        <outlet property="passwordTextField" destination="2Mu-jX-7yN" id="2SA-hg-aGc"/>
+                        <outlet property="signButton" destination="ttH-L9-UhF" id="GRI-d8-zkn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bWh-Ie-rzh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1011,6 +1027,6 @@
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="QA6-ec-tHj"/>
+        <segue reference="QAn-ke-d2h"/>
     </inferredMetricsTieBreakers>
 </document>

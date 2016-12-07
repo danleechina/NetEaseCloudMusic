@@ -30,7 +30,7 @@ class BaseNavigationBar: UIView {
     
     var lineView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.white.withAlphaComponent(0.2)
+        view.backgroundColor = UIColor.lightGray.withAlphaComponent(0.2)
         return view
     }()
     

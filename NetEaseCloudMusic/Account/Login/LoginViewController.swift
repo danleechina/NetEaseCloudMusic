@@ -16,6 +16,16 @@ class LoginViewController: BaseViewController {
     @IBOutlet var qqButton: UIButton!
     @IBOutlet var weiboButton: UIButton!
     @IBOutlet var neteaseMailButton: UIButton!
+    @IBOutlet var gradientLineView: UIView! {
+        didSet {
+//            gradientLineView.setGradientBackgroundColorInHorizontal(fromColor: UIColor.lightGray.withAlphaComponent(0.1), toColor: UIColor.lightGray.withAlphaComponent(0.5))
+        }
+    }
+    @IBOutlet var gradientLine2View: UIView!{
+        didSet {
+//            gradientLine2View.setGradientBackgroundColorInHorizontal(fromColor: UIColor.lightGray.withAlphaComponent(0.1), toColor: UIColor.lightGray.withAlphaComponent(0.5))
+        }
+    }
     
     
     override func viewDidLoad() {
@@ -36,14 +46,18 @@ class LoginViewController: BaseViewController {
     func viewInit() {
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        guard let segueID = segue.identifier else {
+            return
+        }
+        let vc = segue.destination as! LoginDetailViewController
+        vc.segueType = segueID
     }
-    */
 
 }

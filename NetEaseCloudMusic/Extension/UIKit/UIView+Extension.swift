@@ -9,32 +9,23 @@
 import UIKit
 
 extension UIView {
-    
-    @IBInspectable var cornerRadius: CGFloat {
-        get {
-            return layer.cornerRadius
-        }
-        set {
-            layer.cornerRadius = newValue
-            layer.masksToBounds = newValue > 0
-        }
+    func setGradientBackgroundColorInHorizontal(fromColor fcolor: UIColor, toColor tcolor: UIColor) {
+        let gradient = CAGradientLayer()
+        gradient.frame = self.bounds
+        gradient.colors = [fcolor, tcolor]
+        gradient.startPoint = CGPoint(x: 0, y: 0.5)
+        gradient.endPoint = CGPoint(x: 1, y: 0.5)
+        self.layer.insertSublayer(gradient, at: 0)
+        
     }
     
-    @IBInspectable var borderWidth: CGFloat {
-        get {
-            return layer.borderWidth
-        }
-        set {
-            layer.borderWidth = newValue
-        }
-    }
     
-    @IBInspectable var borderColor: UIColor? {
-        get {
-            return UIColor(cgColor: layer.borderColor!)
-        }
-        set {
-            layer.borderColor = newValue?.cgColor
-        }
+    func setGradientBackgroundColorInVertical(fromColor fcolor: UIColor, toColor tcolor: UIColor) {
+        let gradient = CAGradientLayer()
+        gradient.frame = self.bounds
+        gradient.colors = [fcolor, tcolor]
+        gradient.startPoint = CGPoint(x: 0.5, y: 0)
+        gradient.endPoint = CGPoint(x: 0.5, y: 1)
+        self.layer.insertSublayer(gradient, at: 0)
     }
 }

@@ -14,6 +14,15 @@
 		3758A38E1DF6A88E00788104 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3758A38D1DF6A88E00788104 /* LoginViewController.swift */; };
 		3758A3911DF6B09F00788104 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3758A3901DF6B09F00788104 /* UIView+Extension.swift */; };
 		3758A3941DF6B6E400788104 /* UIImage+Extenison.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3758A3931DF6B6E400788104 /* UIImage+Extenison.swift */; };
+		3758A3961DF79AAF00788104 /* LoginDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3758A3951DF79AAF00788104 /* LoginDetailViewController.swift */; };
+		3758A3981DF79D9E00788104 /* IB+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3758A3971DF79D9E00788104 /* IB+Extension.swift */; };
+		3758A39A1DF7BE4E00788104 /* Acount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3758A3991DF7BE4E00788104 /* Acount.swift */; };
+		3758A39D1DF7C6F200788104 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3758A39B1DF7C6F200788104 /* Realm.framework */; };
+		3758A39E1DF7C6F200788104 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3758A39B1DF7C6F200788104 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3758A39F1DF7C6F200788104 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3758A39C1DF7C6F200788104 /* RealmSwift.framework */; };
+		3758A3A01DF7C6F200788104 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3758A39C1DF7C6F200788104 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3758A3A61DF7E7C000788104 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3758A3A51DF7E7C000788104 /* DatabaseManager.swift */; };
+		375ACD471DF8012400AD89FB /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375ACD461DF8012400AD89FB /* Activity.swift */; };
 		37D0F7851DEEEBB80046C9B6 /* BigDigit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D0F7711DEEEBB80046C9B6 /* BigDigit.swift */; };
 		37D0F7861DEEEBB80046C9B6 /* BigInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D0F7721DEEEBB80046C9B6 /* BigInt.swift */; };
 		37D0F7871DEEEBB80046C9B6 /* BigUInt Addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D0F7731DEEEBB80046C9B6 /* BigUInt Addition.swift */; };
@@ -126,6 +135,21 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		3758A3A11DF7C6F200788104 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3758A3A01DF7C6F200788104 /* RealmSwift.framework in Embed Frameworks */,
+				3758A39E1DF7C6F200788104 /* Realm.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		371F85231DEEBE6E00DA6C75 /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+Extension.swift"; path = "Extension/Foundation/String+Extension.swift"; sourceTree = "<group>"; };
 		371F85271DEEBF5E00DA6C75 /* Int+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Int+Extension.swift"; path = "Extension/Foundation/Int+Extension.swift"; sourceTree = "<group>"; };
@@ -133,6 +157,13 @@
 		3758A38D1DF6A88E00788104 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Account/Login/LoginViewController.swift; sourceTree = "<group>"; };
 		3758A3901DF6B09F00788104 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Extension.swift"; path = "Extension/UIKit/UIView+Extension.swift"; sourceTree = "<group>"; };
 		3758A3931DF6B6E400788104 /* UIImage+Extenison.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+Extenison.swift"; path = "Extension/UIKit/UIImage+Extenison.swift"; sourceTree = "<group>"; };
+		3758A3951DF79AAF00788104 /* LoginDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginDetailViewController.swift; path = Account/Login/LoginDetailViewController.swift; sourceTree = "<group>"; };
+		3758A3971DF79D9E00788104 /* IB+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "IB+Extension.swift"; path = "Extension/UIKit/IB+Extension.swift"; sourceTree = "<group>"; };
+		3758A3991DF7BE4E00788104 /* Acount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Acount.swift; path = Model/Acount.swift; sourceTree = "<group>"; };
+		3758A39B1DF7C6F200788104 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
+		3758A39C1DF7C6F200788104 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
+		3758A3A51DF7E7C000788104 /* DatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DatabaseManager.swift; path = Manager/DatabaseManager.swift; sourceTree = "<group>"; };
+		375ACD461DF8012400AD89FB /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Activity.swift; path = Model/Activity.swift; sourceTree = "<group>"; };
 		37D0F7711DEEEBB80046C9B6 /* BigDigit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BigDigit.swift; path = Vendor/BigUInt/BigDigit.swift; sourceTree = "<group>"; };
 		37D0F7721DEEEBB80046C9B6 /* BigInt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BigInt.swift; path = Vendor/BigUInt/BigInt.swift; sourceTree = "<group>"; };
 		37D0F7731DEEEBB80046C9B6 /* BigUInt Addition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "BigUInt Addition.swift"; path = "Vendor/BigUInt/BigUInt Addition.swift"; sourceTree = "<group>"; };
@@ -245,7 +276,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3758A39D1DF7C6F200788104 /* Realm.framework in Frameworks */,
 				11EDA0711EB09D90F97A2256 /* Pods_NetEaseCloudMusic.framework in Frameworks */,
+				3758A39F1DF7C6F200788104 /* RealmSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,6 +323,7 @@
 			isa = PBXGroup;
 			children = (
 				3758A38D1DF6A88E00788104 /* LoginViewController.swift */,
+				3758A3951DF79AAF00788104 /* LoginDetailViewController.swift */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -299,8 +333,17 @@
 			children = (
 				3758A3901DF6B09F00788104 /* UIView+Extension.swift */,
 				3758A3931DF6B6E400788104 /* UIImage+Extenison.swift */,
+				3758A3971DF79D9E00788104 /* IB+Extension.swift */,
 			);
 			name = UIKit;
+			sourceTree = "<group>";
+		};
+		3758A3A71DF7E7C900788104 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				3758A3A51DF7E7C000788104 /* DatabaseManager.swift */,
+			);
+			name = Manager;
 			sourceTree = "<group>";
 		};
 		37D0F7991DEEEBC40046C9B6 /* BigUInt */ = {
@@ -369,6 +412,8 @@
 				DE13AB1C1D379290004BA90C /* CertainSongSheet.swift */,
 				DED58E101D5C8C8600ED8A74 /* SongLyric.swift */,
 				DED58E121D5C8D0900ED8A74 /* SongInfo.swift */,
+				3758A3991DF7BE4E00788104 /* Acount.swift */,
+				375ACD461DF8012400AD89FB /* Activity.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -385,6 +430,8 @@
 		DE26546C1D101A860083F742 = {
 			isa = PBXGroup;
 			children = (
+				3758A39B1DF7C6F200788104 /* Realm.framework */,
+				3758A39C1DF7C6F200788104 /* RealmSwift.framework */,
 				DE2654771D101A860083F742 /* NetEaseCloudMusic */,
 				DE26548E1D101A860083F742 /* NetEaseCloudMusicTests */,
 				DE2654991D101A860083F742 /* NetEaseCloudMusicUITests */,
@@ -425,6 +472,7 @@
 				A02A3EE81D4360B900A3956F /* Service */,
 				DE19D2151D12DB03008A575C /* Util */,
 				A02A3EE51D40FBDD00A3956F /* Vendor */,
+				3758A3A71DF7E7C900788104 /* Manager */,
 			);
 			path = NetEaseCloudMusic;
 			sourceTree = "<group>";
@@ -645,6 +693,8 @@
 				DE2654731D101A860083F742 /* Resources */,
 				B90FB96F7CCA3B59DA14E76B /* [CP] Embed Pods Frameworks */,
 				5B7EA6DEF1A68740260944DA /* [CP] Copy Pods Resources */,
+				3758A3A11DF7C6F200788104 /* Embed Frameworks */,
+				3758A3A21DF7C72700788104 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -770,6 +820,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		3758A3A21DF7C72700788104 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework/strip-frameworks.sh\"\n";
+		};
 		5B7EA6DEF1A68740260944DA /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -873,13 +936,16 @@
 				DE79E6F01D167209006B9926 /* AtMineListTableView.swift in Sources */,
 				37D0F79B1DEEEF280046C9B6 /* BinUtils.swift in Sources */,
 				DE79E6F81D1672BE006B9926 /* NotificationListTableView.swift in Sources */,
+				3758A39A1DF7BE4E00788104 /* Acount.swift in Sources */,
 				DE2654BB1D10232C0083F742 /* SongSheetViewController.swift in Sources */,
+				3758A3981DF79D9E00788104 /* IB+Extension.swift in Sources */,
 				DE2654C71D1025730083F742 /* MyMusicCloudBoxViewController.swift in Sources */,
 				DE2654C91D1025C70083F742 /* AddFocusViewController.swift in Sources */,
 				DE79E6F61D167282006B9926 /* BaseTableView.swift in Sources */,
 				A02A3EE71D435D1400A3956F /* PlaySongService.swift in Sources */,
 				818E3B141D88272100F29A16 /* BaseNavigationBar.swift in Sources */,
 				DE79E6F41D167262006B9926 /* CommentListTableView.swift in Sources */,
+				3758A3961DF79AAF00788104 /* LoginDetailViewController.swift in Sources */,
 				DE2654D91D1027780083F742 /* ThemeSkinViewController.swift in Sources */,
 				DE2654C51D1025460083F742 /* AddSongSheetViewController.swift in Sources */,
 				DE2654D51D10271A0083F742 /* OnlineFreePlayViewController.swift in Sources */,
@@ -897,12 +963,14 @@
 				DE79E6EE1D163B35006B9926 /* RankRoundLabel.swift in Sources */,
 				37D0F7931DEEEBB80046C9B6 /* BigUInt Shifts.swift in Sources */,
 				DE4068571D12A4DA0067F0FE /* RoundNumberLabel.swift in Sources */,
+				3758A3A61DF7E7C000788104 /* DatabaseManager.swift in Sources */,
 				37D0F78D1DEEEBB80046C9B6 /* BigUInt GCD.swift in Sources */,
 				DE2654AB1D101D440083F742 /* FindMusicViewController.swift in Sources */,
 				3758A38E1DF6A88E00788104 /* LoginViewController.swift in Sources */,
 				DE2654B91D1022F10083F742 /* RecommendViewController.swift in Sources */,
 				DE2654E81D10299F0083F742 /* RecentPlayedViewController.swift in Sources */,
 				37D0F7921DEEEBB80046C9B6 /* BigUInt Random.swift in Sources */,
+				375ACD471DF8012400AD89FB /* Activity.swift in Sources */,
 				DE2654DD1D1027E40083F742 /* MusicAlarmViewController.swift in Sources */,
 				DE2654E11D1028160083F742 /* AboutViewController.swift in Sources */,
 				3758A3911DF6B09F00788104 /* UIView+Extension.swift in Sources */,
@@ -1059,6 +1127,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = NetEaseCloudMusic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.danlee.NetEaseCloudMusic;
@@ -1078,6 +1150,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = NetEaseCloudMusic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.danlee.NetEaseCloudMusic;

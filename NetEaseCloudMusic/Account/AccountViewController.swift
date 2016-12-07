@@ -110,6 +110,17 @@ class AccountViewController: BaseViewController {
         self.navigationBar.lineView.backgroundColor = UIColor.gray.withAlphaComponent(0.5)
         
         viewInit()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(onNewUserLogin), name: .onNewUserLogin, object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    func onNewUserLogin() {
+        isSignedIn = true
+        
     }
     
     func changeDayMode() -> Void {

@@ -15,3 +15,7 @@ class FixedValue {
     static let defaultMargin:CGFloat = 5
     static let segementHeight:CGFloat = 40
 }
+
+extension Notification.Name {
+    static let onNewUserLogin = Notification.Name("onNewUserLogin")
+}
