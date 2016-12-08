@@ -11,6 +11,16 @@ import CryptoSwift
 
 class NetworkMusicApi: NSObject {
     static let shareInstance = NetworkMusicApi()
+    
+    static let httpHeader = [ "Accept": "*/*",
+                              "Accept-Encoding": "gzip,deflate,sdch",
+                              "Connection": "keep-alive",
+                              "Content-Type": "application/x-www-form-urlencoded",
+                              "Host": "music.163.com",
+                              "Referer": "http://music.163.com/search/",
+                              "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.152 Safari/537.36",
+                              ]
+    
     fileprivate override init() {}
     
     let modulus = "00e0b509f6259df8642dbc35662901477df22677ec152b5ff68ace615bb7" +
@@ -20,6 +30,18 @@ class NetworkMusicApi: NSObject {
     "3ece0462db0a22b8e7"
     let nonce = "0CoJUm6Qyw8W8jud"
     let pubKey = "010001"
+    
+    func getCSRFToken() -> String? {
+        guard let cookies = HTTPCookieStorage.shared.cookies else {
+            return nil
+        }
+        for cookie in cookies {
+            if cookie.name == "__csrf" {
+                return cookie.value
+            }
+        }
+        return nil
+    }
     
     func encrypted_request(text: String) -> String {
         let secKey = createSecretKey(size: 16)
@@ -63,16 +85,9 @@ class NetworkMusicApi: NSObject {
         //
         let request = NSMutableURLRequest.init()
         request.url = URL.init(string: url)
-        request.setValue("*/*", forHTTPHeaderField: "Accept")
-        request.setValue("gzip,deflate,sdch", forHTTPHeaderField: "Accept-Encoding")
-        request.setValue("zh-CN,zh;q=0.8,gl;q=0.6,zh-TW;q=0.4", forHTTPHeaderField: "Accept-Language")
-        request.setValue("keep-alive", forHTTPHeaderField: "Connection")
-        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        request.setValue("music.163.com", forHTTPHeaderField: "Host")
-        request.setValue("http://music.163.com/search/", forHTTPHeaderField: "Referer")
-        request.setValue("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.152 Safari/537.36", forHTTPHeaderField: "User-Agent")
         request.timeoutInterval = 10
         request.httpMethod = method
+        request.allHTTPHeaderFields = NetworkMusicApi.httpHeader
         
         if method == "POST" {
             let perStr = data?.plusSymbolToPercent()
@@ -122,7 +137,31 @@ class NetworkMusicApi: NSObject {
             complete(nil, nil)
             return
         }
-        let usrStr = "http://music.163.com/weapi/event/get/\(loginData.userID!)"
+        let usrStr = "http://music.163.com/weapi/event/get/\(loginData.userID)"
+        let data = ["username":loginData.loginName, "password":loginData.loginPwd, "rememberLogin":"true"]
+        doHttpRequest("POST", url: usrStr, data: encrypted_request(text: data.json), complete: complete)
+    }
+    
+    
+    // 获取关注
+    func getCurrentLoginUserFollows(_ complete: @escaping CompletionBlock) {
+        guard let loginData = DatabaseManager.shareInstance.getCurrentUserLoginData() else {
+            complete(nil, nil)
+            return
+         }
+        let usrStr = "http://music.163.com/weapi/user/getfollows/\(loginData.userID)"
+        let data: [String: Any] = ["offset":0, "limit":1000, "order": true]
+        doHttpRequest("POST", url: usrStr, data: encrypted_request(text: data.json), complete: complete)
+    }
+    
+    
+    // 获取粉丝
+    func getCurrentLoginUserFollowed(_ complete: @escaping CompletionBlock) {
+        guard let loginData = DatabaseManager.shareInstance.getCurrentUserLoginData() else {
+            complete(nil, nil)
+            return
+        }
+        let usrStr = "http://music.163.com/weapi/user/getfolloweds/\(loginData.userID)"
         let data = ["username":loginData.loginName, "password":loginData.loginPwd, "rememberLogin":"true"]
         doHttpRequest("POST", url: usrStr, data: encrypted_request(text: data.json), complete: complete)
     }

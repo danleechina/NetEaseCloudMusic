@@ -10,9 +10,23 @@ import Foundation
 import RealmSwift
 
 class LoginData: Object {
-    var loginName: String?
-    var loginPwd: String?
-    var userID: Int?
+    dynamic var loginName: String?
+    dynamic var loginPwd: String?
+    dynamic var userID: Int = 0
+    
+    override static func primaryKey() -> String? {
+        return "userID"
+    }
+}
+
+class AccountData: Object {
+    dynamic var loginType: Int = 0
+    dynamic var clientId: String?
+    dynamic var effectTime: TimeInterval = 0
+    dynamic var account: Account?
+    dynamic var profile: Profile?
+    dynamic var userID: Int = 0
+    dynamic var isCurrentUser: Bool = false
     
     override static func primaryKey() -> String? {
         return "userID"
@@ -20,6 +34,8 @@ class LoginData: Object {
 }
 
 class Account : Object {
+    let belongTo = LinkingObjects(fromType: AccountData.self, property: "account")
+    
     dynamic var anonimousUser : Bool = false
     dynamic var ban : Int = 0
     dynamic var baoyueVersion : Int = 0
@@ -33,7 +49,6 @@ class Account : Object {
     dynamic var userName : String = ""
     dynamic var vipType : Int = 0
     dynamic var whitelistAuthority : Int = 0
-    dynamic var isCurrentUser: Bool = false
     
     override static func primaryKey() -> String? {
         return "id"
@@ -41,6 +56,8 @@ class Account : Object {
 }
 
 class Profile : Object {
+    let belongTo = LinkingObjects(fromType: AccountData.self, property: "profile")
+    
     dynamic var accountStatus : Int = 0
     dynamic var authStatus : Int = 0
     dynamic var authority : Int = 0
@@ -56,13 +73,13 @@ class Profile : Object {
     dynamic var descriptionField : String = ""
     dynamic var detailDescription : String = ""
     dynamic var djStatus : Int = 0
-    dynamic var expertTags : AnyObject?
+//    dynamic var expertTags : AnyObject?
     dynamic var followed : Bool = false
     dynamic var gender : Int = 0
     dynamic var mutual : Bool = false
     dynamic var nickname : String = ""
     dynamic var province : Int = 0
-    dynamic var remarkName : AnyObject?
+//    dynamic var remarkName : AnyObject?
     dynamic var signature : String = ""
     dynamic var userId : Int = 0
     dynamic var userType : Int = 0

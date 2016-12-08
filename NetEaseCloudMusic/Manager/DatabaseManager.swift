@@ -18,21 +18,22 @@ class DatabaseManager : NSObject {
     func newUserLogin(data : String?) -> Int? {
         guard let rdata = data else { return nil }
         guard let dict = rdata.jsonDict else  { return nil }
-        if dict["code"] as? String == "200" {
+        if dict["code"] as? Int == 200 {
             guard let accountData = dict["account"] as? Dictionary<String, Any> else { return nil }
             guard let profileData = dict["profile"] as? Dictionary<String, Any> else { return nil }
             guard let accountID = accountData["id"] as? Int else { return nil }
             
+            var mutableData = dict
+            mutableData["userID"] = accountID
             let realm = try! Realm()
             try! realm.write {
-                realm.create(Account.self, value: accountData, update: true)
-                realm.create(Profile.self, value: profileData, update: true)
+                realm.create(AccountData.self, value: mutableData, update: true)
             }
             
-            let allAccounts = realm.objects(Account.self)
+            let allAccounts = realm.objects(AccountData.self)
             try! realm.write {
                 for account in allAccounts {
-                    account.isCurrentUser = account.id == accountID
+                    account.isCurrentUser = account.userID == accountID
                 }
                 currentUsedID = accountID
             }
@@ -40,7 +41,7 @@ class DatabaseManager : NSObject {
         return currentUsedID
     }
     
-    func storeLoginData(data: LoginData) {
+    func storeLoginData(data: Dictionary<String, Any>) {
         let realm = try! Realm()
         try! realm.write {
             realm.create(LoginData.self, value: data, update: true)
@@ -48,13 +49,46 @@ class DatabaseManager : NSObject {
     }
     
     func getCurrentUserLoginData() -> LoginData? {
+        guard let cuID = currentUsedID else {
+            return nil
+        }
         let realm = try! Realm()
         let loginDatas = realm.objects(LoginData.self)
         for data in loginDatas {
-            if data.userID == currentUsedID {
+            if data.userID == cuID {
                 return data
             }
         }
         return nil
+    }
+    
+    // 存储 ’动态‘ 数据
+    func storeActivityData(data: Dictionary<String, Any>) {
+        var mutableData = data
+        mutableData["userID"] = currentUsedID
+        let realm = try! Realm()
+        try! realm.write {
+            realm.create(Activity.self, value: mutableData, update: true)
+        }
+    }
+    
+    // 存储 ’关注‘ 数据
+    func storeFollowsData(data: Dictionary<String, Any>) {
+        var mutableData = data
+        mutableData["userID"] = currentUsedID
+        let realm = try! Realm()
+        try! realm.write {
+            realm.create(FollowsData.self, value: mutableData, update: true)
+        }
+    }
+    
+    // 存储 ’粉丝‘ 数据
+    func storeFollowedData(data: Dictionary<String, Any>) {
+        var mutableData = data
+        mutableData["userID"] = currentUsedID
+        let realm = try! Realm()
+        try! realm.write {
+            realm.create(FollowedData.self, value: mutableData, update: true)
+        }
     }
 }

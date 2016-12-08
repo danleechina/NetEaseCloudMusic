@@ -109,7 +109,6 @@ class LoginDetailViewController: BaseViewController, UITextFieldDelegate {
         let password = passwordTextField.text?.trimSpace()
         guard let emailStr = email, let passwordStr = password else { return }
         guard emailStr.isEmail() else { return }
-        
         signButton.setTitle("登录中...", for: .normal)
         NetworkMusicApi.shareInstance.login(emailStr, password: passwordStr) { (data, error) in
             self.signButton.setTitle("登录", for: .normal)
@@ -117,12 +116,13 @@ class LoginDetailViewController: BaseViewController, UITextFieldDelegate {
                 print(err)
             }
             if let userID = DatabaseManager.shareInstance.newUserLogin(data: data) {
+                let data = ["loginName": emailStr,
+                            "loginPwd": passwordStr.md5(),
+                            "userID": userID,
+                            ] as [String : Any]
+                DatabaseManager.shareInstance.storeLoginData(data: data)
                 NotificationCenter.default.post(name: .onNewUserLogin, object: nil)
-                let loginData = LoginData()
-                loginData.loginName = emailStr
-                loginData.loginPwd = passwordStr.md5()
-                loginData.userID = userID
-                DatabaseManager.shareInstance.storeLoginData(data: loginData)
+                self.navigationController?.dismiss(animated: true, completion: nil)
             }
         }
         

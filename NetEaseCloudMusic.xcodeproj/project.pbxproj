@@ -23,6 +23,7 @@
 		3758A3A01DF7C6F200788104 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3758A39C1DF7C6F200788104 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3758A3A61DF7E7C000788104 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3758A3A51DF7E7C000788104 /* DatabaseManager.swift */; };
 		375ACD471DF8012400AD89FB /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375ACD461DF8012400AD89FB /* Activity.swift */; };
+		375ACD491DF9028400AD89FB /* Follow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375ACD481DF9028400AD89FB /* Follow.swift */; };
 		37D0F7851DEEEBB80046C9B6 /* BigDigit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D0F7711DEEEBB80046C9B6 /* BigDigit.swift */; };
 		37D0F7861DEEEBB80046C9B6 /* BigInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D0F7721DEEEBB80046C9B6 /* BigInt.swift */; };
 		37D0F7871DEEEBB80046C9B6 /* BigUInt Addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D0F7731DEEEBB80046C9B6 /* BigUInt Addition.swift */; };
@@ -164,6 +165,7 @@
 		3758A39C1DF7C6F200788104 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
 		3758A3A51DF7E7C000788104 /* DatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DatabaseManager.swift; path = Manager/DatabaseManager.swift; sourceTree = "<group>"; };
 		375ACD461DF8012400AD89FB /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Activity.swift; path = Model/Activity.swift; sourceTree = "<group>"; };
+		375ACD481DF9028400AD89FB /* Follow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Follow.swift; path = Model/Follow.swift; sourceTree = "<group>"; };
 		37D0F7711DEEEBB80046C9B6 /* BigDigit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BigDigit.swift; path = Vendor/BigUInt/BigDigit.swift; sourceTree = "<group>"; };
 		37D0F7721DEEEBB80046C9B6 /* BigInt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BigInt.swift; path = Vendor/BigUInt/BigInt.swift; sourceTree = "<group>"; };
 		37D0F7731DEEEBB80046C9B6 /* BigUInt Addition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "BigUInt Addition.swift"; path = "Vendor/BigUInt/BigUInt Addition.swift"; sourceTree = "<group>"; };
@@ -414,6 +416,7 @@
 				DED58E121D5C8D0900ED8A74 /* SongInfo.swift */,
 				3758A3991DF7BE4E00788104 /* Acount.swift */,
 				375ACD461DF8012400AD89FB /* Activity.swift */,
+				375ACD481DF9028400AD89FB /* Follow.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -975,6 +978,7 @@
 				DE2654E11D1028160083F742 /* AboutViewController.swift in Sources */,
 				3758A3911DF6B09F00788104 /* UIView+Extension.swift in Sources */,
 				DE2654D31D1026DA0083F742 /* PointMallViewController.swift in Sources */,
+				375ACD491DF9028400AD89FB /* Follow.swift in Sources */,
 				A02A3EE41D40FBD100A3956F /* MarqueeLabel.swift in Sources */,
 				37D0F7941DEEEBB80046C9B6 /* BigUInt Square Root.swift in Sources */,
 				37D0F7911DEEEBB80046C9B6 /* BigUInt Radix Conversion.swift in Sources */,

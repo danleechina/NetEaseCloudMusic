@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class AccountViewController: BaseViewController {
     @IBOutlet weak var accountHeadView: UIView!
@@ -36,18 +37,23 @@ class AccountViewController: BaseViewController {
         checkInButton.layer.cornerRadius = 3
         checkInButton.contentEdgeInsets = UIEdgeInsetsMake(5, 10, 5, 10)
         
+        refreshView()
+    }
+    
+    fileprivate var isSignedIn = false {
+        didSet {
+            refreshView()
+        }
+    }
+    
+    func refreshView() {
+        tableView.reloadData()
         for view in self.accountHeadView.subviews {
             view.isHidden = !isSignedIn
         }
         
         noAccountLabel.isHidden = isSignedIn
         signinButton.isHidden = isSignedIn
-    }
-    
-    fileprivate var isSignedIn = false {
-        didSet {
-            tableView.reloadData()
-        }
     }
     
     fileprivate var titleArray: Array< Array<String> > {
@@ -101,6 +107,11 @@ class AccountViewController: BaseViewController {
         [UIViewController.self,]
     ]
     
+    fileprivate var realmNotificationTokenForAccount: NotificationToken? = nil
+    fileprivate var realmNotificationTokenForActivity: NotificationToken? = nil
+    fileprivate var realmNotificationTokenForFollows: NotificationToken? = nil
+    fileprivate var realmNotificationTokenForFollowed: NotificationToken? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -110,17 +121,149 @@ class AccountViewController: BaseViewController {
         self.navigationBar.lineView.backgroundColor = UIColor.gray.withAlphaComponent(0.5)
         
         viewInit()
+        notificationInit()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(onNewUserLogin), name: .onNewUserLogin, object: nil)
     }
     
     deinit {
         NotificationCenter.default.removeObserver(self)
+        realmNotificationTokenForAccount?.stop()
+        realmNotificationTokenForActivity?.stop()
+        realmNotificationTokenForFollows?.stop()
+        realmNotificationTokenForFollowed?.stop()
+    }
+    
+    func notificationInit() {
+        let realm = try! Realm()
+        let accoutsResults = realm.objects(AccountData.self)
+        realmNotificationTokenForAccount = accoutsResults.addNotificationBlock({ [weak self] (changes: RealmCollectionChange) in
+            guard let tableView = self?.tableView else { return }
+            switch changes {
+            case .initial:
+                // Results are now populated and can be accessed without blocking the UI
+                tableView.reloadData()
+                break
+            case .update(_, let deletions, let insertions, let modifications):
+                
+                break
+            case .error(let error):
+                // An error occurred while opening the Realm file on the background worker thread
+                fatalError("\(error)")
+                break
+            }
+        })
+        
+        
+        let activityResults = realm.objects(Activity.self)
+        realmNotificationTokenForActivity = activityResults.addNotificationBlock({ [weak self] (changes: RealmCollectionChange) in
+            guard let tableView = self?.tableView else { return }
+            switch changes {
+            case .initial:
+                // Results are now populated and can be accessed without blocking the UI
+                tableView.reloadData()
+                break
+            case .update(_, let deletions, let insertions, let modifications):
+                
+                break
+            case .error(let error):
+                // An error occurred while opening the Realm file on the background worker thread
+                fatalError("\(error)")
+                break
+            }
+        })
+        
+        
+        let followsResults = realm.objects(FollowsData.self)
+        realmNotificationTokenForFollows = followsResults.addNotificationBlock({ [weak self] (changes: RealmCollectionChange) in
+            guard let tableView = self?.tableView else { return }
+            switch changes {
+            case .initial:
+                // Results are now populated and can be accessed without blocking the UI
+                tableView.reloadData()
+                break
+            case .update(_, let deletions, let insertions, let modifications):
+                
+                break
+            case .error(let error):
+                // An error occurred while opening the Realm file on the background worker thread
+                fatalError("\(error)")
+                break
+            }
+        })
+        
+        let followedResults = realm.objects(FollowedData.self)
+        realmNotificationTokenForFollowed = followedResults.addNotificationBlock({ [weak self] (changes: RealmCollectionChange) in
+            guard let tableView = self?.tableView else { return }
+            switch changes {
+            case .initial:
+                // Results are now populated and can be accessed without blocking the UI
+                tableView.reloadData()
+                break
+            case .update(_, let deletions, let insertions, let modifications):
+                
+                break
+            case .error(let error):
+                // An error occurred while opening the Realm file on the background worker thread
+                fatalError("\(error)")
+                break
+            }
+        })
+        
+        
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(onNewUserLogin), name: .onNewUserLogin, object: nil)
     }
     
     func onNewUserLogin() {
-        isSignedIn = true
+        NetworkMusicApi.shareInstance.getCurrentLoginUserActivity { (data, error) in
+            guard let dict = data?.jsonDict else {
+                if let err = error {
+                    print(err)
+                } else {
+                    print("data cannot be transferred to jsonDict")
+                }
+                return
+            }
+            if dict["code"] as? Int != 200 {
+                print("code =\(dict["code"] as? Int)")
+                return
+            }
+            DatabaseManager.shareInstance.storeActivityData(data: dict)
+        }
         
+        NetworkMusicApi.shareInstance.getCurrentLoginUserFollows { (data, error) in
+            guard let dict = data?.jsonDict else {
+                if let err = error {
+                    print(err)
+                } else {
+                    print("data cannot be transferred to jsonDict")
+                }
+                return
+            }
+            if dict["code"] as? Int != 200 {
+                print("code =\(dict["code"] as? Int)")
+                return
+            }
+            DatabaseManager.shareInstance.storeFollowsData(data: dict)
+        }
+        
+        NetworkMusicApi.shareInstance.getCurrentLoginUserFollowed { (data, error) in
+            guard let dict = data?.jsonDict else {
+                if let err = error {
+                    print(err)
+                } else {
+                    print("data cannot be transferred to jsonDict")
+                }
+                return
+            }
+            if dict["code"] as? Int != 200 {
+                print("code =\(dict["code"] as? Int)")
+                return
+            }
+            DatabaseManager.shareInstance.storeFollowedData(data: dict)
+        }
+        
+        isSignedIn = true
     }
     
     func changeDayMode() -> Void {
