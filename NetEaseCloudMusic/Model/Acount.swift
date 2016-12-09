@@ -19,6 +19,22 @@ class LoginData: Object {
     }
 }
 
+class Level: Object {
+    dynamic var userId: Int = 0
+    dynamic var info: String?
+    dynamic var progress: Double = 0
+    dynamic var nextPlayCount: Int = 0
+    dynamic var nextLoginCount: Int = 0
+    dynamic var nowPlayCount: Int = 0
+    dynamic var nowLoginCount: Int = 0
+    dynamic var level: Int = 0
+    dynamic var full: Bool = false
+    
+    override static func primaryKey() -> String? {
+        return "userId"
+    }
+}
+
 class AccountData: Object {
     dynamic var loginType: Int = 0
     dynamic var clientId: String?

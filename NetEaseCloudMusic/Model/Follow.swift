@@ -12,7 +12,7 @@ import RealmSwift
 class FollowsData: Object {
     
     dynamic var code: Int = 0
-    let follows = List<Follow>()
+    let follow = List<Follow>()
     dynamic var more: Bool = false
     dynamic var touchCount: Int = 0
     dynamic var userID : Int = 0
@@ -25,7 +25,7 @@ class FollowsData: Object {
 
 // The one I follow
 class Follow: Object {
-    let belongTo = LinkingObjects(fromType: FollowsData.self, property: "follows")
+    let belongTo = LinkingObjects(fromType: FollowsData.self, property: "follow")
     
     dynamic var accountStatus: Int = 0
     dynamic var authStatus: Int = 0

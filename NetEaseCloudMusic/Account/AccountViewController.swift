@@ -21,6 +21,11 @@ class AccountViewController: BaseViewController {
     @IBOutlet weak var focusStackView: UIStackView!
     @IBOutlet weak var fansStackView: UIStackView!
     @IBOutlet weak var editStackView: UIStackView!
+    @IBOutlet var nickNameLabel: UILabel!
+    @IBOutlet var levelLabel: UILabel!
+    @IBOutlet var activityValueLabel: UILabel!
+    @IBOutlet var focusValueLabel: UILabel!
+    @IBOutlet var fansValueLabel: UILabel!
     
     func viewInit() {
         tableView.delegate = self
@@ -111,6 +116,7 @@ class AccountViewController: BaseViewController {
     fileprivate var realmNotificationTokenForActivity: NotificationToken? = nil
     fileprivate var realmNotificationTokenForFollows: NotificationToken? = nil
     fileprivate var realmNotificationTokenForFollowed: NotificationToken? = nil
+    fileprivate var realmNotificationTokenForLevel: NotificationToken? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -119,8 +125,8 @@ class AccountViewController: BaseViewController {
         self.navigationBar.titleString = "账号"
         self.navigationBar.backgroundColor = UIColor.white
         self.navigationBar.lineView.backgroundColor = UIColor.gray.withAlphaComponent(0.5)
-        
         viewInit()
+        self.isSignedIn = (DatabaseManager.shareInstance.currentUsedID != nil) ? true : false
         notificationInit()
         
     }
@@ -131,20 +137,26 @@ class AccountViewController: BaseViewController {
         realmNotificationTokenForActivity?.stop()
         realmNotificationTokenForFollows?.stop()
         realmNotificationTokenForFollowed?.stop()
+        realmNotificationTokenForLevel?.stop()
     }
     
     func notificationInit() {
+        guard let userID = DatabaseManager.shareInstance.currentUsedID else {return}
         let realm = try! Realm()
         let accoutsResults = realm.objects(AccountData.self)
         realmNotificationTokenForAccount = accoutsResults.addNotificationBlock({ [weak self] (changes: RealmCollectionChange) in
-            guard let tableView = self?.tableView else { return }
             switch changes {
-            case .initial:
-                // Results are now populated and can be accessed without blocking the UI
-                tableView.reloadData()
+            case .initial(let values):
+                let value = values.filter("userID == \(userID)").first
+                self?.nickNameLabel.text = value?.profile?.nickname
+                guard let aurl = value?.profile?.avatarUrl else { break }
+                self?.headImageView.sd_setImage(with: URL.init(string: aurl))
                 break
-            case .update(_, let deletions, let insertions, let modifications):
-                
+            case .update(let values, _, _, _):
+                let value = values.filter("userID == \(userID)").first
+                self?.nickNameLabel.text = value?.profile?.nickname
+                guard let aurl = value?.profile?.avatarUrl else { break }
+                self?.headImageView.sd_setImage(with: URL.init(string: aurl))
                 break
             case .error(let error):
                 // An error occurred while opening the Realm file on the background worker thread
@@ -156,14 +168,14 @@ class AccountViewController: BaseViewController {
         
         let activityResults = realm.objects(Activity.self)
         realmNotificationTokenForActivity = activityResults.addNotificationBlock({ [weak self] (changes: RealmCollectionChange) in
-            guard let tableView = self?.tableView else { return }
             switch changes {
-            case .initial:
-                // Results are now populated and can be accessed without blocking the UI
-                tableView.reloadData()
+            case .initial(let values):
+                let value = values.filter("userID == \(userID)").first
+                self?.activityValueLabel.text = "\(value?.events.count ?? 0)"
                 break
-            case .update(_, let deletions, let insertions, let modifications):
-                
+            case .update(let values, _, _, _):
+                let value = values.filter("userID == \(userID)").first
+                self?.activityValueLabel.text = "\(value?.events.count ?? 0)"
                 break
             case .error(let error):
                 // An error occurred while opening the Realm file on the background worker thread
@@ -175,14 +187,14 @@ class AccountViewController: BaseViewController {
         
         let followsResults = realm.objects(FollowsData.self)
         realmNotificationTokenForFollows = followsResults.addNotificationBlock({ [weak self] (changes: RealmCollectionChange) in
-            guard let tableView = self?.tableView else { return }
             switch changes {
-            case .initial:
-                // Results are now populated and can be accessed without blocking the UI
-                tableView.reloadData()
+            case .initial(let values):
+                let value = values.filter("userID == \(userID)").first
+                self?.focusValueLabel.text = "\(value?.follow.count ?? 0)"
                 break
-            case .update(_, let deletions, let insertions, let modifications):
-                
+            case .update(let values, _, _, _):
+                let value = values.filter("userID == \(userID)").first
+                self?.focusValueLabel.text = "\(value?.follow.count ?? 0)"
                 break
             case .error(let error):
                 // An error occurred while opening the Realm file on the background worker thread
@@ -193,14 +205,14 @@ class AccountViewController: BaseViewController {
         
         let followedResults = realm.objects(FollowedData.self)
         realmNotificationTokenForFollowed = followedResults.addNotificationBlock({ [weak self] (changes: RealmCollectionChange) in
-            guard let tableView = self?.tableView else { return }
             switch changes {
-            case .initial:
-                // Results are now populated and can be accessed without blocking the UI
-                tableView.reloadData()
+            case .initial(let values):
+                let value = values.filter("userID == \(userID)").first
+                self?.fansValueLabel.text = "\(value?.followeds.count ?? 0)"
                 break
-            case .update(_, let deletions, let insertions, let modifications):
-                
+            case .update(let values, _, _, _):
+                let value = values.filter("userID == \(userID)").first
+                self?.fansValueLabel.text = "\(value?.followeds.count ?? 0)"
                 break
             case .error(let error):
                 // An error occurred while opening the Realm file on the background worker thread
@@ -209,7 +221,23 @@ class AccountViewController: BaseViewController {
             }
         })
         
-        
+        let levelResults = realm.objects(Level.self)
+        realmNotificationTokenForLevel = levelResults.addNotificationBlock({ [weak self] (changes: RealmCollectionChange) in
+            switch changes {
+            case .initial(let values):
+                let value = values.filter("userId == \(userID)").first
+                self?.levelLabel.text = "\(value?.level ?? 0)"
+                break
+            case .update(let values, _, _, _):
+                let value = values.filter("userId == \(userID)").first
+                self?.fansValueLabel.text = "\(value?.level ?? 0)"
+                break
+            case .error(let error):
+                // An error occurred while opening the Realm file on the background worker thread
+                fatalError("\(error)")
+                break
+            }
+        })
         
         NotificationCenter.default.addObserver(self, selector: #selector(onNewUserLogin), name: .onNewUserLogin, object: nil)
     }
@@ -261,6 +289,24 @@ class AccountViewController: BaseViewController {
                 return
             }
             DatabaseManager.shareInstance.storeFollowedData(data: dict)
+        }
+        
+        NetworkMusicApi.shareInstance.getCurrentLoginUserLevel { (data, error) in
+            guard let dict = data?.jsonDict else {
+                if let err = error {
+                    print(err)
+                } else {
+                    print("data cannot be transferred to jsonDict")
+                }
+                return
+            }
+            if dict["code"] as? Int != 200 {
+                print("code =\(dict["code"] as? Int)")
+                return
+            }
+            var muDict: Dictionary<String, Any> = dict["data"] as! Dictionary<String, Any>
+            muDict["full"] = dict["full"]
+            DatabaseManager.shareInstance.storeLevelData(data: muDict)
         }
         
         isSignedIn = true

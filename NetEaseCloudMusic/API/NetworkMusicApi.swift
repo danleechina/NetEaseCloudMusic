@@ -21,7 +21,8 @@ class NetworkMusicApi: NSObject {
                               "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.152 Safari/537.36",
                               ]
     
-    fileprivate override init() {}
+    fileprivate override init() {
+    }
     
     let modulus = "00e0b509f6259df8642dbc35662901477df22677ec152b5ff68ace615bb7" +
         "b725152b3ab17a876aea8a5aa76d2e417629ec4ee341f56135fccf695280" +
@@ -30,6 +31,14 @@ class NetworkMusicApi: NSObject {
     "3ece0462db0a22b8e7"
     let nonce = "0CoJUm6Qyw8W8jud"
     let pubKey = "010001"
+    
+    fileprivate lazy var secKey: String = {
+        return self.createSecretKey(size: 16)
+    }()
+    
+    fileprivate lazy var encSecKey: String = {
+        return self.rsaEncrypt(text: self.secKey, pubKey: self.pubKey, modulus: self.modulus)
+    }()
     
     func getCSRFToken() -> String? {
         guard let cookies = HTTPCookieStorage.shared.cookies else {
@@ -44,9 +53,7 @@ class NetworkMusicApi: NSObject {
     }
     
     func encrypted_request(text: String) -> String {
-        let secKey = createSecretKey(size: 16)
         let encText = aesEncrypt(text: aesEncrypt(text: text, secKey: nonce)!, secKey: secKey)
-        let encSecKey = rsaEncrypt(text: secKey, pubKey: pubKey, modulus: modulus)
         return "params=\(encText!)&encSecKey=\(encSecKey)"
     }
     
@@ -162,6 +169,17 @@ class NetworkMusicApi: NSObject {
             return
         }
         let usrStr = "http://music.163.com/weapi/user/getfolloweds/\(loginData.userID)"
+        let data = ["username":loginData.loginName, "password":loginData.loginPwd, "rememberLogin":"true"]
+        doHttpRequest("POST", url: usrStr, data: encrypted_request(text: data.json), complete: complete)
+    }
+    
+    // 获取 level
+    func getCurrentLoginUserLevel(_ complete: @escaping CompletionBlock) {
+        guard let loginData = DatabaseManager.shareInstance.getCurrentUserLoginData() else {
+            complete(nil, nil)
+            return
+        }
+        let usrStr = "http://music.163.com/weapi/user/level/?csrf_token=\(self.getCSRFToken() ?? "")"
         let data = ["username":loginData.loginName, "password":loginData.loginPwd, "rememberLogin":"true"]
         doHttpRequest("POST", url: usrStr, data: encrypted_request(text: data.json), complete: complete)
     }
