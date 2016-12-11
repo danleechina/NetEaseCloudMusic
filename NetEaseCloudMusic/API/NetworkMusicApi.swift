@@ -132,10 +132,22 @@ class NetworkMusicApi: NSObject {
     // 登录
     func login(_ userName: String, password: String, _ complete: @escaping CompletionBlock) {
         // http://music.163.com/api/login/
+        self .logout()
         let urlStr = "https://music.163.com/weapi/login/"
         let passwordMD5 = password.md5()
         let data = ["username":userName, "password":passwordMD5, "rememberLogin":"true"]
         doHttpRequest("POST", url: urlStr, data: encrypted_request(text: data.json), complete: complete)
+    }
+    
+    func logout() {
+        if let cookies = HTTPCookieStorage.shared.cookies {
+            for cookie in cookies {
+                HTTPCookieStorage.shared.deleteCookie(cookie)
+            }
+        }
+        if DatabaseManager.shareInstance.logout() == true {
+            NotificationCenter.default.post(name: .onUserLogout, object: nil)
+        }
     }
     
     // 获取动态
@@ -185,8 +197,13 @@ class NetworkMusicApi: NSObject {
     }
     
     //用户歌单
-    func user_playlist() {
-        // http://music.163.com/api/search/get/web
+    func getUserPlayList(_ complete: @escaping CompletionBlock) {
+        guard let loginData = DatabaseManager.shareInstance.getCurrentUserLoginData() else {
+            complete(nil, nil)
+            return
+        }
+        let usrStr = "http://music.163.com/api/user/playlist/?offset=0&limit=1000&uid=\(loginData.userID)"
+        doHttpRequest("GET", url: usrStr, data: nil, complete: complete)
     }
     
     // 搜索单曲(1)，歌手(100)，专辑(10)，歌单(1000)，用户(1002) *(type)*
@@ -200,7 +217,6 @@ class NetworkMusicApi: NSObject {
         // action = 'http://music.163.com/api/album/new?area=ALL&offset=' + str(offset) + '&total=true&limit=' + str(limit)
         
     }
-    
     
     // 歌单（网友精选碟） hot||new http://music.163.com/#/discover/playlist/
     func top_playlists(_ complete: @escaping CompletionBlock) {

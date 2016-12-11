@@ -10,13 +10,13 @@ import UIKit
 
 class LoginViewController: BaseViewController {
 
-    @IBOutlet var loginButton: UIButton!
-    @IBOutlet var registerButton: UIButton!
-    @IBOutlet var wechatButton: UIButton!
-    @IBOutlet var qqButton: UIButton!
-    @IBOutlet var weiboButton: UIButton!
-    @IBOutlet var neteaseMailButton: UIButton!
-    @IBOutlet var gradientLineView: UIView! {
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var registerButton: UIButton!
+    @IBOutlet weak var wechatButton: UIButton!
+    @IBOutlet weak var qqButton: UIButton!
+    @IBOutlet weak var weiboButton: UIButton!
+    @IBOutlet weak var neteaseMailButton: UIButton!
+    @IBOutlet weak var gradientLineView: UIView! {
         didSet {
 //            gradientLineView.setGradientBackgroundColorInHorizontal(fromColor: UIColor.lightGray.withAlphaComponent(0.1), toColor: UIColor.lightGray.withAlphaComponent(0.5))
         }

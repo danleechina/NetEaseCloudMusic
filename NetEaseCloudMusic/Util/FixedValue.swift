@@ -18,4 +18,5 @@ class FixedValue {
 
 extension Notification.Name {
     static let onNewUserLogin = Notification.Name("onNewUserLogin")
+    static let onUserLogout = Notification.Name("onUserLogout")
 }

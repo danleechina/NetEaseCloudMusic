@@ -50,6 +50,7 @@
 		37D0F7A21DEEF35C0046C9B6 /* SipHashable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D0F79E1DEEF35C0046C9B6 /* SipHashable.swift */; };
 		37D0F7A31DEEF35C0046C9B6 /* SipHasher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D0F79F1DEEF35C0046C9B6 /* SipHasher.swift */; };
 		37D0F7A61DEEFA4F0046C9B6 /* Dictionary+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D0F7A51DEEFA4F0046C9B6 /* Dictionary+Extension.swift */; };
+		37E490B21DFD01940054B988 /* PlayList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E490B11DFD01940054B988 /* PlayList.swift */; };
 		8118F9331DA63CD5005BAF7A /* RKSwipeBetweenViewControllers.m in Sources */ = {isa = PBXBuildFile; fileRef = 8118F9321DA63CD5005BAF7A /* RKSwipeBetweenViewControllers.m */; };
 		8172EF571DA673040042B6AE /* UIImage_Add.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8172EF561DA673040042B6AE /* UIImage_Add.swift */; };
 		818E3B141D88272100F29A16 /* BaseNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818E3B131D88272100F29A16 /* BaseNavigationBar.swift */; };
@@ -192,6 +193,7 @@
 		37D0F79E1DEEF35C0046C9B6 /* SipHashable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SipHashable.swift; path = Vendor/SipHash/SipHashable.swift; sourceTree = "<group>"; };
 		37D0F79F1DEEF35C0046C9B6 /* SipHasher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SipHasher.swift; path = Vendor/SipHash/SipHasher.swift; sourceTree = "<group>"; };
 		37D0F7A51DEEFA4F0046C9B6 /* Dictionary+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Dictionary+Extension.swift"; path = "Extension/Foundation/Dictionary+Extension.swift"; sourceTree = "<group>"; };
+		37E490B11DFD01940054B988 /* PlayList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayList.swift; path = Model/PlayList.swift; sourceTree = "<group>"; };
 		8118F9311DA63CD5005BAF7A /* RKSwipeBetweenViewControllers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RKSwipeBetweenViewControllers.h; path = Vendor/RKSwipeBetweenViewControllers.h; sourceTree = "<group>"; };
 		8118F9321DA63CD5005BAF7A /* RKSwipeBetweenViewControllers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RKSwipeBetweenViewControllers.m; path = Vendor/RKSwipeBetweenViewControllers.m; sourceTree = "<group>"; };
 		8172EF561DA673040042B6AE /* UIImage_Add.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIImage_Add.swift; path = Util/UIImage_Add.swift; sourceTree = "<group>"; };
@@ -417,6 +419,7 @@
 				3758A3991DF7BE4E00788104 /* Acount.swift */,
 				375ACD461DF8012400AD89FB /* Activity.swift */,
 				375ACD481DF9028400AD89FB /* Follow.swift */,
+				37E490B11DFD01940054B988 /* PlayList.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -953,6 +956,7 @@
 				DE2654C51D1025460083F742 /* AddSongSheetViewController.swift in Sources */,
 				DE2654D51D10271A0083F742 /* OnlineFreePlayViewController.swift in Sources */,
 				37D0F7861DEEEBB80046C9B6 /* BigInt.swift in Sources */,
+				37E490B21DFD01940054B988 /* PlayList.swift in Sources */,
 				37D0F78E1DEEEBB80046C9B6 /* BigUInt Hashing.swift in Sources */,
 				37D0F7A21DEEF35C0046C9B6 /* SipHashable.swift in Sources */,
 				DE79E6F21D167232006B9926 /* PrivateMessageListTableView.swift in Sources */,

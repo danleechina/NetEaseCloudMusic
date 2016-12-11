@@ -9,12 +9,12 @@
 import UIKit
 
 class LoginDetailViewController: BaseViewController, UITextFieldDelegate {
-    @IBOutlet var accountTextField: UITextField!
-    @IBOutlet var passwordTextField: UITextField!
-    @IBOutlet var signButton: UIButton!
-    @IBOutlet var helpLabel: UILabel!
-    @IBOutlet var lineView: UIView!
-    @IBOutlet var helpRegisterView: UIView!
+    @IBOutlet weak var accountTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var signButton: UIButton!
+    @IBOutlet weak var helpLabel: UILabel!
+    @IBOutlet weak var lineView: UIView!
+    @IBOutlet weak var helpRegisterView: UIView!
     
     var segueType: String?
     

@@ -14,8 +14,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-//        NetworkMusicApi.shareInstance.getCurrentLoginUserLevel { (data, error) in
-//            print(data)
+//        
+//        NetworkMusicApi.shareInstance.getUserPlayList { (data, error) in
+//            if let err = error {
+//                print(err)
+//                return
+//            }
+//            guard let dict = data?.jsonDict else { return }
+//            if dict["code"] as? Int != 200 {
+//                print("code = \(dict["code"])")
+//            }
+//            DatabaseManager.shareInstance.storeUserPlayList(data: dict)
 //        }
         var backImage = UIImage.init(named: "cm2_icn_back")
         backImage = backImage?.resizableImage(withCapInsets: UIEdgeInsetsMake(0, backImage!.size.width - 1, 0, 0))

@@ -34,6 +34,10 @@ extension String {
         return digestHex
     }
     
+    func toPercentURLString() -> String? {
+        return self.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+    }
+    
     func randomString(length: Int) -> String {
         
         let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"

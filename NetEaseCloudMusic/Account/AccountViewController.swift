@@ -11,21 +11,20 @@ import RealmSwift
 
 class AccountViewController: BaseViewController {
     @IBOutlet weak var accountHeadView: UIView!
-    @IBOutlet var noAccountLabel: UILabel!
-    @IBOutlet var signinButton: UIButton!
+    @IBOutlet weak var noAccountLabel: UILabel!
+    @IBOutlet weak var signinButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var headImageView: UIImageView!
-    @IBOutlet weak var nickNameStackView: UIStackView!
     @IBOutlet weak var checkInButton: UIButton!
     @IBOutlet weak var activityStackView: UIStackView!
     @IBOutlet weak var focusStackView: UIStackView!
     @IBOutlet weak var fansStackView: UIStackView!
     @IBOutlet weak var editStackView: UIStackView!
-    @IBOutlet var nickNameLabel: UILabel!
-    @IBOutlet var levelLabel: UILabel!
-    @IBOutlet var activityValueLabel: UILabel!
-    @IBOutlet var focusValueLabel: UILabel!
-    @IBOutlet var fansValueLabel: UILabel!
+    @IBOutlet weak var nickNameLabel: UILabel!
+    @IBOutlet weak var levelLabel: UILabel!
+    @IBOutlet weak var activityValueLabel: UILabel!
+    @IBOutlet weak var focusValueLabel: UILabel!
+    @IBOutlet weak var fansValueLabel: UILabel!
     
     func viewInit() {
         tableView.delegate = self
@@ -47,18 +46,20 @@ class AccountViewController: BaseViewController {
     
     fileprivate var isSignedIn = false {
         didSet {
-            refreshView()
+            DispatchQueue.main.async {
+                self.refreshView()
+            }
         }
     }
     
     func refreshView() {
-        tableView.reloadData()
         for view in self.accountHeadView.subviews {
             view.isHidden = !isSignedIn
         }
         
         noAccountLabel.isHidden = isSignedIn
         signinButton.isHidden = isSignedIn
+        tableView.reloadData()
     }
     
     fileprivate var titleArray: Array< Array<String> > {
@@ -86,10 +87,10 @@ class AccountViewController: BaseViewController {
         get {
             if isSignedIn {
                 return  [
-                    ["first"],
-                    ["second", "first", "second"],
-                    ["first", "second", "first", "second", "first", "second"],
-                    ["first", "second"],
+                    ["cm2_set_icn_mail"],
+                    ["cm2_set_icn_vip", "cm2_set_icn_store", "cm2_set_icn_combo"],
+                    ["cm2_set_icn_set", "second", "cm2_set_icn_skin", "cm2_set_icn_night", "cm2_set_icn_alamclock", "cm2_set_icn_vehicle"],
+                    ["cm2_set_icn_share", "cm2_set_icn_about"],
                     ["first"]
                 ]
             } else {
@@ -141,10 +142,13 @@ class AccountViewController: BaseViewController {
     }
     
     func notificationInit() {
-        guard let userID = DatabaseManager.shareInstance.currentUsedID else {return}
+        NotificationCenter.default.addObserver(self, selector: #selector(onNewUserLogin), name: .onNewUserLogin, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onUserLogout), name: .onUserLogout, object: nil)
+        
         let realm = try! Realm()
         let accoutsResults = realm.objects(AccountData.self)
         realmNotificationTokenForAccount = accoutsResults.addNotificationBlock({ [weak self] (changes: RealmCollectionChange) in
+            guard let userID = DatabaseManager.shareInstance.currentUsedID else {return}
             switch changes {
             case .initial(let values):
                 let value = values.filter("userID == \(userID)").first
@@ -168,6 +172,7 @@ class AccountViewController: BaseViewController {
         
         let activityResults = realm.objects(Activity.self)
         realmNotificationTokenForActivity = activityResults.addNotificationBlock({ [weak self] (changes: RealmCollectionChange) in
+            guard let userID = DatabaseManager.shareInstance.currentUsedID else {return}
             switch changes {
             case .initial(let values):
                 let value = values.filter("userID == \(userID)").first
@@ -187,6 +192,7 @@ class AccountViewController: BaseViewController {
         
         let followsResults = realm.objects(FollowsData.self)
         realmNotificationTokenForFollows = followsResults.addNotificationBlock({ [weak self] (changes: RealmCollectionChange) in
+            guard let userID = DatabaseManager.shareInstance.currentUsedID else {return}
             switch changes {
             case .initial(let values):
                 let value = values.filter("userID == \(userID)").first
@@ -205,6 +211,7 @@ class AccountViewController: BaseViewController {
         
         let followedResults = realm.objects(FollowedData.self)
         realmNotificationTokenForFollowed = followedResults.addNotificationBlock({ [weak self] (changes: RealmCollectionChange) in
+            guard let userID = DatabaseManager.shareInstance.currentUsedID else {return}
             switch changes {
             case .initial(let values):
                 let value = values.filter("userID == \(userID)").first
@@ -223,6 +230,7 @@ class AccountViewController: BaseViewController {
         
         let levelResults = realm.objects(Level.self)
         realmNotificationTokenForLevel = levelResults.addNotificationBlock({ [weak self] (changes: RealmCollectionChange) in
+            guard let userID = DatabaseManager.shareInstance.currentUsedID else {return}
             switch changes {
             case .initial(let values):
                 let value = values.filter("userId == \(userID)").first
@@ -239,10 +247,10 @@ class AccountViewController: BaseViewController {
             }
         })
         
-        NotificationCenter.default.addObserver(self, selector: #selector(onNewUserLogin), name: .onNewUserLogin, object: nil)
     }
     
     func onNewUserLogin() {
+        isSignedIn = true
         NetworkMusicApi.shareInstance.getCurrentLoginUserActivity { (data, error) in
             guard let dict = data?.jsonDict else {
                 if let err = error {
@@ -309,7 +317,10 @@ class AccountViewController: BaseViewController {
             DatabaseManager.shareInstance.storeLevelData(data: muDict)
         }
         
-        isSignedIn = true
+    }
+    
+    func onUserLogout() {
+        isSignedIn = false
     }
     
     func changeDayMode() -> Void {
@@ -321,6 +332,7 @@ class AccountViewController: BaseViewController {
     }
     
     func logout() -> Void {
+        NetworkMusicApi.shareInstance.logout()
         print("logout")
     }
 }
