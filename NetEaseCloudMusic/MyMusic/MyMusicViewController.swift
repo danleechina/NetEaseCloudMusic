@@ -19,6 +19,7 @@ class MyMusicViewController: BaseViewController {
 //            tableView.separatorStyle = .none
         }
     }
+    @IBOutlet weak var listViewTopConstraint: NSLayoutConstraint!
     
     fileprivate var isSectionOpen = [true, true]
     fileprivate var sectionOneLabel: UILabel!
@@ -157,9 +158,17 @@ class MyMusicViewController: BaseViewController {
     }
     
     func clickTopBarMoreButton() {
-        self.blurView.isHidden = !self.blurView.isHidden
-        self.listView.isHidden = !self.listView.isHidden
-        
+        self.listViewTopConstraint.constant = !self.listView.isHidden ? -136 : 44
+        let hiddenState = !self.listView.isHidden
+        if self.listView.isHidden {
+            self.listView.isHidden = false
+            self.blurView.isHidden = false
+        }
+        self.listView.setNeedsUpdateConstraints()
+        UIView.animate(withDuration: 0.5, animations: {self.view.layoutIfNeeded()}) { (finished) in
+            self.listView.isHidden = hiddenState
+            self.blurView.isHidden = hiddenState
+        }
     }
     
     deinit {

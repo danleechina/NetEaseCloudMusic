@@ -60,7 +60,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Acp-Ru-AYj">
-                                                    <rect key="frame" x="78" y="91.5" width="289" height="1"/>
+                                                    <rect key="frame" x="78" y="91" width="289" height="1"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="oUO-KE-dMn"/>
@@ -111,13 +111,13 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="xiazaiyueyu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vde-l8-XOT">
-                                                    <rect key="frame" x="64" y="21.5" width="89" height="21"/>
+                                                    <rect key="frame" x="64" y="21" width="89" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CWJ-wh-C9R">
-                                                    <rect key="frame" x="321" y="21.5" width="10" height="21"/>
+                                                    <rect key="frame" x="321" y="21" width="10" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -130,7 +130,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wq0-16-KMl">
-                                                    <rect key="frame" x="64" y="55.5" width="303" height="1"/>
+                                                    <rect key="frame" x="64" y="55" width="303" height="1"/>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="0.51431399828767121" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="eRS-y1-PDO"/>
@@ -169,9 +169,9 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.59677333047945202" colorSpace="calibratedWhite"/>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bey-JF-tWn">
-                                <rect key="frame" x="-0.5" y="64" width="375" height="180"/>
+                                <rect key="frame" x="-0.5" y="-116" width="375" height="180"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_lay_icn_newlist_dis" translatesAutoresizingMaskIntoConstraints="NO" id="xIb-0J-PaW">
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_lay_icn_newlist" translatesAutoresizingMaskIntoConstraints="NO" id="xIb-0J-PaW">
                                         <rect key="frame" x="20" y="15" width="30" height="30"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -195,7 +195,7 @@
                                             <constraint firstAttribute="height" constant="1" id="NcV-mZ-lbh"/>
                                         </constraints>
                                     </view>
-                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_lay_icn_mng_dis" translatesAutoresizingMaskIntoConstraints="NO" id="2Sb-ah-aBT">
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_lay_icn_mng" translatesAutoresizingMaskIntoConstraints="NO" id="2Sb-ah-aBT">
                                         <rect key="frame" x="20" y="75" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="4md-SI-iGg"/>
@@ -270,7 +270,7 @@
                             <constraint firstItem="Bey-JF-tWn" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="Uf2-8h-FAq"/>
                             <constraint firstItem="mnW-Wb-3YF" firstAttribute="height" secondItem="QS5-Rx-YEW" secondAttribute="height" constant="-44" id="Vo7-vY-KN7"/>
                             <constraint firstItem="Je7-VL-PEk" firstAttribute="height" secondItem="QS5-Rx-YEW" secondAttribute="height" constant="-44" id="X0J-G0-hlU"/>
-                            <constraint firstItem="Bey-JF-tWn" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="44" id="YiQ-QL-LLq"/>
+                            <constraint firstItem="Bey-JF-tWn" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="-136" id="YiQ-QL-LLq"/>
                             <constraint firstItem="mnW-Wb-3YF" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="20" id="doE-dm-UjK"/>
                             <constraint firstItem="mnW-Wb-3YF" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="fqH-QW-gnw"/>
                             <constraint firstItem="Je7-VL-PEk" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="20" id="l4B-K8-tCz"/>
@@ -283,6 +283,7 @@
                     <connections>
                         <outlet property="blurView" destination="mnW-Wb-3YF" id="Zk2-aX-3sv"/>
                         <outlet property="listView" destination="Bey-JF-tWn" id="jDD-6z-J2O"/>
+                        <outlet property="listViewTopConstraint" destination="YiQ-QL-LLq" id="ZgC-7P-zCj"/>
                         <outlet property="tableView" destination="Je7-VL-PEk" id="f5T-jT-hhm"/>
                     </connections>
                 </viewController>
@@ -1245,40 +1246,6 @@
             </objects>
             <point key="canvasLocation" x="2996" y="2264.617691154423"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="4vD-sQ-kIz">
-            <objects>
-                <viewController id="Ppe-DR-qhM" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="2gY-tP-XNI"/>
-                        <viewControllerLayoutGuide type="bottom" id="4Sr-ps-jxF"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="cnD-8R-rs7">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wWt-ct-2nQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="Uel-KY-SkY">
-            <objects>
-                <viewController id="kbf-1Y-Aer" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="sHH-9y-0vw"/>
-                        <viewControllerLayoutGuide type="bottom" id="zWV-f8-PR1"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="dfI-tr-hDp">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sFk-83-72e" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-        </scene>
     </scenes>
     <resources>
         <image name="cm2_btm_icn_account" width="28" height="28"/>
@@ -1286,8 +1253,8 @@
         <image name="cm2_btm_icn_friend" width="28" height="28"/>
         <image name="cm2_btm_icn_music" width="28" height="28"/>
         <image name="cm2_lay_icn_cloud" width="28" height="28"/>
-        <image name="cm2_lay_icn_mng_dis" width="28" height="28"/>
-        <image name="cm2_lay_icn_newlist_dis" width="28" height="28"/>
+        <image name="cm2_lay_icn_mng" width="28" height="28"/>
+        <image name="cm2_lay_icn_newlist" width="28" height="28"/>
         <image name="cm2_list_icn_arr" width="8" height="14"/>
         <image name="cm2_login_bg" width="320" height="568"/>
         <image name="cm2_login_btn_netease" width="42" height="42"/>

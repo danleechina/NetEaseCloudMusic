@@ -78,7 +78,7 @@ class BaseNavigationBar: UIView {
         }
         
         leftButton.snp.makeConstraints { (make) in
-            make.left.equalTo(self.snp.left)
+            make.left.equalTo(self.snp.left).offset(16)
             make.centerY.equalTo(self.snp.centerY)
             make.width.equalTo(44)
             make.height.equalTo(44)
