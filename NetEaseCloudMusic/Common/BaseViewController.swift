@@ -16,6 +16,11 @@ class BaseViewController: UIViewController {
         return bar
     }()
     
+    let statusBar: UIView = {
+       let view = UIView.init(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 20))
+        return view
+    }()
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)

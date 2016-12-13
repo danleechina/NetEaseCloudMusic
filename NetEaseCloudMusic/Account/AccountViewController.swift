@@ -31,6 +31,7 @@ class AccountViewController: BaseViewController {
         tableView.dataSource = self
         tableView.backgroundColor = UIColor.clear
         tableView.showsVerticalScrollIndicator = false
+        tableView.separatorStyle = .none
         //avoid line separate happened everywhere
         tableView.tableFooterView = UIView()
         //avoid floating section
@@ -356,6 +357,7 @@ extension AccountViewController:UITableViewDelegate, UITableViewDataSource {
             cell.isLogin = true
             cell.accessoryType = .none
         }
+        cell.seperateLineView.isHidden = tableView.numberOfRows(inSection: indexPath.section)-1 == indexPath.row ? true : false
         return cell
     }
     

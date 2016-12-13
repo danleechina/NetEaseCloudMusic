@@ -11,12 +11,18 @@ import RealmSwift
 
 class MyMusicViewController: BaseViewController {
 
-    @IBOutlet weak var blurView: UIView!
+    @IBOutlet weak var blurView: UIView! {
+        didSet {
+            let tapGest = UITapGestureRecognizer.init(target: self, action: #selector(clickTopBarMoreButton))
+            tapGest.numberOfTapsRequired = 1
+            blurView.addGestureRecognizer(tapGest)
+        }
+    }
     @IBOutlet weak var listView: UIView!
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.tableFooterView = UIView()
-//            tableView.separatorStyle = .none
+            tableView.separatorStyle = .none
         }
     }
     @IBOutlet weak var listViewTopConstraint: NSLayoutConstraint!
@@ -95,6 +101,8 @@ class MyMusicViewController: BaseViewController {
         self.navigationBar.leftButton.setTitleColor(UIColor.black, for: .normal)
         self.navigationBar.leftButton.addTarget(self, action: #selector(clickTopBarMoreButton), for: .touchUpInside)
         self.view.addSubview(self.navigationBar)
+        self.statusBar.backgroundColor = UIColor.white
+        self.view.addSubview(self.statusBar)
         
         NotificationCenter.default.addObserver(self, selector: #selector(onNewUserLogin), name: .onNewUserLogin, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onUserLogout), name: .onUserLogout, object: nil)
@@ -160,12 +168,18 @@ class MyMusicViewController: BaseViewController {
     func clickTopBarMoreButton() {
         self.listViewTopConstraint.constant = !self.listView.isHidden ? -136 : 44
         let hiddenState = !self.listView.isHidden
+        let startHiddenState = self.listView.isHidden
         if self.listView.isHidden {
             self.listView.isHidden = false
             self.blurView.isHidden = false
         }
+        self.blurView.alpha = startHiddenState ? 0 : 1
         self.listView.setNeedsUpdateConstraints()
-        UIView.animate(withDuration: 0.5, animations: {self.view.layoutIfNeeded()}) { (finished) in
+        UIView.animate(withDuration: 0.4, animations: {
+            UIView.setAnimationCurve(.easeInOut)
+            self.view.layoutIfNeeded()
+            self.blurView.alpha = startHiddenState ? 1 : 0
+        }) { (finished) in
             self.listView.isHidden = hiddenState
             self.blurView.isHidden = hiddenState
         }
@@ -185,6 +199,7 @@ extension MyMusicViewController:UITableViewDelegate, UITableViewDataSource {
             cell?.leftImageView.image = UIImage.init(named: sectionZeroList[indexPath.row][1])
             cell?.titleLabel.text = sectionZeroList[indexPath.row][0]
             cell?.rightValueLabel.text = sectionZeroList[indexPath.row][2]
+            cell?.seperateLineView.isHidden = tableView.numberOfRows(inSection: indexPath.section)-1 == indexPath.row ? true : false
             return cell!
         } else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MyMusicTableViewPlayListCell") as? MyMusicTableViewPlayListCell
@@ -194,6 +209,7 @@ extension MyMusicViewController:UITableViewDelegate, UITableViewDataSource {
             cell?.playListNameLabel.text = createByMyselfPlayList[indexPath.row].name
             cell?.infoLabel.text = "\(createByMyselfPlayList[indexPath.row].cloudTrackCount)"
             cell?.downloadIndicatorImageView.image = UIImage.init(named: "cm2_list_icn_dld_half")
+            cell?.seperateLineView.isHidden = tableView.numberOfRows(inSection: indexPath.section)-1 == indexPath.row ? true : false
             return cell!
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MyMusicTableViewPlayListCell") as? MyMusicTableViewPlayListCell
@@ -203,6 +219,7 @@ extension MyMusicViewController:UITableViewDelegate, UITableViewDataSource {
             cell?.playListNameLabel.text = favoritePlayList[indexPath.row].name
             cell?.infoLabel.text = "\(favoritePlayList[indexPath.row].cloudTrackCount)"
             cell?.downloadIndicatorImageView.image = UIImage.init(named: "cm2_list_icn_dld_half")
+            cell?.seperateLineView.isHidden = tableView.numberOfRows(inSection: indexPath.section)-1 == indexPath.row ? true : false
             return cell!
         }
     }

@@ -131,6 +131,12 @@ class AccountTableViewCell: BaseTableViewCell {
         return label
     }()
     
+    lazy var seperateLineView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.init(colorLiteralRed: 225/255.0, green: 226/255.0, blue: 227/255.0, alpha: 1)
+        return view
+    }()
+    
     
     static func cellFor(_ table: UITableView) -> AccountTableViewCell {
         var cell = table.dequeueReusableCell(withIdentifier: reuseIdentifier) as? AccountTableViewCell
@@ -156,6 +162,7 @@ class AccountTableViewCell: BaseTableViewCell {
         self.addSubview(rightInfoLabel)
         self.addSubview(switchButton)
         self.addSubview(logoutLabel)
+        self.addSubview(seperateLineView)
     }
     
     override func layoutSubviews() {
@@ -190,6 +197,13 @@ class AccountTableViewCell: BaseTableViewCell {
             make.center.equalTo(self.snp.center)
             make.width.equalTo(self.snp.width)
             make.height.equalTo(self.snp.height)
+        }
+        
+        seperateLineView.snp.makeConstraints { (make) in
+            make.height.equalTo(0.5)
+            make.left.equalTo(self.titleLabel.snp.left)
+            make.right.equalTo(self.snp.right)
+            make.bottom.equalTo(self.snp.bottom).offset(-1)
         }
     }
     
