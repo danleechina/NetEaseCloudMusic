@@ -138,7 +138,7 @@ class CertainSongSheetViewController: BaseViewController {
         self.navigationBar.leftButton.addTarget(self, action: #selector(tapBackButton), for: .touchUpInside)
         self.navigationBar.leftButton.setImage(UIImage.init(named: "cm2_icn_back"), for: UIControlState())
         self.navigationBar.leftButton.setImage(UIImage.init(named: "cm2_icn_back"), for: .highlighted)
-        self.marqueeTitleLabel.text = self.data?.name
+        self.marqueeTitleLabel.text = self.data?.name ?? "歌单"
         self.navigationBar.titleView.addSubview(marqueeTitleLabel)
         self.navigationBar.rightButton.addTarget(self, action: #selector(goPlaySongVC), for: .touchUpInside)
         self.navigationBar.rightButton.setImage(UIImage.init(named: "cm2_topbar_icn_playing"), for: UIControlState())

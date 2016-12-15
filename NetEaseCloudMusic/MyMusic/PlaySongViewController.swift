@@ -520,18 +520,35 @@ class PlaySongViewController: BaseViewController {
                     for cell in self.lyricTableView.visibleCells {
                         cell.textLabel?.textColor = UIColor.lightGray
                     }
+                    var theCell: UITableViewCell!
+                    
                     if let cell = self.lyricTableView.cellForRow(at: IndexPath.init(row: row, section: 0)) {
-                        let startContentOffset = CGPoint(x: 0, y: -self.lyricTableView.bounds.size.height / 2 + cell.frame.origin.y)
-                        self.lyricTableView.setContentOffset(CGPoint(x: startContentOffset.x, y: startContentOffset.y + cell.bounds.size.height/2), animated: true)
-                        cell.textLabel?.textColor = UIColor.white
+                        theCell = cell
+                    } else {
+                        if let firstCell = self.lyricTableView.visibleCells.first {
+                            if row < self.lyricTableView.indexPath(for: firstCell)!.row {
+                                theCell = firstCell
+                            }
+                        } else if let lastCell = self.lyricTableView.visibleCells.last {
+                            if row > self.lyricTableView.indexPath(for: lastCell)!.row {
+                                theCell = lastCell
+                            }
+                        } else {
+                            if self.lyricTableView.contentOffset.y < 0 {
+                                self.lyricTableView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+                            } else {
+                                self.lyricTableView.setContentOffset(CGPoint(x: 0, y: self.lyricTableView.contentSize.height + self.lyricTableView.bounds.height/2), animated: true)
+                            }
+                            return
+                        }
                     }
+                    let startContentOffset = CGPoint(x: 0, y: -self.lyricTableView.bounds.size.height / 2 + theCell.frame.origin.y)
+                    self.lyricTableView.setContentOffset(CGPoint(x: startContentOffset.x, y: startContentOffset.y + theCell.bounds.size.height/2), animated: true)
+                    theCell.textLabel?.textColor = UIColor.white
                     break;
                 }
                 lastValue = value
             }
-        }
-        if current == 0 {
-            self.lyricTableView.contentOffset = CGPoint(x: 0, y: -self.lyricTableView.bounds.size.height / 2)
         }
     }
     
