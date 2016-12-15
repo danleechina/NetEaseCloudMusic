@@ -7,8 +7,17 @@
 //
 
 import UIKit
+import SnapKit
 
-
+enum RecommentViewSection {
+    case header
+    case playlist
+    case unique
+    case newest
+    case mv
+    case radio
+    case footer
+}
 
 class RecommendViewController: BaseViewController {
     fileprivate lazy var collectionView: UICollectionView = {
@@ -96,6 +105,63 @@ class RecommendViewFooter: UICollectionReusableView {
 class RecommendViewSection: UICollectionReusableView {
     static let identifier = "RecommendViewSection"
     
+    var iconImageView: UIImageView!
+    var titleLabel: UILabel!
+    var moreButton: UIButton!
+    var moreArrImageView: UIImageView!
+    
+    override init(frame: CGRect) {
+        iconImageView = UIImageView()
+        titleLabel = UILabel()
+        moreButton = UIButton()
+        moreArrImageView = UIImageView()
+        
+        moreArrImageView.image = UIImage.init(named: "cm2_discover_icn_more")
+        
+        
+        super.init(frame: frame)
+        
+        self.addSubview(iconImageView)
+        self.addSubview(titleLabel)
+        self.addSubview(moreButton)
+        self.addSubview(moreArrImageView)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        self.iconImageView.snp.makeConstraints { (make) in
+            make.left.equalTo(self).offset(16)
+            make.centerY.equalTo(self)
+            make.width.equalTo(30)
+            make.height.equalTo(self)
+        }
+        
+        self.titleLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(self.iconImageView.snp.right).offset(4)
+            make.centerY.equalTo(self)
+            make.right.equalTo(self.moreButton.snp.left)
+            make.height.equalTo(self)
+        }
+        
+        self.moreButton.snp.makeConstraints { (make) in
+            make.right.equalTo(self.moreArrImageView.snp.left).offset(-4)
+            make.width.equalTo(12)
+            make.centerY.equalTo(self)
+            make.height.equalTo(self)
+        }
+        
+        self.moreArrImageView.snp.makeConstraints { (make) in
+            make.right.equalTo(self).offset(-16)
+            make.width.equalTo(12)
+            make.centerY.equalTo(self)
+            make.height.equalTo(self)
+        }
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
 
 class RecommendViewCell: UICollectionViewCell {
