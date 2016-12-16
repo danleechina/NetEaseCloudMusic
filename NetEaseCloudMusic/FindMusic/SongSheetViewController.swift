@@ -187,6 +187,11 @@ class CertainSongSheetHeadImage: UIView {
         return image
     }()
     
+    lazy var leftTopImageView: UIImageView = {
+        let image = UIImageView.init(image: UIImage.init(named: "cm2_list_detail_icn_infor"))
+        return image
+    }()
+    
     lazy var topMaskView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.black.withAlphaComponent(0.3)
@@ -208,6 +213,7 @@ class CertainSongSheetHeadImage: UIView {
         addSubview(authorLabel)
         addSubview(subscribeLabel)
         addSubview(infoImageView)
+        addSubview(leftTopImageView)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -244,6 +250,11 @@ class CertainSongSheetHeadImage: UIView {
             make.centerY.equalTo(self.bottomMaskView.snp.centerY)
             make.height.equalTo(20)
             make.width.equalTo(20)
+        }
+        
+        leftTopImageView.snp.makeConstraints { (make) in
+            make.left.top.equalTo(self)
+            make.height.width.equalTo(20)
         }
         
         bottomMaskView.snp.makeConstraints { (make) in

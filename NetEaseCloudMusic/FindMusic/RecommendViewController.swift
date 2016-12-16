@@ -95,11 +95,105 @@ extension RecommendViewController: UICollectionViewDelegate, UICollectionViewDat
 
 class RecommendViewHeader: UICollectionReusableView {
     static let identifier = "RecommendViewHeader"
+    var imageSliderView: ImageSliderView!
+    var personalFMButton: LayoutButton!
+    var daysSingRecommendButton: LayoutButton!
+    var hotMusicButton: LayoutButton!
+    
+    var stackView: UIStackView!
+    
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        imageSliderView = ImageSliderView()
+        personalFMButton = LayoutButton()
+        daysSingRecommendButton = LayoutButton()
+        hotMusicButton = LayoutButton()
+        personalFMButton.layoutButtonDirection = .topImageBottomText
+        daysSingRecommendButton.layoutButtonDirection = .topImageBottomText
+        hotMusicButton.layoutButtonDirection = .topImageBottomText
+        personalFMButton.setTitle("私人FM", for: .normal)
+        daysSingRecommendButton.setTitle("每日歌曲推荐", for: .normal)
+        hotMusicButton.setTitle("云音乐热歌榜", for: .normal)
+        
+        personalFMButton.setImage(UIImage.init(named: "cm2_discover_icn_fm"), for: .normal)
+        personalFMButton.setImage(UIImage.init(named: "cm2_discover_icn_fm_prs"), for: .highlighted)
+
+        daysSingRecommendButton.setImage(UIImage.init(name: ""), for: .normal)
+        daysSingRecommendButton.setImage(UIImage.init(name: ""), for: .highlighted)
+        
+        hotMusicButton.setImage(UIImage.init(name: "cm2_discover_icn_upbill"), for: .normal)
+        hotMusicButton.setImage(UIImage.init(name: "cm2_discover_icn_upbill_prs"), for: .highlighted)
+        
+        stackView = UIStackView.init(arrangedSubviews: [personalFMButton, daysSingRecommendButton, hotMusicButton])
+        stackView.distribution = .equalCentering
+        stackView.axis = .horizontal
+        self.addSubview(imageSliderView)
+        self.addSubview(stackView)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        imageSliderView.snp.makeConstraints { (make) in
+            make.top.left.width.equalTo(self)
+            make.height.equalTo(self.snp.width).multipliedBy(0.333)
+        }
+        
+        stackView.snp.makeConstraints { (make) in
+            make.left.bottom.width.equalTo(self)
+            make.top.equalTo(self.imageSliderView.snp.bottom)
+        }
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
 }
 
 class RecommendViewFooter: UICollectionReusableView {
     static let identifier = "RecommendViewFooter"
     
+    var label: UILabel!
+    var button: UIButton!
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        label = UILabel()
+        label.text = "现在可以根据个人喜好，自由调整首页栏目顺序啦~"
+        label.textColor = UIColor.lightGray
+        label.font = UIFont.systemFont(ofSize: 14)
+        
+        button = UIButton()
+        button.setTitle("调整栏目顺序", for: .normal)
+        button.setTitleColor(FixedValue.mainRedColor, for: .normal)
+        button.layer.cornerRadius = 8
+        
+        self.addSubview(label)
+        self.addSubview(button)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        label.snp.makeConstraints { (make) in
+            make.centerX.equalTo(self)
+            make.top.equalTo(self).offset(20)
+        }
+        
+        button.snp.makeConstraints { (make) in
+            make.centerX.equalTo(self)
+            make.top.equalTo(self.label.snp.bottom).offset(15)
+            make.width.equalTo(100)
+        }
+    }
 }
 
 class RecommendViewSection: UICollectionReusableView {

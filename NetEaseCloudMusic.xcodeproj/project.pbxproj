@@ -11,6 +11,9 @@
 		371F85241DEEBE6E00DA6C75 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371F85231DEEBE6E00DA6C75 /* String+Extension.swift */; };
 		371F85281DEEBF5E00DA6C75 /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371F85271DEEBF5E00DA6C75 /* Int+Extension.swift */; };
 		371F852C1DEEC38F00DA6C75 /* Data+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371F852B1DEEC38F00DA6C75 /* Data+Extension.swift */; };
+		373EE2231E03850800C5180A /* ImageSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373EE2221E03850800C5180A /* ImageSliderView.swift */; };
+		373EE2251E03867000C5180A /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373EE2241E03867000C5180A /* UIButton+Extension.swift */; };
+		373EE2271E038D9B00C5180A /* LayoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373EE2261E038D9B00C5180A /* LayoutButton.swift */; };
 		3758A38E1DF6A88E00788104 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3758A38D1DF6A88E00788104 /* LoginViewController.swift */; };
 		3758A3911DF6B09F00788104 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3758A3901DF6B09F00788104 /* UIView+Extension.swift */; };
 		3758A3941DF6B6E400788104 /* UIImage+Extenison.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3758A3931DF6B6E400788104 /* UIImage+Extenison.swift */; };
@@ -156,6 +159,9 @@
 		371F85231DEEBE6E00DA6C75 /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+Extension.swift"; path = "Extension/Foundation/String+Extension.swift"; sourceTree = "<group>"; };
 		371F85271DEEBF5E00DA6C75 /* Int+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Int+Extension.swift"; path = "Extension/Foundation/Int+Extension.swift"; sourceTree = "<group>"; };
 		371F852B1DEEC38F00DA6C75 /* Data+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Data+Extension.swift"; path = "Extension/Foundation/Data+Extension.swift"; sourceTree = "<group>"; };
+		373EE2221E03850800C5180A /* ImageSliderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageSliderView.swift; path = Common/ImageSliderView.swift; sourceTree = "<group>"; };
+		373EE2241E03867000C5180A /* UIButton+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIButton+Extension.swift"; path = "Extension/UIKit/UIButton+Extension.swift"; sourceTree = "<group>"; };
+		373EE2261E038D9B00C5180A /* LayoutButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LayoutButton.swift; path = Common/LayoutButton.swift; sourceTree = "<group>"; };
 		3758A38D1DF6A88E00788104 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Account/Login/LoginViewController.swift; sourceTree = "<group>"; };
 		3758A3901DF6B09F00788104 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Extension.swift"; path = "Extension/UIKit/UIView+Extension.swift"; sourceTree = "<group>"; };
 		3758A3931DF6B6E400788104 /* UIImage+Extenison.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+Extenison.swift"; path = "Extension/UIKit/UIImage+Extenison.swift"; sourceTree = "<group>"; };
@@ -338,6 +344,7 @@
 				3758A3901DF6B09F00788104 /* UIView+Extension.swift */,
 				3758A3931DF6B6E400788104 /* UIImage+Extenison.swift */,
 				3758A3971DF79D9E00788104 /* IB+Extension.swift */,
+				373EE2241E03867000C5180A /* UIButton+Extension.swift */,
 			);
 			name = UIKit;
 			sourceTree = "<group>";
@@ -634,6 +641,7 @@
 		DE4068551D12A3240067F0FE /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				373EE2221E03850800C5180A /* ImageSliderView.swift */,
 				DE79E6F51D167282006B9926 /* BaseTableView.swift */,
 				DE4068531D12A3190067F0FE /* BaseTableViewCell.swift */,
 				DE4068561D12A4DA0067F0FE /* RoundNumberLabel.swift */,
@@ -642,6 +650,7 @@
 				A0BE95BE1D157ABB009A84F0 /* HeadIconView.swift */,
 				DE79E6FA1D1677C2006B9926 /* HasInfoSegmentedControl.swift */,
 				818E3B131D88272100F29A16 /* BaseNavigationBar.swift */,
+				373EE2261E038D9B00C5180A /* LayoutButton.swift */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -905,6 +914,7 @@
 				DE2654F21D102A9D0083F742 /* MyRadioViewController.swift in Sources */,
 				DE2474741D1AB83C00EBAA37 /* CommentCell.swift in Sources */,
 				37D0F7901DEEEBB80046C9B6 /* BigUInt Prime Test.swift in Sources */,
+				373EE2251E03867000C5180A /* UIButton+Extension.swift in Sources */,
 				DE79E6FB1D1677C2006B9926 /* HasInfoSegmentedControl.swift in Sources */,
 				DED58E111D5C8C8600ED8A74 /* SongLyric.swift in Sources */,
 				37D0F7971DEEEBB80046C9B6 /* Bitwise Hacks.swift in Sources */,
@@ -981,6 +991,7 @@
 				DE2654DD1D1027E40083F742 /* MusicAlarmViewController.swift in Sources */,
 				DE2654E11D1028160083F742 /* AboutViewController.swift in Sources */,
 				3758A3911DF6B09F00788104 /* UIView+Extension.swift in Sources */,
+				373EE2271E038D9B00C5180A /* LayoutButton.swift in Sources */,
 				DE2654D31D1026DA0083F742 /* PointMallViewController.swift in Sources */,
 				375ACD491DF9028400AD89FB /* Follow.swift in Sources */,
 				A02A3EE41D40FBD100A3956F /* MarqueeLabel.swift in Sources */,
@@ -988,6 +999,7 @@
 				37D0F7911DEEEBB80046C9B6 /* BigUInt Radix Conversion.swift in Sources */,
 				DE19D2141D12DAFC008A575C /* FixedValue.swift in Sources */,
 				DEC8F3111D23E0B700C30661 /* NetworkMusicApi.swift in Sources */,
+				373EE2231E03850800C5180A /* ImageSliderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -39,7 +39,7 @@ fileprivate func >= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
 
 class RoundNumberLabel: UIView {
     static let height:CGFloat = 20
-    var width:CGFloat = 20
+    var fixWidth:CGFloat = 20
     
     
     var number:Int? = 0 {
@@ -79,21 +79,21 @@ class RoundNumberLabel: UIView {
         self.numberLabel.sizeToFit()
         self.sizeToFit()
         let size = self.numberLabel.bounds.size
-        self.numberLabel.frame = CGRect(x: width/2 - size.width/2, y: RoundNumberLabel.height/2 - size.height/2, width: size.width, height: size.height)
+        self.numberLabel.frame = CGRect(x: fixWidth/2 - size.width/2, y: RoundNumberLabel.height/2 - size.height/2, width: size.width, height: size.height)
     }
     
     override func sizeToFit() {
-        width = RoundNumberLabel.height
+        fixWidth = RoundNumberLabel.height
         if number > 99 {
-            width *= 2
+            fixWidth *= 2
         } else if number >= 10 {
-            width *= 1.5
+            fixWidth *= 1.5
         } else if number > 0 {
-            width *= 1
+            fixWidth *= 1
         } else {
-            width = 0
+            fixWidth = 0
         }
-        self.bounds = CGRect(x: 0, y: 0, width: width, height: RoundNumberLabel.height)
+        self.bounds = CGRect(x: 0, y: 0, width: fixWidth, height: RoundNumberLabel.height)
     }
     
     required init?(coder aDecoder: NSCoder) {
