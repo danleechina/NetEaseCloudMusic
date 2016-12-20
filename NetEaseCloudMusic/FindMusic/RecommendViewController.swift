@@ -19,26 +19,46 @@ enum RecommentViewSection {
     case footer
 }
 
-class RecommendViewController: BaseViewController {
-    fileprivate lazy var collectionView: UICollectionView = {
-        let collectionView = UICollectionView.init(frame: self.view.bounds, collectionViewLayout: self.collectionViewFlowLayout)
-        collectionView.frame = CGRect(x: 0, y:40 + 64, width:self.view.bounds.width, height:self.view.bounds.height - 40 - self.tabBarController!.tabBar.frame.size.height - 64)
-        collectionView.backgroundColor = UIColor.clear
-        let contentInsetValue: CGFloat = 10
-        collectionView.contentInset = UIEdgeInsetsMake(contentInsetValue, contentInsetValue, contentInsetValue, contentInsetValue)
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.register(RecommendViewCell.self, forCellWithReuseIdentifier:RecommendViewCell.identifier)
-//        
-//        collectionView.register(RecommendViewHeader.self, forCellWithReuseIdentifier:RecommendViewHeader.identifier)
-//        collectionView.register(RecommendViewFooter.self, forCellWithReuseIdentifier:RecommendViewFooter.identifier)
-//        collectionView.register(RecommendViewSection.self, forCellWithReuseIdentifier:RecommendViewSection.identifier)
-        collectionView.register(RecommendViewHeader.self, forSupplementaryViewOfKind:UICollectionElementKindSectionHeader, withReuseIdentifier:RecommendViewHeader.identifier)
-        collectionView.register(RecommendViewFooter.self, forSupplementaryViewOfKind:UICollectionElementKindSectionHeader, withReuseIdentifier:RecommendViewFooter.identifier)
-        collectionView.register(RecommendViewSection.self, forSupplementaryViewOfKind:UICollectionElementKindSectionHeader, withReuseIdentifier:RecommendViewSection.identifier)
-
-        return collectionView
-    }()
+class RecommendViewController: UICollectionViewController {
+//    @IBOutlet var collectionView: UICollectionView! 
+//    @IBOutlet weak var collectionView: UICollectionView!{
+//        didSet {
+//            collectionView.backgroundColor = UIColor.clear
+//            let contentInsetValue: CGFloat = 10
+//            collectionView.contentInset = UIEdgeInsetsMake(contentInsetValue, contentInsetValue, contentInsetValue, contentInsetValue)
+//            collectionView.delegate = self
+//            collectionView.dataSource = self
+//            collectionView.register(RecommendViewCell.self, forCellWithReuseIdentifier:RecommendViewCell.identifier)
+//            //
+//            //        collectionView.register(RecommendViewHeader.self, forCellWithReuseIdentifier:RecommendViewHeader.identifier)
+//            //        collectionView.register(RecommendViewFooter.self, forCellWithReuseIdentifier:RecommendViewFooter.identifier)
+//            //        collectionView.register(RecommendViewSection.self, forCellWithReuseIdentifier:RecommendViewSection.identifier)
+//            collectionView.register(RecommendViewHeader.self, forSupplementaryViewOfKind:UICollectionElementKindSectionHeader, withReuseIdentifier:RecommendViewHeader.identifier)
+//            collectionView.register(RecommendViewFooter.self, forSupplementaryViewOfKind:UICollectionElementKindSectionHeader, withReuseIdentifier:RecommendViewFooter.identifier)
+//            collectionView.register(RecommendViewSection.self, forSupplementaryViewOfKind:UICollectionElementKindSectionHeader, withReuseIdentifier:RecommendViewSection.identifier)
+//        }
+//    }
+//    fileprivate lazy var collectionView: UICollectionView = {
+////        let collectionView = UICollectionView.init(frame: self.view.bounds, collectionViewLayout: self.collectionViewFlowLayout)
+////        collectionView.frame = CGRect(x: 0, y:40 + 64, width:self.view.bounds.width, height:self.view.bounds.height - 40 - self.tabBarController!.tabBar.frame.size.height - 64)
+//        collectionView.backgroundColor = UIColor.clear
+//        let contentInsetValue: CGFloat = 10
+//        collectionView.contentInset = UIEdgeInsetsMake(contentInsetValue, contentInsetValue, contentInsetValue, contentInsetValue)
+//        collectionView.delegate = self
+//        collectionView.dataSource = self
+//        collectionView.register(RecommendViewCell.self, forCellWithReuseIdentifier:RecommendViewCell.identifier)
+////        
+////        collectionView.register(RecommendViewHeader.self, forCellWithReuseIdentifier:RecommendViewHeader.identifier)
+////        collectionView.register(RecommendViewFooter.self, forCellWithReuseIdentifier:RecommendViewFooter.identifier)
+////        collectionView.register(RecommendViewSection.self, forCellWithReuseIdentifier:RecommendViewSection.identifier)
+//        collectionView.register(RecommendViewHeader.self, forSupplementaryViewOfKind:UICollectionElementKindSectionHeader, withReuseIdentifier:RecommendViewHeader.identifier)
+//        collectionView.register(RecommendViewFooter.self, forSupplementaryViewOfKind:UICollectionElementKindSectionHeader, withReuseIdentifier:RecommendViewFooter.identifier)
+//        collectionView.register(RecommendViewSection.self, forSupplementaryViewOfKind:UICollectionElementKindSectionHeader, withReuseIdentifier:RecommendViewSection.identifier)
+//
+//        return collectionView
+//    }()
+    
+    
     
     fileprivate lazy var collectionViewFlowLayout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
@@ -46,43 +66,74 @@ class RecommendViewController: BaseViewController {
 //        layout.headerReferenceSize = CGSize(width: self.view.frame.width, height: 100)
         layout.itemSize = CGSize(width: 145, height: 170)
         layout.minimumLineSpacing = 2
-        layout.sectionInset = UIEdgeInsetsMake(2, 0, 5, 0)
         return layout
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+            collectionView?.backgroundColor = UIColor.clear
+            let contentInsetValue: CGFloat = 10
+            collectionView?.contentInset = UIEdgeInsetsMake(contentInsetValue, contentInsetValue, contentInsetValue, contentInsetValue)
+            collectionView?.delegate = self
+            collectionView?.dataSource = self
+            collectionView?.register(RecommendViewCell.self, forCellWithReuseIdentifier:RecommendViewCell.identifier)
+            //
+            //        collectionView.register(RecommendViewHeader.self, forCellWithReuseIdentifier:RecommendViewHeader.identifier)
+            //        collectionView.register(RecommendViewFooter.self, forCellWithReuseIdentifier:RecommendViewFooter.identifier)
+            //        collectionView.register(RecommendViewSection.self, forCellWithReuseIdentifier:RecommendViewSection.identifier)
+            collectionView?.register(RecommendViewHeader.self, forSupplementaryViewOfKind:UICollectionElementKindSectionHeader, withReuseIdentifier:RecommendViewHeader.identifier)
+            collectionView?.register(RecommendViewFooter.self, forSupplementaryViewOfKind:UICollectionElementKindSectionHeader, withReuseIdentifier:RecommendViewFooter.identifier)
+            collectionView?.register(RecommendViewSection.self, forSupplementaryViewOfKind:UICollectionElementKindSectionHeader, withReuseIdentifier:RecommendViewSection.identifier)
         view.backgroundColor = UIColor.white
+        
+        
+//        let imageSliderView = ImageSliderView.init()
+//        let image1 = UIImage.init(named: "1.jpg")!
+//        let image2 = UIImage.init(named: "2.jpg")!
+//        let image3 = UIImage.init(named: "3.jpg")!
+//        imageSliderView.images = [image1, image2, image3]
+//        imageSliderView.startToSlide()
+//        imageSliderView.frame = CGRect(x: 10, y: 70, width: 200, height: 200)
+//        self.view.addSubview(imageSliderView)
     }
-}
-
-extension RecommendViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    // MARK: - DataSource
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    
+    
+    // MARK: - DataSource
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 0
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         return UICollectionViewCell()
     }
     
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        return UICollectionReusableView()
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: RecommendViewHeader.identifier, for: indexPath)
+        return view
     }
+    
     
     // MARK: - Delegate
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     }
+}
+
+extension RecommendViewController:  UICollectionViewDelegateFlowLayout {
+    
     
     // Flow layout Delegate
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         if section == 0 {
             // Global Header
-            return CGSize(width: collectionView.frame.width, height: 120)
+            return CGSize(width: collectionView.frame.width, height: self.view.width * 0.666)
         } else if section == collectionView.numberOfSections - 1 {
             // Global Footer
             return CGSize(width: collectionView.frame.width, height: 100)
@@ -95,61 +146,120 @@ extension RecommendViewController: UICollectionViewDelegate, UICollectionViewDat
 
 class RecommendViewHeader: UICollectionReusableView {
     static let identifier = "RecommendViewHeader"
-    var imageSliderView: ImageSliderView!
-    var personalFMButton: LayoutButton!
-    var daysSingRecommendButton: LayoutButton!
-    var hotMusicButton: LayoutButton!
     
-    var stackView: UIStackView!
-    
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        imageSliderView = ImageSliderView()
-        personalFMButton = LayoutButton()
-        daysSingRecommendButton = LayoutButton()
-        hotMusicButton = LayoutButton()
-        personalFMButton.layoutButtonDirection = .topImageBottomText
-        daysSingRecommendButton.layoutButtonDirection = .topImageBottomText
-        hotMusicButton.layoutButtonDirection = .topImageBottomText
-        personalFMButton.setTitle("私人FM", for: .normal)
-        daysSingRecommendButton.setTitle("每日歌曲推荐", for: .normal)
-        hotMusicButton.setTitle("云音乐热歌榜", for: .normal)
-        
-        personalFMButton.setImage(UIImage.init(named: "cm2_discover_icn_fm"), for: .normal)
-        personalFMButton.setImage(UIImage.init(named: "cm2_discover_icn_fm_prs"), for: .highlighted)
-
-        daysSingRecommendButton.setImage(UIImage.init(name: ""), for: .normal)
-        daysSingRecommendButton.setImage(UIImage.init(name: ""), for: .highlighted)
-        
-        hotMusicButton.setImage(UIImage.init(name: "cm2_discover_icn_upbill"), for: .normal)
-        hotMusicButton.setImage(UIImage.init(name: "cm2_discover_icn_upbill_prs"), for: .highlighted)
-        
-        stackView = UIStackView.init(arrangedSubviews: [personalFMButton, daysSingRecommendButton, hotMusicButton])
-        stackView.distribution = .equalCentering
-        stackView.axis = .horizontal
-        self.addSubview(imageSliderView)
-        self.addSubview(stackView)
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        imageSliderView.snp.makeConstraints { (make) in
-            make.top.left.width.equalTo(self)
-            make.height.equalTo(self.snp.width).multipliedBy(0.333)
-        }
-        
-        stackView.snp.makeConstraints { (make) in
-            make.left.bottom.width.equalTo(self)
-            make.top.equalTo(self.imageSliderView.snp.bottom)
+    @IBOutlet weak var imageSliderContainerView: UIView! {
+        didSet {
+            let imageSliderView = ImageSliderView()
+            let image1 = UIImage.init(named: "1.jpg")!
+            let image2 = UIImage.init(named: "2.jpg")!
+            let image3 = UIImage.init(named: "3.jpg")!
+            imageSliderView.images = [image1, image2, image3]
+            imageSliderView.startToSlide()
+            imageSliderView.imageContentMode = .scaleToFill
+            imageSliderContainerView.addSubview(imageSliderView)
         }
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+//    var imageSliderView: ImageSliderView!
+//    var personalFMButton: LayoutButton!
+//    var daysSingRecommendButton: LayoutButton!
+//    var hotMusicButton: LayoutButton!
+//    
+//    var controlButtonView: UIView!
+//    
+//    override init(frame: CGRect) {
+//        super.init(frame: frame)
+//        
+//        imageSliderView = ImageSliderView()
+//        personalFMButton = LayoutButton()
+//        daysSingRecommendButton = LayoutButton()
+//        hotMusicButton = LayoutButton()
+//        
+//        personalFMButton.layoutButtonDirection = .topImageBottomText
+//        daysSingRecommendButton.layoutButtonDirection = .topImageBottomText
+//        hotMusicButton.layoutButtonDirection = .topImageBottomText
+//        
+//        personalFMButton.setTitle("私人FM", for: .normal)
+//        daysSingRecommendButton.setTitle("每日歌曲推荐", for: .normal)
+//        hotMusicButton.setTitle("云音乐热歌榜", for: .normal)
+//        
+//        personalFMButton.setBackgroundImage(UIImage.init(named: "cm2_discover_icn_daily"), for: .normal)
+//        daysSingRecommendButton.setBackgroundImage(UIImage.init(named: "cm2_discover_icn_daily"), for: .normal)
+//        hotMusicButton.setBackgroundImage(UIImage.init(named: "cm2_discover_icn_daily"), for: .normal)
+//        
+//        personalFMButton.setTitleColor(FixedValue.mainRedColor, for: .normal)
+//        daysSingRecommendButton.setTitleColor(FixedValue.mainRedColor, for: .normal)
+//        hotMusicButton.setTitleColor(FixedValue.mainRedColor, for: .normal)
+//        
+//        personalFMButton.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+//        hotMusicButton.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+//        daysSingRecommendButton.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+//        
+//        personalFMButton.titleLabel?.sizeToFit()
+//        hotMusicButton.titleLabel?.sizeToFit()
+//        daysSingRecommendButton.titleLabel?.sizeToFit()
+//        
+//        personalFMButton.setImage(UIImage.init(named: "cm2_discover_icn_fm"), for: .normal)
+//        personalFMButton.setImage(UIImage.init(named: "cm2_discover_icn_fm_prs"), for: .highlighted)
+//
+//        daysSingRecommendButton.setImage(UIImage.init(named: "cm2_discover_icn_upbill"), for: .normal)
+//        daysSingRecommendButton.setImage(UIImage.init(named: "cm2_discover_icn_upbill"), for: .highlighted)
+//        
+//        hotMusicButton.setImage(UIImage.init(named: "cm2_discover_icn_upbill"), for: .normal)
+//        hotMusicButton.setImage(UIImage.init(named: "cm2_discover_icn_upbill_prs"), for: .highlighted)
+//        
+//        self.addSubview(imageSliderView)
+//        
+//        controlButtonView = UIView()
+//        self.addSubview(controlButtonView)
+//        controlButtonView.addSubview(personalFMButton)
+//        controlButtonView.addSubview(daysSingRecommendButton)
+//        controlButtonView.addSubview(hotMusicButton)
+//        
+//        let image1 = UIImage.init(named: "1.jpg")!
+//        let image2 = UIImage.init(named: "2.jpg")!
+//        let image3 = UIImage.init(named: "3.jpg")!
+//        imageSliderView.images = [image1, image2, image3]
+//        imageSliderView.startToSlide()
+//        imageSliderView.imageContentMode = .scaleToFill
+//    }
+//    
+//    override func layoutSubviews() {
+//        super.layoutSubviews()
+//        
+//        imageSliderView.snp.makeConstraints { (make) in
+//            make.top.left.width.equalTo(self)
+//            make.height.equalTo(self.snp.width).multipliedBy(0.366)
+//        }
+//        
+//        controlButtonView.snp.makeConstraints { (make) in
+//            make.top.equalTo(self.imageSliderView.snp.bottom)
+//            make.bottom.left.right.equalTo(self)
+//        }
+//        
+//        let width =
+//        personalFMButton.snp.makeConstraints { (make) in
+//            make.centerX.equalTo(self.controlButtonView.snp.centerX).dividedBy(3)
+//            make.width.height.equalTo(44)
+//            make.centerY.equalTo(self.controlButtonView)
+//        }
+//        
+//        daysSingRecommendButton.snp.makeConstraints { (make) in
+//            make.centerX.equalTo(self.controlButtonView.snp.centerX)
+//            make.width.height.equalTo(44)
+//            make.centerY.equalTo(self.controlButtonView)
+//        }
+//        
+//        hotMusicButton.snp.makeConstraints { (make) in
+////            make.left.equalTo(self.controlButtonView.snp.width).multipliedBy(0.333)
+//            make.width.height.equalTo(44)
+//            make.centerY.equalTo(self.controlButtonView)
+//        }
+//    }
+//    
+//    required init?(coder aDecoder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
     
 }
 

@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -30,7 +31,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HtU-7K-JkY" id="INx-bG-ypV">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="99"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6Aj-zq-FKA">
@@ -100,7 +101,7 @@
                                         <rect key="frame" x="0.0" y="128" width="375" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="z6W-hx-QIv" id="azz-uh-Hci">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="63"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="as2-TU-IaW">
@@ -1116,6 +1117,119 @@
             </objects>
             <point key="canvasLocation" x="4582" y="2265"/>
         </scene>
+        <!--Recommend View Controller-->
+        <scene sceneID="zEA-6I-fLI">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hyY-oz-AB5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <collectionViewController id="w5s-xm-0yt" customClass="RecommendViewController" customModule="NetEaseCloudMusic" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="JCF-uz-9y3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fdN-B1-VN0">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="50" height="220"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="oeJ-2O-YsJ">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </view>
+                            </collectionViewCell>
+                        </cells>
+                        <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RecommendViewHeader" id="1jx-9o-1dY" customClass="RecommendViewHeader" customModule="NetEaseCloudMusic" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="50" width="375" height="220"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="brM-IN-lNL">
+                                    <rect key="frame" x="-0.5" y="0.0" width="375" height="132"/>
+                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xhe-iT-IbQ">
+                                    <rect key="frame" x="-0.5" y="132" width="375" height="88"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="m6d-IF-voY">
+                                            <rect key="frame" x="38" y="6.5" width="50" height="75"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lYh-aG-s2u">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <state key="normal" image="cm2_discover_icn_fm" backgroundImage="cm2_discover_icn_daily"/>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="私人FM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fgi-Bb-WkR">
+                                                    <rect key="frame" x="0.5" y="58" width="49" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="7aM-yA-mmt">
+                                            <rect key="frame" x="144.5" y="7" width="86" height="75"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5BR-o0-KRM">
+                                                    <rect key="frame" x="18" y="0.0" width="50" height="50"/>
+                                                    <state key="normal" image="cm2_discover_icn_upbill" backgroundImage="cm2_discover_icn_daily"/>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="每日歌曲推荐" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ccz-jf-iep">
+                                                    <rect key="frame" x="0.0" y="58" width="86" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ef0-Jb-Dba">
+                                            <rect key="frame" x="269.5" y="6.5" width="86" height="75"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iXu-cR-XzL">
+                                                    <rect key="frame" x="18" y="0.0" width="50" height="50"/>
+                                                    <state key="normal" image="cm2_discover_icn_upbill" backgroundImage="cm2_discover_icn_daily"/>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="云音乐热歌榜" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fCz-bV-WNR">
+                                                    <rect key="frame" x="0.0" y="58" width="86" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="7aM-yA-mmt" firstAttribute="centerX" secondItem="xhe-iT-IbQ" secondAttribute="centerX" id="1cC-0s-yWu"/>
+                                        <constraint firstItem="7aM-yA-mmt" firstAttribute="centerY" secondItem="xhe-iT-IbQ" secondAttribute="centerY" id="ONd-tw-ObZ"/>
+                                        <constraint firstItem="m6d-IF-voY" firstAttribute="centerX" secondItem="xhe-iT-IbQ" secondAttribute="centerX" multiplier="1/3" id="X72-O1-x63"/>
+                                        <constraint firstItem="m6d-IF-voY" firstAttribute="centerY" secondItem="xhe-iT-IbQ" secondAttribute="centerY" id="lt2-rV-4li"/>
+                                        <constraint firstItem="ef0-Jb-Dba" firstAttribute="centerX" secondItem="xhe-iT-IbQ" secondAttribute="centerX" multiplier="10/6" id="njc-yF-PIp"/>
+                                        <constraint firstItem="ef0-Jb-Dba" firstAttribute="centerY" secondItem="xhe-iT-IbQ" secondAttribute="centerY" id="os7-FQ-tlb"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="brM-IN-lNL" firstAttribute="width" secondItem="1jx-9o-1dY" secondAttribute="width" id="9rr-2R-dZg"/>
+                                <constraint firstItem="brM-IN-lNL" firstAttribute="centerX" secondItem="1jx-9o-1dY" secondAttribute="centerX" id="Ez8-bU-DdZ"/>
+                                <constraint firstItem="xhe-iT-IbQ" firstAttribute="width" secondItem="1jx-9o-1dY" secondAttribute="width" id="I5f-6j-5hv"/>
+                                <constraint firstItem="xhe-iT-IbQ" firstAttribute="top" secondItem="brM-IN-lNL" secondAttribute="bottom" id="IUx-WO-uM5"/>
+                                <constraint firstItem="brM-IN-lNL" firstAttribute="top" secondItem="1jx-9o-1dY" secondAttribute="top" id="KQz-gs-cJl"/>
+                                <constraint firstItem="brM-IN-lNL" firstAttribute="height" secondItem="1jx-9o-1dY" secondAttribute="height" multiplier="6/10" id="YVR-8B-F1h"/>
+                                <constraint firstAttribute="bottom" secondItem="xhe-iT-IbQ" secondAttribute="bottom" id="gxf-WA-25k"/>
+                                <constraint firstItem="xhe-iT-IbQ" firstAttribute="centerX" secondItem="1jx-9o-1dY" secondAttribute="centerX" id="i8w-Nv-7eQ"/>
+                            </constraints>
+                        </collectionReusableView>
+                        <connections>
+                            <outlet property="dataSource" destination="w5s-xm-0yt" id="esU-ri-3wO"/>
+                            <outlet property="delegate" destination="w5s-xm-0yt" id="0dF-LJ-a9l"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+            </objects>
+            <point key="canvasLocation" x="-1847" y="1352"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
@@ -1252,6 +1366,9 @@
         <image name="cm2_btm_icn_discovery" width="28" height="28"/>
         <image name="cm2_btm_icn_friend" width="28" height="28"/>
         <image name="cm2_btm_icn_music" width="28" height="28"/>
+        <image name="cm2_discover_icn_daily" width="50" height="50"/>
+        <image name="cm2_discover_icn_fm" width="50" height="50"/>
+        <image name="cm2_discover_icn_upbill" width="50" height="50"/>
         <image name="cm2_lay_icn_cloud" width="28" height="28"/>
         <image name="cm2_lay_icn_mng" width="28" height="28"/>
         <image name="cm2_lay_icn_newlist" width="28" height="28"/>

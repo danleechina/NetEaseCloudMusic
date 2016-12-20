@@ -10,6 +10,7 @@ import UIKit
 import SnapKit
 
 class BaseNavigationBar: UIView {
+    
     var titleView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.clear
@@ -78,7 +79,7 @@ class BaseNavigationBar: UIView {
         }
         
         leftButton.snp.makeConstraints { (make) in
-            make.left.equalTo(self.snp.left).offset(16)
+            make.left.equalTo(self.snp.left)
             make.centerY.equalTo(self.snp.centerY)
             make.width.equalTo(44)
             make.height.equalTo(44)
@@ -97,6 +98,8 @@ class BaseNavigationBar: UIView {
             make.left.equalTo(self.snp.left)
             make.bottom.equalTo(self.snp.bottom)
         }
+        
+        
     }
     
     required init?(coder aDecoder: NSCoder) {

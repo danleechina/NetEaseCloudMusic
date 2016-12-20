@@ -207,7 +207,7 @@ class PlaySongService: NSObject {
         if let playlists = playLists {
             if certainIndex >= 0 && certainIndex < playlists.tracks.count {
                 certainIndex = index
-                playIt(playlists.tracks[currentPlaySong].mp3Url)
+                playIt(playlists.tracks[certainIndex].mp3Url)
             }
         } else {
             return nil

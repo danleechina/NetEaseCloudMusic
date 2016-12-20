@@ -27,6 +27,14 @@ class ImageSliderView: UIView {
 
     weak var delegate: ImageSliderViewDelegate?
     
+    var imageContentMode: UIViewContentMode = .scaleAspectFit {
+        didSet {
+            leftImageContainerView.imageView.contentMode = imageContentMode
+            rightImageContainerView.imageView.contentMode = imageContentMode
+            centerImageContainerView.imageView.contentMode = imageContentMode
+        }
+    }
+    
     var images: Array<UIImage>? {
         didSet {
             if let images = self.images {
@@ -249,6 +257,11 @@ class ImageSliderView: UIView {
         
         pageController.currentPageIndicatorTintColor = UIColor.red
         pageController.pageIndicatorTintColor = UIColor.blue
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.frame = CGRect(x: self.frame.origin.x, y: self.frame.origin.y, width: self.frame.size.width, height: self.frame.size.height)
     }
     
     required init?(coder aDecoder: NSCoder) {

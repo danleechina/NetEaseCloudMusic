@@ -54,6 +54,9 @@
 		37D0F7A31DEEF35C0046C9B6 /* SipHasher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D0F79F1DEEF35C0046C9B6 /* SipHasher.swift */; };
 		37D0F7A61DEEFA4F0046C9B6 /* Dictionary+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D0F7A51DEEFA4F0046C9B6 /* Dictionary+Extension.swift */; };
 		37E490B21DFD01940054B988 /* PlayList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E490B11DFD01940054B988 /* PlayList.swift */; };
+		37F82B341E09246000219336 /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 37F82B311E09246000219336 /* 3.jpg */; };
+		37F82B351E09246000219336 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 37F82B321E09246000219336 /* 1.jpg */; };
+		37F82B361E09246000219336 /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 37F82B331E09246000219336 /* 2.jpg */; };
 		8118F9331DA63CD5005BAF7A /* RKSwipeBetweenViewControllers.m in Sources */ = {isa = PBXBuildFile; fileRef = 8118F9321DA63CD5005BAF7A /* RKSwipeBetweenViewControllers.m */; };
 		8172EF571DA673040042B6AE /* UIImage_Add.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8172EF561DA673040042B6AE /* UIImage_Add.swift */; };
 		818E3B141D88272100F29A16 /* BaseNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818E3B131D88272100F29A16 /* BaseNavigationBar.swift */; };
@@ -200,6 +203,9 @@
 		37D0F79F1DEEF35C0046C9B6 /* SipHasher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SipHasher.swift; path = Vendor/SipHash/SipHasher.swift; sourceTree = "<group>"; };
 		37D0F7A51DEEFA4F0046C9B6 /* Dictionary+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Dictionary+Extension.swift"; path = "Extension/Foundation/Dictionary+Extension.swift"; sourceTree = "<group>"; };
 		37E490B11DFD01940054B988 /* PlayList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayList.swift; path = Model/PlayList.swift; sourceTree = "<group>"; };
+		37F82B311E09246000219336 /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
+		37F82B321E09246000219336 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
+		37F82B331E09246000219336 /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
 		8118F9311DA63CD5005BAF7A /* RKSwipeBetweenViewControllers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RKSwipeBetweenViewControllers.h; path = Vendor/RKSwipeBetweenViewControllers.h; sourceTree = "<group>"; };
 		8118F9321DA63CD5005BAF7A /* RKSwipeBetweenViewControllers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RKSwipeBetweenViewControllers.m; path = Vendor/RKSwipeBetweenViewControllers.m; sourceTree = "<group>"; };
 		8172EF561DA673040042B6AE /* UIImage_Add.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIImage_Add.swift; path = Util/UIImage_Add.swift; sourceTree = "<group>"; };
@@ -562,6 +568,9 @@
 		DE2654E21D1028C60083F742 /* ContentVC */ = {
 			isa = PBXGroup;
 			children = (
+				37F82B311E09246000219336 /* 3.jpg */,
+				37F82B321E09246000219336 /* 1.jpg */,
+				37F82B331E09246000219336 /* 2.jpg */,
 				DE2654B81D1022F10083F742 /* RecommendViewController.swift */,
 				DE2654BA1D10232C0083F742 /* SongSheetViewController.swift */,
 				DE2654BC1D10236F0083F742 /* RadioViewController.swift */,
@@ -810,11 +819,14 @@
 			files = (
 				DE2654851D101A860083F742 /* LaunchScreen.storyboard in Resources */,
 				DE2654821D101A860083F742 /* Assets.xcassets in Resources */,
+				37F82B361E09246000219336 /* 2.jpg in Resources */,
 				DE13AB211D37AAE1004BA90C /* PlaySongViewController.xib in Resources */,
 				DE2654801D101A860083F742 /* Main.storyboard in Resources */,
 				DE2474751D1AB83C00EBAA37 /* CommentCell.xib in Resources */,
 				DE35EB821D30E66D00485339 /* SongSheets.geojson in Resources */,
+				37F82B351E09246000219336 /* 1.jpg in Resources */,
 				DE35EB851D30E89F00485339 /* SongSheetDetails.geojson in Resources */,
+				37F82B341E09246000219336 /* 3.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1147,6 +1159,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = VCJVQ6T6G2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1170,6 +1183,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = VCJVQ6T6G2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

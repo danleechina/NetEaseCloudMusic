@@ -44,6 +44,7 @@ class CertainSongSheetViewController: BaseViewController {
                     self.certainSongSheetTableViewHeadView?.headImageView.imageView.sd_setImage(with: URL.init(string: nndata.coverImgUrl))
                     self.blurBackgroundImageView.sd_setImage(with: URL.init(string: nndata.coverImgUrl))
                     self.certainSongSheetTableViewHeadView?.titleLabel.text = nndata.name
+                    self.marqueeTitleLabel.text = nndata.name ?? "歌单"
                     self.certainSongSheetTableViewHeadView?.authorLabel.text = nndata.creator.nickname
                     self.certainSongSheetTableViewHeadView?.favoriteButton.setTitle("\(nndata.subscribedCount!)", for: UIControlState())
                     self.certainSongSheetTableViewHeadView?.commentButton.setTitle("\(nndata.commentCount!)", for: UIControlState())
@@ -112,7 +113,7 @@ class CertainSongSheetViewController: BaseViewController {
     }()
     
     fileprivate lazy var marqueeTitleLabel: MarqueeLabel = {
-        let label =  MarqueeLabel.init(frame: CGRect(x: 0, y: 0, width: 150, height: 44), duration: 10, fadeLength:10)
+        let label =  MarqueeLabel.init(frame: CGRect(x: (self.view.bounds.width - 110 - 150)/2, y: 0, width: 150, height: 44), duration: 10, fadeLength:10)
         label.textColor = UIColor.white
         label.textAlignment = .center
         label.type = .continuous

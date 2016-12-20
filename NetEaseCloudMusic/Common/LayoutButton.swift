@@ -23,6 +23,12 @@ class LayoutButton: UIButton {
     override func layoutSubviews() {
         super.layoutSubviews()
         guard let titleLabel = self.titleLabel, let imageView = self.imageView else { return }
+        
+        let height = imageView.height + titleLabel.height
+        let deltaY = (self.height - height)/2
+        
+        let width = CGFloat.maximum(imageView.width, titleLabel.width)
+        let deltaX = (self.width - width) / 2
         switch layoutButtonDirection {
         case .leftTextRightImage:
             titleLabel.left = 0
@@ -45,5 +51,9 @@ class LayoutButton: UIButton {
             imageView.top = titleLabel.bottom + defaultGap
             break
         }
+        titleLabel.top += deltaY
+        imageView.top += deltaY
+        titleLabel.left += deltaX
+        imageView.left += deltaX
     }
 }
