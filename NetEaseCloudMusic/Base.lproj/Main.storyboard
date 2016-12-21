@@ -7,7 +7,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -170,10 +169,10 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.59677333047945202" colorSpace="calibratedWhite"/>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bey-JF-tWn">
-                                <rect key="frame" x="-0.5" y="-116" width="375" height="180"/>
+                                <rect key="frame" x="-1" y="-116" width="376" height="180"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_lay_icn_newlist" translatesAutoresizingMaskIntoConstraints="NO" id="xIb-0J-PaW">
-                                        <rect key="frame" x="20" y="15" width="30" height="30"/>
+                                        <rect key="frame" x="21" y="15" width="30" height="30"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="Gc4-Fw-hgy"/>
@@ -181,7 +180,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新建歌单" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ibd-lg-5Zu">
-                                        <rect key="frame" x="58" y="-0.5" width="297" height="60"/>
+                                        <rect key="frame" x="59" y="0.0" width="297" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="f0j-Gv-jeS"/>
                                         </constraints>
@@ -190,21 +189,21 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uyn-p4-QwU">
-                                        <rect key="frame" x="58" y="60" width="317" height="1"/>
+                                        <rect key="frame" x="59" y="60" width="317" height="1"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="NcV-mZ-lbh"/>
                                         </constraints>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_lay_icn_mng" translatesAutoresizingMaskIntoConstraints="NO" id="2Sb-ah-aBT">
-                                        <rect key="frame" x="20" y="75" width="30" height="30"/>
+                                        <rect key="frame" x="21" y="75" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="4md-SI-iGg"/>
                                             <constraint firstAttribute="height" constant="30" id="ZrU-Uh-utg"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="管理歌单" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lmw-Ea-flg">
-                                        <rect key="frame" x="58" y="60" width="297" height="60"/>
+                                        <rect key="frame" x="59" y="60" width="297" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="UH1-em-VVs"/>
                                         </constraints>
@@ -213,21 +212,21 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DlR-R1-0CN">
-                                        <rect key="frame" x="58" y="120" width="317" height="1"/>
+                                        <rect key="frame" x="59" y="120" width="317" height="1"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="Jra-Xn-e3n"/>
                                         </constraints>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_lay_icn_cloud" translatesAutoresizingMaskIntoConstraints="NO" id="QpS-lF-NQN">
-                                        <rect key="frame" x="20" y="135" width="30" height="30"/>
+                                        <rect key="frame" x="21" y="135" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="82T-L2-mfy"/>
                                             <constraint firstAttribute="width" constant="30" id="NVA-kF-lKz"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的音乐云盘" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="630-An-7ll">
-                                        <rect key="frame" x="58" y="120" width="297" height="60"/>
+                                        <rect key="frame" x="59" y="120" width="297" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="81W-xK-5EV"/>
                                         </constraints>
@@ -305,14 +304,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Third View" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="aUP-1F-hLL">
-                                <rect key="frame" x="102.5" y="333" width="170" height="42"/>
+                                <rect key="frame" x="103" y="333" width="170" height="42"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loaded by SecondViewController" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Thh-pv-id7">
-                                <rect key="frame" x="79.5" y="383" width="216" height="17"/>
+                                <rect key="frame" x="80" y="383" width="216" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="216" id="EAl-xc-94B"/>
                                 </constraints>
@@ -355,7 +354,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P5d-eY-uaq">
-                                            <rect key="frame" x="0.0" y="20" width="375" height="38.5"/>
+                                            <rect key="frame" x="0.0" y="20" width="375" height="39"/>
                                             <string key="text">登录网易云音乐
 手机电脑多端同步，320k高音质无限下载</string>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -363,7 +362,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gFk-A5-cM3">
-                                            <rect key="frame" x="22" y="68" width="331" height="44"/>
+                                            <rect key="frame" x="22" y="69" width="331" height="44"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="44" id="JU7-mh-6UC"/>
                                             </constraints>
@@ -405,7 +404,7 @@
                                             </variation>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="empty" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zM7-VY-4fi">
-                                            <rect key="frame" x="85" y="27.5" width="48.5" height="20.5"/>
+                                            <rect key="frame" x="85" y="27" width="49" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -414,10 +413,10 @@
                                             <rect key="frame" x="85" y="53" width="40" height="20"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_set_icn_lv" translatesAutoresizingMaskIntoConstraints="NO" id="8Fl-Zb-RT8">
-                                                    <rect key="frame" x="4" y="4.5" width="18" height="11"/>
+                                                    <rect key="frame" x="4" y="5" width="18" height="11"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lv. 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bHi-Cp-6yb">
-                                                    <rect key="frame" x="26" y="2" width="27.5" height="17"/>
+                                                    <rect key="frame" x="26" y="2" width="28" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -445,13 +444,13 @@
                                             </userDefinedRuntimeAttributes>
                                         </view>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mNV-mc-jJF">
-                                            <rect key="frame" x="246" y="33" width="109" height="30"/>
+                                            <rect key="frame" x="247" y="33" width="108" height="30"/>
                                             <state key="normal" title="签到">
                                                 <color key="titleColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
                                         </button>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EjH-Rh-w4E">
-                                            <rect key="frame" x="0.0" y="88" width="375" height="0.5"/>
+                                            <rect key="frame" x="0.0" y="88" width="375" height="1"/>
                                             <color key="backgroundColor" red="0.8645560844406408" green="0.8645560844406408" blue="0.8645560844406408" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="0.5" id="XoO-hP-EpE"/>
@@ -461,7 +460,7 @@
                                             <rect key="frame" x="20" y="90" width="335" height="40"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="center" axis="vertical" distribution="fillEqually" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="VmZ-K3-njo">
-                                                    <rect key="frame" x="0.0" y="1.5" width="27" height="37"/>
+                                                    <rect key="frame" x="0.0" y="2" width="27" height="37"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="动态" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lnB-16-Lar">
                                                             <rect key="frame" x="0.0" y="0.0" width="27" height="17"/>
@@ -478,7 +477,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KFn-un-jB2">
-                                                    <rect key="frame" x="63" y="2.5" width="0.5" height="35"/>
+                                                    <rect key="frame" x="63" y="3" width="1" height="35"/>
                                                     <color key="backgroundColor" red="0.74432128054101221" green="0.74432128054101221" blue="0.74432128054101221" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="0.5" id="5Ro-Vr-rYd"/>
@@ -486,7 +485,7 @@
                                                     </constraints>
                                                 </view>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="aY8-17-0Ay">
-                                                    <rect key="frame" x="99.5" y="1.5" width="27" height="37"/>
+                                                    <rect key="frame" x="100" y="2" width="27" height="37"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="关注" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KJn-Bk-f8o">
                                                             <rect key="frame" x="0.0" y="0.0" width="27" height="17"/>
@@ -503,7 +502,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6n5-tl-cTD">
-                                                    <rect key="frame" x="163" y="2.5" width="0.5" height="35"/>
+                                                    <rect key="frame" x="163" y="3" width="0.0" height="35"/>
                                                     <color key="backgroundColor" red="0.73689736038394416" green="0.73689736038394416" blue="0.73689736038394416" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="35" id="TuE-ka-a2q"/>
@@ -511,7 +510,7 @@
                                                     </constraints>
                                                 </view>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="ps1-Du-kzD">
-                                                    <rect key="frame" x="199.5" y="1.5" width="27" height="37"/>
+                                                    <rect key="frame" x="199" y="2" width="27" height="37"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="粉丝" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tqw-H5-far">
                                                             <rect key="frame" x="0.0" y="0.0" width="27" height="17"/>
@@ -528,7 +527,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0G6-D0-Vg1">
-                                                    <rect key="frame" x="262.5" y="2.5" width="0.5" height="35"/>
+                                                    <rect key="frame" x="262" y="3" width="1" height="35"/>
                                                     <color key="backgroundColor" red="0.75325861692844676" green="0.75325861692844676" blue="0.75325861692844676" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="0.5" id="7Pj-Sx-LOz"/>
@@ -539,7 +538,7 @@
                                                     <rect key="frame" x="290" y="0.0" width="45" height="40"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="first" translatesAutoresizingMaskIntoConstraints="NO" id="OV8-Zx-DYG">
-                                                            <rect key="frame" x="7.5" y="0.0" width="30" height="20"/>
+                                                            <rect key="frame" x="8" y="0.0" width="30" height="20"/>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="编辑资料" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCr-YJ-6ju">
                                                             <rect key="frame" x="0.0" y="20" width="45" height="20"/>
@@ -651,10 +650,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_login_bg" highlightedImage="cm2_login_bg" translatesAutoresizingMaskIntoConstraints="NO" id="FLe-Db-1gb">
-                                <rect key="frame" x="-0.5" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="-1" y="0.0" width="376" height="667"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nhm-sg-AQz">
-                                <rect key="frame" x="21.5" y="290" width="331" height="44"/>
+                                <rect key="frame" x="22" y="290" width="331" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="kSM-Dr-3Z6"/>
                                 </constraints>
@@ -702,7 +701,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EDP-W3-Mri">
-                                <rect key="frame" x="66" y="529.5" width="80" height="1"/>
+                                <rect key="frame" x="66" y="529" width="80" height="1"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="0.50725064212328763" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="XO8-mY-SvT"/>
@@ -710,13 +709,13 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="其他登录方式" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OdT-g6-WPN">
-                                <rect key="frame" x="151" y="522.5" width="74" height="14.5"/>
+                                <rect key="frame" x="151" y="522" width="74" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aa9-kw-wEE">
-                                <rect key="frame" x="230" y="529.5" width="80" height="1"/>
+                                <rect key="frame" x="230" y="529" width="80" height="1"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="0.5" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="naQ-UN-RpQ"/>
@@ -724,7 +723,7 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="z5s-fr-6fC">
-                                <rect key="frame" x="45.5" y="557" width="285" height="102"/>
+                                <rect key="frame" x="45" y="557" width="286" height="102"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="mAT-il-tQq">
                                         <rect key="frame" x="0.0" y="0.0" width="44" height="68"/>
@@ -739,7 +738,7 @@
                                                 <state key="highlighted" image="cm2_login_btn_weixin_prs"/>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="微信" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wtr-0U-9JQ">
-                                                <rect key="frame" x="8.5" y="52" width="27" height="16"/>
+                                                <rect key="frame" x="9" y="52" width="27" height="16"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -767,7 +766,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Pee-fG-sPl">
-                                        <rect key="frame" x="148" y="0.0" width="53.5" height="68"/>
+                                        <rect key="frame" x="148" y="0.0" width="54" height="68"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GrR-24-r1F">
                                                 <rect key="frame" x="5" y="0.0" width="44" height="44"/>
@@ -779,7 +778,7 @@
                                                 <state key="highlighted" image="cm2_login_btn_sina_prs"/>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新浪微博" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1AX-OT-WYF">
-                                                <rect key="frame" x="0.0" y="52" width="53.5" height="16"/>
+                                                <rect key="frame" x="0.0" y="52" width="54" height="16"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -787,7 +786,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="7l4-N6-KwM">
-                                        <rect key="frame" x="231.5" y="0.0" width="53.5" height="68"/>
+                                        <rect key="frame" x="232" y="0.0" width="54" height="68"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TZA-5p-0s9">
                                                 <rect key="frame" x="5" y="0.0" width="44" height="44"/>
@@ -802,7 +801,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="网易邮箱" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i9F-Gy-gG9">
-                                                <rect key="frame" x="0.0" y="52" width="53.5" height="16"/>
+                                                <rect key="frame" x="0.0" y="52" width="54" height="16"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -884,7 +883,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fVI-SL-3Sl">
-                                        <rect key="frame" x="-0.5" y="50" width="365" height="1"/>
+                                        <rect key="frame" x="0.0" y="50" width="365" height="1"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="0.49331121575342468" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="Rq1-av-Pbb"/>
@@ -949,13 +948,13 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="找回密码" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HY9-W7-oUF">
-                                <rect key="frame" x="159" y="279" width="57.5" height="17"/>
+                                <rect key="frame" x="159" y="279" width="58" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PpS-Um-NOx">
-                                <rect key="frame" x="159" y="304" width="57.5" height="1"/>
+                                <rect key="frame" x="159" y="304" width="58" height="1"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="hMb-sP-b8Z"/>
@@ -965,13 +964,13 @@
                                 <rect key="frame" x="0.0" y="509" width="375" height="150"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="其他注册方式" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TzM-Yp-3QS">
-                                        <rect key="frame" x="150.5" y="20" width="74" height="14.5"/>
+                                        <rect key="frame" x="151" y="20" width="74" height="15"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wzZ-z9-pTm">
-                                        <rect key="frame" x="229.5" y="27" width="80" height="1"/>
+                                        <rect key="frame" x="230" y="27" width="80" height="1"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="0.49387307363013699" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="MpI-8V-3kP"/>
@@ -979,7 +978,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a1E-GY-0PY">
-                                        <rect key="frame" x="65.5" y="27" width="80" height="1"/>
+                                        <rect key="frame" x="66" y="27" width="80" height="1"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="0.5" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="Lad-W8-c9P"/>
@@ -987,7 +986,7 @@
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Yv5-1V-o79">
-                                        <rect key="frame" x="45" y="62" width="285" height="68"/>
+                                        <rect key="frame" x="45" y="62" width="286" height="68"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="gbw-UG-cBu">
                                                 <rect key="frame" x="0.0" y="0.0" width="44" height="68"/>
@@ -1002,7 +1001,7 @@
                                                         <state key="highlighted" image="cm2_login_btn_weixin_prs"/>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="微信" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y4E-9I-QgG">
-                                                        <rect key="frame" x="8.5" y="52" width="27" height="16"/>
+                                                        <rect key="frame" x="9" y="52" width="27" height="16"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
@@ -1030,7 +1029,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="WKW-2y-eIo">
-                                                <rect key="frame" x="148" y="0.0" width="53.5" height="68"/>
+                                                <rect key="frame" x="148" y="0.0" width="54" height="68"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vCb-ov-5Ka">
                                                         <rect key="frame" x="5" y="0.0" width="44" height="44"/>
@@ -1042,7 +1041,7 @@
                                                         <state key="highlighted" image="cm2_login_btn_sina_prs"/>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新浪微博" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eiN-bb-5iR">
-                                                        <rect key="frame" x="0.0" y="52" width="53.5" height="16"/>
+                                                        <rect key="frame" x="0.0" y="52" width="54" height="16"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
@@ -1050,7 +1049,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ENp-J2-nv9">
-                                                <rect key="frame" x="231.5" y="0.0" width="53.5" height="68"/>
+                                                <rect key="frame" x="232" y="0.0" width="54" height="68"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ehb-xN-rNN">
                                                         <rect key="frame" x="5" y="0.0" width="44" height="44"/>
@@ -1062,7 +1061,7 @@
                                                         <state key="highlighted" image="cm2_login_btn_netease_prs"/>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="网易邮箱" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZPg-pR-aeP">
-                                                        <rect key="frame" x="0.0" y="52" width="53.5" height="16"/>
+                                                        <rect key="frame" x="0.0" y="52" width="54" height="16"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
@@ -1116,119 +1115,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bWh-Ie-rzh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4582" y="2265"/>
-        </scene>
-        <!--Recommend View Controller-->
-        <scene sceneID="zEA-6I-fLI">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hyY-oz-AB5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <collectionViewController id="w5s-xm-0yt" customClass="RecommendViewController" customModule="NetEaseCloudMusic" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="JCF-uz-9y3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fdN-B1-VN0">
-                            <size key="itemSize" width="50" height="50"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="50" height="220"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="oeJ-2O-YsJ">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </view>
-                            </collectionViewCell>
-                        </cells>
-                        <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RecommendViewHeader" id="1jx-9o-1dY" customClass="RecommendViewHeader" customModule="NetEaseCloudMusic" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="50" width="375" height="220"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="brM-IN-lNL">
-                                    <rect key="frame" x="-0.5" y="0.0" width="375" height="132"/>
-                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xhe-iT-IbQ">
-                                    <rect key="frame" x="-0.5" y="132" width="375" height="88"/>
-                                    <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="m6d-IF-voY">
-                                            <rect key="frame" x="38" y="6.5" width="50" height="75"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lYh-aG-s2u">
-                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                    <state key="normal" image="cm2_discover_icn_fm" backgroundImage="cm2_discover_icn_daily"/>
-                                                </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="私人FM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fgi-Bb-WkR">
-                                                    <rect key="frame" x="0.5" y="58" width="49" height="17"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </stackView>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="7aM-yA-mmt">
-                                            <rect key="frame" x="144.5" y="7" width="86" height="75"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5BR-o0-KRM">
-                                                    <rect key="frame" x="18" y="0.0" width="50" height="50"/>
-                                                    <state key="normal" image="cm2_discover_icn_upbill" backgroundImage="cm2_discover_icn_daily"/>
-                                                </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="每日歌曲推荐" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ccz-jf-iep">
-                                                    <rect key="frame" x="0.0" y="58" width="86" height="17"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </stackView>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ef0-Jb-Dba">
-                                            <rect key="frame" x="269.5" y="6.5" width="86" height="75"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iXu-cR-XzL">
-                                                    <rect key="frame" x="18" y="0.0" width="50" height="50"/>
-                                                    <state key="normal" image="cm2_discover_icn_upbill" backgroundImage="cm2_discover_icn_daily"/>
-                                                </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="云音乐热歌榜" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fCz-bV-WNR">
-                                                    <rect key="frame" x="0.0" y="58" width="86" height="17"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </stackView>
-                                    </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <constraints>
-                                        <constraint firstItem="7aM-yA-mmt" firstAttribute="centerX" secondItem="xhe-iT-IbQ" secondAttribute="centerX" id="1cC-0s-yWu"/>
-                                        <constraint firstItem="7aM-yA-mmt" firstAttribute="centerY" secondItem="xhe-iT-IbQ" secondAttribute="centerY" id="ONd-tw-ObZ"/>
-                                        <constraint firstItem="m6d-IF-voY" firstAttribute="centerX" secondItem="xhe-iT-IbQ" secondAttribute="centerX" multiplier="1/3" id="X72-O1-x63"/>
-                                        <constraint firstItem="m6d-IF-voY" firstAttribute="centerY" secondItem="xhe-iT-IbQ" secondAttribute="centerY" id="lt2-rV-4li"/>
-                                        <constraint firstItem="ef0-Jb-Dba" firstAttribute="centerX" secondItem="xhe-iT-IbQ" secondAttribute="centerX" multiplier="10/6" id="njc-yF-PIp"/>
-                                        <constraint firstItem="ef0-Jb-Dba" firstAttribute="centerY" secondItem="xhe-iT-IbQ" secondAttribute="centerY" id="os7-FQ-tlb"/>
-                                    </constraints>
-                                </view>
-                            </subviews>
-                            <constraints>
-                                <constraint firstItem="brM-IN-lNL" firstAttribute="width" secondItem="1jx-9o-1dY" secondAttribute="width" id="9rr-2R-dZg"/>
-                                <constraint firstItem="brM-IN-lNL" firstAttribute="centerX" secondItem="1jx-9o-1dY" secondAttribute="centerX" id="Ez8-bU-DdZ"/>
-                                <constraint firstItem="xhe-iT-IbQ" firstAttribute="width" secondItem="1jx-9o-1dY" secondAttribute="width" id="I5f-6j-5hv"/>
-                                <constraint firstItem="xhe-iT-IbQ" firstAttribute="top" secondItem="brM-IN-lNL" secondAttribute="bottom" id="IUx-WO-uM5"/>
-                                <constraint firstItem="brM-IN-lNL" firstAttribute="top" secondItem="1jx-9o-1dY" secondAttribute="top" id="KQz-gs-cJl"/>
-                                <constraint firstItem="brM-IN-lNL" firstAttribute="height" secondItem="1jx-9o-1dY" secondAttribute="height" multiplier="6/10" id="YVR-8B-F1h"/>
-                                <constraint firstAttribute="bottom" secondItem="xhe-iT-IbQ" secondAttribute="bottom" id="gxf-WA-25k"/>
-                                <constraint firstItem="xhe-iT-IbQ" firstAttribute="centerX" secondItem="1jx-9o-1dY" secondAttribute="centerX" id="i8w-Nv-7eQ"/>
-                            </constraints>
-                        </collectionReusableView>
-                        <connections>
-                            <outlet property="dataSource" destination="w5s-xm-0yt" id="esU-ri-3wO"/>
-                            <outlet property="delegate" destination="w5s-xm-0yt" id="0dF-LJ-a9l"/>
-                        </connections>
-                    </collectionView>
-                </collectionViewController>
-            </objects>
-            <point key="canvasLocation" x="-1847" y="1352"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -1366,9 +1252,6 @@
         <image name="cm2_btm_icn_discovery" width="28" height="28"/>
         <image name="cm2_btm_icn_friend" width="28" height="28"/>
         <image name="cm2_btm_icn_music" width="28" height="28"/>
-        <image name="cm2_discover_icn_daily" width="50" height="50"/>
-        <image name="cm2_discover_icn_fm" width="50" height="50"/>
-        <image name="cm2_discover_icn_upbill" width="50" height="50"/>
         <image name="cm2_lay_icn_cloud" width="28" height="28"/>
         <image name="cm2_lay_icn_mng" width="28" height="28"/>
         <image name="cm2_lay_icn_newlist" width="28" height="28"/>

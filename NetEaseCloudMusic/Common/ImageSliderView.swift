@@ -242,6 +242,10 @@ class ImageSliderView: UIView {
     
     init() {
         super.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        initView()
+    }
+    
+    func initView() {
         addSubview(scrollView)
         addSubview(pageController)
         
@@ -265,7 +269,8 @@ class ImageSliderView: UIView {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
+        initView()
     }
 }
 
