@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="U6b-Vx-4bR" customClass="SongSheetViewSection" customModule="NetEaseCloudMusic" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="458" height="60"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XJY-23-1Am">
+                    <rect key="frame" x="16" y="17.5" width="4" height="25"/>
+                    <color key="backgroundColor" red="0.82848376035690308" green="0.22919380664825439" blue="0.19286665320396423" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="GHf-Mq-avU"/>
+                        <constraint firstAttribute="width" constant="4" id="j63-Q5-e49"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="全部歌单" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Yp-od-NeB">
+                    <rect key="frame" x="28" y="19.5" width="322" height="21"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="255" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZXX-zy-Mm5">
+                    <rect key="frame" x="346" y="17" width="92" height="26"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="       选择分类  " backgroundImage="cm2_discover_btn_slt">
+                        <color key="titleColor" red="0.19997376203536987" green="0.20001503825187683" blue="0.19997116923332214" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <state key="selected" backgroundImage="cm2_discover_btn_slt_prs"/>
+                    <state key="highlighted" backgroundImage="cm2_discover_btn_slt_prs"/>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstItem="XJY-23-1Am" firstAttribute="centerY" secondItem="U6b-Vx-4bR" secondAttribute="centerY" id="Rap-9V-Qz2"/>
+                <constraint firstItem="9Yp-od-NeB" firstAttribute="trailing" secondItem="ZXX-zy-Mm5" secondAttribute="leading" constant="4" id="axc-Nt-YzE"/>
+                <constraint firstItem="9Yp-od-NeB" firstAttribute="centerY" secondItem="U6b-Vx-4bR" secondAttribute="centerY" id="eij-gw-4e0"/>
+                <constraint firstItem="ZXX-zy-Mm5" firstAttribute="centerY" secondItem="U6b-Vx-4bR" secondAttribute="centerY" id="nDd-jZ-4cJ"/>
+                <constraint firstAttribute="trailing" secondItem="ZXX-zy-Mm5" secondAttribute="trailing" constant="20" symbolic="YES" id="nGQ-jX-WQE"/>
+                <constraint firstItem="XJY-23-1Am" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="16" id="vzj-KJ-tbQ"/>
+                <constraint firstItem="9Yp-od-NeB" firstAttribute="leading" secondItem="XJY-23-1Am" secondAttribute="trailing" constant="8" symbolic="YES" id="z0u-sB-HhV"/>
+            </constraints>
+            <connections>
+                <outlet property="indicatorView" destination="XJY-23-1Am" id="ANP-9d-KgN"/>
+                <outlet property="rightButton" destination="ZXX-zy-Mm5" id="kDI-tC-4ya"/>
+                <outlet property="titleLabel" destination="9Yp-od-NeB" id="hnU-gO-34J"/>
+            </connections>
+            <point key="canvasLocation" x="42" y="50"/>
+        </collectionReusableView>
+    </objects>
+    <resources>
+        <image name="cm2_discover_btn_slt" width="80" height="26"/>
+        <image name="cm2_discover_btn_slt_prs" width="80" height="26"/>
+    </resources>
+</document>

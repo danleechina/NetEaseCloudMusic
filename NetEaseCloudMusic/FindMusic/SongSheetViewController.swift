@@ -273,3 +273,28 @@ class CertainSongSheetHeadImage: UIView {
     }
     
 }
+
+class SongSheetViewSection: UICollectionReusableView {
+    @IBOutlet weak var indicatorView: UIView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var rightButton: UIButton!
+    
+}
+
+class SongSheetViewHeader: UICollectionReusableView {
+    @IBOutlet weak var leftImageView: UIImageView!
+    
+    @IBOutlet weak var rightControl: UIControl!
+    @IBOutlet weak var rcIconImageView: UIImageView!
+    
+    @IBOutlet weak var rcTitleLabel: UILabel!
+    @IBOutlet weak var rcDetailLabel: UILabel!
+    @IBOutlet weak var rcMoreImageView: UIImageView!
+    
+    
+    
+    
+    
+    
+    
+}
