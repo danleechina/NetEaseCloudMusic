@@ -33,7 +33,6 @@
 		37C473B11E0A6C82006F5B3C /* RecommendViewSection.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37C473AF1E0A6C82006F5B3C /* RecommendViewSection.xib */; };
 		37C473B51E0A6C9C006F5B3C /* RecommendViewFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37C473B31E0A6C9C006F5B3C /* RecommendViewFooter.xib */; };
 		37C473BB1E0A7107006F5B3C /* RecommendViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37C473B91E0A7107006F5B3C /* RecommendViewCell.xib */; };
-		37C473BD1E0A9B9E006F5B3C /* RadioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37C473BC1E0A9B9E006F5B3C /* RadioViewController.xib */; };
 		37D0F7851DEEEBB80046C9B6 /* BigDigit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D0F7711DEEEBB80046C9B6 /* BigDigit.swift */; };
 		37D0F7861DEEEBB80046C9B6 /* BigInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D0F7721DEEEBB80046C9B6 /* BigInt.swift */; };
 		37D0F7871DEEEBB80046C9B6 /* BigUInt Addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D0F7731DEEEBB80046C9B6 /* BigUInt Addition.swift */; };
@@ -189,7 +188,6 @@
 		37C473AF1E0A6C82006F5B3C /* RecommendViewSection.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RecommendViewSection.xib; path = FindMusic/RecommendViewSection.xib; sourceTree = "<group>"; };
 		37C473B31E0A6C9C006F5B3C /* RecommendViewFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RecommendViewFooter.xib; path = FindMusic/RecommendViewFooter.xib; sourceTree = "<group>"; };
 		37C473B91E0A7107006F5B3C /* RecommendViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RecommendViewCell.xib; path = FindMusic/RecommendViewCell.xib; sourceTree = "<group>"; };
-		37C473BC1E0A9B9E006F5B3C /* RadioViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RadioViewController.xib; path = FindMusic/RadioViewController.xib; sourceTree = "<group>"; };
 		37D0F7711DEEEBB80046C9B6 /* BigDigit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BigDigit.swift; path = Vendor/BigUInt/BigDigit.swift; sourceTree = "<group>"; };
 		37D0F7721DEEEBB80046C9B6 /* BigInt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BigInt.swift; path = Vendor/BigUInt/BigInt.swift; sourceTree = "<group>"; };
 		37D0F7731DEEEBB80046C9B6 /* BigUInt Addition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "BigUInt Addition.swift"; path = "Vendor/BigUInt/BigUInt Addition.swift"; sourceTree = "<group>"; };
@@ -594,7 +592,6 @@
 				375D46C41E0BA9B000FC4A02 /* SongSheetViewSection.xib */,
 				375D46C91E0BB34200FC4A02 /* SongSheetViewHeader.xib */,
 				DE2654BC1D10236F0083F742 /* RadioViewController.swift */,
-				37C473BC1E0A9B9E006F5B3C /* RadioViewController.xib */,
 				DE2654BE1D1023990083F742 /* RankListViewController.swift */,
 			);
 			name = ContentVC;
@@ -854,7 +851,6 @@
 				37F82B351E09246000219336 /* 1.jpg in Resources */,
 				DE35EB851D30E89F00485339 /* SongSheetDetails.geojson in Resources */,
 				37F82B341E09246000219336 /* 3.jpg in Resources */,
-				37C473BD1E0A9B9E006F5B3C /* RadioViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

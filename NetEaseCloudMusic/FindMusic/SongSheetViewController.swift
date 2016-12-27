@@ -23,18 +23,20 @@ class SongSheetViewController: BaseViewController {
         collectionView.backgroundColor = UIColor.clear
         let contentInsetValue: CGFloat = 10
         collectionView.contentInset = UIEdgeInsetsMake(contentInsetValue, contentInsetValue, contentInsetValue, contentInsetValue)
+        
         collectionView.register(SongSheetCollectionViewCell.self, forCellWithReuseIdentifier:SongSheetCollectionViewCell.identifier)
-        collectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind:UICollectionElementKindSectionHeader, withReuseIdentifier:"SongSheetViewHeader")
+        let headerNib = UINib.init(nibName: "SongSheetViewHeader", bundle: nil)
+        collectionView.register(headerNib, forSupplementaryViewOfKind:UICollectionElementKindSectionHeader, withReuseIdentifier:SongSheetViewHeader.identifier)
+        let sectionNib = UINib.init(nibName: "SongSheetViewSection", bundle: nil)
+        collectionView.register(sectionNib, forSupplementaryViewOfKind:UICollectionElementKindSectionHeader, withReuseIdentifier:SongSheetViewSection.identifier)
+
         return collectionView
     }()
     
     fileprivate lazy var collectionViewFlowLayout: UICollectionViewFlowLayout = {
        let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.headerReferenceSize = CGSize(width: self.view.frame.width, height: 100)
-        layout.itemSize = CGSize(width: 145, height: 170)
-        layout.minimumLineSpacing = 2
-        layout.sectionInset = UIEdgeInsetsMake(2, 0, 5, 0)
+        layout.itemSize = CGSize(width: self.view.width/2 - 30/2, height: self.view.width/2 - 30/2 + 40)
         return layout
     }()
 
@@ -53,10 +55,16 @@ class SongSheetViewController: BaseViewController {
 }
 
 
-extension SongSheetViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension SongSheetViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource {
     // MARK: - DataSource
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2;
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if section == 0 {
+            return 0
+        }
         return collectData.count
     }
     
@@ -67,9 +75,14 @@ extension SongSheetViewController: UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SongSheetViewHeader", for: indexPath)
-        view.backgroundColor = UIColor.lightGray
-        return view
+        if indexPath.section == 0 {
+            let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SongSheetViewSection.identifier, for: indexPath)
+            return view
+        } else {
+            let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SongSheetViewHeader.identifier, for: indexPath)
+            view.backgroundColor = UIColor.brown
+            return view
+        }
     }
     
     // MARK: - Delegate
@@ -80,10 +93,21 @@ extension SongSheetViewController: UICollectionViewDelegate, UICollectionViewDat
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
+    
+    // MARK: - Layout Delegate
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        if section == 0 {
+            return CGSize(width: collectionView.bounds.width, height: 30)
+        } else {
+            return CGSize(width: collectionView.bounds.width, height: 90)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 10
+    }
+    
 }
-
-
-
 
 class SongSheetCollectionViewCell: UICollectionViewCell {
     static let identifier = "SongSheetCollectionViewCell"
@@ -275,6 +299,7 @@ class CertainSongSheetHeadImage: UIView {
 }
 
 class SongSheetViewSection: UICollectionReusableView {
+    static let identifier = "SongSheetViewSection"
     @IBOutlet weak var indicatorView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var rightButton: UIButton!
@@ -282,19 +307,23 @@ class SongSheetViewSection: UICollectionReusableView {
 }
 
 class SongSheetViewHeader: UICollectionReusableView {
+    static let identifier = "SongSheetViewHeader"
+    
     @IBOutlet weak var leftImageView: UIImageView!
     
-    @IBOutlet weak var rightControl: UIControl!
+    @IBOutlet weak var rightControl: UIControl! {
+        didSet {
+        }
+    }
     @IBOutlet weak var rcIconImageView: UIImageView!
     
     @IBOutlet weak var rcTitleLabel: UILabel!
     @IBOutlet weak var rcDetailLabel: UILabel!
     @IBOutlet weak var rcMoreImageView: UIImageView!
     
-    
-    
-    
-    
+    @IBAction func touchRightControl(_ sender: UIControl) {
+        print("touchRightControl")
+    }
     
     
 }
