@@ -17,7 +17,7 @@ class RadioViewController: BaseViewController {
                                       width:self.view.bounds.width,
                                       height:self.view.bounds.height - 40 - self.tabBarController!.tabBar.frame.size.height - 64)
         collectionView.backgroundColor = UIColor.clear
-        let contentInsetValue: CGFloat = 0
+        let contentInsetValue: CGFloat = 8
         collectionView.contentInset = UIEdgeInsetsMake(contentInsetValue, contentInsetValue, contentInsetValue, contentInsetValue)
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -33,7 +33,6 @@ class RadioViewController: BaseViewController {
         collectionView.register(sectionNib, forSupplementaryViewOfKind:UICollectionElementKindSectionHeader, withReuseIdentifier:SongSheetViewSection.identifier)
         let cellNib = UINib.init(nibName: "RecommendViewCell", bundle: nil)
         collectionView.register(cellNib, forCellWithReuseIdentifier:RecommendViewCell.identifier)
-        
         return collectionView
     }()
     
@@ -145,15 +144,14 @@ extension RadioViewController:  UICollectionViewDelegateFlowLayout, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 10
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 10
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
+        if section == 0 {
+            return UIEdgeInsetsMake(10, 10, 20, 10)
+        }
+        return UIEdgeInsetsMake(0, 0, 0, 0)
     }
 }
 

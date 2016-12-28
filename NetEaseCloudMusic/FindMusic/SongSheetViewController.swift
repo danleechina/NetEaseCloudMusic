@@ -80,8 +80,8 @@ extension SongSheetViewController: UICollectionViewDelegateFlowLayout, UICollect
             let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SongSheetViewSection.identifier, for: indexPath)
             return view
         } else {
-            let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SongSheetViewHeader.identifier, for: indexPath)
-            view.backgroundColor = UIColor.brown
+            let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SongSheetViewHeader.identifier, for: indexPath) as! SongSheetViewHeader
+            view.leftImageView.image = UIImage.init(named: "1.jpg")
             return view
         }
     }
