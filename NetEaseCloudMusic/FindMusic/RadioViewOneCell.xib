@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RadioViewOneCell" id="tWb-UZ-TdJ" customClass="RadioViewOneCell" customModule="NetEaseCloudMusic" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="575" height="92"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="575" height="92"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e9S-ID-f0Z">
+                        <rect key="frame" x="467.5" y="4.5" width="99.5" height="83"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="e9S-ID-f0Z" secondAttribute="height" multiplier="1.2" id="vaD-w5-lL9"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="主播电台排行榜" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f7b-ag-KEI">
+                        <rect key="frame" x="8" y="15" width="439.5" height="23"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="最火的节目和电台，" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VvV-sY-zqq">
+                        <rect key="frame" x="8" y="45" width="439.5" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.84384942054748535" green="0.30955979228019714" blue="0.27849620580673218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="f7b-ag-KEI" firstAttribute="bottom" secondItem="tWb-UZ-TdJ" secondAttribute="centerY" constant="-8" id="3qZ-Pn-cuE"/>
+                <constraint firstItem="f7b-ag-KEI" firstAttribute="trailing" secondItem="e9S-ID-f0Z" secondAttribute="leading" constant="-20" id="LaN-1R-i0K"/>
+                <constraint firstItem="f7b-ag-KEI" firstAttribute="leading" secondItem="tWb-UZ-TdJ" secondAttribute="leading" constant="8" id="LkM-qi-8Uf"/>
+                <constraint firstItem="e9S-ID-f0Z" firstAttribute="centerY" secondItem="tWb-UZ-TdJ" secondAttribute="centerY" id="OQR-M4-sSh"/>
+                <constraint firstAttribute="trailing" secondItem="e9S-ID-f0Z" secondAttribute="trailing" constant="8" id="RXw-mL-zE9"/>
+                <constraint firstItem="e9S-ID-f0Z" firstAttribute="height" secondItem="tWb-UZ-TdJ" secondAttribute="height" multiplier="0.9" id="aRl-Wp-jBs"/>
+                <constraint firstItem="VvV-sY-zqq" firstAttribute="centerY" secondItem="tWb-UZ-TdJ" secondAttribute="centerY" constant="8" id="jbN-Oj-RfO"/>
+                <constraint firstItem="VvV-sY-zqq" firstAttribute="leading" secondItem="tWb-UZ-TdJ" secondAttribute="leading" constant="8" id="jpy-96-KYE"/>
+                <constraint firstItem="VvV-sY-zqq" firstAttribute="trailing" secondItem="e9S-ID-f0Z" secondAttribute="leading" constant="-20" id="zXb-Zu-D16"/>
+            </constraints>
+            <size key="customSize" width="575" height="92"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                    <real key="value" value="1"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                    <color key="value" red="0.89782440662384033" green="0.90195995569229126" blue="0.90598070621490479" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="detailLabel" destination="VvV-sY-zqq" id="0Jv-6u-Ype"/>
+                <outlet property="rightImageView" destination="e9S-ID-f0Z" id="y4K-Wy-u9M"/>
+                <outlet property="titleLabel" destination="f7b-ag-KEI" id="PIm-9s-4Mb"/>
+            </connections>
+            <point key="canvasLocation" x="72.5" y="172"/>
+        </collectionViewCell>
+    </objects>
+</document>

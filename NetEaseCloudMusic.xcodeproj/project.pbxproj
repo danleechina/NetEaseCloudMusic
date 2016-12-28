@@ -60,6 +60,9 @@
 		37D0F7A31DEEF35C0046C9B6 /* SipHasher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D0F79F1DEEF35C0046C9B6 /* SipHasher.swift */; };
 		37D0F7A61DEEFA4F0046C9B6 /* Dictionary+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D0F7A51DEEFA4F0046C9B6 /* Dictionary+Extension.swift */; };
 		37E490B21DFD01940054B988 /* PlayList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E490B11DFD01940054B988 /* PlayList.swift */; };
+		37E503061E136DD700E3B7CD /* RadioViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37E503051E136DD700E3B7CD /* RadioViewHeader.xib */; };
+		37E503081E137FE300E3B7CD /* RadioViewOneCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37E503071E137FE300E3B7CD /* RadioViewOneCell.xib */; };
+		37E5030A1E13800500E3B7CD /* RadioViewTwoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37E503091E13800500E3B7CD /* RadioViewTwoCell.xib */; };
 		37F82B341E09246000219336 /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 37F82B311E09246000219336 /* 3.jpg */; };
 		37F82B351E09246000219336 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 37F82B321E09246000219336 /* 1.jpg */; };
 		37F82B361E09246000219336 /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 37F82B331E09246000219336 /* 2.jpg */; };
@@ -215,6 +218,9 @@
 		37D0F79F1DEEF35C0046C9B6 /* SipHasher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SipHasher.swift; path = Vendor/SipHash/SipHasher.swift; sourceTree = "<group>"; };
 		37D0F7A51DEEFA4F0046C9B6 /* Dictionary+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Dictionary+Extension.swift"; path = "Extension/Foundation/Dictionary+Extension.swift"; sourceTree = "<group>"; };
 		37E490B11DFD01940054B988 /* PlayList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayList.swift; path = Model/PlayList.swift; sourceTree = "<group>"; };
+		37E503051E136DD700E3B7CD /* RadioViewHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadioViewHeader.xib; sourceTree = "<group>"; };
+		37E503071E137FE300E3B7CD /* RadioViewOneCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RadioViewOneCell.xib; path = FindMusic/RadioViewOneCell.xib; sourceTree = "<group>"; };
+		37E503091E13800500E3B7CD /* RadioViewTwoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RadioViewTwoCell.xib; path = FindMusic/RadioViewTwoCell.xib; sourceTree = "<group>"; };
 		37F82B311E09246000219336 /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
 		37F82B321E09246000219336 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
 		37F82B331E09246000219336 /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
@@ -592,6 +598,9 @@
 				375D46C41E0BA9B000FC4A02 /* SongSheetViewSection.xib */,
 				375D46C91E0BB34200FC4A02 /* SongSheetViewHeader.xib */,
 				DE2654BC1D10236F0083F742 /* RadioViewController.swift */,
+				37E503051E136DD700E3B7CD /* RadioViewHeader.xib */,
+				37E503071E137FE300E3B7CD /* RadioViewOneCell.xib */,
+				37E503091E13800500E3B7CD /* RadioViewTwoCell.xib */,
 				DE2654BE1D1023990083F742 /* RankListViewController.swift */,
 			);
 			name = ContentVC;
@@ -844,11 +853,14 @@
 				DE2654801D101A860083F742 /* Main.storyboard in Resources */,
 				DE2474751D1AB83C00EBAA37 /* CommentCell.xib in Resources */,
 				37C473B51E0A6C9C006F5B3C /* RecommendViewFooter.xib in Resources */,
+				37E503081E137FE300E3B7CD /* RadioViewOneCell.xib in Resources */,
 				375D46C61E0BA9B000FC4A02 /* SongSheetViewSection.xib in Resources */,
 				375D46CA1E0BB34200FC4A02 /* SongSheetViewHeader.xib in Resources */,
+				37E5030A1E13800500E3B7CD /* RadioViewTwoCell.xib in Resources */,
 				37C473B11E0A6C82006F5B3C /* RecommendViewSection.xib in Resources */,
 				DE35EB821D30E66D00485339 /* SongSheets.geojson in Resources */,
 				37F82B351E09246000219336 /* 1.jpg in Resources */,
+				37E503061E136DD700E3B7CD /* RadioViewHeader.xib in Resources */,
 				DE35EB851D30E89F00485339 /* SongSheetDetails.geojson in Resources */,
 				37F82B341E09246000219336 /* 3.jpg in Resources */,
 			);
