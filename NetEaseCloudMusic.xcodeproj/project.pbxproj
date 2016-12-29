@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		11EDA0711EB09D90F97A2256 /* Pods_NetEaseCloudMusic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C56330457B099963557BB91 /* Pods_NetEaseCloudMusic.framework */; };
+		371ED5CB1E14AC7A006581EA /* SliderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371ED5CA1E14AC7A006581EA /* SliderViewController.swift */; };
+		371ED5CD1E14B230006581EA /* ArrayProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371ED5CC1E14B230006581EA /* ArrayProxy.swift */; };
 		371F85241DEEBE6E00DA6C75 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371F85231DEEBE6E00DA6C75 /* String+Extension.swift */; };
 		371F85281DEEBF5E00DA6C75 /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371F85271DEEBF5E00DA6C75 /* Int+Extension.swift */; };
 		371F852C1DEEC38F00DA6C75 /* Data+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371F852B1DEEC38F00DA6C75 /* Data+Extension.swift */; };
@@ -169,6 +171,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		371ED5CA1E14AC7A006581EA /* SliderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SliderViewController.swift; path = Common/SliderViewController.swift; sourceTree = "<group>"; };
+		371ED5CC1E14B230006581EA /* ArrayProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArrayProxy.swift; path = Common/Foundation/ArrayProxy.swift; sourceTree = "<group>"; };
 		371F85231DEEBE6E00DA6C75 /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+Extension.swift"; path = "Extension/Foundation/String+Extension.swift"; sourceTree = "<group>"; };
 		371F85271DEEBF5E00DA6C75 /* Int+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Int+Extension.swift"; path = "Extension/Foundation/Int+Extension.swift"; sourceTree = "<group>"; };
 		371F852B1DEEC38F00DA6C75 /* Data+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Data+Extension.swift"; path = "Extension/Foundation/Data+Extension.swift"; sourceTree = "<group>"; };
@@ -335,6 +339,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		371ED5CE1E14B239006581EA /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				371ED5CC1E14B230006581EA /* ArrayProxy.swift */,
+			);
+			name = Foundation;
+			sourceTree = "<group>";
+		};
 		371F85251DEEBE7400DA6C75 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -588,8 +600,8 @@
 		DE2654E21D1028C60083F742 /* ContentVC */ = {
 			isa = PBXGroup;
 			children = (
-				37F82B311E09246000219336 /* 3.jpg */,
 				37F82B321E09246000219336 /* 1.jpg */,
+				37F82B311E09246000219336 /* 3.jpg */,
 				37F82B331E09246000219336 /* 2.jpg */,
 				DE2654B81D1022F10083F742 /* RecommendViewController.swift */,
 				37F82B391E0A267900219336 /* RecommendViewHeader.xib */,
@@ -680,6 +692,7 @@
 		DE4068551D12A3240067F0FE /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				371ED5CE1E14B239006581EA /* Foundation */,
 				373EE2221E03850800C5180A /* ImageSliderView.swift */,
 				DE79E6F51D167282006B9926 /* BaseTableView.swift */,
 				DE4068531D12A3190067F0FE /* BaseTableViewCell.swift */,
@@ -690,6 +703,7 @@
 				DE79E6FA1D1677C2006B9926 /* HasInfoSegmentedControl.swift */,
 				818E3B131D88272100F29A16 /* BaseNavigationBar.swift */,
 				373EE2261E038D9B00C5180A /* LayoutButton.swift */,
+				371ED5CA1E14AC7A006581EA /* SliderViewController.swift */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -982,6 +996,7 @@
 				DE2654B41D101DD30083F742 /* AccountViewController.swift in Sources */,
 				DE2654D71D1027540083F742 /* SettingViewController.swift in Sources */,
 				37D0F7951DEEEBB80046C9B6 /* BigUInt Subtraction.swift in Sources */,
+				371ED5CD1E14B230006581EA /* ArrayProxy.swift in Sources */,
 				37D0F78F1DEEEBB80046C9B6 /* BigUInt Multiplication.swift in Sources */,
 				DE2654BF1D1023990083F742 /* RankListViewController.swift in Sources */,
 				DED58E131D5C8D0900ED8A74 /* SongInfo.swift in Sources */,
@@ -1036,6 +1051,7 @@
 				DE2654AB1D101D440083F742 /* FindMusicViewController.swift in Sources */,
 				3758A38E1DF6A88E00788104 /* LoginViewController.swift in Sources */,
 				DE2654B91D1022F10083F742 /* RecommendViewController.swift in Sources */,
+				371ED5CB1E14AC7A006581EA /* SliderViewController.swift in Sources */,
 				DE2654E81D10299F0083F742 /* RecentPlayedViewController.swift in Sources */,
 				37D0F7921DEEEBB80046C9B6 /* BigUInt Random.swift in Sources */,
 				375ACD471DF8012400AD89FB /* Activity.swift in Sources */,
