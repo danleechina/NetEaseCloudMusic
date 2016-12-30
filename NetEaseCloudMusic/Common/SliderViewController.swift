@@ -17,8 +17,8 @@ class SliderViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(navigationView)
         view.addSubview(contentView)
+        view.addSubview(navigationView)
         
         contentView.delegate = self
         contentView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
@@ -28,6 +28,10 @@ class SliderViewController: UIViewController, UIScrollViewDelegate {
         contentView.backgroundColor = UIColor.purple
         contentView.showsVerticalScrollIndicator = false
         contentView.showsHorizontalScrollIndicator = false
+        
+        navigationView.titleTexts = ["this one", "this two", "this three"]
+        navigationView.frame = CGRect(x: 0, y: 100, width: view.frame.width, height: 44)
+        navigationView.backgroundColor = UIColor.brown
         
         add(viewFromIndex: currentIndex)
     }
@@ -88,12 +92,9 @@ class InternalContentView: UIScrollView, UIGestureRecognizerDelegate {
     }
 }
 
-class InternalNavigationView: UIView {
+class InternalNavigationView: UIView, UITableViewDelegate, UITableViewDataSource {
     var currentIndex: Int = 0 {
         didSet {
-            if currentIndex != previousIndex {
-                
-            }
         }
     }
     
@@ -103,10 +104,114 @@ class InternalNavigationView: UIView {
         }
     }
     
+    var titleTexts = [String]()
     
-    fileprivate var previousIndex = 0
+    fileprivate let tableView = UITableView()
+    
+    fileprivate func customInit() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.showsHorizontalScrollIndicator = false
+        tableView.showsVerticalScrollIndicator = false
+        tableView.allowsMultipleSelection = false
+        tableView.allowsSelectionDuringEditing = false
+        tableView.allowsMultipleSelectionDuringEditing = false
+        tableView.backgroundColor = UIColor.clear
+        tableView.separatorStyle = .none
+        tableView.layer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        tableView.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI/2))
+        tableView.isScrollEnabled = false
+        tableView.register(InternalNavigationCell.self, forCellReuseIdentifier: InternalNavigationCell.identifier)
+        
+        addSubview(tableView)
+    }
+    
+    override var frame: CGRect {
+        didSet {
+            tableView.frame = CGRect(x: 0, y: 0, width: frame.height, height: frame.width)
+        }
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        customInit()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        customInit()
+    }
     
     func scroll(to index: Int, needAnimate animated: Bool, progressive progressiveHandler: ()->()) {
         
+    }
+    
+    
+    // MARK: - Table View Delegate
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableView.bounds.height / CGFloat(titleTexts.count)
+    }
+    
+    // MARK: - Table View Datasource
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return titleTexts.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: InternalNavigationCell.identifier, for: indexPath) as! InternalNavigationCell
+        cell.titleLabel.text = titleTexts[indexPath.row]
+        return cell
+    }
+}
+
+class InternalNavigationCell: UITableViewCell {
+    static let identifier = "InternalNavigationCell"
+    
+    let titleLabel = UILabel()
+    // make sure all your custom views are added to containerView
+    let containerView = UIView()
+    
+    override var frame: CGRect {
+        didSet {
+            containerView.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
+            titleLabel.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
+        }
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        containerView.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
+        titleLabel.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
+    }
+    
+    fileprivate func customInit() {
+        titleLabel.textColor = UIColor.green
+        titleLabel.font = UIFont.systemFont(ofSize: 15)
+        
+        addSubview(containerView)
+        containerView.addSubview(titleLabel)
+//        containerView.layer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+//        containerView.transform = CGAffineTransform(rotationAngle: CGFloat(-M_PI/2))
+    }
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        customInit()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        customInit()
     }
 }
