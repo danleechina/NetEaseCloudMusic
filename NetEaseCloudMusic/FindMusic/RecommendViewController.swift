@@ -153,19 +153,14 @@ extension RecommendViewController:  UICollectionViewDelegateFlowLayout, UICollec
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = SliderViewController()
         let vc1 = UIViewController()
-        vc1.view.backgroundColor = UIColor.blue
+        vc1.view.backgroundColor = UIColor.lightGray
         let vc2 = UIViewController()
         vc2.view.backgroundColor = UIColor.brown
         let vc3 = UIViewController()
-        vc3.view.backgroundColor = UIColor.red
+        vc3.view.backgroundColor = UIColor.purple
         
         vc.contentViewControllers = [vc1, vc2, vc3]
-        
-        
-        let button = UIButton.init(frame: CGRect(x: 100, y: 100, width: 100, height: 100))
-        button.backgroundColor = UIColor.black
-        button.addTarget(self, action: #selector(test), for: .touchUpInside)
-        vc1.view.addSubview(button)
+        vc.titleTexts = ["One", "Two", "Thre"]
         
         self.navigationController?.pushViewController(vc, animated: true)
     }
