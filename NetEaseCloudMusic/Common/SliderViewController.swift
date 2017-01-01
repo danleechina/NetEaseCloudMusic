@@ -12,8 +12,11 @@ class DefaultStyleAttribute {
     static let indicatorViewColor = UIColor.green
     static let indicatorViewHeight: CGFloat = 4
     static let indicatorViewWidthDiff: CGFloat = 4
+    static let seperateLineColor = UIColor.lightGray
+    static let seperateLineOffset: CGFloat = 4
     
     static let cellTitleLabelFont = UIFont.systemFont(ofSize: 15)
+    static let navigationViewCellDefaultWidth: CGFloat = 44
 }
 
 class SliderViewController: UIViewController, UIScrollViewDelegate {
@@ -26,6 +29,7 @@ class SliderViewController: UIViewController, UIScrollViewDelegate {
     fileprivate let contentView = InternalContentView()
     fileprivate var isClickedNavigationView = false
     fileprivate var nextIndex = 0
+    fileprivate var isFirstShow = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +38,11 @@ class SliderViewController: UIViewController, UIScrollViewDelegate {
         
         contentView.delegate = self
         contentView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
-        contentView.contentSize = CGSize(width: view.frame.width * CGFloat(contentViewControllers.count), height: view.frame.height)
+        if let tabbarHeight = self.tabBarController?.tabBar.frame.height {
+            contentView.contentSize = CGSize(width: view.frame.width * CGFloat(contentViewControllers.count), height: view.frame.height - tabbarHeight)
+        } else {
+            contentView.contentSize = CGSize(width: view.frame.width * CGFloat(contentViewControllers.count), height: view.frame.height)
+        }
         contentView.isPagingEnabled = true
         contentView.bounces = false
         contentView.showsVerticalScrollIndicator = false
@@ -45,11 +53,31 @@ class SliderViewController: UIViewController, UIScrollViewDelegate {
         navigationView.action = navigationViewSelectedAction
         navigationView.currentIndex = currentIndex
         navigationView.isNeedFullWidthForIndicatorView = true
+        navigationView.isNeedSeperateLineForEachItem = true
         navigationView.adjustIndicatorViewFrame(accordingToRelativeOffsetX: CGFloat(currentIndex) * contentView.frame.width / CGFloat(contentViewControllers.count))
         
-        
-//        add(viewFromIndex: currentIndex)
         goTo(viewAtIndex: currentIndex, isUserClicked: false)
+        isFirstShow = false
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        contentViewControllers[currentIndex].beginAppearanceTransition(true, animated: false)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        contentViewControllers[currentIndex].endAppearanceTransition()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        contentViewControllers[currentIndex].beginAppearanceTransition(false, animated: false)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        contentViewControllers[currentIndex].endAppearanceTransition()
     }
     
     func navigationViewSelectedAction(selectedIndex: Int) {
@@ -70,8 +98,23 @@ class SliderViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func goTo(viewAtIndex index: Int, isUserClicked: Bool) {
-        add(viewFromIndex: index)
+        if index != currentIndex || isFirstShow {
+            let oldVc = contentViewControllers[currentIndex]
+            oldVc.willMove(toParentViewController: nil)
+            oldVc.beginAppearanceTransition(false, animated: false)
+            oldVc.endAppearanceTransition()
+            oldVc.removeFromParentViewController()
+            
+            let nowVC = contentViewControllers[index]
+            self.addChildViewController(nowVC)
+            if !isFirstShow {
+                nowVC.beginAppearanceTransition(true, animated: false)
+                add(viewFromIndex: index)
+                nowVC.endAppearanceTransition()
+            }
+        }
         
+        add(viewFromIndex: index)
         let oldOffsetX = contentView.contentOffset.x
         contentView.setContentOffset(CGPoint(x: contentView.bounds.width * CGFloat(index), y: contentView.contentOffset.y), animated: false)
         var relativeOffsetX = oldOffsetX / contentView.contentSize.width * contentView.frame.width
@@ -120,6 +163,8 @@ class InternalNavigationView: UIView,UIScrollViewDelegate, UICollectionViewDeleg
     var titleTexts = [String]()
     var currentIndex = 0
     var isNeedFullWidthForIndicatorView = false
+    var isNeedSeperateLineForEachItem = false
+//    var usingDefaultNavigationViewCellWidth = false
     
     fileprivate lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -144,8 +189,15 @@ class InternalNavigationView: UIView,UIScrollViewDelegate, UICollectionViewDeleg
         return view
     }()
     
+    fileprivate lazy var lineView: UIView = {
+        let view = UIView()
+        view.backgroundColor = DefaultStyleAttribute.seperateLineColor
+        return view
+    }()
+    
     fileprivate func customInit() {
         addSubview(collectionView)
+        addSubview(lineView)
         addSubview(indicatorView)
     }
     
@@ -153,6 +205,7 @@ class InternalNavigationView: UIView,UIScrollViewDelegate, UICollectionViewDeleg
         didSet {
             collectionView.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
             adjustIndicatorViewFrame(accordingToRelativeOffsetX: 0)
+            lineView.frame = CGRect(x: 0, y: frame.height - 0.5, width: frame.width, height: 0.5)
         }
     }
     
@@ -212,13 +265,18 @@ class InternalNavigationView: UIView,UIScrollViewDelegate, UICollectionViewDeleg
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: InternalNavigationCell.identifier, for: indexPath) as! InternalNavigationCell
         cell.titleLabel.text = titleTexts[indexPath.row]
+        cell.lineView.isHidden = !isNeedSeperateLineForEachItem
+        cell.lineView.isHidden = indexPath.row == collectionView.numberOfItems(inSection: 0) - 1
         return cell
     }
     
     // MARK: - Collection View Layout Delegate
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width/CGFloat(titleTexts.count), height: collectionView.frame.height)
+//        if !usingDefaultNavigationViewCellWidth {
+            return CGSize(width: collectionView.frame.width/CGFloat(titleTexts.count), height: collectionView.frame.height)
+//        }
+//        return CGSize(width: DefaultStyleAttribute.navigationViewCellDefaultWidth, height: collectionView.frame.height)
     }
 }
 
@@ -227,11 +285,12 @@ class InternalNavigationCell: UICollectionViewCell {
     
     let titleLabel = UILabel()
     let containerView = UIView()
-    
+    let lineView = UIView()
     override var frame: CGRect {
         didSet {
             containerView.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
             titleLabel.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
+            lineView.frame = CGRect(x: frame.width - 0.5, y: DefaultStyleAttribute.seperateLineOffset, width: 0.5, height: frame.height - DefaultStyleAttribute.seperateLineOffset * 2)
         }
     }
     
@@ -244,8 +303,9 @@ class InternalNavigationCell: UICollectionViewCell {
     fileprivate func customInit() {
         titleLabel.font = DefaultStyleAttribute.cellTitleLabelFont
         titleLabel.textAlignment = .center
-        
+        lineView.backgroundColor = DefaultStyleAttribute.seperateLineColor
         addSubview(containerView)
+        addSubview(lineView)
         containerView.addSubview(titleLabel)
     }
     

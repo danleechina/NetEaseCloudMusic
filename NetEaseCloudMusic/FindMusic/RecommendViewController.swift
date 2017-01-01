@@ -19,6 +19,23 @@ enum RecommentViewSections {
     case footer
 }
 
+class TestViewController: UIViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let button = UIButton()
+        button.frame = CGRect(x: 100, y: 100, width: 100, height: 100)
+        button.backgroundColor = UIColor.black
+        button.addTarget(self, action: #selector(test), for: .touchUpInside)
+        view.addSubview(button)
+    }
+    
+    func test() {
+        let vc = UIViewController()
+        vc.view.backgroundColor = UIColor.red
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
 class RecommendViewController: BaseViewController {
     
     fileprivate lazy var collectionView: UICollectionView = {
@@ -152,8 +169,9 @@ extension RecommendViewController:  UICollectionViewDelegateFlowLayout, UICollec
      
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = SliderViewController()
-        let vc1 = UIViewController()
-        vc1.view.backgroundColor = UIColor.lightGray
+        
+        let vc1 = TestViewController()
+        vc1.view.backgroundColor = UIColor.blue
         let vc2 = UIViewController()
         vc2.view.backgroundColor = UIColor.brown
         let vc3 = UIViewController()
@@ -167,7 +185,8 @@ extension RecommendViewController:  UICollectionViewDelegateFlowLayout, UICollec
     }
     
     func test() {
-        print("hi")
+        let vvv = UIViewController()
+        vvv.view.backgroundColor = UIColor.red
     }
     // Flow layout Delegate
     
