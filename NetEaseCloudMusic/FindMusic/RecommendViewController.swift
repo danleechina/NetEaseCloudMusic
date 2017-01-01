@@ -160,7 +160,8 @@ extension RecommendViewController:  UICollectionViewDelegateFlowLayout, UICollec
         vc3.view.backgroundColor = UIColor.purple
         
         vc.contentViewControllers = [vc1, vc2, vc3]
-        vc.titleTexts = ["One", "Two", "Thre"]
+        vc.titleTexts = ["Oneoa", "Tw", "Threhhhhhhhh"]
+        vc.currentIndex = 1
         
         self.navigationController?.pushViewController(vc, animated: true)
     }

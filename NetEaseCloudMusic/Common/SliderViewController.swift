@@ -24,7 +24,8 @@ class SliderViewController: UIViewController, UIScrollViewDelegate {
     
     fileprivate let navigationView = InternalNavigationView()
     fileprivate let contentView = InternalContentView()
-    fileprivate let calWidthLabel = UILabel()
+    fileprivate var isClickedNavigationView = false
+    fileprivate var nextIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,16 +40,21 @@ class SliderViewController: UIViewController, UIScrollViewDelegate {
         contentView.showsVerticalScrollIndicator = false
         contentView.showsHorizontalScrollIndicator = false
         
-        navigationView.titleTexts = titleTexts
         navigationView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 44)
+        navigationView.titleTexts = titleTexts
         navigationView.action = navigationViewSelectedAction
+        navigationView.currentIndex = currentIndex
+        navigationView.isNeedFullWidthForIndicatorView = true
+        navigationView.adjustIndicatorViewFrame(accordingToRelativeOffsetX: CGFloat(currentIndex) * contentView.frame.width / CGFloat(contentViewControllers.count))
         
-        customIndicatorViewWith()
-        add(viewFromIndex: currentIndex)
+        
+//        add(viewFromIndex: currentIndex)
+        goTo(viewAtIndex: currentIndex, isUserClicked: false)
     }
     
     func navigationViewSelectedAction(selectedIndex: Int) {
-        goTo(viewAtIndex: selectedIndex)
+        isClickedNavigationView = true
+        goTo(viewAtIndex: selectedIndex, isUserClicked: true)
     }
     
     func add(viewFromIndex index: Int) {
@@ -63,76 +69,57 @@ class SliderViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     
-    func goTo(viewAtIndex index: Int) {
-        contentView.contentOffset = CGPoint(x: contentView.bounds.width * CGFloat(index), y: contentView.contentOffset.y)
+    func goTo(viewAtIndex index: Int, isUserClicked: Bool) {
         add(viewFromIndex: index)
-        currentIndex = index
-    }
-    
-    func customIndicatorViewWith() {
-        let scrollView = contentView
-        var nextIndex = currentIndex
-        let panGest = scrollView.panGestureRecognizer
-        if panGest.velocity(in: scrollView.superview).x > 0 {
-            // left is about to appear
-            nextIndex -= 1
-        } else {
-            // right is about to appear
-            nextIndex += 1
-        }
-        if nextIndex < 0 || nextIndex >= contentViewControllers.count {
-            return
-        }
         
-        let offsetX = scrollView.contentOffset.x / scrollView.contentSize.width * navigationView.frame.width
-        calWidthLabel.font = DefaultStyleAttribute.cellTitleLabelFont
-        calWidthLabel.text = navigationView.titleTexts[nextIndex]
-        calWidthLabel.sizeToFit()
-        let resWidth = calWidthLabel.frame.width + DefaultStyleAttribute.indicatorViewWidthDiff
-        let startWidth = navigationView.indicatorView.frame.width
-        let complete = abs((scrollView.contentOffset.x - scrollView.contentSize.width * CGFloat(self.currentIndex)) / scrollView.frame.width)
-        let idWidth = startWidth - resWidth * complete
-        navigationView.configIndicatorViewSize(offsetX: offsetX + scrollView.frame.width/CGFloat(titleTexts.count)/2 - idWidth/2, width: idWidth)
+        let oldOffsetX = contentView.contentOffset.x
+        contentView.setContentOffset(CGPoint(x: contentView.bounds.width * CGFloat(index), y: contentView.contentOffset.y), animated: false)
+        var relativeOffsetX = oldOffsetX / contentView.contentSize.width * contentView.frame.width
+        navigationView.adjustIndicatorViewFrame(accordingToRelativeOffsetX: relativeOffsetX)
+        
+        currentIndex = index
+        navigationView.currentIndex = index
+        
+        relativeOffsetX = contentView.contentOffset.x / contentView.contentSize.width * contentView.frame.width
+        if isUserClicked {
+            UIView.animate(withDuration: 0.2, animations: {
+                UIView.setAnimationCurve(.easeInOut)
+                self.navigationView.adjustIndicatorViewFrame(accordingToRelativeOffsetX: relativeOffsetX)
+            })
+        } else {
+            navigationView.adjustIndicatorViewFrame(accordingToRelativeOffsetX: relativeOffsetX)
+        }
     }
     
     // - MARK: Scroll View Delegate
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        var nextIndex = currentIndex
-        let panGest = scrollView.panGestureRecognizer
-        if panGest.velocity(in: scrollView.superview).x > 0 {
-            // left is about to appear
-            nextIndex -= 1
-        } else {
-            // right is about to appear
-            nextIndex += 1
-        }
-        add(viewFromIndex: Int(nextIndex))
-        customIndicatorViewWith()
+        let vx = scrollView.panGestureRecognizer.velocity(in: scrollView.superview).x
+        nextIndex = vx > 0 ? currentIndex - 1 : (vx != 0 ? currentIndex + 1 : nextIndex)
+        add(viewFromIndex: nextIndex)
+        
+        let relativeOffsetX = scrollView.contentOffset.x / scrollView.contentSize.width * scrollView.frame.width
+        navigationView.adjustIndicatorViewFrame(accordingToRelativeOffsetX: relativeOffsetX)
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let nextIndex = Int(scrollView.contentOffset.x / scrollView.bounds.width + 0.5)
-        goTo(viewAtIndex: nextIndex)
+        goTo(viewAtIndex: nextIndex, isUserClicked: false)
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if !decelerate {
             let nextIndex = Int(scrollView.contentOffset.x / scrollView.bounds.width + 0.5)
-            goTo(viewAtIndex: nextIndex)
+            goTo(viewAtIndex: nextIndex, isUserClicked: false)
         }
     }
 }
 
 class InternalNavigationView: UIView,UIScrollViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     var action: ((_ selectedIndex: Int) -> ())?
-    var titleTexts = [String]() {
-        didSet {
-            if titleTexts.count > 0 {
-                configIndicatorViewSize(offsetX: 0, width: frame.width/CGFloat(titleTexts.count))
-            }
-        }
-    }
+    var titleTexts = [String]()
+    var currentIndex = 0
+    var isNeedFullWidthForIndicatorView = false
     
     fileprivate lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -146,6 +133,7 @@ class InternalNavigationView: UIView,UIScrollViewDelegate, UICollectionViewDeleg
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.register(InternalNavigationCell.self, forCellWithReuseIdentifier: InternalNavigationCell.identifier)
+        collectionView.decelerationRate = UIScrollViewDecelerationRateFast
         
         return collectionView
     }()
@@ -164,9 +152,7 @@ class InternalNavigationView: UIView,UIScrollViewDelegate, UICollectionViewDeleg
     override var frame: CGRect {
         didSet {
             collectionView.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
-            if titleTexts.count > 0 {
-                configIndicatorViewSize(offsetX: 0, width: frame.width/CGFloat(titleTexts.count))
-            }
+            adjustIndicatorViewFrame(accordingToRelativeOffsetX: 0)
         }
     }
     
@@ -180,8 +166,30 @@ class InternalNavigationView: UIView,UIScrollViewDelegate, UICollectionViewDeleg
         customInit()
     }
     
-    func configIndicatorViewSize(offsetX: CGFloat, width: CGFloat) {
-        indicatorView.frame = CGRect(x: offsetX, y: frame.height - DefaultStyleAttribute.indicatorViewHeight, width: width, height: DefaultStyleAttribute.indicatorViewHeight)
+    func adjustIndicatorViewFrame(accordingToRelativeOffsetX relativeOffsetX: CGFloat) {
+        guard titleTexts.count > 0 else { return }
+        
+        let offsetY = frame.height - DefaultStyleAttribute.indicatorViewHeight
+        let itemFullWith = frame.width / CGFloat(titleTexts.count)
+        if !isNeedFullWidthForIndicatorView {
+            indicatorView.frame = CGRect(x: relativeOffsetX, y: offsetY, width: itemFullWith, height: DefaultStyleAttribute.indicatorViewHeight)
+        } else {
+            let preIndex = Int(relativeOffsetX / itemFullWith)
+            let nxtIndex = min(Int(relativeOffsetX / itemFullWith) + 1, titleTexts.count - 1)
+            let percent = relativeOffsetX/itemFullWith - CGFloat(preIndex)
+            
+            let preStr = titleTexts[preIndex] as NSString
+            let nxtStr = titleTexts[nxtIndex] as NSString
+            
+            let preStrWidth = preStr.size(attributes: [NSFontAttributeName: DefaultStyleAttribute.cellTitleLabelFont]).width + DefaultStyleAttribute.indicatorViewWidthDiff
+            let nxtStrWidth = nxtStr.size(attributes: [NSFontAttributeName: DefaultStyleAttribute.cellTitleLabelFont]).width + DefaultStyleAttribute.indicatorViewWidthDiff
+            let curWidth = preStrWidth + percent * (nxtStrWidth - preStrWidth)
+            
+            let preOffsetX = (itemFullWith - preStrWidth) / 2
+            let nxtOffsetX = (itemFullWith - nxtStrWidth) / 2
+            let curOffsetX = preOffsetX + percent * (nxtOffsetX - preOffsetX)
+            indicatorView.frame = CGRect(x: curOffsetX + relativeOffsetX, y: offsetY, width: curWidth, height: DefaultStyleAttribute.indicatorViewHeight)
+        }
     }
     
     // MARK: - Collection View Delegate
