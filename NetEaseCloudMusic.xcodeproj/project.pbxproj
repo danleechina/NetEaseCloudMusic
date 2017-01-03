@@ -70,7 +70,6 @@
 		37F82B351E09246000219336 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 37F82B321E09246000219336 /* 1.jpg */; };
 		37F82B361E09246000219336 /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 37F82B331E09246000219336 /* 2.jpg */; };
 		37F82B3A1E0A267900219336 /* RecommendViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37F82B391E0A267900219336 /* RecommendViewHeader.xib */; };
-		8118F9331DA63CD5005BAF7A /* RKSwipeBetweenViewControllers.m in Sources */ = {isa = PBXBuildFile; fileRef = 8118F9321DA63CD5005BAF7A /* RKSwipeBetweenViewControllers.m */; };
 		8172EF571DA673040042B6AE /* UIImage_Add.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8172EF561DA673040042B6AE /* UIImage_Add.swift */; };
 		818E3B141D88272100F29A16 /* BaseNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818E3B131D88272100F29A16 /* BaseNavigationBar.swift */; };
 		A02A3EE41D40FBD100A3956F /* MarqueeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02A3EE31D40FBD100A3956F /* MarqueeLabel.swift */; };
@@ -231,8 +230,6 @@
 		37F82B321E09246000219336 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
 		37F82B331E09246000219336 /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
 		37F82B391E0A267900219336 /* RecommendViewHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RecommendViewHeader.xib; path = FindMusic/RecommendViewHeader.xib; sourceTree = "<group>"; };
-		8118F9311DA63CD5005BAF7A /* RKSwipeBetweenViewControllers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RKSwipeBetweenViewControllers.h; path = Vendor/RKSwipeBetweenViewControllers.h; sourceTree = "<group>"; };
-		8118F9321DA63CD5005BAF7A /* RKSwipeBetweenViewControllers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RKSwipeBetweenViewControllers.m; path = Vendor/RKSwipeBetweenViewControllers.m; sourceTree = "<group>"; };
 		8172EF561DA673040042B6AE /* UIImage_Add.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIImage_Add.swift; path = Util/UIImage_Add.swift; sourceTree = "<group>"; };
 		818E3B131D88272100F29A16 /* BaseNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseNavigationBar.swift; path = Common/BaseNavigationBar.swift; sourceTree = "<group>"; };
 		9C56330457B099963557BB91 /* Pods_NetEaseCloudMusic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NetEaseCloudMusic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -438,8 +435,6 @@
 			children = (
 				37D0F7A41DEEF7960046C9B6 /* SipHash */,
 				37D0F7991DEEEBC40046C9B6 /* BigUInt */,
-				8118F9311DA63CD5005BAF7A /* RKSwipeBetweenViewControllers.h */,
-				8118F9321DA63CD5005BAF7A /* RKSwipeBetweenViewControllers.m */,
 				A02A3EE31D40FBD100A3956F /* MarqueeLabel.swift */,
 				37D0F79A1DEEEF280046C9B6 /* BinUtils.swift */,
 			);
@@ -1005,7 +1000,6 @@
 				37D0F7A01DEEF35C0046C9B6 /* Primitive Types.swift in Sources */,
 				371F85241DEEBE6E00DA6C75 /* String+Extension.swift in Sources */,
 				DE2654CD1D1025F90083F742 /* NearByViewController.swift in Sources */,
-				8118F9331DA63CD5005BAF7A /* RKSwipeBetweenViewControllers.m in Sources */,
 				DE2654CF1D1026710083F742 /* MyMessageViewController.swift in Sources */,
 				37D0F7881DEEEBB80046C9B6 /* BigUInt Bitwise Ops.swift in Sources */,
 				37D0F7A31DEEF35C0046C9B6 /* SipHasher.swift in Sources */,

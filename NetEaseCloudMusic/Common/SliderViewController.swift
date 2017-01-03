@@ -9,15 +9,15 @@
 import UIKit
 
 class DefaultStyleAttribute {
-    static let indicatorViewColor = UIColor.green
-    static let indicatorViewHeight: CGFloat = 4
+    static let indicatorViewColor = UIColor.init(red: 183/255.0, green: 39/255.0, blue: 18/255.0, alpha: 1)
+    static let indicatorViewHeight: CGFloat = 1
     static let indicatorViewWidthDiff: CGFloat = 4
     static let seperateLineColor = UIColor.lightGray
     static let seperateLineOffset: CGFloat = 4
     
     static let cellTitleLabelFont = UIFont.systemFont(ofSize: 15)
     static let cellTitleLabelTextColor = UIColor.black
-    static let cellTitleLabelHighlightTextColor = UIColor.red
+    static let cellTitleLabelHighlightTextColor = UIColor.init(red: 183/255.0, green: 39/255.0, blue: 18/255.0, alpha: 1)
     static let navigationViewCellDefaultWidth: CGFloat = 44
 }
 
@@ -39,13 +39,13 @@ class SliderViewController: UIViewController, UIScrollViewDelegate {
         view.addSubview(contentView)
         view.addSubview(navigationView)
         
+        automaticallyAdjustsScrollViewInsets = false
         contentView.delegate = self
-        contentView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
+        contentView.frame = CGRect(x: 0, y: 44, width: view.frame.width, height: view.frame.height - 44)
         if let tabbarHeight = self.tabBarController?.tabBar.frame.height {
-            contentView.contentSize = CGSize(width: view.frame.width * CGFloat(contentViewControllers.count), height: view.frame.height - tabbarHeight)
-        } else {
-            contentView.contentSize = CGSize(width: view.frame.width * CGFloat(contentViewControllers.count), height: view.frame.height)
+            contentView.frame = CGRect(x: 0, y: 44, width: view.frame.width, height: view.frame.height - 44 - tabbarHeight)
         }
+        contentView.contentSize = CGSize(width: contentView.frame.width * CGFloat(contentViewControllers.count), height: contentView.frame.height)
         contentView.isPagingEnabled = true
         contentView.bounces = false
         contentView.showsVerticalScrollIndicator = false
@@ -207,7 +207,7 @@ class InternalNavigationView: UIView,UIScrollViewDelegate, UICollectionViewDeleg
     override var frame: CGRect {
         didSet {
             collectionView.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
-            adjustIndicatorViewFrame(accordingToRelativeOffsetX: 0)
+            adjustIndicatorViewFrame(accordingToRelativeOffsetX: CGFloat(currentIndex) * frame.width / CGFloat(titleTexts.count))
             lineView.frame = CGRect(x: 0, y: frame.height - 0.5, width: frame.width, height: 0.5)
         }
     }

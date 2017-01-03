@@ -18,7 +18,7 @@ class SongSheetViewController: BaseViewController {
     
     fileprivate lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView.init(frame: self.view.bounds, collectionViewLayout: self.collectionViewFlowLayout)
-        collectionView.frame = CGRect(x: 0, y:40 + 64, width:self.view.bounds.width, height:self.view.bounds.height - 40 - self.tabBarController!.tabBar.frame.size.height - 64)
+        collectionView.frame = CGRect(x: 0, y: 0, width:self.view.bounds.width, height:self.view.bounds.height)
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.backgroundColor = UIColor.clear
@@ -40,6 +40,11 @@ class SongSheetViewController: BaseViewController {
         layout.itemSize = CGSize(width: self.view.width/2 - 30/2, height: self.view.width/2 - 30/2 + 40)
         return layout
     }()
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        collectionView.frame = self.view.bounds
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

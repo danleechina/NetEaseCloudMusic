@@ -13,9 +13,9 @@ class RankListViewController: BaseViewController {
     fileprivate lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView.init(frame: self.view.bounds, collectionViewLayout: self.collectionViewFlowLayout)
         collectionView.frame = CGRect(x: 0,
-                                      y:40 + 64,
+                                      y: 0,
                                       width:self.view.bounds.width,
-                                      height:self.view.bounds.height - 40 - self.tabBarController!.tabBar.frame.size.height - 64)
+                                      height:self.view.bounds.height)
         collectionView.backgroundColor = UIColor.clear
         let contentInsetValue: CGFloat = 8
         collectionView.contentInset = UIEdgeInsetsMake(contentInsetValue, contentInsetValue, contentInsetValue, contentInsetValue)
@@ -37,6 +37,11 @@ class RankListViewController: BaseViewController {
         layout.scrollDirection = .vertical
         return layout
     }()
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        collectionView.frame = self.view.bounds
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FindMusicViewController: UIPageViewController {
+class FindMusicViewController: SliderViewController {
     lazy var searchBar: UISearchBar = {
         let bar = UISearchBar.init(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width - 110, height: 44))
         bar.searchBarStyle = .minimal
@@ -48,7 +48,30 @@ class FindMusicViewController: UIPageViewController {
     }
     
     override func viewDidLoad() {
+        let recommendVC = RecommendViewController()
+        let songSheetVC = SongSheetViewController()
+        let radioVC = RadioViewController()
+        let rankListVC = RankListViewController()
+        contentViewControllers = [recommendVC, songSheetVC, radioVC, rankListVC]
+        titleTexts = ["个性推荐", "歌单", "主播电台", "排行榜"]
+        currentIndex = 1
+        
         super.viewDidLoad()
+        
+        adjustViewFrameForFakeNavigationBar()
         self.view.addSubview(navigationBar)
+        
+    }
+    
+    func adjustViewFrameForFakeNavigationBar() {
+        for view in self.view.subviews {
+            view.top += 64
+            if let scrollView = view as? UIScrollView {
+                scrollView.height -= 64
+                var cs = scrollView.contentSize
+                cs.height -= 64
+                scrollView.contentSize = cs
+            }
+        }
     }
 }

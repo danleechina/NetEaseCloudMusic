@@ -6,6 +6,8 @@
 //  Copyright © 2016年 Ampire_Dan. All rights reserved.
 //
 
+import UIKit
+
 extension UIImage {
     func renderWith(color: UIColor) -> UIImage {
         var nimage = self.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
