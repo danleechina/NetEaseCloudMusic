@@ -16,6 +16,8 @@ class DefaultStyleAttribute {
     static let seperateLineOffset: CGFloat = 4
     
     static let cellTitleLabelFont = UIFont.systemFont(ofSize: 15)
+    static let cellTitleLabelTextColor = UIColor.black
+    static let cellTitleLabelHighlightTextColor = UIColor.red
     static let navigationViewCellDefaultWidth: CGFloat = 44
 }
 
@@ -23,6 +25,7 @@ class SliderViewController: UIViewController, UIScrollViewDelegate {
     var contentViewControllers = [UIViewController]()
     var currentIndex: Int = 0
     var titleTexts = [String]()
+    var isNeedSeperateLineForEachItem = false
     
     
     fileprivate let navigationView = InternalNavigationView()
@@ -53,7 +56,7 @@ class SliderViewController: UIViewController, UIScrollViewDelegate {
         navigationView.action = navigationViewSelectedAction
         navigationView.currentIndex = currentIndex
         navigationView.isNeedFullWidthForIndicatorView = true
-        navigationView.isNeedSeperateLineForEachItem = true
+        navigationView.isNeedSeperateLineForEachItem = isNeedSeperateLineForEachItem
         navigationView.adjustIndicatorViewFrame(accordingToRelativeOffsetX: CGFloat(currentIndex) * contentView.frame.width / CGFloat(contentViewControllers.count))
         
         goTo(viewAtIndex: currentIndex, isUserClicked: false)
@@ -243,6 +246,18 @@ class InternalNavigationView: UIView,UIScrollViewDelegate, UICollectionViewDeleg
             let curOffsetX = preOffsetX + percent * (nxtOffsetX - preOffsetX)
             indicatorView.frame = CGRect(x: curOffsetX + relativeOffsetX, y: offsetY, width: curWidth, height: DefaultStyleAttribute.indicatorViewHeight)
         }
+        let highlightIndex = (relativeOffsetX + itemFullWith / 2) / itemFullWith
+        adjustNavigationCellTextColor(highlightIndex: Int(highlightIndex))
+    }
+    
+    fileprivate func adjustNavigationCellTextColor(highlightIndex: Int) {
+        for genericCell in collectionView.visibleCells {
+            let concreteCell = genericCell as! InternalNavigationCell
+            concreteCell.titleLabel.textColor = DefaultStyleAttribute.cellTitleLabelTextColor
+        }
+        if let cell = collectionView.cellForItem(at: IndexPath.init(row: highlightIndex, section: 0)) as? InternalNavigationCell {
+            cell.titleLabel.textColor = DefaultStyleAttribute.cellTitleLabelHighlightTextColor
+        }
     }
     
     // MARK: - Collection View Delegate
@@ -265,8 +280,8 @@ class InternalNavigationView: UIView,UIScrollViewDelegate, UICollectionViewDeleg
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: InternalNavigationCell.identifier, for: indexPath) as! InternalNavigationCell
         cell.titleLabel.text = titleTexts[indexPath.row]
-        cell.lineView.isHidden = !isNeedSeperateLineForEachItem
-        cell.lineView.isHidden = indexPath.row == collectionView.numberOfItems(inSection: 0) - 1
+        adjustNavigationCellTextColor(highlightIndex: currentIndex)
+        cell.lineView.isHidden = !isNeedSeperateLineForEachItem || indexPath.row == collectionView.numberOfItems(inSection: 0) - 1
         return cell
     }
     
@@ -302,6 +317,7 @@ class InternalNavigationCell: UICollectionViewCell {
     
     fileprivate func customInit() {
         titleLabel.font = DefaultStyleAttribute.cellTitleLabelFont
+        titleLabel.textColor = DefaultStyleAttribute.cellTitleLabelTextColor
         titleLabel.textAlignment = .center
         lineView.backgroundColor = DefaultStyleAttribute.seperateLineColor
         addSubview(containerView)

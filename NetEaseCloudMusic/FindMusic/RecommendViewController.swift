@@ -180,6 +180,7 @@ extension RecommendViewController:  UICollectionViewDelegateFlowLayout, UICollec
         vc.contentViewControllers = [vc1, vc2, vc3]
         vc.titleTexts = ["Oneoa", "Tw", "Threhhhhhhhh"]
         vc.currentIndex = 1
+        vc.isNeedSeperateLineForEachItem = true
         
         self.navigationController?.pushViewController(vc, animated: true)
     }
