@@ -16,27 +16,20 @@
             <rect key="frame" x="0.0" y="0.0" width="1172" height="205"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="IZH-AI-vg2">
-                    <rect key="frame" x="0.0" y="185" width="1172" height="20"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <color key="tintColor" red="0.8438494205" green="0.30955979230000003" blue="0.27849620580000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <color key="pageIndicatorTintColor" red="0.88213974237442017" green="0.88627272844314575" blue="0.89029622077941895" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <color key="currentPageIndicatorTintColor" red="0.82850301265716553" green="0.225058913230896" blue="0.19300898909568787" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                </pageControl>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hpm-74-LKV">
-                    <rect key="frame" x="0.0" y="0.0" width="1172" height="185"/>
+                    <rect key="frame" x="0.0" y="0.0" width="1172" height="164"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YMe-9O-9QU">
-                            <rect key="frame" x="0.0" y="0.0" width="3516" height="185"/>
+                            <rect key="frame" x="0.0" y="0.0" width="3516" height="164"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N73-Vb-G4F">
-                                    <rect key="frame" x="2637" y="0.0" width="293" height="93"/>
+                                <view tag="9" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N73-Vb-G4F">
+                                    <rect key="frame" x="2637" y="0.0" width="293" height="82.5"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_discover_icn_apply" translatesAutoresizingMaskIntoConstraints="NO" id="AUq-Q7-8u4">
-                                            <rect key="frame" x="132.5" y="32.5" width="28" height="28"/>
+                                            <rect key="frame" x="132.5" y="27.5" width="28" height="28"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我要做主播" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CEh-6x-ZFg">
-                                            <rect key="frame" x="29.5" y="60.5" width="234" height="14.5"/>
+                                            <rect key="frame" x="14.5" y="55.5" width="264" height="14.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" red="0.48621892929077148" green="0.48630648851394653" blue="0.48621344566345215" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -46,19 +39,19 @@
                                     <constraints>
                                         <constraint firstItem="AUq-Q7-8u4" firstAttribute="centerY" secondItem="N73-Vb-G4F" secondAttribute="centerY" id="5xp-di-3Mv"/>
                                         <constraint firstItem="CEh-6x-ZFg" firstAttribute="top" secondItem="AUq-Q7-8u4" secondAttribute="bottom" id="Vbf-J7-iMt"/>
-                                        <constraint firstItem="CEh-6x-ZFg" firstAttribute="width" secondItem="N73-Vb-G4F" secondAttribute="width" multiplier="0.8" id="naf-Er-8wN"/>
+                                        <constraint firstItem="CEh-6x-ZFg" firstAttribute="width" secondItem="N73-Vb-G4F" secondAttribute="width" multiplier="0.9" id="naf-Er-8wN"/>
                                         <constraint firstItem="AUq-Q7-8u4" firstAttribute="centerX" secondItem="N73-Vb-G4F" secondAttribute="centerX" id="qJ0-15-wtt"/>
                                         <constraint firstItem="CEh-6x-ZFg" firstAttribute="centerX" secondItem="N73-Vb-G4F" secondAttribute="centerX" id="w8g-6n-ZF9"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FVH-Sg-lfR">
-                                    <rect key="frame" x="2344" y="0.0" width="293" height="93"/>
+                                <view tag="8" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FVH-Sg-lfR">
+                                    <rect key="frame" x="2344" y="0.0" width="293" height="82.5"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_discover_icn_opera" translatesAutoresizingMaskIntoConstraints="NO" id="1OD-lv-LVN">
-                                            <rect key="frame" x="132" y="32.5" width="28" height="28"/>
+                                            <rect key="frame" x="132" y="27.5" width="28" height="28"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="相声曲艺" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C4U-LN-LLU">
-                                            <rect key="frame" x="29" y="60.5" width="234" height="14.5"/>
+                                            <rect key="frame" x="29" y="55.5" width="234" height="14.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" red="0.48621892929077148" green="0.48630648851394653" blue="0.48621344566345215" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -73,14 +66,14 @@
                                         <constraint firstItem="C4U-LN-LLU" firstAttribute="width" secondItem="FVH-Sg-lfR" secondAttribute="width" multiplier="0.8" id="qiz-Dj-vXE"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n4c-oa-Erh">
-                                    <rect key="frame" x="2051" y="0.0" width="293" height="93"/>
+                                <view tag="7" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n4c-oa-Erh">
+                                    <rect key="frame" x="2051" y="0.0" width="293" height="82.5"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_discover_icn_variety" translatesAutoresizingMaskIntoConstraints="NO" id="NNo-gm-YZW">
-                                            <rect key="frame" x="133" y="32.5" width="28" height="28"/>
+                                            <rect key="frame" x="133" y="27.5" width="28" height="28"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="娱乐|影视" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MhW-Wz-BLo">
-                                            <rect key="frame" x="29" y="60.5" width="235" height="14.5"/>
+                                            <rect key="frame" x="29" y="55.5" width="235" height="14.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" red="0.48621892929077148" green="0.48630648851394653" blue="0.48621344566345215" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -95,14 +88,14 @@
                                         <constraint firstItem="MhW-Wz-BLo" firstAttribute="top" secondItem="NNo-gm-YZW" secondAttribute="bottom" id="uwz-Uz-5GJ"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9qs-1b-YG7">
-                                    <rect key="frame" x="1758" y="0.0" width="293" height="93"/>
+                                <view tag="6" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9qs-1b-YG7">
+                                    <rect key="frame" x="1758" y="0.0" width="293" height="82.5"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_discover_icn_trip" translatesAutoresizingMaskIntoConstraints="NO" id="I8W-tI-Yyd">
-                                            <rect key="frame" x="132" y="32.5" width="28" height="28"/>
+                                            <rect key="frame" x="132" y="27.5" width="28" height="28"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="旅途|城市" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iea-E0-0wy">
-                                            <rect key="frame" x="29" y="60.5" width="235" height="14.5"/>
+                                            <rect key="frame" x="29" y="55.5" width="235" height="14.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" red="0.48621892929077148" green="0.48630648851394653" blue="0.48621344566345215" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -117,14 +110,14 @@
                                         <constraint firstItem="I8W-tI-Yyd" firstAttribute="centerY" secondItem="9qs-1b-YG7" secondAttribute="centerY" id="rhX-Px-TK2"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hqo-BU-794">
-                                    <rect key="frame" x="1465" y="0.0" width="293" height="93"/>
+                                <view tag="5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hqo-BU-794">
+                                    <rect key="frame" x="1465" y="0.0" width="293" height="82.5"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_discover_icn_comic" translatesAutoresizingMaskIntoConstraints="NO" id="LLF-JT-hSo">
-                                            <rect key="frame" x="133" y="32.5" width="28" height="28"/>
+                                            <rect key="frame" x="133" y="27.5" width="28" height="28"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="二次元" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gax-qG-MHM">
-                                            <rect key="frame" x="30" y="60.5" width="234" height="14.5"/>
+                                            <rect key="frame" x="30" y="55.5" width="234" height="14.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" red="0.48621892929077148" green="0.48630648851394653" blue="0.48621344566345215" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -139,14 +132,14 @@
                                         <constraint firstItem="LLF-JT-hSo" firstAttribute="centerX" secondItem="Hqo-BU-794" secondAttribute="centerX" id="v9P-hD-2lZ"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SfG-9j-3Nf">
-                                    <rect key="frame" x="1172" y="0.0" width="293" height="93"/>
+                                <view tag="4" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SfG-9j-3Nf">
+                                    <rect key="frame" x="1172" y="0.0" width="293" height="82.5"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_discover_icn_abc" translatesAutoresizingMaskIntoConstraints="NO" id="hsb-LL-l3r">
-                                            <rect key="frame" x="133" y="32.5" width="28" height="28"/>
+                                            <rect key="frame" x="133" y="27.5" width="28" height="28"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="外语世界" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yW8-ep-EOg">
-                                            <rect key="frame" x="29" y="60.5" width="235" height="14.5"/>
+                                            <rect key="frame" x="29" y="55.5" width="235" height="14.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" red="0.48621892929077148" green="0.48630648851394653" blue="0.48621344566345215" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -161,14 +154,14 @@
                                         <constraint firstItem="yW8-ep-EOg" firstAttribute="top" secondItem="hsb-LL-l3r" secondAttribute="bottom" id="zuK-Ht-e6O"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XVl-lT-D3K">
-                                    <rect key="frame" x="879" y="0.0" width="293" height="93"/>
+                                <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XVl-lT-D3K">
+                                    <rect key="frame" x="879" y="0.0" width="293" height="82.5"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_discover_icn_voicebook" translatesAutoresizingMaskIntoConstraints="NO" id="4IF-4q-Cbu">
-                                            <rect key="frame" x="132.5" y="32.5" width="28" height="28"/>
+                                            <rect key="frame" x="132.5" y="27.5" width="28" height="28"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="美文读物" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4jq-zc-hpE">
-                                            <rect key="frame" x="29.5" y="60.5" width="234" height="14.5"/>
+                                            <rect key="frame" x="29.5" y="55.5" width="234" height="14.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" red="0.48621892929077148" green="0.48630648851394653" blue="0.48621344566345215" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -183,14 +176,14 @@
                                         <constraint firstItem="4IF-4q-Cbu" firstAttribute="centerX" secondItem="XVl-lT-D3K" secondAttribute="centerX" id="wTg-uR-QdT"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OgH-RN-USy">
-                                    <rect key="frame" x="586" y="0.0" width="293" height="93"/>
+                                <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OgH-RN-USy">
+                                    <rect key="frame" x="586" y="0.0" width="293" height="82.5"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_discover_icn_taklshow" translatesAutoresizingMaskIntoConstraints="NO" id="KCE-om-OU3">
-                                            <rect key="frame" x="132" y="32.5" width="28" height="28"/>
+                                            <rect key="frame" x="132" y="27.5" width="28" height="28"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="脱口秀" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ItH-qt-IGg">
-                                            <rect key="frame" x="29.5" y="60.5" width="234" height="14.5"/>
+                                            <rect key="frame" x="29.5" y="55.5" width="234" height="14.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" red="0.48621892929077148" green="0.48630648851394653" blue="0.48621344566345215" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -205,14 +198,14 @@
                                         <constraint firstItem="KCE-om-OU3" firstAttribute="centerY" secondItem="OgH-RN-USy" secondAttribute="centerY" id="sFs-cm-ErX"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z45-tg-8J8">
-                                    <rect key="frame" x="293" y="0.0" width="293" height="93"/>
+                                <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z45-tg-8J8">
+                                    <rect key="frame" x="293" y="0.0" width="293" height="82.5"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_discover_icn_mic" translatesAutoresizingMaskIntoConstraints="NO" id="ubI-Sy-pW0">
-                                            <rect key="frame" x="133" y="32.5" width="28" height="28"/>
+                                            <rect key="frame" x="133" y="27.5" width="28" height="28"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="创作|翻唱" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QPo-6A-Bkh">
-                                            <rect key="frame" x="29" y="60.5" width="235" height="14.5"/>
+                                            <rect key="frame" x="29" y="55.5" width="235" height="14.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" red="0.48621892929077148" green="0.48630648851394653" blue="0.48621344566345215" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -228,13 +221,13 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EK9-Jm-8Bp">
-                                    <rect key="frame" x="0.0" y="0.0" width="293" height="93"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="293" height="82.5"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_discover_icn_dj" translatesAutoresizingMaskIntoConstraints="NO" id="9eE-XE-CGU">
-                                            <rect key="frame" x="132" y="32.5" width="28" height="28"/>
+                                        <imageView contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_discover_icn_dj" translatesAutoresizingMaskIntoConstraints="NO" id="9eE-XE-CGU">
+                                            <rect key="frame" x="132" y="27.5" width="28" height="28"/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="明星做主播" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KLE-uC-ahY">
-                                            <rect key="frame" x="29" y="60.5" width="235" height="14.5"/>
+                                        <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="明星做主播" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KLE-uC-ahY">
+                                            <rect key="frame" x="14.5" y="55.5" width="264" height="14.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" red="0.48621892929077148" green="0.48630648851394653" blue="0.48621344566345215" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -244,19 +237,19 @@
                                     <constraints>
                                         <constraint firstItem="9eE-XE-CGU" firstAttribute="centerY" secondItem="EK9-Jm-8Bp" secondAttribute="centerY" id="4JK-tC-NB0"/>
                                         <constraint firstItem="KLE-uC-ahY" firstAttribute="top" secondItem="9eE-XE-CGU" secondAttribute="bottom" id="8uv-Tu-ma0"/>
-                                        <constraint firstItem="KLE-uC-ahY" firstAttribute="width" secondItem="EK9-Jm-8Bp" secondAttribute="width" multiplier="0.8" id="Pyj-la-Myj"/>
+                                        <constraint firstItem="KLE-uC-ahY" firstAttribute="width" secondItem="EK9-Jm-8Bp" secondAttribute="width" multiplier="0.9" id="Pyj-la-Myj"/>
                                         <constraint firstItem="9eE-XE-CGU" firstAttribute="centerX" secondItem="EK9-Jm-8Bp" secondAttribute="centerX" id="e3Z-at-zbG"/>
                                         <constraint firstItem="KLE-uC-ahY" firstAttribute="centerX" secondItem="EK9-Jm-8Bp" secondAttribute="centerX" id="mo4-fP-GCH"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VVV-oW-dOE">
-                                    <rect key="frame" x="0.0" y="92" width="293" height="93"/>
+                                <view tag="10" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VVV-oW-dOE">
+                                    <rect key="frame" x="0.0" y="81.5" width="293" height="82.5"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_discover_icn_music" translatesAutoresizingMaskIntoConstraints="NO" id="Mdb-94-QcK">
-                                            <rect key="frame" x="132" y="32.5" width="28" height="28"/>
+                                            <rect key="frame" x="132" y="27.5" width="28" height="28"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="音乐故事" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCI-Bg-GjP">
-                                            <rect key="frame" x="29" y="60.5" width="235" height="14.5"/>
+                                            <rect key="frame" x="29" y="55.5" width="235" height="14.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" red="0.48621892929077148" green="0.48630648851394653" blue="0.48621344566345215" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -271,14 +264,14 @@
                                         <constraint firstItem="gCI-Bg-GjP" firstAttribute="top" secondItem="Mdb-94-QcK" secondAttribute="bottom" id="h24-gT-MFF"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="To4-nK-mwE">
-                                    <rect key="frame" x="293" y="92" width="293" height="93"/>
+                                <view tag="11" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="To4-nK-mwE">
+                                    <rect key="frame" x="293" y="81.5" width="293" height="82.5"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_discover_icn_emotion" translatesAutoresizingMaskIntoConstraints="NO" id="Hg4-zg-byH">
-                                            <rect key="frame" x="133" y="32.5" width="28" height="28"/>
+                                            <rect key="frame" x="133" y="27.5" width="28" height="28"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="情感调频" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lbj-1N-56e">
-                                            <rect key="frame" x="29" y="60.5" width="235" height="14.5"/>
+                                            <rect key="frame" x="29" y="55.5" width="235" height="14.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" red="0.48621892929077148" green="0.48630648851394653" blue="0.48621344566345215" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -293,14 +286,14 @@
                                         <constraint firstItem="Lbj-1N-56e" firstAttribute="width" secondItem="To4-nK-mwE" secondAttribute="width" multiplier="0.8" id="rms-Ke-YI7"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gor-rl-Ytl">
-                                    <rect key="frame" x="586" y="92" width="293" height="93"/>
+                                <view tag="12" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gor-rl-Ytl">
+                                    <rect key="frame" x="586" y="81.5" width="293" height="82.5"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_discover_icn_taklshow" translatesAutoresizingMaskIntoConstraints="NO" id="TbT-nK-zpg">
-                                            <rect key="frame" x="132.5" y="32.5" width="28" height="28"/>
+                                            <rect key="frame" x="132.5" y="27.5" width="28" height="28"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="有声小说" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iw0-c6-iRI">
-                                            <rect key="frame" x="30" y="60.5" width="234" height="14.5"/>
+                                            <rect key="frame" x="30" y="55.5" width="234" height="14.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" red="0.48621892929077148" green="0.48630648851394653" blue="0.48621344566345215" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -315,14 +308,14 @@
                                         <constraint firstItem="Iw0-c6-iRI" firstAttribute="top" secondItem="TbT-nK-zpg" secondAttribute="bottom" id="nh5-m6-1WV"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uKi-b2-mcX">
-                                    <rect key="frame" x="879" y="92" width="293" height="93"/>
+                                <view tag="13" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uKi-b2-mcX">
+                                    <rect key="frame" x="879" y="81.5" width="293" height="82.5"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_discover_icn_history" translatesAutoresizingMaskIntoConstraints="NO" id="dSs-On-KzE">
-                                            <rect key="frame" x="132" y="32.5" width="28" height="28"/>
+                                            <rect key="frame" x="132" y="27.5" width="28" height="28"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="人文历史" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cq8-Nn-cn0">
-                                            <rect key="frame" x="29.5" y="60.5" width="234" height="14.5"/>
+                                            <rect key="frame" x="29.5" y="55.5" width="234" height="14.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" red="0.48621892929077148" green="0.48630648851394653" blue="0.48621344566345215" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -337,14 +330,14 @@
                                         <constraint firstItem="dSs-On-KzE" firstAttribute="centerY" secondItem="uKi-b2-mcX" secondAttribute="centerY" id="j1q-vo-Pih"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9QP-Gt-nNA">
-                                    <rect key="frame" x="1172" y="92" width="293" height="93"/>
+                                <view tag="14" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9QP-Gt-nNA">
+                                    <rect key="frame" x="1172" y="81.5" width="293" height="82.5"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_discover_icn_taklshow" translatesAutoresizingMaskIntoConstraints="NO" id="K5a-sE-iVl">
-                                            <rect key="frame" x="133" y="32.5" width="28" height="28"/>
+                                            <rect key="frame" x="133" y="27.5" width="28" height="28"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3D|电子" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="79x-Ya-WBS">
-                                            <rect key="frame" x="29" y="60.5" width="235" height="14.5"/>
+                                            <rect key="frame" x="29" y="55.5" width="235" height="14.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" red="0.48621892929077148" green="0.48630648851394653" blue="0.48621344566345215" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -359,14 +352,14 @@
                                         <constraint firstItem="79x-Ya-WBS" firstAttribute="width" secondItem="9QP-Gt-nNA" secondAttribute="width" multiplier="0.8" id="bfn-Xv-l6a"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IRr-dx-oX7">
-                                    <rect key="frame" x="1465" y="92" width="293" height="93"/>
+                                <view tag="15" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IRr-dx-oX7">
+                                    <rect key="frame" x="1465" y="81.5" width="293" height="82.5"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_discover_icn_school" translatesAutoresizingMaskIntoConstraints="NO" id="Uj1-IW-ppe">
-                                            <rect key="frame" x="132" y="32.5" width="28" height="28"/>
+                                            <rect key="frame" x="132" y="27.5" width="28" height="28"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="校园|教育" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HJb-8Q-ZQ1">
-                                            <rect key="frame" x="29.5" y="60.5" width="234" height="14.5"/>
+                                            <rect key="frame" x="29.5" y="55.5" width="234" height="14.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" red="0.48621892929077148" green="0.48630648851394653" blue="0.48621344566345215" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -381,14 +374,14 @@
                                         <constraint firstItem="HJb-8Q-ZQ1" firstAttribute="centerX" secondItem="IRr-dx-oX7" secondAttribute="centerX" id="w4x-ue-L78"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FD3-n2-CEB">
-                                    <rect key="frame" x="1758" y="92" width="293" height="93"/>
+                                <view tag="16" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FD3-n2-CEB">
+                                    <rect key="frame" x="1758" y="81.5" width="293" height="82.5"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_discover_icn_baby" translatesAutoresizingMaskIntoConstraints="NO" id="XPk-bj-hWf">
-                                            <rect key="frame" x="132.5" y="32.5" width="28" height="28"/>
+                                            <rect key="frame" x="132.5" y="27.5" width="28" height="28"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="亲子宝贝" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vs1-WC-L1i">
-                                            <rect key="frame" x="29" y="60.5" width="235" height="14.5"/>
+                                            <rect key="frame" x="29" y="55.5" width="235" height="14.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" red="0.48621892929077148" green="0.48630648851394653" blue="0.48621344566345215" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -403,14 +396,14 @@
                                         <constraint firstItem="vs1-WC-L1i" firstAttribute="width" secondItem="FD3-n2-CEB" secondAttribute="width" multiplier="0.8" id="ize-bd-FY6"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8La-fX-WJt">
-                                    <rect key="frame" x="2051" y="92" width="293" height="93"/>
+                                <view tag="17" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8La-fX-WJt">
+                                    <rect key="frame" x="2051" y="81.5" width="293" height="82.5"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_discover_icn_drama" translatesAutoresizingMaskIntoConstraints="NO" id="KQv-X0-g6g">
-                                            <rect key="frame" x="133" y="32.5" width="28" height="28"/>
+                                            <rect key="frame" x="133" y="27.5" width="28" height="28"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="广播剧" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nqf-U0-958">
-                                            <rect key="frame" x="29" y="60.5" width="235" height="14.5"/>
+                                            <rect key="frame" x="29" y="55.5" width="235" height="14.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" red="0.48621892929077148" green="0.48630648851394653" blue="0.48621344566345215" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -513,15 +506,25 @@
                         <constraint firstItem="YMe-9O-9QU" firstAttribute="top" secondItem="hpm-74-LKV" secondAttribute="top" id="omB-Fy-gBg"/>
                     </constraints>
                 </scrollView>
+                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="IZH-AI-vg2">
+                    <rect key="frame" x="0.0" y="164" width="1172" height="41"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="tintColor" red="0.8438494205" green="0.30955979230000003" blue="0.27849620580000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="pageIndicatorTintColor" red="0.88213974237442017" green="0.88627272844314575" blue="0.89029622077941895" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="currentPageIndicatorTintColor" red="0.82850301265716553" green="0.225058913230896" blue="0.19300898909568787" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <connections>
+                        <action selector="changePage:" destination="eZh-5d-rhO" eventType="valueChanged" id="ndt-z6-Ds6"/>
+                    </connections>
+                </pageControl>
             </subviews>
             <constraints>
                 <constraint firstItem="hpm-74-LKV" firstAttribute="width" secondItem="eZh-5d-rhO" secondAttribute="width" id="23k-NY-7tI"/>
                 <constraint firstItem="IZH-AI-vg2" firstAttribute="width" secondItem="eZh-5d-rhO" secondAttribute="width" id="5XT-3Z-hbO"/>
                 <constraint firstItem="hpm-74-LKV" firstAttribute="top" secondItem="eZh-5d-rhO" secondAttribute="top" id="9x5-AE-a8E"/>
                 <constraint firstAttribute="bottom" secondItem="IZH-AI-vg2" secondAttribute="bottom" id="9zG-jZ-jYV"/>
-                <constraint firstItem="hpm-74-LKV" firstAttribute="height" secondItem="eZh-5d-rhO" secondAttribute="height" multiplier="0.9" id="a3l-ev-XrA"/>
+                <constraint firstItem="hpm-74-LKV" firstAttribute="height" secondItem="eZh-5d-rhO" secondAttribute="height" multiplier="0.8" id="a3l-ev-XrA"/>
                 <constraint firstItem="hpm-74-LKV" firstAttribute="centerX" secondItem="eZh-5d-rhO" secondAttribute="centerX" id="bAV-YL-yZr"/>
-                <constraint firstItem="IZH-AI-vg2" firstAttribute="height" secondItem="eZh-5d-rhO" secondAttribute="height" multiplier="0.1" id="lKM-Ae-YPB"/>
+                <constraint firstItem="IZH-AI-vg2" firstAttribute="height" secondItem="eZh-5d-rhO" secondAttribute="height" multiplier="0.2" id="lKM-Ae-YPB"/>
                 <constraint firstItem="IZH-AI-vg2" firstAttribute="centerX" secondItem="eZh-5d-rhO" secondAttribute="centerX" id="vE4-6Q-HGl"/>
             </constraints>
             <connections>

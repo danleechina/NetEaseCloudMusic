@@ -1,14 +1,14 @@
 //
-//  BaseViewController.swift
+//  BaseSliderViewController.swift
 //  NetEaseCloudMusic
 //
-//  Created by Ampire_Dan on 16/6/18.
-//  Copyright © 2016年 Ampire_Dan. All rights reserved.
+//  Created by Dan.Lee on 2017/1/4.
+//  Copyright © 2017年 Ampire_Dan. All rights reserved.
 //
 
 import UIKit
 
-class BaseViewController: UIViewController {
+class BaseSliderViewController: SliderViewController {
     var needProgramInsertNavigationBar = true
     let navigationBar: BaseNavigationBar = {
         let bar = BaseNavigationBar.init(frame: CGRect(x: 0, y: 20, width: UIScreen.main.bounds.size.width, height: 44))
@@ -17,7 +17,7 @@ class BaseViewController: UIViewController {
     }()
     
     let statusBar: UIView = {
-       let view = UIView.init(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 20))
+        let view = UIView.init(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 20))
         view.backgroundColor = UIColor.white
         return view
     }()
@@ -29,6 +29,11 @@ class BaseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     func tapBackButton() {
@@ -63,4 +68,17 @@ class BaseViewController: UIViewController {
         vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+    func adjustViewFrameForFakeNavigationBar() {
+        for view in self.view.subviews {
+            view.top += 64
+            if let scrollView = view as? UIScrollView {
+                scrollView.height -= 64
+                var cs = scrollView.contentSize
+                cs.height -= 64
+                scrollView.contentSize = cs
+            }
+        }
+    }
+
 }

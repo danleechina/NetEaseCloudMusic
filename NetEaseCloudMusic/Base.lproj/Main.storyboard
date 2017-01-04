@@ -1142,10 +1142,10 @@
             </objects>
             <point key="canvasLocation" x="758" y="626"/>
         </scene>
-        <!--HHHHH-->
+        <!--发现音乐-->
         <scene sceneID="u0b-ut-Bu0">
             <objects>
-                <viewController id="c4x-LA-L0m" customClass="FindMusicViewController" customModule="NetEaseCloudMusic" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="c4x-LA-L0m" customClass="FindMusicViewController" customModule="NetEaseCloudMusic" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VGa-f8-yEU"/>
                         <viewControllerLayoutGuide type="bottom" id="IVV-mX-ZmH"/>
@@ -1155,7 +1155,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="HHHHH" id="IwH-Ge-C1z"/>
+                    <navigationItem key="navigationItem" title="发现音乐" id="IwH-Ge-C1z"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NKz-iC-r5o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -56,6 +56,41 @@ class RadioViewController: BaseViewController {
     fileprivate let numberOfItemsArray = [1, 4, 6, 10]
     fileprivate let sectionTexts = ["", "精彩节目推荐", "每天精选电台-订阅更精彩", "热门电台",]
     
+    fileprivate func tapHeaderViewItemAction(sender: UIView?) {
+        if let view = sender {
+            let label =  view.subviews.filter({ (view) -> Bool in
+                return view.isKind(of: UILabel.self)
+            }).first as? UILabel
+            let vc = RadioListViewController()
+            vc.titleText = label?.text ?? "No text"
+            vc.titleTexts = ["最近流行", "最热电台"]
+            
+            let vc1 = RadioOneTableViewController()
+            vc1.dataType = 0
+            
+            let vc2 = RadioOneTableViewController()
+            vc2.dataType = 1
+            
+            vc.contentViewControllers = [vc1, vc2]
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
+    fileprivate func tapRadioViewOneCell() {
+        
+        let vc1 = RadioTwoTableViewController()
+        vc1.dataType = 0
+        let vc2 = RadioTwoTableViewController()
+        vc1.dataType = 1
+        let vc3 = RadioTwoTableViewController()
+        vc1.dataType = 2
+        
+        let vc = RadioListViewController()
+        vc.titleText = "主播电台排行榜"
+        vc.titleTexts = ["节目", "新晋电台", "最热电台",]
+        vc.contentViewControllers = [vc1, vc2, vc3,]
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 extension RadioViewController:  UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource {
@@ -107,6 +142,7 @@ extension RadioViewController:  UICollectionViewDelegateFlowLayout, UICollection
             // Global Header
         if indexPath.section == 0 {
             let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: RadioViewHeader.identifier, for: indexPath) as! RadioViewHeader
+            view.tapItemAction = tapHeaderViewItemAction
             view.contentView.frame = CGRect(x: 0, y: 0, width: collectionView.width * 3, height: 135)
             view.scrollView.frame = CGRect(x: 0, y: 0, width: collectionView.width, height: 135)
             view.scrollView.contentSize = CGSize(width: collectionView.width * 3, height: 135)
@@ -123,6 +159,12 @@ extension RadioViewController:  UICollectionViewDelegateFlowLayout, UICollection
     // MARK: - Delegate
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.section == 0{
+            tapRadioViewOneCell()
+        } else if indexPath.section >= 2 {
+            let vc = RadioDetailListViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     // Flow layout Delegate
@@ -136,8 +178,9 @@ extension RadioViewController:  UICollectionViewDelegateFlowLayout, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let margin: CGFloat = 8
         if indexPath.section == 0 {
-            return CGSize(width: collectionView.bounds.width, height: 80)
+            return CGSize(width: collectionView.bounds.width - 2 * margin, height: 80)
         } else if indexPath.section == 1 {
             return CGSize(width: collectionView.bounds.width, height: 64)
         } else if indexPath.section == 2 {
@@ -161,13 +204,39 @@ extension RadioViewController:  UICollectionViewDelegateFlowLayout, UICollection
 }
 
 
-class RadioViewHeader: UICollectionReusableView {
+class RadioViewHeader: UICollectionReusableView, UIScrollViewDelegate {
     static let identifier = "RadioViewHeader"
     
+    var tapItemAction: ((_ sender: UIView?)->())?
     @IBOutlet weak var pageControl: UIPageControl!
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var scrollView: UIScrollView! {
+        didSet {
+            scrollView.delegate = self
+        }
+    }
+    @IBOutlet weak var contentView: UIView! {
+        didSet {
+            for view in contentView.subviews {
+                let tap = UITapGestureRecognizer.init(target: self, action: #selector(tapAction(sender:)))
+                view.addGestureRecognizer(tap)
+            }
+        }
+    }
     
+    @IBAction func changePage(_ sender: UIPageControl) {
+        scrollView.setContentOffset(CGPoint(x: CGFloat(sender.currentPage) * scrollView.frame.width, y: 0), animated: false)
+    }
+    
+    func tapAction(sender: UITapGestureRecognizer) {
+        tapItemAction?(sender.view)
+    }
+    
+    
+    // MARK: Scroll View Delegate
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let index = Int((scrollView.contentOffset.x + scrollView.frame.width/2) / scrollView.frame.width)
+        pageControl.currentPage = index
+    }
 }
 
 class RadioViewOneCell: UICollectionViewCell {

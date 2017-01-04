@@ -65,21 +65,25 @@ class SliderViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        guard contentViewControllers.count > 0 && currentIndex < contentViewControllers.count else { return }
         contentViewControllers[currentIndex].beginAppearanceTransition(true, animated: false)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        guard contentViewControllers.count > 0 && currentIndex < contentViewControllers.count else { return }
         contentViewControllers[currentIndex].endAppearanceTransition()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        guard contentViewControllers.count > 0 && currentIndex < contentViewControllers.count else { return }
         contentViewControllers[currentIndex].beginAppearanceTransition(false, animated: false)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        guard contentViewControllers.count > 0 && currentIndex < contentViewControllers.count else { return }
         contentViewControllers[currentIndex].endAppearanceTransition()
     }
     
@@ -101,6 +105,7 @@ class SliderViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func goTo(viewAtIndex index: Int, isUserClicked: Bool) {
+        guard contentViewControllers.count > 0 && index < contentViewControllers.count else { return }
         if index != currentIndex || isFirstShow {
             let oldVc = contentViewControllers[currentIndex]
             oldVc.willMove(toParentViewController: nil)
