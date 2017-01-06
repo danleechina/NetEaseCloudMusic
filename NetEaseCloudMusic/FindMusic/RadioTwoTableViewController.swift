@@ -45,9 +45,10 @@ class RadioTwoTableViewController: BaseViewController, UITableViewDataSource, UI
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        let margin: CGFloat = 8
-        tableView.frame = CGRect(x: margin, y: margin, width: view.bounds.width - 2 * margin, height: view.bounds.height - 2 * margin)
-//        tableView.frame = view.bounds
+        let margin: CGFloat = 0
+        let hasNavigationBar = view.subviews.contains(navigationBar)
+        let solveForNavigationBar: CGFloat = hasNavigationBar ? 64 : 0
+        tableView.frame = CGRect(x: margin, y: margin + solveForNavigationBar, width: view.bounds.width - 2 * margin, height: view.bounds.height - 2 * margin - solveForNavigationBar)
     }
     
     @objc fileprivate func tapTableViewHeaderInfoButton() {

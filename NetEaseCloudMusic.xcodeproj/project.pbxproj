@@ -20,6 +20,7 @@
 		3734E4CF1E1CE19A00FCEB0C /* RadioTwoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3734E4CE1E1CE19A00FCEB0C /* RadioTwoTableViewController.swift */; };
 		3734E4D11E1CE1F600FCEB0C /* RadioTwoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3734E4D01E1CE1F600FCEB0C /* RadioTwoTableViewCell.xib */; };
 		3739976F1E1E624B00076C37 /* a.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3739976E1E1E624B00076C37 /* a.jpg */; };
+		373997711E1F3C0200076C37 /* RankUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373997701E1F3C0200076C37 /* RankUserViewController.swift */; };
 		373EE2231E03850800C5180A /* ImageSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373EE2221E03850800C5180A /* ImageSliderView.swift */; };
 		373EE2251E03867000C5180A /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373EE2241E03867000C5180A /* UIButton+Extension.swift */; };
 		373EE2271E038D9B00C5180A /* LayoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373EE2261E038D9B00C5180A /* LayoutButton.swift */; };
@@ -192,6 +193,7 @@
 		3734E4CE1E1CE19A00FCEB0C /* RadioTwoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RadioTwoTableViewController.swift; path = FindMusic/RadioTwoTableViewController.swift; sourceTree = "<group>"; };
 		3734E4D01E1CE1F600FCEB0C /* RadioTwoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RadioTwoTableViewCell.xib; path = FindMusic/RadioTwoTableViewCell.xib; sourceTree = "<group>"; };
 		3739976E1E1E624B00076C37 /* a.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = a.jpg; sourceTree = "<group>"; };
+		373997701E1F3C0200076C37 /* RankUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RankUserViewController.swift; path = FindMusic/RankUserViewController.swift; sourceTree = "<group>"; };
 		373EE2221E03850800C5180A /* ImageSliderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageSliderView.swift; path = Common/ImageSliderView.swift; sourceTree = "<group>"; };
 		373EE2241E03867000C5180A /* UIButton+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIButton+Extension.swift"; path = "Extension/UIKit/UIButton+Extension.swift"; sourceTree = "<group>"; };
 		373EE2261E038D9B00C5180A /* LayoutButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LayoutButton.swift; path = Common/LayoutButton.swift; sourceTree = "<group>"; };
@@ -408,6 +410,7 @@
 			children = (
 				37EFAD961E13C0C000571812 /* RankListViewCell.xib */,
 				DE2654BE1D1023990083F742 /* RankListViewController.swift */,
+				373997701E1F3C0200076C37 /* RankUserViewController.swift */,
 			);
 			name = RankList;
 			sourceTree = "<group>";
@@ -1113,6 +1116,7 @@
 				37D0F78D1DEEEBB80046C9B6 /* BigUInt GCD.swift in Sources */,
 				DE2654AB1D101D440083F742 /* FindMusicViewController.swift in Sources */,
 				3758A38E1DF6A88E00788104 /* LoginViewController.swift in Sources */,
+				373997711E1F3C0200076C37 /* RankUserViewController.swift in Sources */,
 				DE2654B91D1022F10083F742 /* RecommendViewController.swift in Sources */,
 				371ED5CB1E14AC7A006581EA /* SliderViewController.swift in Sources */,
 				DE2654E81D10299F0083F742 /* RecentPlayedViewController.swift in Sources */,

@@ -9,7 +9,6 @@
 import UIKit
 
 class BaseViewController: UIViewController {
-    var needProgramInsertNavigationBar = true
     let navigationBar: BaseNavigationBar = {
         let bar = BaseNavigationBar.init(frame: CGRect(x: 0, y: 20, width: UIScreen.main.bounds.size.width, height: 44))
         bar.backgroundColor = UIColor.clear
@@ -29,6 +28,25 @@ class BaseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    func makeACommonNavigationBar(isBlackIcon: Bool) {
+        if isBlackIcon {
+            navigationBar.leftButton.addTarget(self, action: #selector(tapBackButton), for: .touchUpInside)
+            navigationBar.leftButton.setImage(UIImage.init(named: "cm2_icn_back")?.renderWith(color: UIColor.black), for: UIControlState())
+            navigationBar.leftButton.setImage(UIImage.init(named: "cm2_icn_back")?.renderWith(color: UIColor.black), for: .highlighted)
+            navigationBar.rightButton.addTarget(self, action: #selector(goPlaySongVC), for: .touchUpInside)
+            navigationBar.rightButton.setImage(UIImage.init(named: "cm2_topbar_icn_playing")?.renderWith(color: UIColor.black), for: UIControlState())
+            navigationBar.rightButton.setImage(UIImage.init(named: "cm2_topbar_icn_playing_prs")?.renderWith(color: UIColor.black), for: .highlighted)
+        } else {
+            navigationBar.leftButton.addTarget(self, action: #selector(tapBackButton), for: .touchUpInside)
+            navigationBar.leftButton.setImage(UIImage.init(named: "cm2_icn_back"), for: UIControlState())
+            navigationBar.leftButton.setImage(UIImage.init(named: "cm2_icn_back"), for: .highlighted)
+            navigationBar.rightButton.addTarget(self, action: #selector(goPlaySongVC), for: .touchUpInside)
+            navigationBar.rightButton.setImage(UIImage.init(named: "cm2_topbar_icn_playing"), for: UIControlState())
+            navigationBar.rightButton.setImage(UIImage.init(named: "cm2_topbar_icn_playing_prs"), for: .highlighted)
+        }
+        view.addSubview(navigationBar)
     }
     
     func tapBackButton() {

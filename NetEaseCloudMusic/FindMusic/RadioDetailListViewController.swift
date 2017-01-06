@@ -8,6 +8,8 @@
 
 import UIKit
 
+// This view controller implements parallax effect which has a difference to common effect.
+// scroll down will make the final image become the background image of navigation bar.
 class RadioDetailListViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
     fileprivate lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -92,19 +94,13 @@ class RadioDetailListViewController: BaseViewController, UITableViewDelegate, UI
         view.addSubview(tableView)
         view.backgroundColor = UIColor.white
         
-        navigationBar.leftButton.addTarget(self, action: #selector(tapBackButton), for: .touchUpInside)
-        navigationBar.leftButton.setImage(UIImage.init(named: "cm2_icn_back"), for: UIControlState())
-        navigationBar.leftButton.setImage(UIImage.init(named: "cm2_icn_back"), for: .highlighted)
+        makeACommonNavigationBar(isBlackIcon: false)
         navigationBar.titleString = "电台"
         navigationBar.titleLabel.textColor = UIColor.white
-        navigationBar.rightButton.addTarget(self, action: #selector(goPlaySongVC), for: .touchUpInside)
-        navigationBar.rightButton.setImage(UIImage.init(named: "cm2_topbar_icn_playing"), for: UIControlState())
-        navigationBar.rightButton.setImage(UIImage.init(named: "cm2_topbar_icn_playing_prs"), for: .highlighted)
         navigationBar.backgroundColor = UIColor.clear
         statusBar.backgroundColor = UIColor.clear
         navigationBar.lineView.isHidden = true
         view.addSubview(statusBar)
-        view.addSubview(navigationBar)
         
     }
     

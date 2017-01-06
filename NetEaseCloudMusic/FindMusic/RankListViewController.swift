@@ -93,6 +93,10 @@ extension RankListViewController:  UICollectionViewDelegateFlowLayout, UICollect
     // MARK: - Delegate
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.section == 2 {
+            let vc = RankUserViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     // Flow layout Delegate

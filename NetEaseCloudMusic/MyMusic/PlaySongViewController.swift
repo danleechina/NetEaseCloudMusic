@@ -12,32 +12,32 @@ import UIKit
 class PlaySongViewController: BaseViewController {
     
     // MARK: - IBOutlet
-    @IBOutlet weak var discMaskImageView: UIImageView!
-    @IBOutlet weak var needleImageView: UIImageView!
+    @IBOutlet weak var discMaskImageView:       UIImageView!
+    @IBOutlet weak var needleImageView:         UIImageView!
     @IBOutlet weak var blurBackgroundImageView: UIImageView!
-    @IBOutlet weak var swipableDiscView: UIScrollView!
-    @IBOutlet weak var loveImageView: UIImageView!
-    @IBOutlet weak var lyricTableView: LyricTableView!
-    @IBOutlet weak var downloadImageView: UIImageView!
-    @IBOutlet weak var commentImageView: UIImageView!
-    @IBOutlet weak var settingImageView: UIImageView!
-    @IBOutlet weak var timePointLabel: UILabel!
-    @IBOutlet weak var totalTimeLabel: UILabel!
-    @IBOutlet weak var currentLocationSlider: UISlider!
-    @IBOutlet weak var playModeImageView: UIImageView!
-    @IBOutlet weak var lastSongImageView: UIImageView!
-    @IBOutlet weak var playImageView: UIImageView!
-    @IBOutlet weak var nextImageView: UIImageView!
-    @IBOutlet weak var totalSettingImageView: UIImageView!
-    @IBOutlet weak var dotCurrentProcess: UIImageView!
-    @IBOutlet weak var backButton: UIButton!
-    @IBOutlet weak var shareButton: UIButton!
-    @IBOutlet weak var titleView: UIView!
-    @IBOutlet weak var controlStackView: UIStackView!
-    @IBOutlet weak var lyricTimeImageView: UIImageView!
-    @IBOutlet weak var lineView: UIView!
-    @IBOutlet weak var lyricStateLabel: UILabel!
-    @IBOutlet weak var lyricTimeLabel: UILabel!
+    @IBOutlet weak var swipableDiscView:        UIScrollView!
+    @IBOutlet weak var loveImageView:           UIImageView!
+    @IBOutlet weak var lyricTableView:          LyricTableView!
+    @IBOutlet weak var downloadImageView:       UIImageView!
+    @IBOutlet weak var commentImageView:        UIImageView!
+    @IBOutlet weak var settingImageView:        UIImageView!
+    @IBOutlet weak var timePointLabel:          UILabel!
+    @IBOutlet weak var totalTimeLabel:          UILabel!
+    @IBOutlet weak var currentLocationSlider:   UISlider!
+    @IBOutlet weak var playModeImageView:       UIImageView!
+    @IBOutlet weak var lastSongImageView:       UIImageView!
+    @IBOutlet weak var playImageView:           UIImageView!
+    @IBOutlet weak var nextImageView:           UIImageView!
+    @IBOutlet weak var totalSettingImageView:   UIImageView!
+    @IBOutlet weak var dotCurrentProcess:       UIImageView!
+    @IBOutlet weak var backButton:              UIButton!
+    @IBOutlet weak var shareButton:             UIButton!
+    @IBOutlet weak var titleView:               UIView!
+    @IBOutlet weak var controlStackView:        UIStackView!
+    @IBOutlet weak var lyricTimeImageView:      UIImageView!
+    @IBOutlet weak var lineView:                UIView!
+    @IBOutlet weak var lyricStateLabel:         UILabel!
+    @IBOutlet weak var lyricTimeLabel:          UILabel!
     // MARK: - Tap Action
     
     func tapPlayImage() -> Void {
@@ -195,7 +195,6 @@ class PlaySongViewController: BaseViewController {
     // MARK: Override method
     
     override func viewDidLoad() {
-        self.needProgramInsertNavigationBar = false
         super.viewDidLoad()
         dataInit()
         viewsInit()

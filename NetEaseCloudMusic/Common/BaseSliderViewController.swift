@@ -9,7 +9,6 @@
 import UIKit
 
 class BaseSliderViewController: SliderViewController {
-    var needProgramInsertNavigationBar = true
     let navigationBar: BaseNavigationBar = {
         let bar = BaseNavigationBar.init(frame: CGRect(x: 0, y: 20, width: UIScreen.main.bounds.size.width, height: 44))
         bar.backgroundColor = UIColor.clear
