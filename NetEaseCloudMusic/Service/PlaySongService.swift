@@ -42,7 +42,7 @@ class PlaySongService: NSObject {
     weak var delegate: PlaySongServiceDelegate?
     
     var playMode = PlayMode.order
-    var playLists: CertainSongSheet?
+    var playLists: PlayList?
     
     var currentPlaySong: Int = 0
     fileprivate var songPlayer: AVPlayer?
@@ -206,8 +206,10 @@ class PlaySongService: NSObject {
         var certainIndex = index
         if let playlists = playLists {
             if certainIndex >= 0 && certainIndex < playlists.tracks.count {
-                certainIndex = index
-                playIt(playlists.tracks[certainIndex].mp3Url)
+                if let mp3url = playlists.tracks[certainIndex].mp3Url {
+                    certainIndex = index
+                    playIt(mp3url)
+                }
             }
         } else {
             return nil
@@ -224,8 +226,8 @@ class PlaySongService: NSObject {
     
     func getSongInfoWithIndex(_ index: Int) -> SongInfo? {
         let songInfo = SongInfo()
-        songInfo.picUrl = (playLists?.tracks[index].album.picUrl)!
-        songInfo.blurPicUrl = (playLists?.tracks[index].album.blurPicUrl)!
+        songInfo.picUrl = (playLists?.tracks[index].album?.picUrl)!
+        songInfo.blurPicUrl = (playLists?.tracks[index].album?.blurPicUrl)!
         songInfo.songname = (playLists?.tracks[index].name)!
         songInfo.singers = (playLists?.tracks[index].artists[0].name)!
         songInfo.mp3Url = (playLists?.tracks[index].mp3Url)!

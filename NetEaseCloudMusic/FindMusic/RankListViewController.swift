@@ -8,6 +8,9 @@
 
 import UIKit
 
+// TODO: 
+// 1. 数据请求优化
+// 2. 数据缓存
 class RankListViewController: BaseViewController {
     
     fileprivate lazy var collectionView: UICollectionView = {
@@ -47,6 +50,12 @@ class RankListViewController: BaseViewController {
         super.viewDidLoad()
         view.addSubview(collectionView)
         view.backgroundColor = UIColor.white
+    }
+    
+    fileprivate func loadData() {
+        NetworkMusicApi.shareInstance.rankSongList(index: 0) { (dataString, error) in
+            
+        }
     }
     
     fileprivate let numberOfItemsArray = [5, 20, 2]

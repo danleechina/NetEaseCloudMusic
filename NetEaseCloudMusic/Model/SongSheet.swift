@@ -43,6 +43,7 @@ class SongSheet: NSObject {
         netease.top_playlists { (data, error) in
             if let err = error {
                 print(err)
+                completion(nil, err)
             } else {
                 do {
                     if data != nil {

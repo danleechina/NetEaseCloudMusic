@@ -100,27 +100,31 @@ class NetworkMusicApi: NSObject {
             let perStr = data?.plusSymbolToPercent()
             request.httpBody = perStr?.data(using: .utf8)
             dataTask = defaultSession.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) in
-                if let err = error {
-                    complete(nil, err as NSError?)
-                } else if let httpResponse = response as? HTTPURLResponse {
-                    if httpResponse.statusCode == 200 {
-                        let decodedString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
-                        complete(decodedString as? String, nil)
-                    } else {
-                        complete(nil, nil)
+                DispatchQueue.main.async {
+                    if let err = error {
+                        complete(nil, err as NSError?)
+                    } else if let httpResponse = response as? HTTPURLResponse {
+                        if httpResponse.statusCode == 200 {
+                            let decodedString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+                            complete(decodedString as? String, nil)
+                        } else {
+                            complete(nil, nil)
+                        }
                     }
                 }
             })
         } else if method == "GET" {
             dataTask = defaultSession.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) in
-                if let err = error {
-                    complete(nil, err as NSError?)
-                } else if let httpResponse = response as? HTTPURLResponse {
-                    if httpResponse.statusCode == 200 {
-                        let decodedString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
-                        complete(decodedString as? String, nil)
-                    } else {
-                        complete(nil, nil)
+                DispatchQueue.main.async {
+                    if let err = error {
+                        complete(nil, err as NSError?)
+                    } else if let httpResponse = response as? HTTPURLResponse {
+                        if httpResponse.statusCode == 200 {
+                            let decodedString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+                            complete(decodedString as? String, nil)
+                        } else {
+                            complete(nil, nil)
+                        }
                     }
                 }
             })
@@ -206,6 +210,64 @@ class NetworkMusicApi: NSObject {
         doHttpRequest("GET", url: usrStr, data: nil, complete: complete)
     }
     
+    static let topList = [
+        ["云音乐新歌榜", "/discover/toplist?id=3779629"],
+        ["云音乐热歌榜", "/discover/toplist?id=3778678"],
+        ["网易原创歌曲榜", "/discover/toplist?id=2884035"],
+        ["云音乐飙升榜", "/discover/toplist?id=19723756"],
+        ["云音乐电音榜", "/discover/toplist?id=10520166"],
+        ["UK排行榜周榜", "/discover/toplist?id=180106"],
+        ["美国Billboard周榜", "/discover/toplist?id=60198"],
+        ["KTV嗨榜", "/discover/toplist?id=21845217"],
+        ["iTunes榜", "/discover/toplist?id=11641012"],
+        ["Hit FM Top榜", "/discover/toplist?id=120001"],
+        ["日本Oricon周榜", "/discover/toplist?id=60131"],
+        ["韩国Melon排行榜周榜", "/discover/toplist?id=3733003"],
+        ["韩国Mnet排行榜周榜", "/discover/toplist?id=60255"],
+        ["韩国Melon原声周榜", "/discover/toplist?id=46772709"],
+        ["中国TOP排行榜(港台榜)", "/discover/toplist?id=112504"],
+        ["中国TOP排行榜(内地榜)", "/discover/toplist?id=64016"],
+        ["香港电台中文歌曲龙虎榜", "/discover/toplist?id=10169002"],
+        ["华语金曲榜", "/discover/toplist?id=4395559"],
+        ["中国嘻哈榜", "/discover/toplist?id=1899724"],
+        ["法国 NRJ EuroHot 30周榜", "/discover/toplist?id=27135204"],
+        ["台湾Hito排行榜", "/discover/toplist?id=112463"],
+        ["Beatport全球电子舞曲榜", "/discover/toplist?id=3812895"]
+    ]
+    // 热门单曲 http://music.163.com/#/discover/toplist 50
+    func top_songlist(index: Int = 0, offset: Int = 0, limit: Int = 100, complete: @escaping CompletionBlock) {
+        let action = "http://music.163.com" + NetworkMusicApi.topList[index][1]
+        doHttpRequest("GET", url: action, data: nil) { (dataString, error) in
+            complete(dataString, error)
+        }
+    }
+    
+    // song ids --> song urls ( details )
+    func songs_detail(songIDs: [String], complete: @escaping CompletionBlock) {
+        let action = "http://music.163.com/api/song/detail?ids=[" + songIDs.joined(separator: ",") + "]"
+        doHttpRequest("GET", url: action, data: nil) { (dataString, error) in
+            complete(dataString, error)
+        }
+    }
+    
+    func rankSongList(index: Int, complete: @escaping CompletionBlock) {
+        NetworkMusicApi.shareInstance.top_songlist(index: index) { (data, error) in
+            if let err = error {
+                complete(nil, err)
+                return
+            }
+            if let ret = data?.findAll(for: "/song\\?id=(\\d+)") {
+                let r = ret.unique
+                NetworkMusicApi.shareInstance.songs_detail(songIDs: r) { (data, error) in
+                    complete(data, error)
+                }
+            } else {
+                let error = NSError.init(domain: "没有数据", code: 0, userInfo: nil)
+                complete(nil, error)
+            }
+        }
+    }
+    
     // 搜索单曲(1)，歌手(100)，专辑(10)，歌单(1000)，用户(1002) *(type)*
     func search() {
         // http://music.163.com/api/search/get/web
@@ -241,12 +303,6 @@ class NetworkMusicApi: NSObject {
         
     }
     
-    // 热门单曲 http://music.163.com/#/discover/toplist 50
-    func top_songlist() {
-        //         action = 'http://music.163.com/discover/toplist'
-        
-    }
-    
     // 歌手单曲
     func artists() {
         //         action = 'http://music.163.com/api/artist/' + str(artist_id)
@@ -261,11 +317,6 @@ class NetworkMusicApi: NSObject {
     }
     
     
-    // song ids --> song urls ( details )
-    func songs_detail() {
-        //         action = 'http://music.163.com/api/song/detail?ids=[' + (',').join(tmpids) + ']'
-        
-    }
     
     
     // song id --> song url ( details )

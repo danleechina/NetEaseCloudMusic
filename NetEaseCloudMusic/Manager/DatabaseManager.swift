@@ -143,4 +143,24 @@ class DatabaseManager : NSObject {
             realm.create(PlayListData.self, value: mutableData, update: true)
         }
     }
+    
+    // 获取歌单数据
+    func getPlayListData(playListID: Int) -> PlayList? {
+        let realm = try! Realm()
+        let data = realm.objects(PlayList.self)
+        for item in data {
+            if item.id == playListID {
+                return item
+            }
+        }
+        return nil
+    }
+    
+    // 存储歌单数据
+    func storePlayList(data: ResponseData) {
+        let realm = try! Realm()
+        try! realm.write {
+            realm.create(PlayList.self, value: data, update: true)
+        }
+    }
 }

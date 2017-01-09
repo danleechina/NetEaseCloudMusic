@@ -132,7 +132,7 @@ class PlaySongViewController: BaseViewController {
     
     // MARK: - Property
     
-    var data: CertainSongSheet?
+    var data: PlayList?
     var currentSongIndex = 0
     var picUrl = ""
     var blurPicUrl = ""
@@ -238,10 +238,10 @@ class PlaySongViewController: BaseViewController {
     
     func currentSongIndexChange()  {
         if let da = data {
-            self.picUrl = da.tracks[currentSongIndex].album.picUrl
-            self.blurPicUrl = da.tracks[currentSongIndex].album.blurPicUrl
-            self.songname = da.tracks[currentSongIndex].name
-            self.singers = da.tracks[currentSongIndex].artists[0].name
+            self.picUrl = da.tracks[currentSongIndex].album?.picUrl ?? ""
+            self.blurPicUrl = da.tracks[currentSongIndex].album?.blurPicUrl ?? ""
+            self.songname = da.tracks[currentSongIndex].name ?? ""
+            self.singers = da.tracks[currentSongIndex].artists[0].name ?? ""
         }
     }
     

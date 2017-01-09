@@ -10,6 +10,7 @@ import Foundation
 import RealmSwift
 
 class PlayListData: Object {
+    
     dynamic var userId: Int = 0
     dynamic var more: Bool = false
     let  playlist = List<PlayList>()
@@ -21,72 +22,68 @@ class PlayListData: Object {
 
 class PlayList: Object {
     
-    let belongTo = LinkingObjects(fromType: PlayListData.self, property: "playlist")
+    //    let belongTo = LinkingObjects(fromType: PlayListData.self, property: "playlist")
+    class func loadSongSheetData(_ playListID: String, completion:@escaping (_ data: PlayList?, _ error: NSError?) -> Void) {
+        guard let listID = Int(playListID) else {
+            completion(nil, nil)
+            return
+        }
+        if let result = DatabaseManager.shareInstance.getPlayListData(playListID: listID) {
+            completion(result, nil)
+            return
+        }
+        
+        let netease = NetworkMusicApi.shareInstance
+        netease.playlist_detail(playListID) { (data, error) in
+            if let err = error {
+                completion(nil, err)
+            } else {
+                if let jsonDict = data?.jsonDict {
+                    if jsonDict["code"] as! Int == 200 {
+                        DatabaseManager.shareInstance.storePlayList(data: jsonDict["result"] as! DatabaseManager.ResponseData)
+                        completion(DatabaseManager.shareInstance.getPlayListData(playListID: listID), nil)
+                    }
+                } else {
+                    completion(nil, nil)
+                }
+            }
+        }
+    }
     
-//    dynamic var subscribers [],
-    dynamic var subscribed: Bool = false
-//    dynamic var artists:  null,
-//    dynamic var tracks:  null,
-//    dynamic var tags:  [],
-    dynamic var privacy: Int = 0
-    dynamic var specialType: Int = 5
-    dynamic var newImported: Bool = false
-    dynamic var highQuality: Bool = false
-    dynamic var trackUpdateTime: TimeInterval = 0
-    dynamic var trackCount: Int = 198
-    dynamic var updateTime: TimeInterval = 0
-    dynamic var commentThreadId:  String?
-    dynamic var userId:  Int = 0
-    dynamic var playCount:  Int = 0
-    dynamic var createTime:  TimeInterval = 0
-    dynamic var coverImgId:  Int64 = 0
-//    dynamic var totalDuration:  0
-    dynamic var coverImgUrl: String?
-//    dynamic var description: String?
-    dynamic var status: Int = 0
-    dynamic var cloudTrackCount: Int = 0
-    dynamic var subscribedCount: Int = 0
-    dynamic var adType:  Int = 0
-    dynamic var trackNumberUpdateTime:  TimeInterval = 0
-    dynamic var name: String?
-    dynamic var id: Int = 0
-    dynamic var creator: PlayListCreator?
+    dynamic var adType : Int = 0
+    //    dynamic var artists : AnyObject?
+    dynamic var cloudTrackCount : Int = 0
+    dynamic var commentCount : Int = 0
+    dynamic var commentThreadId : String?
+    dynamic var coverImgId : Int = 0
+    dynamic var coverImgUrl : String?
+    dynamic var createTime : Int = 0
+    dynamic var creator : Creator?
+    dynamic var descriptionField : String?
+    dynamic var highQuality : Bool = false
+    dynamic var id : Int = 0
+    dynamic var name : String?
+    dynamic var newImported : Bool = false
+    dynamic var playCount : Int = 0
+    dynamic var shareCount : Int = 0
+    dynamic var specialType : Int = 0
+    dynamic var status : Int = 0
+    dynamic var subscribed : Bool = false
+    dynamic var subscribedCount : Int = 0
+    //    dynamic var subscribers : [AnyObject]!
+//    dynamic var tags = [String]()
+    dynamic var totalDuration : Int = 0
+    dynamic var trackCount : Int = 0
+    dynamic var trackNumberUpdateTime : Int = 0
+    dynamic var trackUpdateTime : Int = 0
+    var tracks = List<Track>()
+    dynamic var updateTime : Int = 0
+    dynamic var userId : Int = 0
     
     override static func primaryKey() -> String? {
         return "id"
     }
 
-}
-
-class PlayListCreator: Object {
-        dynamic var signature: String?
-        dynamic var authority: Int = 0
-        dynamic var defaultAvatar: Bool = false
-        dynamic var avatarImgId: Int64 = 0
-        dynamic var province: Int = 0
-        dynamic var authStatus: Int = 0
-        dynamic var followed: Bool = false
-        dynamic var avatarUrl: String?
-        dynamic var accountStatus: Int = 0
-        dynamic var gender: Int = 0
-        dynamic var city: Int = 0
-        dynamic var birthday: TimeInterval = 0
-        dynamic var userId: Int = 0
-        dynamic var userType: Int = 0
-        dynamic var nickname: String?
-//        dynamic var description: String?
-        dynamic var detailDescription: String?
-        dynamic var backgroundImgId: Int64 = 0
-        dynamic var backgroundUrl: String?
-        dynamic var mutual: Bool = false
-//        dynamic var expertTags: null
-        dynamic var djStatus: Int = 0
-        dynamic var vipType: Int = 0
-//        dynamic var remarkName: null
-    
-    override static func primaryKey() -> String? {
-        return "userId"
-    }
 }
 
 //{

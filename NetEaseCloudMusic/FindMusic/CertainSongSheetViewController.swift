@@ -22,7 +22,7 @@ class CertainSongSheetViewController: BaseViewController {
     var playListID = "" {
         didSet {
             if playListID != "" {
-                CertainSongSheet.loadSongSheetData(self.playListID) { (data, error) in
+                PlayList.loadSongSheetData(self.playListID) { (data, error) in
                     if error == nil && data != nil {
                         self.data = data!
                     }
@@ -31,7 +31,7 @@ class CertainSongSheetViewController: BaseViewController {
         }
     }
     
-    var data: CertainSongSheet? {
+    var data: PlayList? {
         didSet {
             DispatchQueue.main.async(execute: {
                 if let nndata = self.data {
@@ -41,14 +41,16 @@ class CertainSongSheetViewController: BaseViewController {
                     str1.append(NSAttributedString.init(string: "（共\(nndata.tracks.count)首）", attributes: attr2))
                     self.defaultStyleCertainSongSheetSection.leftButton.setAttributedTitle(str1, for: UIControlState())
                     
-                    self.certainSongSheetTableViewHeadView?.headImageView.imageView.sd_setImage(with: URL.init(string: nndata.coverImgUrl))
-                    self.blurBackgroundImageView.sd_setImage(with: URL.init(string: nndata.coverImgUrl))
+                    if let coverImgUrl = nndata.coverImgUrl {
+                        self.certainSongSheetTableViewHeadView?.headImageView.imageView.sd_setImage(with: URL.init(string: coverImgUrl))
+                        self.blurBackgroundImageView.sd_setImage(with: URL.init(string: coverImgUrl))
+                    }
                     self.certainSongSheetTableViewHeadView?.titleLabel.text = nndata.name
                     self.marqueeTitleLabel.text = nndata.name ?? "歌单"
-                    self.certainSongSheetTableViewHeadView?.authorLabel.text = nndata.creator.nickname
-                    self.certainSongSheetTableViewHeadView?.favoriteButton.setTitle("\(nndata.subscribedCount!)", for: UIControlState())
-                    self.certainSongSheetTableViewHeadView?.commentButton.setTitle("\(nndata.commentCount!)", for: UIControlState())
-                    self.certainSongSheetTableViewHeadView?.shareButton.setTitle("\(nndata.shareCount!)", for: UIControlState())
+                    self.certainSongSheetTableViewHeadView?.authorLabel.text = nndata.creator?.nickname ?? "用户名"
+                    self.certainSongSheetTableViewHeadView?.favoriteButton.setTitle("\(nndata.subscribedCount)", for: UIControlState())
+                    self.certainSongSheetTableViewHeadView?.commentButton.setTitle("\(nndata.commentCount)", for: UIControlState())
+                    self.certainSongSheetTableViewHeadView?.shareButton.setTitle("\(nndata.shareCount)", for: UIControlState())
                     self.certainSongSheetTableViewHeadView?.downloadButton.setTitle("下载", for: UIControlState())
                 }
                 self.tableView.reloadData()
@@ -166,7 +168,7 @@ extension CertainSongSheetViewController: UITableViewDelegate, UITableViewDataSo
         cell.orderLabel.text = "\((indexPath as NSIndexPath).row + 1)"
         let val = (data!.tracks[(indexPath as NSIndexPath).row])
         cell.titleLabel.text = val.name
-        cell.detailLabel.text = "\(val.artists[0].name!)-\(val.album.name!)"
+        cell.detailLabel.text = "\(val.artists[0].name!)-\(val.album?.name ?? "")"
         if playSongService.currentPlaySong == (indexPath as NSIndexPath).row && playSongService.playLists?.id == Int(playListID) {
             cell.orderLabel.isHidden = true
             cell.isPlayingImageView.isHidden = false
