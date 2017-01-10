@@ -50,17 +50,82 @@ class RankListViewController: BaseViewController {
         super.viewDidLoad()
         view.addSubview(collectionView)
         view.backgroundColor = UIColor.white
+        loadData()
     }
     
     fileprivate func loadData() {
-        NetworkMusicApi.shareInstance.rankSongList(index: 0) { (dataString, error) in
-            
+        for id in topListID {
+            loadRankSongListData(index: id)
         }
     }
     
-    fileprivate let numberOfItemsArray = [5, 20, 2]
-    fileprivate let sectionTexts = ["云音乐官方榜", "全球榜", "用户榜",]
+    fileprivate func loadRankSongListData(index: String) {
+        PlayList.loadSongSheetData(index) { (playList, error) in
+            if let err = error {
+                print(err)
+            } else {
+                self.data[index] = playList
+            }
+        }
+    }
     
+    fileprivate let numberOfItemsArray = [4, 20, 2]
+    fileprivate let sectionTexts = ["云音乐官方榜", "全球榜", "用户榜"]
+    fileprivate let updateTexts = ["每天更新", "每天更新", "每周四更新", "每周四更新",
+                                   
+                                   "每周五更新","每周四更新","每周一更新",
+                                   "每周一更新","每周一更新","每周四更新",
+                                   "每周三更新","每周四更新","每周一更新",
+                                   "每周三更新","每周五更新","每周一更新",
+                                   "每周一更新", "每周五更新", "每周一更新",
+                                   "每周一更新", "每周一更新", "每周五更新",
+                                   "每周一更新", "每周五更新",
+                                   
+                                   "每周一更新", "每周一更新",
+                                   ]
+    fileprivate let titleTexts = ["云音乐飙升榜", "云音乐新歌榜", "原创歌曲榜", "云音乐热歌榜",
+                                  
+                                  "云音乐电音榜", "云音乐ACG音乐榜", "韩国Melon排行榜周榜",
+                                  "韩国Melon原声周榜", "韩国Mnet排行榜周榜", "Beatport全球电子舞曲榜",
+                                  "日本Oricon周榜", "云音乐古典音乐榜", "UK排行榜周榜",
+                                  "美国Billboard周榜", "法国 NRJ Vos Hits 周榜", "iTunes榜",
+                                  "Hit FM Top榜", "KTV唛榜", "台湾Hito排行榜",
+                                  "中国TOP排行榜（港台榜）", "中国TOP排行榜（内地榜）", "香港电台中文歌曲龙虎榜",
+                                  "华语金曲榜", "中国嘻哈榜",
+                                  
+                                  "音乐达人榜", "音乐新人榜",
+                                  ]
+    
+    fileprivate let topListID = ["19723756", "3779629", "2884035", "3778678",
+                                 
+                          "10520166", "71385702", "3733003",
+                          "46772709", "60255", "3812895",
+                          "60131", "71384707", "180106",
+                          "60198", "27135204", "11641012",
+                          "120001", "21845217", "112463",
+                          "112504", "64016", "10169002",
+                          "4395559", "1899724",
+                          ]
+    
+    fileprivate let imageURLString = ["", "", "", "",
+                                      "", "", "",
+                                      "", "", "",
+                                      "", "", "",
+                                      "", "", "",
+                                      "", "", "",
+                                      "", "", "",
+                                      "", "", "",
+                                      "", "", "",
+                                      "", "", "",
+                                      ]
+    fileprivate var data = [String:PlayList]() {
+        didSet {
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+    }
+
 }
 
 extension RankListViewController:  UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource {
@@ -77,16 +142,34 @@ extension RankListViewController:  UICollectionViewDelegateFlowLayout, UICollect
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RankListViewCell.identifier, for: indexPath) as! RankListViewCell
-            cell.leftImageView.image = UIImage.init(named: "1.jpg")!
+            cell.indicatorLabel.text = updateTexts[indexPath.row]
+            if let data = self.data[topListID[indexPath.row]] {
+                cell.leftImageView.sd_setImage(with: URL.init(string: data.coverImgUrl!))
+                cell.firstLabel.text = data.tracks.count > 0 ? "1. \(data.tracks[0].name ?? "")" : ""
+                cell.secondLabel.text = data.tracks.count > 1 ? "2. \(data.tracks[1].name ?? "")" : ""
+                cell.thirdLabel.text = data.tracks.count > 2 ? "3. \(data.tracks[2].name ?? "")" : ""
+            }
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendViewCell.identifier, for: indexPath) as! RecommendViewCell
-            cell.mainImageView.image = UIImage.init(named: "1.jpg")!
-            
+            if indexPath.section == 1 {
+                if let data = self.data[topListID[indexPath.row + numberOfItemsArray[0]]] {
+                    cell.mainImageView.sd_setImage(with: URL.init(string: data.coverImgUrl!))
+                }
+            } else {
+                cell.mainImageView.image = UIImage.init(named: "1.jpg")!
+            }
             cell.topLeftLabel.isHidden = true
             cell.topRightLabel.isHidden = true
             cell.bottomLeftLabel.isHidden = true
             cell.bottomRightLabel.isHidden = true
+            
+            let startOffset = indexPath.section == 1 ?
+                numberOfItemsArray[indexPath.section - 1] : numberOfItemsArray[indexPath.section - 1] + numberOfItemsArray[indexPath.section - 2]
+            cell.bottomLeftLabel.text = updateTexts[indexPath.row + startOffset]
+            cell.bottomLeftLabel.isHidden = false
+            cell.mainTitleLabel.text = titleTexts[indexPath.row + startOffset]
+
             return cell
         }
     }
@@ -105,6 +188,14 @@ extension RankListViewController:  UICollectionViewDelegateFlowLayout, UICollect
         if indexPath.section == 2 {
             let vc = RankUserViewController()
             self.navigationController?.pushViewController(vc, animated: true)
+        } else if indexPath.section == 1 {
+            let vc = CertainSongSheetViewController()
+            vc.playListID = topListID[indexPath.row + numberOfItemsArray[0]]
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else if indexPath.section == 0 {
+            let vc = CertainSongSheetViewController()
+            vc.playListID = topListID[indexPath.row]
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     
@@ -118,13 +209,15 @@ extension RankListViewController:  UICollectionViewDelegateFlowLayout, UICollect
         if indexPath.section == 0 {
             return CGSize(width: collectionView.bounds.width - 16, height: 100)
         } else {
-            return CGSize(width: collectionView.bounds.width/3 - 40/3, height: collectionView.bounds.width/3 - 40/3 + 30)
+            return CGSize(width: collectionView.bounds.width/3 - 40/3, height: collectionView.bounds.width/3 - 40/3 + 40)
         }
     }
 
 }
 
 class RankListViewCell: UICollectionViewCell {
+    static let identifier = "RankListViewCell"
+    
     @IBOutlet weak var leftImageView: UIImageView!
     @IBOutlet weak var firstLabel: UILabel!
     @IBOutlet weak var secondLabel: UILabel!
@@ -132,7 +225,4 @@ class RankListViewCell: UICollectionViewCell {
     @IBOutlet weak var indicatorLabel: UILabel!
     
     @IBOutlet weak var lineView: UIView!
-    
-    
-    static let identifier = "RankListViewCell"
 }

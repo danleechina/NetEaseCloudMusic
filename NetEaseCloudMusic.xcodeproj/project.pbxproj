@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		11EDA0711EB09D90F97A2256 /* Pods_NetEaseCloudMusic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C56330457B099963557BB91 /* Pods_NetEaseCloudMusic.framework */; };
+		3716A7731E2496B80022275E /* CertainSongSheetTableViewHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3716A7721E2496B80022275E /* CertainSongSheetTableViewHeadView.xib */; };
+		3716A7751E24C9540022275E /* CertainSongSheetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3716A7741E24C9540022275E /* CertainSongSheetCell.xib */; };
 		371ED5CB1E14AC7A006581EA /* SliderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371ED5CA1E14AC7A006581EA /* SliderViewController.swift */; };
 		371ED5CD1E14B230006581EA /* ArrayProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371ED5CC1E14B230006581EA /* ArrayProxy.swift */; };
 		371F85241DEEBE6E00DA6C75 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371F85231DEEBE6E00DA6C75 /* String+Extension.swift */; };
@@ -183,6 +185,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3716A7721E2496B80022275E /* CertainSongSheetTableViewHeadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CertainSongSheetTableViewHeadView.xib; path = FindMusic/CertainSongSheetTableViewHeadView.xib; sourceTree = "<group>"; };
+		3716A7741E24C9540022275E /* CertainSongSheetCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CertainSongSheetCell.xib; path = FindMusic/CertainSongSheetCell.xib; sourceTree = "<group>"; };
 		371ED5CA1E14AC7A006581EA /* SliderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SliderViewController.swift; path = Common/SliderViewController.swift; sourceTree = "<group>"; };
 		371ED5CC1E14B230006581EA /* ArrayProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArrayProxy.swift; path = Common/Foundation/ArrayProxy.swift; sourceTree = "<group>"; };
 		371F85231DEEBE6E00DA6C75 /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+Extension.swift"; path = "Extension/Foundation/String+Extension.swift"; sourceTree = "<group>"; };
@@ -436,6 +440,9 @@
 		3734E4D51E1CE25900FCEB0C /* SongSheet */ = {
 			isa = PBXGroup;
 			children = (
+				DE13AB1A1D378CD9004BA90C /* CertainSongSheetViewController.swift */,
+				3716A7741E24C9540022275E /* CertainSongSheetCell.xib */,
+				3716A7721E2496B80022275E /* CertainSongSheetTableViewHeadView.xib */,
 				375D46C71E0BACA200FC4A02 /* SongSheetViewController.swift */,
 				375D46C91E0BB34200FC4A02 /* SongSheetViewHeader.xib */,
 				375D46C41E0BA9B000FC4A02 /* SongSheetViewSection.xib */,
@@ -625,7 +632,6 @@
 			children = (
 				DE2654AA1D101D440083F742 /* FindMusicViewController.swift */,
 				DE2654C01D10249D0083F742 /* SoundHoundViewController.swift */,
-				DE13AB1A1D378CD9004BA90C /* CertainSongSheetViewController.swift */,
 				DE2654E21D1028C60083F742 /* ContentVC */,
 			);
 			name = FindMusic;
@@ -940,10 +946,12 @@
 				37C473BB1E0A7107006F5B3C /* RecommendViewCell.xib in Resources */,
 				DE2654801D101A860083F742 /* Main.storyboard in Resources */,
 				DE2474751D1AB83C00EBAA37 /* CommentCell.xib in Resources */,
+				3716A7751E24C9540022275E /* CertainSongSheetCell.xib in Resources */,
 				37C473B51E0A6C9C006F5B3C /* RecommendViewFooter.xib in Resources */,
 				37E503081E137FE300E3B7CD /* RadioViewOneCell.xib in Resources */,
 				3739976F1E1E624B00076C37 /* a.jpg in Resources */,
 				375D46C61E0BA9B000FC4A02 /* SongSheetViewSection.xib in Resources */,
+				3716A7731E2496B80022275E /* CertainSongSheetTableViewHeadView.xib in Resources */,
 				375D46CA1E0BB34200FC4A02 /* SongSheetViewHeader.xib in Resources */,
 				37E5030A1E13800500E3B7CD /* RadioViewTwoCell.xib in Resources */,
 				37C473B11E0A6C82006F5B3C /* RecommendViewSection.xib in Resources */,
@@ -1306,6 +1314,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "NetEaseCloudMusic/NetEaseCloudMusic-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -1329,6 +1338,7 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "NetEaseCloudMusic/NetEaseCloudMusic-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

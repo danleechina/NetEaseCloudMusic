@@ -7,18 +7,13 @@
 //
 
 import UIKit
-import SnapKit
 
 class CertainSongSheetViewController: BaseViewController {
     
     let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
     let backView = UIView()
     
-    var blurBackgroundImageView: UIImageView = {
-        let imageView = UIImageView()
-        return imageView
-    }()
-    
+    var blurBackgroundImageView = UIImageView()    
     var playListID = "" {
         didSet {
             if playListID != "" {
@@ -42,16 +37,16 @@ class CertainSongSheetViewController: BaseViewController {
                     self.defaultStyleCertainSongSheetSection.leftButton.setAttributedTitle(str1, for: UIControlState())
                     
                     if let coverImgUrl = nndata.coverImgUrl {
-                        self.certainSongSheetTableViewHeadView?.headImageView.imageView.sd_setImage(with: URL.init(string: coverImgUrl))
+                        self.certainSongSheetTableViewHeadView.mainImageView.sd_setImage(with: URL.init(string: coverImgUrl))
                         self.blurBackgroundImageView.sd_setImage(with: URL.init(string: coverImgUrl))
                     }
-                    self.certainSongSheetTableViewHeadView?.titleLabel.text = nndata.name
+                    self.certainSongSheetTableViewHeadView.mainTitleLabel.text = nndata.name ?? ""
                     self.marqueeTitleLabel.text = nndata.name ?? "歌单"
-                    self.certainSongSheetTableViewHeadView?.authorLabel.text = nndata.creator?.nickname ?? "用户名"
-                    self.certainSongSheetTableViewHeadView?.favoriteButton.setTitle("\(nndata.subscribedCount)", for: UIControlState())
-                    self.certainSongSheetTableViewHeadView?.commentButton.setTitle("\(nndata.commentCount)", for: UIControlState())
-                    self.certainSongSheetTableViewHeadView?.shareButton.setTitle("\(nndata.shareCount)", for: UIControlState())
-                    self.certainSongSheetTableViewHeadView?.downloadButton.setTitle("下载", for: UIControlState())
+                    self.certainSongSheetTableViewHeadView.mainButton.setTitle(nndata.creator?.nickname ?? "", for: .normal)
+                    self.certainSongSheetTableViewHeadView.favoriteLabel.text = "\(nndata.subscribedCount)"
+                    self.certainSongSheetTableViewHeadView.commentLabel.text = "\(nndata.commentCount)"
+                    self.certainSongSheetTableViewHeadView.shareLabel.text = "\(nndata.shareCount)"
+                    self.certainSongSheetTableViewHeadView.downloadLabel.text = "下载"
                 }
                 self.tableView.reloadData()
             })
@@ -61,13 +56,15 @@ class CertainSongSheetViewController: BaseViewController {
     
     let playSongService: PlaySongService = PlaySongService.sharedInstance
     
-    var certainSongSheetTableViewHeadView: CertainSongSheetTableViewHeadView? {
-        didSet {
-            certainSongSheetTableViewHeadView?.headImageView.starImageView.isHidden = true
-            certainSongSheetTableViewHeadView?.headImageView.authorLabel.isHidden = true
-            certainSongSheetTableViewHeadView?.headImageView.bottomMaskView.isHidden = true
-        }
-    }
+    fileprivate lazy var certainSongSheetTableViewHeadView: CertainSongSheetTableViewHeadView = {
+        let nib = UINib.init(nibName: "CertainSongSheetTableViewHeadView", bundle: nil)
+        let view = nib.instantiate(withOwner: nil, options: nil).last as! CertainSongSheetTableViewHeadView
+        view.topLeftLabel.isHidden = true
+        view.topRightLabel.isHidden = true
+        view.bottomLeftLabel.isHidden = true
+        view.bottomRightLabel.isHidden = true
+        return view
+    }()
     
     lazy var defaultStyleCertainSongSheetSection: CertainSongSheetSection = {
         let certainSongSheetSection = CertainSongSheetSection()
@@ -107,10 +104,13 @@ class CertainSongSheetViewController: BaseViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = UIColor.clear
-        tableView.estimatedRowHeight = 64
-        tableView.tableHeaderView = CertainSongSheetTableViewHeadView.init(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 190))
-        tableView.tableFooterView = UIView()
+        tableView.rowHeight = 60
+        tableView.tableHeaderView = self.certainSongSheetTableViewHeadView
+        tableView.separatorStyle = .none
         tableView.alwaysBounceVertical = true
+        
+        let cellNib = UINib.init(nibName: "CertainSongSheetCell", bundle: nil)
+        tableView.register(cellNib, forCellReuseIdentifier: CertainSongSheetCell.identifier)
         return tableView
     }()
     
@@ -134,7 +134,7 @@ class CertainSongSheetViewController: BaseViewController {
         backView.frame = view.bounds
         
         view.addSubview(tableView)
-        self.certainSongSheetTableViewHeadView = self.tableView.tableHeaderView as? CertainSongSheetTableViewHeadView
+        self.certainSongSheetTableViewHeadView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 200)
         view.backgroundColor = UIColor.white
 
         self.view.addSubview(self.navigationBar)
@@ -164,24 +164,23 @@ extension CertainSongSheetViewController: UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = CertainSongSheetCell.cellFor(tableView) as! CertainSongSheetCell
-        cell.orderLabel.text = "\((indexPath as NSIndexPath).row + 1)"
+        let cell = tableView.dequeueReusableCell(withIdentifier: CertainSongSheetCell.identifier, for: indexPath) as! CertainSongSheetCell
         let val = (data!.tracks[(indexPath as NSIndexPath).row])
-        cell.titleLabel.text = val.name
-        cell.detailLabel.text = "\(val.artists[0].name!)-\(val.album?.name ?? "")"
-        if playSongService.currentPlaySong == (indexPath as NSIndexPath).row && playSongService.playLists?.id == Int(playListID) {
-            cell.orderLabel.isHidden = true
-            cell.isPlayingImageView.isHidden = false
+        cell.tendencyLabel.isHidden = true
+        cell.rankLabel.text = indexPath.row < 9 ? "0\(indexPath.row + 1)" : "\(indexPath.row + 1)"
+        cell.mainTitleLabel.text = val.name
+        cell.detailTitleLabel.text = "\(val.artists[0].name!)-\(val.album?.name ?? "")"
+        if playSongService.currentPlaySong == indexPath.row && playSongService.playLists?.id == Int(playListID) {
+            cell.rankLabel.isHidden = true
+            cell.playingImageView.isHidden = false
         } else {
-            cell.orderLabel.isHidden = false
-            cell.isPlayingImageView.isHidden = true
+            cell.rankLabel.isHidden = false
+            cell.playingImageView.isHidden = true
         }
-        
-        if val.mvid == 0 {
-            cell.mvButton.isHidden = true
-        } else {
-            cell.mvButton.isHidden = false
-        }
+        cell.rankLabel.textColor = indexPath.row < 3 ? FixedValue.mainRedColor : UIColor.lightGray
+        cell.rankLabelConstraint.isActive = false
+        cell.rankLabelCenterConstraint.isActive = true
+        cell.mvPlayButton.isHidden = val.mvid == 0
         return cell
     }
     
@@ -206,281 +205,83 @@ extension CertainSongSheetViewController: UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50
+        return CertainSongSheetSection.sectionHeight
     }
 }
 
 class CertainSongSheetCell: UITableViewCell {
     static let identifier = "CertainSongSheetCell"
     
-    lazy var orderLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.textColor = UIColor.lightGray
-        return label
-    }()
+    @IBOutlet weak var rankLabel: UILabel!
+    @IBOutlet weak var tendencyLabel: UILabel!
+    @IBOutlet weak var playingImageView: UIImageView!
     
-    lazy var isPlayingImageView: UIImageView = {
-        let imageView = UIImageView.init(image: UIImage.init(named: "cm2_icn_volume"))
-        imageView.contentMode = .center
-        return imageView
-    }()
+    @IBOutlet weak var mainTitleLabel: UILabel!
+    @IBOutlet weak var detailTitleLabel: UILabel!
+    @IBOutlet weak var mvPlayButton: UIButton!
+    @IBOutlet weak var moreButton: UIButton!
     
-    lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .left
-        label.textColor = UIColor.black
-        return label
-    }()
-    
-    lazy var detailLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .left
-        label.textColor = UIColor.lightGray
-        label.font = UIFont.systemFont(ofSize: 12)
-        return label
-    }()
-    
-    lazy var moreButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage.init(named: "cm2_list_btn_more"), for: UIControlState())
-        button.setImage(UIImage.init(named: "cm2_list_btn_more_prs"), for: .highlighted)
-        return button
-    }()
-    
-    lazy var mvButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage.init(named: "cm2_list_btn_icn_mv_new"), for: UIControlState())
-        button.setImage(UIImage.init(named: "cm2_list_btn_icn_mv_new"), for: .highlighted)
-        return button
-    }()
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        orderLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(self.snp.left)
-            make.width.equalTo(44)
-            make.centerY.equalTo(self.snp.centerY)
-        }
-        
-        isPlayingImageView.snp.makeConstraints { (make) in
-            make.width.equalTo(20)
-            make.height.equalTo(20)
-            make.centerY.equalTo(self.snp.centerY)
-            make.centerX.equalTo(self.snp.left).offset(22)
-        }
-        
-        titleLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(orderLabel.snp.right)
-            make.right.equalTo(mvButton.snp.left)
-            make.top.equalTo(self.snp.top)
-            make.bottom.equalTo(self.snp.centerY)
-        }
-        
-        detailLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(self.snp.centerY)
-            make.left.equalTo(titleLabel.snp.left)
-            make.right.equalTo(titleLabel.snp.right)
-            make.bottom.equalTo(self.snp.bottom)
-        }
-        
-        mvButton.snp.makeConstraints { (make) in
-            make.width.equalTo(44)
-            make.height.equalTo(44)
-            make.right.equalTo(moreButton.snp.left)
-            make.centerY.equalTo(self.snp.centerY)
-        }
-        
-        moreButton.snp.makeConstraints { (make) in
-            make.width.equalTo(30)
-            make.height.equalTo(30)
-            make.right.equalTo(self.snp.right).offset(-10)
-            make.centerY.equalTo(self.snp.centerY)
-        }
-    }
-    
-    class func cellFor(_ tableView: UITableView) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: CertainSongSheetCell.identifier)
-        if cell == nil {
-            cell = CertainSongSheetCell.init(style: .default, reuseIdentifier: CertainSongSheetCell.identifier)
-        }
-        
-        return cell!
-    }
-    
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        addSubview(orderLabel)
-        addSubview(isPlayingImageView)
-        addSubview(titleLabel)
-        addSubview(detailLabel)
-        addSubview(moreButton)
-        addSubview(mvButton)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    @IBOutlet weak var rankLabelConstraint: NSLayoutConstraint!
+    @IBOutlet weak var rankLabelCenterConstraint: NSLayoutConstraint!
 }
 
 class CertainSongSheetTableViewHeadView: UIView {
     
-    var headImageView: CertainSongSheetHeadImage = {
-        let headImageView = CertainSongSheetHeadImage()
-        return headImageView
-    }()
+    @IBOutlet weak var mainImageView: UIImageView!
+    @IBOutlet weak var topLeftLabel: UILabel!
+    @IBOutlet weak var topRightLabel: UILabel!
+    @IBOutlet weak var bottomLeftLabel: UILabel!
+    @IBOutlet weak var bottomRightLabel: UILabel!
+    @IBOutlet weak var mainTitleLabel: UILabel!
+    @IBOutlet weak var mainButton: UIButton!
     
-    var titleLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = UIColor.white
-        label.font = UIFont.systemFont(ofSize: 14)
-        label.numberOfLines = 2
-        label.backgroundColor = UIColor.black
-        return label
-    }()
+    @IBOutlet weak var favoriteLabel: UILabel!
+    @IBOutlet weak var commentLabel: UILabel!
+    @IBOutlet weak var shareLabel: UILabel!
+    @IBOutlet weak var downloadLabel: UILabel!
     
-    var authorLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = UIColor.lightGray
-        label.font = UIFont.systemFont(ofSize: 12)
-        label.backgroundColor = UIColor.black
-        return label
-    }()
-    
-    lazy var favoriteButton: UIButton = {
-        return self.getCommonButton(UIImage.init(named: "cm2_list_detail_icn_fav_new")!, highlightedImage: UIImage.init(named: "cm2_list_detail_icn_fav_new_prs")!)
-    }()
-    
-    lazy var commentButton: UIButton = {
-        return self.getCommonButton(UIImage.init(named: "cm2_list_detail_icn_cmt")!, highlightedImage: UIImage.init(named: "cm2_list_detail_icn_cmt_prs")!)
-    }()
-    
-    lazy var shareButton: UIButton = {
-        return self.getCommonButton(UIImage.init(named: "cm2_list_detail_icn_share")!, highlightedImage: UIImage.init(named: "cm2_list_detail_icn_share_prs")!)
-
-    }()
-    
-    lazy var downloadButton: UIButton = {
-        return self.getCommonButton(UIImage.init(named: "cm2_list_detail_icn_dld")!, highlightedImage: UIImage.init(named: "cm2_list_detail_icn_dld_prs")!)
-
-    }()
-    
-    var bottomControlsStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.alignment = .top
-        stackView.spacing = 20
-        stackView.distribution = .equalCentering
-        return stackView
-    }()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        addSubview(headImageView)
-        addSubview(titleLabel)
-        addSubview(authorLabel)
-        addSubview(bottomControlsStackView)
-        
-        bottomControlsStackView.addArrangedSubview(favoriteButton)
-        bottomControlsStackView.addArrangedSubview(commentButton)
-        bottomControlsStackView.addArrangedSubview(shareButton)
-        bottomControlsStackView.addArrangedSubview(downloadButton)
-        self.backgroundColor = UIColor.clear
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        headImageView.snp.makeConstraints { (make) in
-            make.top.equalTo(self.snp.top).offset(5)
-            make.left.equalTo(self.snp.left).offset(5)
-            make.width.equalTo(120)
-            make.height.equalTo(120)
-        }
-        
-        titleLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(self.headImageView.snp.top)
-            make.left.equalTo(self.headImageView.snp.right).offset(10)
-            make.right.equalTo(self.snp.right).offset(-5)
-            make.bottom.equalTo(self.headImageView.snp.centerY).offset(-5)
-        }
-        
-        authorLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(self.headImageView.snp.centerY)
-            make.left.equalTo(self.titleLabel.snp.left)
-            make.right.equalTo(self.titleLabel.snp.right)
-            make.bottom.equalTo(self.headImageView.snp.bottom)
-        }
-        
-        bottomControlsStackView.snp.makeConstraints { (make) in
-            make.left.equalTo(self.headImageView.snp.left)
-            make.right.equalTo(self.titleLabel.snp.right)
-            make.top.equalTo(self.headImageView.snp.bottom).offset(10)
-            make.bottom.equalTo(self.snp.bottom)
-        }
-        
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func getCommonButton(_ normalImage: UIImage, highlightedImage: UIImage) -> UIButton {
-        let button = UIButton()
-        button.frame = CGRect(x: 0, y: 0, width: 25, height: 50)
-        button.contentHorizontalAlignment = .center
-        button.contentVerticalAlignment = .center
-        button.setTitleColor(UIColor.white, for: UIControlState())
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
-        button.setImage(normalImage, for: UIControlState())
-        button.setImage(highlightedImage, for: .highlighted)
-        button.imageEdgeInsets =  UIEdgeInsetsMake(0, normalImage.size.width/2, 0, 0)
-        button.titleEdgeInsets = UIEdgeInsetsMake(0, -normalImage.size.width/2, -normalImage.size.height, 0)
-        return button
-    }
+    @IBOutlet weak var favoriteImageView: UIImageView!
+    @IBOutlet weak var commentImageView: UIImageView!
+    @IBOutlet weak var shareImageView: UIImageView!
+    @IBOutlet weak var downloadImageView: UIImageView!
 }
 
 class CertainSongSheetSection: UIView {
-    let leftButton: UIButton = {
-        let button = UIButton()
-        return button
-    }()
-    
-    let rightButton: UIButton = {
-        let button = UIButton()
-        return button
-    }()
-    
-//    let bottomLine
+    static let sectionHeight: CGFloat = 50
+    let leftButton = UIButton()
+    let rightButton = UIButton()
+    let lineView = UIView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         addSubview(leftButton)
         addSubview(rightButton)
+        addSubview(lineView)
+        
+        lineView.backgroundColor = FixedValue.seperateLineColor
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        leftButton.snp.makeConstraints { (make) in
-            make.left.equalTo(self.snp.left)
-            make.centerY.equalTo(self.snp.centerY)
-            make.height.equalTo(40)
-            make.right.equalTo(rightButton.snp.left)
-        }
+        rightButton.height = 44
+        rightButton.width = 44
+        rightButton.right = self.right - 5
+        rightButton.centerY = CertainSongSheetSection.sectionHeight/2
         
-        rightButton.snp.makeConstraints { (make) in
-            make.right.equalTo(self.snp.right).offset(-5)
-            make.centerY.equalTo(self.snp.centerY)
-            make.width.equalTo(44)
-            make.height.equalTo(44)
-        }
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        leftButton.left = self.left + 10
+        leftButton.height = 40
+        leftButton.centerY = CertainSongSheetSection.sectionHeight/2
+        leftButton.width = self.width - rightButton.width - 20
+        
+        
+        lineView.height = 0.5
+        lineView.width = self.width
+        lineView.bottom = CertainSongSheetSection.sectionHeight - 0.5
+        lineView.left = self.left
     }
 }

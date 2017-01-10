@@ -20,37 +20,37 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8Wg-ED-E2F">
-                        <rect key="frame" x="0.0" y="8.5" width="173.5" height="157.5"/>
+                        <rect key="frame" x="0.0" y="8.5" width="157.5" height="157.5"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="8Wg-ED-E2F" secondAttribute="height" multiplier="1.1:1" id="mK3-MI-9QV"/>
+                            <constraint firstAttribute="width" secondItem="8Wg-ED-E2F" secondAttribute="height" id="mK3-MI-9QV"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. 下雪的季节 - 本兮" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBZ-fr-UZ8">
-                        <rect key="frame" x="181.5" y="56" width="211.5" height="18"/>
+                        <rect key="frame" x="165.5" y="56" width="227.5" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.49014008045196533" green="0.49022829532623291" blue="0.49013447761535645" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2. 我梦见我梦见你 - 本兮" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fS9-B0-uN4">
-                        <rect key="frame" x="181.5" y="79" width="211.5" height="18"/>
+                        <rect key="frame" x="165.5" y="79" width="227.5" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.49014008045196533" green="0.49022829532623291" blue="0.49013447761535645" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3. 空虚，沸腾 - 苏一音／童右" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Pi-Av-L6j">
-                        <rect key="frame" x="181.5" y="102" width="211.5" height="18"/>
+                        <rect key="frame" x="165.5" y="102" width="227.5" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.49014008045196533" green="0.49022829532623291" blue="0.49013447761535645" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="每天更新" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FBb-wz-coB">
-                        <rect key="frame" x="2" y="149.5" width="163.5" height="14.5"/>
+                        <rect key="frame" x="2" y="149.5" width="147.5" height="14.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RMd-ch-VzU">
-                        <rect key="frame" x="181.5" y="173.5" width="211.5" height="0.5"/>
+                        <rect key="frame" x="165.5" y="173.5" width="227.5" height="0.5"/>
                         <color key="backgroundColor" red="0.93703609704971313" green="0.94117802381515503" blue="0.94519203901290894" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="0.5" id="jrz-pJ-4jU"/>
