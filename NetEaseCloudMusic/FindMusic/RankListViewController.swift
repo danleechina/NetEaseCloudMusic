@@ -106,18 +106,6 @@ class RankListViewController: BaseViewController {
                           "112504", "64016", "10169002",
                           "4395559", "1899724",
                           ]
-    
-    fileprivate let imageURLString = ["", "", "", "",
-                                      "", "", "",
-                                      "", "", "",
-                                      "", "", "",
-                                      "", "", "",
-                                      "", "", "",
-                                      "", "", "",
-                                      "", "", "",
-                                      "", "", "",
-                                      "", "", "",
-                                      ]
     fileprivate var data = [String:PlayList]() {
         didSet {
             DispatchQueue.main.async {

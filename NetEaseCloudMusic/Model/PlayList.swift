@@ -33,36 +33,20 @@ class PlayList: Object {
             return
         }
         
-        let netease = NetworkMusicApi.shareInstance
-//        // 排行榜数据
-//        if listID < 0 {
-//            netease.rankSongList(index: -listID - 1, complete: { (dataString, error) in
-//                if let jsonDict = dataString?.jsonDict {
-//                    var formatData = [String:Any]()
-//                    formatData["id"] = listID
-//                    formatData["tracks"] = jsonDict["songs"]
-//                    DatabaseManager.shareInstance.storePlayList(data: formatData)
-//                    PlayList.loadSongSheetData(playListID, completion: completion)
-//                } else {
-//                    completion(nil, error)
-//                }
-//            })
-//        } else {
-            netease.playlist_detail(playListID) { (data, error) in
-                if let err = error {
-                    completion(nil, err)
-                } else {
-                    if let jsonDict = data?.jsonDict {
-                        if jsonDict["code"] as! Int == 200 {
-                            DatabaseManager.shareInstance.storePlayList(data: jsonDict["result"] as! DatabaseManager.ResponseData)
-                            completion(DatabaseManager.shareInstance.getPlayListData(playListID: listID), nil)
-                        }
-                    } else {
-                        completion(nil, nil)
+        NetworkMusicApi.shareInstance.playlist_detail(playListID) { (data, error) in
+            if let err = error {
+                completion(nil, err)
+            } else {
+                if let jsonDict = data?.jsonDict {
+                    if jsonDict["code"] as! Int == 200 {
+                        DatabaseManager.shareInstance.storePlayList(data: jsonDict["result"] as! DatabaseManager.ResponseData)
+                        completion(DatabaseManager.shareInstance.getPlayListData(playListID: listID), nil)
                     }
+                } else {
+                    completion(nil, nil)
                 }
             }
-//        }
+        }
     }
     
     dynamic var adType : Int = 0

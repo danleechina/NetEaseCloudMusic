@@ -60,6 +60,11 @@ class SongSheetViewController: BaseViewController {
             }
         }
     }
+    
+    func clickAllCategory(sender: UIButton) {
+        let vc = FilterSongSheetViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 
 }
 
@@ -88,7 +93,8 @@ extension SongSheetViewController: UICollectionViewDelegateFlowLayout, UICollect
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if indexPath.section == 0 {
-            let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SongSheetViewSection.identifier, for: indexPath)
+            let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SongSheetViewSection.identifier, for: indexPath) as! SongSheetViewSection
+            view.rightButton.addTarget(self, action: #selector(clickAllCategory(sender:)), for: .touchUpInside)
             return view
         } else {
             let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SongSheetViewHeader.identifier, for: indexPath) as! SongSheetViewHeader
@@ -141,7 +147,6 @@ class SongSheetViewSection: UICollectionReusableView {
     @IBOutlet weak var indicatorView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var rightButton: UIButton!
-    
 }
 
 class SongSheetViewHeader: UICollectionReusableView {

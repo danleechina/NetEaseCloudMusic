@@ -134,7 +134,7 @@ class CertainSongSheetViewController: BaseViewController {
         backView.frame = view.bounds
         
         view.addSubview(tableView)
-        self.certainSongSheetTableViewHeadView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 200)
+        self.certainSongSheetTableViewHeadView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.width * 0.6)
         view.backgroundColor = UIColor.white
 
         self.view.addSubview(self.navigationBar)

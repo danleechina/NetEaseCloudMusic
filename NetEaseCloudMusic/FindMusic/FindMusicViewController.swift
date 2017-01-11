@@ -27,7 +27,7 @@ class FindMusicViewController: BaseSliderViewController {
         let rankListVC = RankListViewController()
         contentViewControllers = [recommendVC, songSheetVC, radioVC, rankListVC]
         titleTexts = ["个性推荐", "歌单", "主播电台", "排行榜"]
-        currentIndex = 2
+        currentIndex = 1
         
         super.viewDidLoad()
         

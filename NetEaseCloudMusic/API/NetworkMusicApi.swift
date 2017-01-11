@@ -84,6 +84,7 @@ class NetworkMusicApi: NSObject {
         let sstr = str.substring(to: str.index(str.startIndex, offsetBy: 16))
         return sstr
     }
+    
     typealias CompletionBlock = (_ result: String?, _ error: NSError?) -> Void
     
     let defaultSession = URLSession(configuration: URLSessionConfiguration.default)
@@ -210,46 +211,11 @@ class NetworkMusicApi: NSObject {
         doHttpRequest("GET", url: usrStr, data: nil, complete: complete)
     }
     
-    static let topList = ["19723756", "3779629", "2884035", "3778678",
-                          "10520166", "71385702", "3733003",
-                          "46772709", "60255", "3812895",
-                          "60131", "71384707", "180106",
-                          "60198", "27135204", "11641012",
-                          "120001", "21845217", "112463",
-                          "112504", "64016", "10169002",
-                          "4395559", "1899724",
-                          ]
-    // 热门单曲 http://music.163.com/#/discover/toplist 50
-    func top_songlist(index: Int = 0, offset: Int = 0, limit: Int = 100, complete: @escaping CompletionBlock) {
-        let action = "http://music.163.com/discover/toplist?id=" + NetworkMusicApi.topList[index]
-        doHttpRequest("GET", url: action, data: nil) { (dataString, error) in
-            complete(dataString, error)
-        }
-    }
-    
     // song ids --> song urls ( details )
     func songs_detail(songIDs: [String], complete: @escaping CompletionBlock) {
         let action = "http://music.163.com/api/song/detail?ids=[" + songIDs.joined(separator: ",") + "]"
         doHttpRequest("GET", url: action, data: nil) { (dataString, error) in
             complete(dataString, error)
-        }
-    }
-    
-    func rankSongList(index: Int, complete: @escaping CompletionBlock) {
-        NetworkMusicApi.shareInstance.top_songlist(index: index) { (data, error) in
-            if let err = error {
-                complete(nil, err)
-                return
-            }
-            if let ret = data?.findAll(for: "/song\\?id=(\\d+)") {
-                let r = ret.unique
-                NetworkMusicApi.shareInstance.songs_detail(songIDs: r) { (data, error) in
-                    complete(data, error)
-                }
-            } else {
-                let error = NSError.init(domain: "没有数据", code: 0, userInfo: nil)
-                complete(nil, error)
-            }
         }
     }
     
