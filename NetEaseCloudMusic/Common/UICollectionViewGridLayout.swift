@@ -24,21 +24,38 @@ protocol UICollectionViewGridLayoutDelegate: UICollectionViewDelegate {
     func sectionPostion(inSection section: Int) -> (startPosition: UnitPosition, endPosition: UnitPosition)
 }
 
+class SeparateLine: UICollectionReusableView {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        backgroundColor = FixedValue.seperateLineColor
+        backgroundColor = UIColor.red
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
 // every cell owns one and only one unit, but section can have many units(which can be connected as a large unit like a rect)
 class UICollectionViewGridLayout: UICollectionViewLayout {
     weak var delegate: UICollectionViewGridLayoutDelegate!
     var sectionMargin: CGFloat
     var insets: UIEdgeInsets
+    var separateLineHeight: CGFloat = 5
+//    var separateLineHeight: CGFloat = 0.5
     
     fileprivate var cellLayoutInformation: Dictionary<IndexPath, UICollectionViewLayoutAttributes>
     fileprivate var sectionLayoutInformation: Dictionary<IndexPath, UICollectionViewLayoutAttributes>
+    fileprivate var separateLineInformation: Dictionary<IndexPath, UICollectionViewLayoutAttributes>
     
     override init() {
         sectionMargin = 10
         insets = UIEdgeInsetsMake(0, 0, 0, 0)
         cellLayoutInformation = [:]
         sectionLayoutInformation = [:]
+        separateLineInformation = [:]
         super.init()
+        register(SeparateLine.self, forDecorationViewOfKind: "line")
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -83,7 +100,58 @@ class UICollectionViewGridLayout: UICollectionViewLayout {
             golbalStartOffset.y = startOffset.y
         }
         
-        print("FFFF")
+        var cnt = 0
+        for attr in cellLayoutInformation.values {
+            var indexPath = IndexPath.init(row: cnt, section: 0)
+            let line1Attr = UICollectionViewLayoutAttributes.init(forDecorationViewOfKind: "line", with: indexPath)
+            line1Attr.frame = CGRect(x: attr.frame.origin.x, y: attr.frame.origin.y, width: attr.frame.width, height: separateLineHeight)
+            separateLineInformation[indexPath] = line1Attr
+            cnt += 1
+            
+            indexPath.row = cnt
+            let line2Attr = UICollectionViewLayoutAttributes.init(forDecorationViewOfKind: "line", with: indexPath)
+            line2Attr.frame = CGRect(x: attr.frame.origin.x, y: attr.frame.origin.y + 0.5, width: separateLineHeight, height: attr.frame.height - separateLineHeight * 2)
+            separateLineInformation[indexPath] = line2Attr
+            cnt += 1
+        }
+        
+        for attr in sectionLayoutInformation.values {
+            // horizol line
+            var indexPath = IndexPath.init(row: cnt, section: 0)
+            let line1Attr = UICollectionViewLayoutAttributes.init(forDecorationViewOfKind: "line", with: indexPath)
+            line1Attr.frame = CGRect(x: attr.frame.origin.x, y: attr.frame.origin.y, width: attr.frame.width, height: separateLineHeight)
+            separateLineInformation[indexPath] = line1Attr
+            cnt += 1
+            
+            // vertical line
+            indexPath.row = cnt
+            let line2Attr = UICollectionViewLayoutAttributes.init(forDecorationViewOfKind: "line", with: indexPath)
+            line2Attr.frame = CGRect(x: attr.frame.origin.x, y: attr.frame.origin.y + 0.5, width: separateLineHeight, height: attr.frame.height)
+            separateLineInformation[indexPath] = line2Attr
+            cnt += 1
+        }
+        
+        golbalStartOffset = CGPoint(x: insets.left, y: insets.top)
+        for section in 0..<numberOfSection {
+            golbalStartOffset.y += sectionMargin
+            let (col, row) = delegate.numberOfColumnAndRow(inSection: section)
+            let unitSize = delegate.unitSize(inSection: section)
+            let (sectionWidth, sectionHeight) = (CGFloat(col) * unitSize.width, CGFloat(row) * unitSize.height)
+            
+            
+            var indexPath = IndexPath.init(row: cnt, section: 0)
+            let line1Attr = UICollectionViewLayoutAttributes.init(forDecorationViewOfKind: "line", with: indexPath)
+            line1Attr.frame = CGRect(x: sectionWidth - separateLineHeight, y: separateLineHeight + golbalStartOffset.y, width: separateLineHeight, height: sectionHeight - separateLineHeight * 2)
+            separateLineInformation[indexPath] = line1Attr
+            cnt += 1
+            
+            indexPath.row = cnt
+            let line2Attr = UICollectionViewLayoutAttributes.init(forDecorationViewOfKind: "line", with: indexPath)
+            line2Attr.frame = CGRect(x: 0, y: sectionHeight - separateLineHeight + golbalStartOffset.y, width: sectionWidth, height: separateLineHeight)
+            separateLineInformation[indexPath] = line2Attr
+            
+            golbalStartOffset.y += sectionHeight
+        }
     }
     
     override var collectionViewContentSize: CGSize {
@@ -117,6 +185,11 @@ class UICollectionViewGridLayout: UICollectionViewLayout {
                 attrs.append(sectionAttr)
             }
         }
+        for lineAttr in separateLineInformation.values {
+            if rect.intersects(lineAttr.frame) {
+                attrs.append(lineAttr)
+            }
+        }
         return attrs
     }
     
@@ -126,5 +199,9 @@ class UICollectionViewGridLayout: UICollectionViewLayout {
     
     override func layoutAttributesForSupplementaryView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         return sectionLayoutInformation[indexPath]
+    }
+    
+    override func layoutAttributesForDecorationView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        return separateLineInformation[indexPath]
     }
 }

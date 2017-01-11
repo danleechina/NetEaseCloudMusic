@@ -21,7 +21,6 @@ class FilterSongSheetViewController: BaseViewController {
         collectionView.contentInset = UIEdgeInsetsMake(contentInsetValue, contentInsetValue, contentInsetValue, contentInsetValue)
         collectionView.register(FilterSongSheetViewCell.self, forCellWithReuseIdentifier: FilterSongSheetViewCell.identifier)
         collectionView.register(FilterSongSheetViewSection.self, forSupplementaryViewOfKind: FilterSongSheetViewSection.kind, withReuseIdentifier: FilterSongSheetViewSection.identifier)
-        collectionView.backgroundColor = UIColor.black
         return collectionView
     }()
     
@@ -47,7 +46,6 @@ class FilterSongSheetViewController: BaseViewController {
     }
     
     fileprivate let sectionSize = [(4,1), (4,2), (4,7), (4,4), (4,4), (4,5),]
-//    fileprivate let sectionSize = [(2,1), (2,2),]
 }
 
 extension FilterSongSheetViewController: UICollectionViewGridLayoutDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
@@ -68,9 +66,6 @@ extension FilterSongSheetViewController: UICollectionViewGridLayoutDelegate, UIC
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FilterSongSheetViewCell.identifier, for: indexPath) as! FilterSongSheetViewCell
         cell.label.text = "R\(indexPath.section)-\(indexPath.row)"
         cell.label.textColor = UIColor.black
-        if cell.backgroundColor == nil {
-            cell.backgroundColor = UIColor.randomColor()
-        }
         return cell
     }
     
@@ -78,9 +73,6 @@ extension FilterSongSheetViewController: UICollectionViewGridLayoutDelegate, UIC
         let view = collectionView.dequeueReusableSupplementaryView(ofKind: FilterSongSheetViewSection.kind, withReuseIdentifier: FilterSongSheetViewSection.identifier, for: indexPath) as! FilterSongSheetViewSection
         view.label.text = "S\(indexPath.section)-\(indexPath.row)"
         view.label.textColor = UIColor.black
-        if view.backgroundColor == nil {
-            view.backgroundColor = UIColor.randomColor()
-        }
         return view
     }
     
@@ -92,24 +84,12 @@ extension FilterSongSheetViewController: UICollectionViewGridLayoutDelegate, UIC
     }
     
     func unitSize(inSection section: Int) -> CGSize {
-        return CGSize(width: 70, height: 40)
+        return CGSize(width: (self.view.width - 20)/4, height: 40)
     }
     
     func sectionPostion(inSection section: Int) -> (startPosition: UnitPosition, endPosition: UnitPosition) {
         if section == 0 {
             return (UnitPosition(x: 0, y: 0), UnitPosition(x: 4, y: 1))
-        } else if section == 1 {
-            return (UnitPosition(x: 0, y: 0), UnitPosition(x: 1, y: 2))
-        } else if section == 2 {
-            return (UnitPosition(x: 1, y: 2), UnitPosition(x: 3, y: 5))
-        } else if section == 3 {
-            
-            return (UnitPosition(x: 3, y: 2), UnitPosition(x: 4, y: 4))
-        } else if section == 4 {
-            return (UnitPosition(x: 3, y: 0), UnitPosition(x: 4, y: 2))
-        } else if section == 5 {
-            
-            return (UnitPosition(x: 0, y: 2), UnitPosition(x: 1, y: 5))
         }
         return (UnitPosition(x: 0, y: 0), UnitPosition(x: 1, y: 2))
     }
@@ -159,15 +139,3 @@ class FilterSongSheetViewSection: UICollectionReusableView {
     }
 }
 
-extension UIColor {
-    class func randomColor() -> UIColor {
-        return UIColor.init(red: randomBetweenNumbers(firstNum: 0, secondNum: 1),
-                            green: randomBetweenNumbers(firstNum: 0, secondNum: 1),
-                            blue: randomBetweenNumbers(firstNum: 0, secondNum: 1),
-                            alpha: 1)
-    }
-    
-    class func randomBetweenNumbers(firstNum: CGFloat, secondNum: CGFloat) -> CGFloat{
-        return CGFloat(arc4random()) / CGFloat(UINT32_MAX) * abs(firstNum - secondNum) + min(firstNum, secondNum)
-    }
-}

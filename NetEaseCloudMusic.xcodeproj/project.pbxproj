@@ -46,6 +46,7 @@
 		375D46C61E0BA9B000FC4A02 /* SongSheetViewSection.xib in Resources */ = {isa = PBXBuildFile; fileRef = 375D46C41E0BA9B000FC4A02 /* SongSheetViewSection.xib */; };
 		375D46C81E0BACA200FC4A02 /* SongSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375D46C71E0BACA200FC4A02 /* SongSheetViewController.swift */; };
 		375D46CA1E0BB34200FC4A02 /* SongSheetViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 375D46C91E0BB34200FC4A02 /* SongSheetViewHeader.xib */; };
+		37C44AAF1E26559C004AD757 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C44AAE1E26559C004AD757 /* UIColor+Extension.swift */; };
 		37C473B11E0A6C82006F5B3C /* RecommendViewSection.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37C473AF1E0A6C82006F5B3C /* RecommendViewSection.xib */; };
 		37C473B51E0A6C9C006F5B3C /* RecommendViewFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37C473B31E0A6C9C006F5B3C /* RecommendViewFooter.xib */; };
 		37C473BB1E0A7107006F5B3C /* RecommendViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37C473B91E0A7107006F5B3C /* RecommendViewCell.xib */; };
@@ -223,6 +224,7 @@
 		375D46C41E0BA9B000FC4A02 /* SongSheetViewSection.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SongSheetViewSection.xib; path = FindMusic/SongSheetViewSection.xib; sourceTree = "<group>"; };
 		375D46C71E0BACA200FC4A02 /* SongSheetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SongSheetViewController.swift; path = FindMusic/SongSheetViewController.swift; sourceTree = "<group>"; };
 		375D46C91E0BB34200FC4A02 /* SongSheetViewHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SongSheetViewHeader.xib; path = FindMusic/SongSheetViewHeader.xib; sourceTree = "<group>"; };
+		37C44AAE1E26559C004AD757 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+Extension.swift"; path = "Extension/UIKit/UIColor+Extension.swift"; sourceTree = "<group>"; };
 		37C473AF1E0A6C82006F5B3C /* RecommendViewSection.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RecommendViewSection.xib; path = FindMusic/RecommendViewSection.xib; sourceTree = "<group>"; };
 		37C473B31E0A6C9C006F5B3C /* RecommendViewFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RecommendViewFooter.xib; path = FindMusic/RecommendViewFooter.xib; sourceTree = "<group>"; };
 		37C473B91E0A7107006F5B3C /* RecommendViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RecommendViewCell.xib; path = FindMusic/RecommendViewCell.xib; sourceTree = "<group>"; };
@@ -471,6 +473,7 @@
 				3758A3931DF6B6E400788104 /* UIImage+Extenison.swift */,
 				3758A3971DF79D9E00788104 /* IB+Extension.swift */,
 				373EE2241E03867000C5180A /* UIButton+Extension.swift */,
+				37C44AAE1E26559C004AD757 /* UIColor+Extension.swift */,
 			);
 			name = UIKit;
 			sourceTree = "<group>";
@@ -1058,6 +1061,7 @@
 				37D0F78C1DEEEBB80046C9B6 /* BigUInt Exponentiation.swift in Sources */,
 				DE2654ED1D102A070083F742 /* MyMVViewController.swift in Sources */,
 				37D0F7851DEEEBB80046C9B6 /* BigDigit.swift in Sources */,
+				37C44AAF1E26559C004AD757 /* UIColor+Extension.swift in Sources */,
 				DE13AB1B1D378CD9004BA90C /* CertainSongSheetViewController.swift in Sources */,
 				37D0F7A11DEEF35C0046C9B6 /* RandomUInt64.swift in Sources */,
 				8172EF571DA673040042B6AE /* UIImage_Add.swift in Sources */,
