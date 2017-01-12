@@ -34,13 +34,13 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="【精选冷门开启欧洲之旅】 欧洲语种的多样" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e8f-1X-KqC">
-                            <rect key="frame" x="20" y="68" width="217.5" height="16"/>
+                            <rect key="frame" x="20" y="68" width="237.5" height="16"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <color key="textColor" red="0.53327292203903198" green="0.53336817026138306" blue="0.53326696157455444" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" image="cm2_discover_icn_more" translatesAutoresizingMaskIntoConstraints="NO" id="VRI-Ud-wBV">
-                            <rect key="frame" x="245.5" y="53.5" width="5" height="9"/>
+                            <rect key="frame" x="265.5" y="53.5" width="5" height="9"/>
                         </imageView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -50,7 +50,7 @@
                         <constraint firstItem="e8f-1X-KqC" firstAttribute="top" secondItem="3xN-J2-RE7" secondAttribute="centerY" constant="10" id="GEd-Ic-9x3"/>
                         <constraint firstItem="kVY-Rw-X0r" firstAttribute="leading" secondItem="3xN-J2-RE7" secondAttribute="leading" constant="20" symbolic="YES" id="LWQ-tB-Ta0"/>
                         <constraint firstItem="VRI-Ud-wBV" firstAttribute="centerY" secondItem="3xN-J2-RE7" secondAttribute="centerY" id="apT-Lz-y5S"/>
-                        <constraint firstAttribute="trailing" secondItem="VRI-Ud-wBV" secondAttribute="trailing" constant="20" symbolic="YES" id="e1O-r6-Xuf"/>
+                        <constraint firstAttribute="trailing" secondItem="VRI-Ud-wBV" secondAttribute="trailing" id="e1O-r6-Xuf"/>
                         <constraint firstItem="kVY-Rw-X0r" firstAttribute="bottom" secondItem="3xN-J2-RE7" secondAttribute="centerY" id="hbh-sj-Ll2"/>
                         <constraint firstItem="VRI-Ud-wBV" firstAttribute="leading" secondItem="e8f-1X-KqC" secondAttribute="trailing" constant="8" symbolic="YES" id="lRh-fX-ZcO"/>
                         <constraint firstItem="e8f-1X-KqC" firstAttribute="leading" secondItem="3xN-J2-RE7" secondAttribute="leading" constant="20" symbolic="YES" id="uBx-XB-H4B"/>

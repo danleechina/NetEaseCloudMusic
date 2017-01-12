@@ -28,7 +28,6 @@ class SeparateLine: UICollectionReusableView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = FixedValue.seperateLineColor
-        backgroundColor = UIColor.red
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -36,17 +35,17 @@ class SeparateLine: UICollectionReusableView {
     }
 }
 
-// every cell owns one and only one unit, but section can have many units(which can be connected as a large unit like a rect)
+// every cell owns one and only one unit, but section can have many units(which can be connected as a large rect)
 class UICollectionViewGridLayout: UICollectionViewLayout {
     weak var delegate: UICollectionViewGridLayoutDelegate!
     var sectionMargin: CGFloat
     var insets: UIEdgeInsets
-    var separateLineHeight: CGFloat = 5
-//    var separateLineHeight: CGFloat = 0.5
+    var separateLineHeight: CGFloat = 0.5
     
     fileprivate var cellLayoutInformation: Dictionary<IndexPath, UICollectionViewLayoutAttributes>
     fileprivate var sectionLayoutInformation: Dictionary<IndexPath, UICollectionViewLayoutAttributes>
     fileprivate var separateLineInformation: Dictionary<IndexPath, UICollectionViewLayoutAttributes>
+    fileprivate var calContentSize = CGSize(width: 0, height: 0)
     
     override init() {
         sectionMargin = 10
@@ -65,6 +64,7 @@ class UICollectionViewGridLayout: UICollectionViewLayout {
     override func prepare() {
         guard let numberOfSection = self.collectionView?.numberOfSections else { return }
         var golbalStartOffset = CGPoint(x: insets.left, y: insets.top)
+        var cnt = 0
         for section in 0..<numberOfSection {
             let (col, row) = delegate.numberOfColumnAndRow(inSection: section)
             let unitSize = delegate.unitSize(inSection: section)
@@ -81,7 +81,10 @@ class UICollectionViewGridLayout: UICollectionViewLayout {
                         let indexPath = IndexPath.init(row: itemRow, section: section)
                         if sectionStartPosition.x == c && sectionStartPosition.y == r {
                             let attribute = UICollectionViewLayoutAttributes.init(forSupplementaryViewOfKind: "section", with: indexPath)
-                            attribute.frame = CGRect(x: startOffset.x, y: startOffset.y, width: unitSize.width * CGFloat(sectionEndPosition.x - sectionStartPosition.x), height: unitSize.height * CGFloat(sectionEndPosition.y - sectionStartPosition.y))
+                            attribute.frame = CGRect(x: startOffset.x + separateLineHeight,
+                                                     y: startOffset.y + separateLineHeight,
+                                                     width: (unitSize.width + separateLineHeight) * CGFloat(sectionEndPosition.x - sectionStartPosition.x) - separateLineHeight,
+                                                     height: (unitSize.height + separateLineHeight) * CGFloat(sectionEndPosition.y - sectionStartPosition.y) - separateLineHeight)
                             sectionLayoutInformation[indexPath] = attribute
                         }
                     } else {
@@ -89,69 +92,72 @@ class UICollectionViewGridLayout: UICollectionViewLayout {
                         let indexPath = IndexPath.init(row: itemRow, section: section)
                         itemRow += 1
                         let attribute = UICollectionViewLayoutAttributes.init(forCellWith: indexPath)
-                        attribute.frame = CGRect(x: startOffset.x, y: startOffset.y, width: unitSize.width, height: unitSize.height)
+                        attribute.frame = CGRect(x: startOffset.x + separateLineHeight, y: startOffset.y + separateLineHeight, width: unitSize.width, height: unitSize.height)
                         cellLayoutInformation[indexPath] = attribute
                     }
-                    startOffset.x += unitSize.width
+                    startOffset.x += (unitSize.width + separateLineHeight)
                 }
-                startOffset.x = 0
-                startOffset.y += unitSize.height
+                startOffset.x = insets.left
+                startOffset.y += (unitSize.height + separateLineHeight)
             }
-            golbalStartOffset.y = startOffset.y
-        }
-        
-        var cnt = 0
-        for attr in cellLayoutInformation.values {
+            
+            let (sectionWidth, sectionHeight) = (CGFloat(col) * unitSize.width, CGFloat(row) * unitSize.height)
+            
+
+            // horizontal line
             var indexPath = IndexPath.init(row: cnt, section: 0)
+            let line2Attr = UICollectionViewLayoutAttributes.init(forDecorationViewOfKind: "line", with: indexPath)
+            line2Attr.frame = CGRect(x: golbalStartOffset.x, y: startOffset.y, width: sectionWidth + CGFloat(col) * separateLineHeight, height: separateLineHeight)
+            separateLineInformation[indexPath] = line2Attr
+            cnt += 1
+            
+            // vertical line
+            indexPath.row = cnt
             let line1Attr = UICollectionViewLayoutAttributes.init(forDecorationViewOfKind: "line", with: indexPath)
-            line1Attr.frame = CGRect(x: attr.frame.origin.x, y: attr.frame.origin.y, width: attr.frame.width, height: separateLineHeight)
+            line1Attr.frame = CGRect(x: golbalStartOffset.x + sectionWidth + CGFloat(col) * separateLineHeight,
+                                     y: golbalStartOffset.y,
+                                     width: separateLineHeight,
+                                     height: sectionHeight + CGFloat(row+1) * separateLineHeight)
             separateLineInformation[indexPath] = line1Attr
             cnt += 1
             
-            indexPath.row = cnt
-            let line2Attr = UICollectionViewLayoutAttributes.init(forDecorationViewOfKind: "line", with: indexPath)
-            line2Attr.frame = CGRect(x: attr.frame.origin.x, y: attr.frame.origin.y + 0.5, width: separateLineHeight, height: attr.frame.height - separateLineHeight * 2)
-            separateLineInformation[indexPath] = line2Attr
-            cnt += 1
+            golbalStartOffset.y = startOffset.y
         }
         
-        for attr in sectionLayoutInformation.values {
-            // horizol line
+        calContentSize.height = golbalStartOffset.y + separateLineHeight
+        
+        for attr in cellLayoutInformation.values {
+            // horizontal line
             var indexPath = IndexPath.init(row: cnt, section: 0)
             let line1Attr = UICollectionViewLayoutAttributes.init(forDecorationViewOfKind: "line", with: indexPath)
-            line1Attr.frame = CGRect(x: attr.frame.origin.x, y: attr.frame.origin.y, width: attr.frame.width, height: separateLineHeight)
+            line1Attr.frame = CGRect(x: attr.frame.origin.x - separateLineHeight, y: attr.frame.origin.y - separateLineHeight, width: attr.frame.width + separateLineHeight, height: separateLineHeight)
             separateLineInformation[indexPath] = line1Attr
             cnt += 1
             
             // vertical line
             indexPath.row = cnt
             let line2Attr = UICollectionViewLayoutAttributes.init(forDecorationViewOfKind: "line", with: indexPath)
-            line2Attr.frame = CGRect(x: attr.frame.origin.x, y: attr.frame.origin.y + 0.5, width: separateLineHeight, height: attr.frame.height)
+            line2Attr.frame = CGRect(x: attr.frame.origin.x - separateLineHeight, y: attr.frame.origin.y, width: separateLineHeight, height: attr.frame.height)
             separateLineInformation[indexPath] = line2Attr
             cnt += 1
         }
         
-        golbalStartOffset = CGPoint(x: insets.left, y: insets.top)
-        for section in 0..<numberOfSection {
-            golbalStartOffset.y += sectionMargin
-            let (col, row) = delegate.numberOfColumnAndRow(inSection: section)
-            let unitSize = delegate.unitSize(inSection: section)
-            let (sectionWidth, sectionHeight) = (CGFloat(col) * unitSize.width, CGFloat(row) * unitSize.height)
-            
-            
+        for attr in sectionLayoutInformation.values {
+            // horizontal line
             var indexPath = IndexPath.init(row: cnt, section: 0)
             let line1Attr = UICollectionViewLayoutAttributes.init(forDecorationViewOfKind: "line", with: indexPath)
-            line1Attr.frame = CGRect(x: sectionWidth - separateLineHeight, y: separateLineHeight + golbalStartOffset.y, width: separateLineHeight, height: sectionHeight - separateLineHeight * 2)
+            line1Attr.frame = CGRect(x: attr.frame.origin.x - separateLineHeight, y: attr.frame.origin.y - separateLineHeight, width: attr.frame.width + separateLineHeight, height: separateLineHeight)
             separateLineInformation[indexPath] = line1Attr
             cnt += 1
             
+            // vertical line
             indexPath.row = cnt
             let line2Attr = UICollectionViewLayoutAttributes.init(forDecorationViewOfKind: "line", with: indexPath)
-            line2Attr.frame = CGRect(x: 0, y: sectionHeight - separateLineHeight + golbalStartOffset.y, width: sectionWidth, height: separateLineHeight)
+            line2Attr.frame = CGRect(x: attr.frame.origin.x - separateLineHeight, y: attr.frame.origin.y, width: separateLineHeight, height: attr.frame.height)
             separateLineInformation[indexPath] = line2Attr
-            
-            golbalStartOffset.y += sectionHeight
+            cnt += 1
         }
+        
     }
     
     override var collectionViewContentSize: CGSize {
@@ -161,13 +167,14 @@ class UICollectionViewGridLayout: UICollectionViewLayout {
             }
             var size = CGSize(width: 0, height: 0)
             for section in 0..<numberOfSections {
-                let sectionWidth = delegate.unitSize(inSection: section).width * CGFloat(delegate.numberOfColumnAndRow(inSection: section).col)
+                let sectionWidth = (delegate.unitSize(inSection: section).width + separateLineHeight) * CGFloat(delegate.numberOfColumnAndRow(inSection: section).col)
                 size.width = max(sectionWidth, size.width)
                 
-                size.height += (delegate.unitSize(inSection: section).height * CGFloat(delegate.numberOfColumnAndRow(inSection: section).row) + sectionMargin)
+                size.height += ((delegate.unitSize(inSection: section).height + separateLineHeight) * CGFloat(delegate.numberOfColumnAndRow(inSection: section).row) + sectionMargin + separateLineHeight)
             }
-            size.width += (insets.top + insets.bottom)
-            size.height += (insets.left + insets.right)
+            size.width += (insets.left + insets.right)
+            size.height += (insets.top + insets.bottom)
+            
             return size
             
         }

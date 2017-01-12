@@ -15,24 +15,24 @@ class SongSheet: NSObject {
     var nickname = ""
     var playListID = ""
     
-    class func getFilePath() -> URL? {
+    class func getFilePath(category: String, offset: Int, limited: Int) -> URL? {
         if let dir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .allDomainsMask, true).first {
-            let path = URL(fileURLWithPath: dir).appendingPathComponent("SongSheet")
+            let path = URL(fileURLWithPath: dir).appendingPathComponent("SongSheet\(category)")
             return path;
         }
         return nil
     }
     
-    class func loadSongSheetData(_ completion:@escaping (_ data: [SongSheet]?, _ error: NSError?) -> Void) {
-        if UserDefaults.standard.bool(forKey: "SongSheetCache") {
-            let date = UserDefaults.standard.object(forKey: "SongSheetCacheTime") as! Date
+    class func loadSongSheetData(category: String, offset: Int, limited: Int, _ completion:@escaping (_ data: [SongSheet]?, _ error: NSError?) -> Void) {
+        if UserDefaults.standard.bool(forKey: "SongSheetCache\(category)") {
+            let date = UserDefaults.standard.object(forKey: "SongSheetCacheTime\(category)") as! Date
             let dateDay = (Calendar.current as NSCalendar).component(.day, from: date)
             
             let currentDate = Date()
             let currentDay = (Calendar.current as NSCalendar).component(.day, from: currentDate)
             
             if dateDay == currentDay {
-                let data = try! NSString(contentsOf: getFilePath()!, encoding: String.Encoding.utf8.rawValue)
+                let data = try! NSString(contentsOf: getFilePath(category: category, offset: offset, limited: limited)!, encoding: String.Encoding.utf8.rawValue)
                 completion(transfer(data as String), nil)
                 return
             }
@@ -40,7 +40,7 @@ class SongSheet: NSObject {
         }
         
         let netease = NetworkMusicApi.shareInstance
-        netease.top_playlists { (data, error) in
+        netease.top_playlists(cat: category, offset: offset, limit: limited) { (data, error) in
             if let err = error {
                 print(err)
                 completion(nil, err)
@@ -48,10 +48,10 @@ class SongSheet: NSObject {
                 do {
                     if data != nil {
                         do {
-                            try data?.write(to: getFilePath()!, atomically: false, encoding: String.Encoding.utf8)
+                            try data?.write(to: getFilePath(category: category, offset: offset, limited: limited)!, atomically: false, encoding: String.Encoding.utf8)
                         }
-                        UserDefaults.standard.set(true, forKey: "SongSheetCache")
-                        UserDefaults.standard.set(Date(), forKey: "SongSheetCacheTime")
+                        UserDefaults.standard.set(true, forKey: "SongSheetCache\(category)")
+                        UserDefaults.standard.set(Date(), forKey: "SongSheetCacheTime\(category)")
                         UserDefaults.standard.synchronize()
                         let songSheets = transfer(data)
                         completion(songSheets, nil)

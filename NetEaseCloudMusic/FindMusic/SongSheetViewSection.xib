@@ -23,14 +23,14 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="全部歌单" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Yp-od-NeB">
-                    <rect key="frame" x="12" y="19.5" width="338" height="21"/>
+                    <rect key="frame" x="12" y="19.5" width="358" height="21"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="255" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZXX-zy-Mm5">
-                    <rect key="frame" x="346" y="17" width="92" height="26"/>
+                    <rect key="frame" x="366" y="17" width="92" height="26"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <state key="normal" title="       选择分类  " backgroundImage="cm2_discover_btn_slt">
                         <color key="titleColor" red="0.19997376203536987" green="0.20001503825187683" blue="0.19997116923332214" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -44,7 +44,7 @@
                 <constraint firstItem="9Yp-od-NeB" firstAttribute="trailing" secondItem="ZXX-zy-Mm5" secondAttribute="leading" constant="4" id="axc-Nt-YzE"/>
                 <constraint firstItem="9Yp-od-NeB" firstAttribute="centerY" secondItem="U6b-Vx-4bR" secondAttribute="centerY" id="eij-gw-4e0"/>
                 <constraint firstItem="ZXX-zy-Mm5" firstAttribute="centerY" secondItem="U6b-Vx-4bR" secondAttribute="centerY" id="nDd-jZ-4cJ"/>
-                <constraint firstAttribute="trailing" secondItem="ZXX-zy-Mm5" secondAttribute="trailing" constant="20" symbolic="YES" id="nGQ-jX-WQE"/>
+                <constraint firstAttribute="trailing" secondItem="ZXX-zy-Mm5" secondAttribute="trailing" id="nGQ-jX-WQE"/>
                 <constraint firstItem="XJY-23-1Am" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" id="vzj-KJ-tbQ"/>
                 <constraint firstItem="9Yp-od-NeB" firstAttribute="leading" secondItem="XJY-23-1Am" secondAttribute="trailing" constant="8" symbolic="YES" id="z0u-sB-HhV"/>
             </constraints>

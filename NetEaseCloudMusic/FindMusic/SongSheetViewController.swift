@@ -10,6 +10,7 @@ import UIKit
 import SDWebImage
 
 class SongSheetViewController: BaseViewController {
+    static let SongSheetCategory = "SongSheetCategory"
     fileprivate var collectData = [SongSheet]() {
         didSet {
             DispatchQueue.main.async {
@@ -53,16 +54,32 @@ class SongSheetViewController: BaseViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         view.addSubview(self.collectionView)
-        
-        SongSheet.loadSongSheetData { (data, error) in
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        var category = "全部"
+        if let c = UserDefaults.standard.value(forKey: SongSheetViewController.SongSheetCategory) as? String {
+            category = c
+        }
+        SongSheet.loadSongSheetData(category: category, offset: 0, limited: 100) { (data, error) in
             if error == nil {
                 self.collectData = data!
             }
+        }
+
+        sectionText = category == "全部" ? "全部歌单" : category
+    }
+    
+    fileprivate var sectionText = "全部歌单" {
+        didSet {
+            
         }
     }
     
     func clickAllCategory(sender: UIButton) {
         let vc = FilterSongSheetViewController()
+        vc.selectedText = sectionText
         self.navigationController?.pushViewController(vc, animated: true)
     }
 
@@ -104,6 +121,12 @@ extension SongSheetViewController: UICollectionViewDelegateFlowLayout, UICollect
     }
     
     // MARK: - Delegate
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, at indexPath: IndexPath) {
+        if let sView = view as? SongSheetViewSection {
+            sView.titleLabel.text = sectionText
+        }
+    }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = CertainSongSheetViewController()

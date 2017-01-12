@@ -232,9 +232,9 @@ class NetworkMusicApi: NSObject {
     }
     
     // 歌单（网友精选碟） hot||new http://music.163.com/#/discover/playlist/
-    func top_playlists(_ complete: @escaping CompletionBlock) {
+    func top_playlists(cat: String, offset: Int, limit: Int, _ complete: @escaping CompletionBlock) {
         // action = 'http://music.163.com/api/playlist/list?cat=' + category + '&order=' + order + '&offset=' + str(offset) + '&total=' + ('true' if offset else 'false') + '&limit=' + str(limit)
-        let action = "http://music.163.com/api/playlist/list?cat=全部&order=hot&offset=0&total=false&limit=50"
+        let action = "http://music.163.com/api/playlist/list?cat=\(cat)&order=hot&offset=\(offset)&total=false&limit=\(limit)"
         let escapedAddress = action.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
         doHttpRequest("GET", url: escapedAddress!, data: nil, complete: complete)
     }
