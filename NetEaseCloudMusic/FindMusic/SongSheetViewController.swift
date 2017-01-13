@@ -149,21 +149,6 @@ extension SongSheetViewController: UICollectionViewDelegateFlowLayout, UICollect
     }
     
 }
-    
-//    lazy var starImageView: UIImageView = {
-//        let imageView = UIImageView(image: UIImage.init(named: "cm2_btm_icn_friend"))
-//        return imageView
-//    }()
-//    
-//    lazy var infoImageView: UIImageView = {
-//        let image = UIImageView.init(image: UIImage.init(named: "cm2_list_detail_icn_infor"))
-//        return image
-//    }()
-//    
-//    lazy var leftTopImageView: UIImageView = {
-//        let image = UIImageView.init(image: UIImage.init(named: "cm2_list_detail_icn_infor"))
-//        return image
-//    }()
 
 class SongSheetViewSection: UICollectionReusableView {
     static let identifier = "SongSheetViewSection"

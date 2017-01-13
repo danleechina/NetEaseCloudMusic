@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SnapKit
 
 class LyricTableView: UITableView {
     
@@ -58,6 +57,7 @@ class LyricTableView: UITableView {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        
     }
 }
 

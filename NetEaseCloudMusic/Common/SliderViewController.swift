@@ -10,7 +10,7 @@ import UIKit
 
 class DefaultStyleAttribute {
     static let indicatorViewColor = UIColor.init(red: 183/255.0, green: 39/255.0, blue: 18/255.0, alpha: 1)
-    static let indicatorViewHeight: CGFloat = 1
+    static let indicatorViewHeight: CGFloat = 3
     static let indicatorViewWidthDiff: CGFloat = 4
     static let seperateLineColor = UIColor.lightGray
     static let seperateLineOffset: CGFloat = 4
