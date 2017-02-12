@@ -904,6 +904,7 @@
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = VCJVQ6T6G2;
 						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
 					};
 					DE26548A1D101A860083F742 = {
 						CreatedOnToolsVersion = 7.3.1;
