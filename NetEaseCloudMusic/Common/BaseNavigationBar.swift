@@ -75,7 +75,7 @@ class BaseNavigationBar: UIView {
         }
         
         titleLabel.snp.makeConstraints { (make) in
-            make.center.equalTo(titleView.center)
+            make.center.equalTo(titleView.snp.center)
         }
         
         leftButton.snp.makeConstraints { (make) in
